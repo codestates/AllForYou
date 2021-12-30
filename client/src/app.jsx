@@ -1,0 +1,26 @@
+import "./app.css";
+import Nav from "./components/nav";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import MainPage from "./page/mainPage";
+import MyPage from "./page/myPage";
+import ForYou from "./page/forYou";
+import Contents from "./page/contents";
+import Login from "./page/login";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/contents" element={<Contents />} />
+        <Route path="/foryou" element={<ForYou />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
