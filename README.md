@@ -1,6 +1,6 @@
 # LOGO
 
-![]()
+![Logo](https://user-images.githubusercontent.com/87467464/147722761-885a0231-fbbf-4f30-8c1f-ce7e18fda336.png)
 
 # 📖 About
 
@@ -27,32 +27,28 @@
 - ‘좋아요' 버튼을 누른 컨텐츠를 모아서 볼 수 있습니다.
 
 ## 🛠 사용 스택
-![]()
+![final stack](https://user-images.githubusercontent.com/87467464/147616818-6ecf5a4f-49c0-46ea-b024-a4338bfe7ee3.png)
 
 
 ## TEAM `Fit`
 
 ### 이재영
 * Role : Team Leader
-* Position :
-* Stack : 
-* Works : 
+* Position : Back-End
+* Github : [![](https://img.shields.io/badge/github-dlwodud9529-blue?style=flat-square)](https://github.com/dlwodud9529)
 
 ### 강사름
 * Role : Team Member
-* Position : 
-* Stack : 
-* Works : 
+* Position : Front-End
+* Github : [![](https://img.shields.io/badge/github-sareum--k-red?style=flat-square)](https://github.com/sareum-k)
 
 ### 남태식
 * Role : Team Member
-* Position :
-* Stack : 
-* Works : 
+* Position : Front-End
+* Github : [![](https://img.shields.io/badge/github-Southbig-green?style=flat-square)](https://github.com/Southbig)
 
 ### 홍세환
 
 * Role : Team Member
-* Position : 
-* Stack : 
-* Works : 
+* Position : Full-Stack
+* Github : [![](https://img.shields.io/badge/github-HongSehwan-yellow?style=flat-square)](https://github.com/HongSehwan)
