@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 15rem;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  width: 50em;
+  justify-content: right;
+  align-items: center;
+}
+
+li {
+  margin: 1rem;
+}
