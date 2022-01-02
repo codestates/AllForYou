@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 70em;
+  height: 42em;
+  /* border: 0.2em solid black; */
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  background-color: rgb(250, 238, 223);
+}
+
+.close {
+  position: absolute;
+  margin: 0.3em 0.3em 0 1em;
+  font-size: 2em;
+  transition: all 200ms ease-in;
+}
+
+.close:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.like {
+  margin: 0.5em 0.5em 1em 1em;
+  position: absolute;
+  right: 0;
+  font-size: 3em;
+  border: none;
+  background-color: rgb(250, 238, 223);
+  transition: all 200ms ease-in;
+}
+
+button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+}
+
+.image {
+  margin: 0.5em;
+  object-fit: scale-down;
+  width: 25em;
+  height: 30em;
+  /* border: solid red 1px; */
+}
+
+.list_container {
+  display: flex;
+  flex-direction: column;
+  width: 30em;
+}
+
+.title {
+  margin: 3.5em 1.5em 0.5em 1.5em;
+  font-size: 1.3rem;
+  font-weight: 700;
+  /* width: 10em; */
+}
+
+.year {
+  margin: 0 1.5em 0.8em 2em;
+}
+
+.list_container {
+  margin: 1em;
+}
+
+.genres_container {
+  margin: 1em;
+}
+
+.genres_text {
+  margin-right: 0.3em;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.genres {
+  font-size: 1em;
+}
+
+.director_container {
+  margin: 0 1em 1em 1em;
+}
+
+.director_text {
+  margin-right: 0.3em;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.summary {
+  width: 100%;
+  margin-left: 1em;
+  line-height: 1.7em;
+  letter-spacing: 0.1em;
+  word-spacing: 0.1em;
+}
