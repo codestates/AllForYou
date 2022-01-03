@@ -11,7 +11,8 @@ const contents = {
       genres: ["액션, 드라마"],
       image: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTAzMjZfMTUw%2FMDAxNTUzNjAwODEwNzE5.cp6mKUWi1FmqclVEfTV2KZ33yLGYOTr90gHWwqP9QzIg.JxziZOzilYqIBZ-LYr5QXbvLF5IaEL-epOvYZhpUyA0g.PNG.ghkdrma1515%2F25.png&type=sc960_832",
       category: ["동기부여", "도전", "멘토"],
-      detail: ["노력", "자신과싸움", "can"]
+      detail: ["노력", "자신과싸움", "can"],
+      link: ""
     },
   ],
   book: [
@@ -19,13 +20,14 @@ const contents = {
       id: 1,
       title: "1등의 습관",
       original_title: "Smarter Faster Better",
-      writer: "찰스 두히그",
+      director: "찰스 두히그",
       year: 2016,
       rating: 7.9,
       summary: "여유롭게 일하면서도 원하는 것을 모두 얻는 8가지 방법! 《습관의 힘》 찰스 두히그가 3년 만에 선보이는 『1등의 습관』. 기자로, 베스트셀러 작가로, 강연자로, 두 아이의 아버지로 9개월 동안 단 하루도 쉬지 못할 만큼 너무 바빠서 인생 최대의 위기에 몰렸던 뉴욕타임즈 스타 기자 찰스 두히그. 이 책은 자신의 인생 위기를 극복하기 위해 직접 발로 뛰며 취재로 밝혀낸 것으로 여유롭게 일하면서도 세상을 움직이는 0.1% 사람들의 8가지 비법을 담았다.",
       image: "https://image.yes24.com/goods/26946265/XL",
       category: ["동기부여", "멘토"],
-      detail: ["노력", "성장", "발전", "습관"]
+      detail: ["노력", "성장", "발전", "습관"],
+      link: ""
     }
   ],
   video: [
@@ -47,18 +49,19 @@ const contents = {
       내가 맥그리거를 통해 그랬듯,
       내 영상으로 인해 주인님들이 피식 웃고
       긍정적인 에너지를 받아간다면 더 바랄게 없어.`,
-      link: "https://www.youtube.com/watch?v=7jdlFz4HX6U&t=25s",
+      image: "",
       category: ["동기부여", "도전", "멘토"],
-      detail: ["노력", "성장", "발전", "자신과싸움", "can"]
+      detail: ["노력", "성장", "발전", "자신과싸움", "can"],
+      link: "https://www.youtube.com/watch?v=7jdlFz4HX6U&t=25s"
     }
   ],
   music: [
     {
       id: 1,
       title: "형 (兄)",
-      singer: "노라조",
+      director: "노라조",
       year: "2010",
-      lyrics:
+      summary:
         `삶이란 시련과 같은 말이야
       고개 좀 들고 어깨펴 짜샤
       형도 그랬단다 죽고 싶었지만
@@ -90,7 +93,8 @@ const contents = {
       genres: ["록", "메탈"],
       image: "https://image.bugsm.co.kr/album/images/500/2210/221071.jpg",
       category: ["도전", "멘토", "눈물"],
-      detail: ["can", "성장", "노력"]
+      detail: ["can", "성장", "노력"],
+      link: ""
     }
   ],
 }

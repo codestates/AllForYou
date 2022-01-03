@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.488);
+}
+
 .container {
   width: 70em;
   height: 42em;
@@ -12,6 +23,7 @@
   position: fixed;
   top: 20%;
   left: 25%;
+  vertical-align: middle;
   background-color: rgb(250, 238, 223);
 }
 
@@ -105,4 +117,54 @@ button:hover {
   line-height: 1.7em;
   letter-spacing: 0.1em;
   word-spacing: 0.1em;
+}
+
+@media screen and (max-width: 1500px) {
+  .container {
+    width: 53em;
+    height: 42em;
+  }
+  .genres_container {
+    margin: 0 0 0.3em 0;
+  }
+  .director_container {
+    margin: 0 0 0.3em 0;
+  }
+
+  .summary {
+    margin-left: 0em;
+    line-height: 1.7em;
+    letter-spacing: 0.1em;
+    word-spacing: 0.1em;
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  /* 타블렛 */
+  .container {
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  /* 모바일 */
+  .container {
+    width: 26em;
+    height: 26em;
+  }
+
+  .image {
+    margin: 0.5em;
+    margin-left: 2em;
+    object-fit: scale-down;
+    width: 13em;
+    height: 15em;
+    /* border: solid red 1px; */
+  }
+  .summary {
+    display: none;
+  }
+  .like {
+    font-size: 2em;
+  }
 }
