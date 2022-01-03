@@ -1,17 +1,16 @@
-* {
-  box-sizing: border-box;
-}
-
-.container {
+.navContainer{
   display: flex;
   justify-content: space-between;
+  background-color: #B09171;
 }
 
 .logo {
-  width: 15rem;
+  width: 13rem;
+  margin: 1.5rem 2rem;
 }
 
 ul {
+  margin-right: 2rem;
   list-style: none;
   display: flex;
   width: 50em;
@@ -21,4 +20,15 @@ ul {
 
 li {
   margin: 1rem;
+}
+
+button {
+  border: none;
+  background-color: #B09171;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+}
+button:hover {
+  color: white;
+  text-decoration: underline;
 }

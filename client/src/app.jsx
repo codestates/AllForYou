@@ -1,5 +1,6 @@
 import "./app.css";
 import Nav from "./components/nav";
+import Footer from "./components/footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainPage from "./page/mainPage";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
