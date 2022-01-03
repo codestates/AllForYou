@@ -34,14 +34,15 @@
 }
 .category{
   width:17rem;
-  height:2rem;
-  padding: 0.4rem;
+  height:2.2rem;
+  padding: 0.5rem 1rem;
   margin: 2rem 0;
-  background-color: #B09171;
-  color: white;
+  background-color: #EFE9CC;
+  font-size: 0.9rem;
+  /* color:white; */
 }
 
-.btn{
+.btnUrl, .btnKakao{
   background-color: #FAEEE0;
   width: 50%;
   padding: 0.6rem 0;
@@ -49,4 +50,12 @@
   border: 1px solid #FAEEE0;
   color: #B09171;
   font-size: 0.9rem;
+}
+.btnUrl:hover{
+  background-color: black;
+  color: white;
+}
+.btnKakao:hover{
+  background-color: #FFE227;
+  color: black;
 }

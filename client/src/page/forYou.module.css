@@ -1,6 +1,14 @@
 .container{
   background-color: #b09171;
 }
+.selectbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10.5rem;
+  padding-right: 13.5rem;
+  padding-top:2rem;
+}
 .cardContainer{
   position: relative;
 	display: flex;
@@ -8,15 +16,7 @@
 	flex-wrap: wrap;
 	width: 100%;
   height: auto;
-	padding-top: 3rem;
-}
-.selectbox{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-  padding-left: 10.5rem;
-  padding-right: 13.5rem;
-  padding-top:3rem;
+	padding-top: 2.5rem;
 }
 .category{
   height:2rem;
@@ -32,8 +32,10 @@
   width:8rem;
   height:2.5rem;
   border-radius: 0.3rem;
+  border: none;
   background-color: rgba(255, 255, 255, 0.563);
 }
 .btn:hover{
-  background-color: #FAEEE0;
+  background-color: black;
+  color: white;
 }

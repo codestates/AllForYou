@@ -71,11 +71,11 @@ const ForYouCard = () => {
             </div>
             <div className={style.sharebox}>
                 <button
-                    className={style.btn}
+                    className={style.btnUrl}
                 // onClick={handleShareUrl}
                 >URL로 공유</button>
                 <button
-                    className={style.btn}
+                    className={style.btnKakao}
                 // onClick={handleShareKakao}
                 >
                     카톡으로 공유

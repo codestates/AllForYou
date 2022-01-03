@@ -1,15 +1,13 @@
 import React from "react";
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
-// import dummy2 from "../components/dummy2";
+import dummy from '../dummy/dummy';
 
 const ForYou = () => {
   return (
     <div className={style.container}>
       <div className={style.selectbox}>
         <select
-          height="long"
-          initValue="ALL"
           className={style.category}
         >
           <option value="ALL">ALL</option>
