@@ -7,11 +7,13 @@ import MyPage from "./page/myPage";
 import ForYou from "./page/forYou";
 import Contents from "./page/contents";
 import Login from "./page/login";
+import ContentsModal from "./components/contentsModal";
 
 function App() {
   return (
     <BrowserRouter>
       <Nav />
+      <ContentsModal />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/contents" element={<Contents />} />
