@@ -2,9 +2,9 @@ import React from "react";
 import style from "./nav.module.css";
 import { Link } from "react-router-dom";
 
-const nav = () => {
+const Nav = () => {
   return (
-    <div className={style.container}>
+    <div className={style.navContainer}>
       <Link to="/">
         <img className={style.logo} src="/image/logo.gif" alt="logo" />
       </Link>
@@ -34,4 +34,4 @@ const nav = () => {
   );
 };
 
-export default nav;
+export default Nav;
