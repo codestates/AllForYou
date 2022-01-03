@@ -11,22 +11,22 @@ const Nav = () => {
       <ul className={style.list}>
         <li className={style.contents}>
           <Link to="/contents">
-            <button>CONTENTS</button>
+            <button className={style.btn}>CONTENTS</button>
           </Link>
         </li>
         <li className={style.foru}>
           <Link to="/foryou">
-            <button>FOR U</button>
+            <button className={style.btn}>FOR U</button>
           </Link>
         </li>
         <li className={style.mypage}>
           <Link to="/mypage">
-            <button>MYPAGE</button>
+            <button className={style.btn}>MYPAGE</button>
           </Link>
         </li>
         <li className={style.login}>
           <Link to="/Login">
-            <button>LOGIN</button>
+            <button className={style.btn}>LOGIN</button>
           </Link>
         </li>
       </ul>
