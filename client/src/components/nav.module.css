@@ -22,13 +22,13 @@ li {
   margin: 1rem;
 }
 
-button {
+.btn {
   border: none;
   background-color: #B09171;
   font-size: 1.1rem;
   padding-left: 1.5rem;
 }
-button:hover {
+.btn:hover {
   color: white;
   text-decoration: underline;
 }
