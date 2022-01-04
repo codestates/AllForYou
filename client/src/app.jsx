@@ -17,8 +17,8 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <ContentsModal />
-      <SignupModal />
+      {/* <ContentsModal /> */}
+      {/* <SignupModal /> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/contents" element={<Contents />} />
