@@ -68,7 +68,7 @@ const ForYouWriting = () => {
                     <button
                         className={style.btnImg}
                         onClick={upoadImage}
-                    >사진업데이트</button>
+                    >사진 업로드</button>
                 </div>
                 <div className={style.titleBox}>
                     <div className={style.select}>
