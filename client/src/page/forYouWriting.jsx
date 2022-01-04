@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
+import ListCard from "../components/listCard";
 import dummy2 from '../dummy/dummy2';
 
 const ForYouWriting = () => {
@@ -51,6 +52,8 @@ const ForYouWriting = () => {
     return (
         <div className={style.container}>
             <div className={style.writingBox}>
+                {/* <i className="far fa-list-alt"></i> */}
+                <p className={style.menu_p}>리스트 작성</p>
                 <div className={style.imgBox}>
                     <div className={style.img}>
                         <input
@@ -107,6 +110,7 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
+                                <ListCard />
                             </div>
                             <button className={style.btnAdd}>추가</button>
                         </div>
@@ -117,6 +121,11 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
+                                {/* 추후 무한 스크롤 적용 필요 */}
+                                <ListCard />
+                                <ListCard />
+                                <ListCard />
+                                <ListCard />
                             </div>
                             <button className={style.btnAdd}>삭제</button>
                         </div>
