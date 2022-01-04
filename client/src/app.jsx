@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <ContentsModal />
+      {/* <ContentsModal /> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/contents" element={<Contents />} />
