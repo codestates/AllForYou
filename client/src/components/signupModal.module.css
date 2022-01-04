@@ -48,42 +48,6 @@
   background-color: white
 }
 
-/* .nickName {
-  margin: 0.7em 3em 0.7em 0.7em;
-  padding-left: 15px;
-  display: block;
-  width: 16em;
-  height: 3.5em;
-  border: 0.2em solid #B09171;
-  border-radius: 0.5em;
-  float: right;
-  background-color: white
-}
-
-.password {
-  margin: 0.7em 3em 0.7em 0.7em;
-  padding-left: 15px;
-  display: block;
-  width: 16em;
-  height: 3.5em;
-  border: 0.2em solid #B09171;
-  border-radius: 0.5em;
-  float: right;
-  background-color: white
-}
-
-.passwordConfirm {
-  margin: 0.7em 3em 0.7em 0.7em;
-  padding-left: 15px;
-  display: block;
-  width: 16em;
-  height: 3.5em;
-  border: 0.2em solid #B09171;
-  border-radius: 0.5em;
-  float: right;
-  background-color: white
-} */
-
 .membership {
   display: block;
   margin: 0.7em auto;
