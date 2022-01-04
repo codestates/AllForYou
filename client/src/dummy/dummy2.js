@@ -17,7 +17,7 @@ const contents = [
   },
   {
     id: 2,
-    title: "록키 발보아",
+    title: "(유지)공부에 도전하지 않는 당신이 가져야 할 자세 [ 실패/좌절/도전/공부 동기부여 ]",
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -200,7 +200,7 @@ const contents = [
   },
   {
     id: 14,
-    title: "맥그리거의 패배자 인생을 바꾼 두문장",
+    title: "(유지)서장훈이 국보급 센터로 성공할 수밖에 없는 이유 [노력/열정 동기부여]",
     director: "잉글리쉬바englishiba",
     runtime: 8,
     summary:
