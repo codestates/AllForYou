@@ -49,7 +49,7 @@ const contents = {
       내가 맥그리거를 통해 그랬듯,
       내 영상으로 인해 주인님들이 피식 웃고
       긍정적인 에너지를 받아간다면 더 바랄게 없어.`,
-      image: "",
+      image: "https://i.ytimg.com/vi/7jdlFz4HX6U/hqdefault.jpg",
       category: ["동기부여", "도전", "멘토"],
       detail: ["노력", "성장", "발전", "자신과싸움", "can"],
       link: "https://www.youtube.com/watch?v=7jdlFz4HX6U&t=25s"

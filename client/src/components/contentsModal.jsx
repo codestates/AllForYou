@@ -1,8 +1,10 @@
 import React from "react";
 import style from "./contentsModal.module.css";
 import dummy from "../dummy/dummy";
+import dummy_2 from "../dummy/dummy2";
 
 const ContentsModal = () => {
+  // console.log(dummy_2);
   return (
     <div className={style.main}>
       <div className={style.container}>
