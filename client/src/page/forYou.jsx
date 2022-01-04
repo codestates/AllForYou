@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
+import ForYouWriting from "./forYouWriting";
 import dummy2 from '../dummy/dummy2';
 
 const ForYou = () => {
@@ -22,7 +23,7 @@ const ForYou = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.selectbox}>
+      {/* <div className={style.selectbox}>
         <select
           className={style.category}
           ref={select}
@@ -45,7 +46,8 @@ const ForYou = () => {
         <ForYouCard />
         <ForYouCard />
         <ForYouCard />
-      </div>
+      </div> */}
+      <ForYouWriting />
     </div>
   );
 };
