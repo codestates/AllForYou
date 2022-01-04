@@ -1,7 +1,9 @@
 import React from "react";
 import style from "./contents.module.css";
+import dummy2 from '../dummy/dummy2'
 
 const Contents = () => {
+  console.log(dummy2)
   return (
     <div className={style.container}>
       <select name="firstSelect" id={style.firstSelect}>

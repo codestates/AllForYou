@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
-import dummy from '../dummy/dummy';
+import dummy2 from '../dummy/dummy2';
 
 const ForYou = () => {
+  console.log(dummy2)
+  const select = useRef();
+  const { image } = dummy2[0];
+
+  // const select_1_category = dummy2.filter((el) => {
+  //   let category = el.category;
+  //   for (let i = 0; i < category.length; i++) {
+  //     if (category[i] === select) {
+  //       console.log("카테고리", category[i]);
+  //       return category[i];
+  //     } else if (select === "ALL") {
+  //       return category[i];
+  //     }
+  //   }
+  // });
+
   return (
     <div className={style.container}>
       <div className={style.selectbox}>
         <select
           className={style.category}
+          ref={select}
         >
           <option value="ALL">ALL</option>
           <option value="동기부여">동기부여를 받고 싶다면 ?</option>
@@ -22,9 +39,7 @@ const ForYou = () => {
         <button className={style.btn}>리스트 작성하기</button>
       </div>
       <div className={style.cardContainer}>
-        <ForYouCard />
-        <ForYouCard />
-        <ForYouCard />
+        <ForYouCard img={image} />
         <ForYouCard />
         <ForYouCard />
         <ForYouCard />
