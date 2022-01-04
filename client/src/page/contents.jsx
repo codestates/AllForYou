@@ -97,15 +97,51 @@ const Contents = () => {
       {select_1 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.subtitle}>동기부여를 받고 싶다면 ?</div>
+          <div className={style.contents}>
+            <div className={style.contents_part}># 영상</div>
+            <div className={style.contents_part}># 영화</div>
+            <div className={style.contents_part}># 책</div>
+            <div className={style.contents_part}># 음악</div>
+          </div>
           <div className={style.subtitle}>도전하고 싶은 나에게</div>
+          <div className={style.contents}>
+            <div className={style.contents_part}># 영상</div>
+            <div className={style.contents_part}># 영화</div>
+            <div className={style.contents_part}># 책</div>
+            <div className={style.contents_part}># 음악</div>
+          </div>
           <div className={style.subtitle}>
             현재 나의 상황에 멘토를 원하시나요 ?
           </div>
+          <div className={style.contents}>
+            <div className={style.contents_part}># 영상</div>
+            <div className={style.contents_part}># 영화</div>
+            <div className={style.contents_part}># 책</div>
+            <div className={style.contents_part}># 음악</div>
+          </div>
           <div className={style.subtitle}>생각없이 웃고 싶다면 ?</div>
+          <div className={style.contents}>
+            <div className={style.contents_part}># 영상</div>
+            <div className={style.contents_part}># 영화</div>
+            <div className={style.contents_part}># 책</div>
+            <div className={style.contents_part}># 음악</div>
+          </div>
           <div className={style.subtitle}>
             오늘 한 없이 눈물을 쏟고 싶다면 ?
           </div>
+          <div className={style.contents}>
+            <div className={style.contents_part}># 영상</div>
+            <div className={style.contents_part}># 영화</div>
+            <div className={style.contents_part}># 책</div>
+            <div className={style.contents_part}># 음악</div>
+          </div>
           <div className={style.subtitle}>백색소리</div>
+          <div className={style.contents}>
+            <div className={style.contents_part}># 영상</div>
+            <div className={style.contents_part}># 영화</div>
+            <div className={style.contents_part}># 책</div>
+            <div className={style.contents_part}># 음악</div>
+          </div>
         </div>
       ) : select_1 === "백색소리" ? (
         <div className={style.select_1_All_container}>
