@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./forYouCard.module.css";
 
-const ForYouCard = () => {
+const ForYouCard = ({ img }) => {
     // const handleClickShowmore = () => {
     //     history.push({
     //         pathname: `/planpage/${id}`,
@@ -61,6 +61,7 @@ const ForYouCard = () => {
                     // src={`https://source.unsplash.com/random?${Math.floor(
                     //     Math.random() * 100,
                     // )}/1600x900?blue,water`}
+                    src={img}
                     alt=""
                 />
                 <div className={style.textbox}>

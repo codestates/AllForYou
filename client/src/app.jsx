@@ -10,6 +10,7 @@ import Contents from "./page/contents";
 import Login from "./page/login";
 import SignupModal from "./components/signupModal"
 import ContentsModal from "./components/contentsModal";
+import ForYouWriting from "./page/forYouWriting";
 
 function App() {
   // const isLogin = useSelector((state: RootState) => state.loginReducer.isLogin);
@@ -25,6 +26,7 @@ function App() {
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/foryouwriting" element={<ForYouWriting />} />
       </Routes>
       <Footer />
     </BrowserRouter>
