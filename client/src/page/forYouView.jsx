@@ -53,7 +53,6 @@ const ForYouView = () => {
           // onClick={sendCommentToServer}
           >등록</button>
         </div>
-        <Comment />
       </div>
     </div>
   );

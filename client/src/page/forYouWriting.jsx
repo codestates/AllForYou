@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
-import ListCard from "../components/listCard";
+import AddList from "../components/addList";
 import dummy2 from '../dummy/dummy2';
 
 const ForYouWriting = () => {
@@ -110,7 +110,7 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                <ListCard />
+                                <AddList />
                             </div>
                             <button className={style.btnAdd}>추가</button>
                         </div>
@@ -122,10 +122,10 @@ const ForYouWriting = () => {
                                     <span className={style.list_part}>구분</span>
                                 </div>
                                 {/* 추후 무한 스크롤 적용 필요 */}
-                                <ListCard />
-                                <ListCard />
-                                <ListCard />
-                                <ListCard />
+                                <AddList />
+                                <AddList />
+                                <AddList />
+                                <AddList />
                             </div>
                             <button className={style.btnAdd}>삭제</button>
                         </div>
