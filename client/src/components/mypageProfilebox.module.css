@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+}
+
+.profilebox_container {
+    margin: 0;
+    padding-top: 3em;
+    width: 100%;
+    height: 70em;
+    /* position: fixed; */
+    background-color: #B09171;
+}
+
+.profilebox_info {
+    margin: 1em auto 0 5em;
+    width: 40em;
+    height: 50em;
+    background-color: white;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 12px -4px black;
+}
+
+.profilebox_img {
+    margin: 5em 0 0 7.5em;
+    border-radius: 20em;
+    padding: 1em;
+    width: 25em;
+    height: 25em;
+}
+
+.profilebox_nickname {
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.profilebox_update {
+    margin: 3em 0 0 4.5em;
+    display: block;
+    width: 14em;
+    height: 4em;
+    border: none;
+    float: left;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 100%;
+    color: white;
+    background-color: #B09171;
+    box-shadow: 0 4px 12px -4px black;
+}
+
+.profilebox_withdraw {
+    margin: 3em 0 0 4em;
+    display: block;
+    width: 14em;
+    height: 4em;
+    border: none;
+    float: left;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 100%;
+    color: white;
+    background-color: #B09171;
+    box-shadow: 0 4px 12px -4px black;
+}

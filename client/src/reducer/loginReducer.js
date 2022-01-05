@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '../action/index';
+import { LOGIN, PROFILE_IMG, LOGOUT } from '../action/index';
 
 const loginReducer = (
   state = {
@@ -21,6 +21,10 @@ const loginReducer = (
         nickname: action.payload.nickname,
         email: action.payload.email,
         oauth: action.payload.oauth,
+      };
+    case PROFILE_IMG:
+      return { ...state, 
+        profileimg: action.payload.profileimg 
       };
     case LOGOUT:
       return {
