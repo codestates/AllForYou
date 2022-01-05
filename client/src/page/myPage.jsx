@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import dummy from "../dummy/dummy";
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
-import ReviewPosted from "../components/mypageReviewPosted";
+import MyPageBox from "../components/mypageBox";
 import { 
   login, 
   profileimg, 
@@ -75,8 +75,9 @@ const userinfoEditHandler = () => {
     {/* {accessToken ? ( */}
       <div className={style.mypage_container}>
         <ProfileBox />
-        <ReviewPosted />
+        <MyPageBox />
       </div>
+      
     {/* ) : (
       <div className={style.error_message}>로그인 후 이용 가능 합니다.</div>
     )} */}

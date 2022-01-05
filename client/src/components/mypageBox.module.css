@@ -11,7 +11,7 @@
     position: absolute;
 }
 
-.title {
+.reviews_title {
     display: block;
     width: 10vw;
     float: left;
@@ -22,7 +22,7 @@
 .more_button {
     display: flex;
     margin-left: 55vw;
-    width: 10vw;
+    width: 5vw;
     font-size: 1.7em;
     font-weight: bold;
     border: solid #B09171;;
@@ -34,8 +34,8 @@
     margin: -0.1em 0 0 0.3em;
 }
 
-.review_box {
-    margin: 0.5em 3em 0 0 ;
+.box {
+    margin: 0em 3em 2em 0 ;
     border: solid black;
     border-width: 3px;
     padding-left: 3em;
@@ -45,15 +45,15 @@
     box-shadow: 0 4px 12px -4px black;
 }
 
-.myreviews {
+.mydata {
     display: block;
     text-align: left;
     margin: 1.8em 0 0 0.5em;
     font-size: x-large;
-    position: fixed;
+    position: absolute;
 }
 
-.myreviews_date {
+.mydata_date {
     display: block;
     margin: 1.8em 2em 0 0;
     text-align: right;
@@ -71,7 +71,20 @@
     text-align: center;
 }
 
-.licks_box {
+.likes_title {
     display: block;
+    width: 20vw;
+    height: auto;
+    float: left;
+    font-size: 2em;
+    font-weight: bold;
 }
 
+.empty_likesbox {
+    display: block;
+    padding-top: 6.5em;
+    height: 20em;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+}
