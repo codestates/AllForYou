@@ -11,10 +11,7 @@ import Login from "./page/login";
 import SignupModal from "./components/signupModal";
 import ContentsModal from "./components/contentsModal";
 
-import ContentsPage_carousel from "./components/contentsPage_carousel";
-
 import ForYouWriting from "./page/forYouWriting";
-
 
 function App() {
   // const isLogin = useSelector((state: RootState) => state.loginReducer.isLogin);
@@ -22,7 +19,6 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <ContentsPage_carousel />
       {/* <ContentsModal /> */}
       {/* <SignupModal /> */}
       <Routes>
