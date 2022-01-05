@@ -8,14 +8,18 @@ import MyPage from "./page/myPage";
 import ForYou from "./page/forYou";
 import Contents from "./page/contents";
 import Login from "./page/login";
+import SignupModal from "./components/signupModal"
 import ContentsModal from "./components/contentsModal";
 import ForYouWriting from "./page/forYouWriting";
 
 function App() {
+  // const isLogin = useSelector((state: RootState) => state.loginReducer.isLogin);
+
   return (
     <BrowserRouter>
       <Nav />
       {/* <ContentsModal /> */}
+      {/* <SignupModal /> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/contents" element={<Contents />} />
