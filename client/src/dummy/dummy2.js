@@ -2,7 +2,7 @@ const contents = [
 
   {
     id: 1,
-    title: "록키 발보아",
+    title: ["록키 발보아"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -13,7 +13,7 @@ const contents = [
     category: ["동기부여", "도전", "멘토", "일번"],
     detail: ["노력", "자신과싸움", "can"],
     link: "",
-    type: "movie"
+    type: ["movie"]
   },
   {
     id: 2,
@@ -28,11 +28,11 @@ const contents = [
     category: ["동기부여", "도전", "멘토", "일번"],
     detail: ["노력", "자신과싸움", "can"],
     link: "",
-    type: "movie"
+    type: ["movie"]
   },
   {
     id: 3,
-    title: "록키 발보아",
+    title: ["록키 발보아"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -43,7 +43,7 @@ const contents = [
     category: ["동기부여", "도전", "멘토", "삼번"],
     detail: ["노력", "자신과싸움", "can"],
     link: "",
-    type: "movie"
+    type: ["movie"]
   },
   {
     id: 4,
@@ -92,7 +92,7 @@ const contents = [
   },
   {
     id: 7,
-    title: "1등의 습관",
+    title: ["1등의 습관"],
     original_title: "Smarter Faster Better",
     director: "찰스 두히그",
     year: 2016,
@@ -106,7 +106,7 @@ const contents = [
   },
   {
     id: 8,
-    title: "1등의 습관",
+    title: ["1등의 습관"],
     original_title: "Smarter Faster Better",
     director: "찰스 두히그",
     year: 2016,

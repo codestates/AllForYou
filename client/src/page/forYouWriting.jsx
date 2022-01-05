@@ -5,24 +5,55 @@ import AddList from "../components/addList";
 import dummy2 from '../dummy/dummy2';
 
 const ForYouWriting = () => {
-    const [desc, setDesc] = useState('');
-    function onEditorChange(value) {
-        setDesc(value)
+    //console.log(dummy2)
+    //사진 업로드, 카테고리, 제목, 글 내용, 리스트 post 보내기
+    //리스트 만들기
+    //input에 있는 단어를 담아서 검색 클릭이벤트 발생하면 get 요청
+    const inputRef = useRef();
+    const fileInput = useRef(null);
+    const [files, setFiles] = useState([]);
+    const [category, setCategory] = useState('ALL');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [search, setSearch] = useState('');
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('category', category);
+    formData.append('content', content);
+    formData.append('image', files);
+
+    const handleText = (value) => {
+        setContent(value)
     }
 
-    // 프로필 사진 업로드를 위한 구현
-    const fileInput = useRef();
+    const fileHandle = (e) => {
+        // setFiles(e.target.files);
+        setFiles(URL.createObjectURL(e.target.files[0]))
+    };
 
-    // const imageHandler = event => {
-    //     // console.log(event.target.files);
-    //     if (event.target) {
-    //         setContent(event.target.files[0]);
-    //         setFileSelect(event.target.files[0].name);
-    //         setImgUploadBtn(true);
-    //     } else {
-    //         setContent(FilePath);
-    //     }
-    // };
+    const handleSearch = () => {
+        const value = inputRef.current.value
+        setSearch(value)
+    }
+
+    const onClick = () => {
+        handleSearch();
+    }
+    const onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    }
+
+    const resultSearch = dummy2.filter((el) => {
+        let title = el.title;
+        for (let i = 0; i < title.length; i++) {
+            if (title[i] === search) {
+                return title[i]
+            }
+        }
+    });
 
     const upoadImage = (e) => {
         e.preventDefault();
@@ -49,22 +80,27 @@ const ForYouWriting = () => {
         //         });
     };
 
+    // 이미지 파일 삭제 
+    // const deleteFileImage = () => {
+    //     URL.revokeObjectURL(fileImage); setFileImage("");
+    // };
+
     return (
         <div className={style.container}>
             <div className={style.writingBox}>
-                {/* <i className="far fa-list-alt"></i> */}
                 <p className={style.menu_p}>리스트 작성</p>
                 <div className={style.imgBox}>
-                    <div className={style.img}>
-                        <input
-                            className={style.imgFile}
-                            type="file"
-                            accept='image/*'
-                            // onChange={imageHandler}
-                            ref={fileInput}
-                        // value={fileSelect}
-                        />
-                    </div>
+                    <img
+                        className={style.img}
+                        src={files}
+                    />
+                    <input
+                        className={style.imgFile}
+                        type="file"
+                        accept='image/*'
+                        onChange={fileHandle}
+                        ref={fileInput}
+                    />
                     <button
                         className={style.btnImg}
                         onClick={upoadImage}
@@ -73,7 +109,12 @@ const ForYouWriting = () => {
                 <div className={style.titleBox}>
                     <div className={style.select}>
                         <p className={style.category_p}>카테고리</p>
-                        <select className={style.category}>
+                        <select
+                            className={style.category}
+                            name="category"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
                             <option value="ALL">ALL</option>
                             <option value="동기부여">동기부여를 받고 싶다면 ?</option>
                             <option value="도전">도전하고 싶은 나에게</option>
@@ -86,14 +127,20 @@ const ForYouWriting = () => {
                     </div>
                     <div className={style.title}>
                         <p className={style.title_p}>제목</p>
-                        <input className={style.input} type="text" />
+                        <input
+                            className={style.input}
+                            type="text"
+                            placeholder="제목을 입력해주세요"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
                     </div>
                 </div>
                 <div className={style.textBox}>
                     <p className={style.text_p}>소개글 입력</p>
                     <EditorComponent
-                        value={desc}
-                        onChange={onEditorChange}
+                        value={content}
+                        onChange={handleText}
                     />
                 </div>
                 <div className={style.listBox}>
@@ -101,8 +148,17 @@ const ForYouWriting = () => {
                     <div className={style.listAddBox}>
                         <div className={style.leftBox}>
                             <div className={style.searchBox}>
-                                <input className={style.search} type="text" />
-                                <button className={style.btnSearch}>검색</button>
+                                <input
+                                    className={style.search}
+                                    type="search"
+                                    placeholder='Search...'
+                                    ref={inputRef}
+                                    onKeyPress={onKeyPress}
+                                />
+                                <button
+                                    className={style.btnSearch}
+                                    onClick={onClick}
+                                >검색</button>
                             </div>
                             <div className={style.addListBox_left}>
                                 <div className={style.listHeader}>
@@ -110,7 +166,13 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                <AddList />
+                                {resultSearch.map((el) => (
+                                    <AddList
+                                        key={el.id}
+                                        title={el.title}
+                                        type={el.type}
+                                    />
+                                ))}
                             </div>
                             <button className={style.btnAdd}>추가</button>
                         </div>
@@ -123,9 +185,6 @@ const ForYouWriting = () => {
                                 </div>
                                 {/* 추후 무한 스크롤 적용 필요 */}
                                 <AddList />
-                                <AddList />
-                                <AddList />
-                                <AddList />
                             </div>
                             <button className={style.btnAdd}>삭제</button>
                         </div>
@@ -136,7 +195,7 @@ const ForYouWriting = () => {
                     <button className={style.btnCancle}>취소</button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
