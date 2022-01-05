@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./listCard.module.css";
+import style from "./addList.module.css";
 
-const ListCard = () => {
+const AddList = () => {
     return (
         <>
             <div className={style.container}>
@@ -13,4 +13,4 @@ const ListCard = () => {
     );
 };
 
-export default ListCard;
+export default AddList;
