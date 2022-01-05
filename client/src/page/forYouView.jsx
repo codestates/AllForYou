@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./forYouView.module.css";
+import Comment from "../components/comment";
 
 const ForYouView = () => {
   const [comment, setComment] = useState('');
@@ -52,6 +53,7 @@ const ForYouView = () => {
           // onClick={sendCommentToServer}
           >등록</button>
         </div>
+        <Comment />
       </div>
     </div>
   );
