@@ -8,12 +8,17 @@ import MyPage from "./page/myPage";
 import ForYou from "./page/forYou";
 import Contents from "./page/contents";
 import Login from "./page/login";
-import SignupModal from "./components/signupModal"
+import SignupModal from "./components/signupModal";
 import ContentsModal from "./components/contentsModal";
 import { useState, useEffect } from "react";
 import { login, profileimg, setAccessToken } from './action/index';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+
+import ContentsPage_carousel from "./components/contentsPage_carousel";
+
+import ForYouWriting from "./page/forYouWriting";
+
 
 function App() {
 //     const dispatch = useDispatch();
@@ -57,6 +62,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
+      {/* <ContentsPage_carousel /> */}
       {/* <ContentsModal /> */}
       {/* <SignupModal /> */}
       {/* <Login /> */}
@@ -66,6 +72,7 @@ function App() {
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/mypage" element={<MyPage />} />
         {/* <Route path="/Login" element={<Login />} /> */}
+        <Route path="/foryouwriting" element={<ForYouWriting />} />
       </Routes>
       <Footer />
     </BrowserRouter>

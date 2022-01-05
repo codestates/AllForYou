@@ -43,10 +43,8 @@ const Nav = () => {
           </Link>
         </li>
         <li className={style.login}>
-          <Link to="/Login">
-            {/* <button className={style.btn} onClick={dispatch(loginModal(true))}>LOGIN</button> */}
-            <button className={style.btn} >LOGIN</button>
-          </Link>
+          {/* <button className={style.btn} onClick={dispatch(loginModal(true))}>LOGIN</button> */}
+          <button className={style.btn} >LOGIN</button>
         </li>
       </ul>
     </div>
