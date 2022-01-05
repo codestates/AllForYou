@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <ContentsPage_carousel />
+      {/* <ContentsPage_carousel /> */}
       {/* <ContentsModal /> */}
       {/* <SignupModal /> */}
       <Routes>
