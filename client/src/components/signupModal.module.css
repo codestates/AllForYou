@@ -12,7 +12,7 @@
   background-color: rgba(0,0,0,0.5);
 }
 
-.container {
+.signup_container {
   margin: 3em auto;
   width: 30em;
   height: 45em;
@@ -20,13 +20,13 @@
   background-color: white
 }
 
-.logo {
+.signup_logo {
   margin-left: 5.5em;
   width: 21em; 
   height: 15em;
 }
 
-.itemText {
+.signup_itemText {
   margin: 0.4em 0.5em 0.5em 2.5em;
   display: block;
   float: left;
@@ -36,7 +36,7 @@
   background-color: white
 }
 
-.myInfo {
+.signup_myInfo {
   margin: 0 3em 0.7em 0.7em;
   padding-left: 15px;
   display: block;
@@ -48,7 +48,7 @@
   background-color: white
 }
 
-.membership {
+.signup_membership {
   display: block;
   margin: 0.7em auto;
   margin-top: 13em;
@@ -67,7 +67,7 @@ button:hover {
   cursor: pointer;
 }
 
-.message {
+.signup_message {
   display: block;
   text-align: center;
   font-weight: bold;
@@ -77,14 +77,14 @@ button:hover {
   background-color: white
 }
 
-.login_text {
+.signup_login_text {
   margin-left: 5em;
   font-weight: bold;
   font-size: 0.9em;
   background-color: white
 }
 
-.login_bnt {
+.signup_login_bnt {
   margin-top: 1.5em;
   margin-left: 1.5em;
   padding-right: 1.5em;
@@ -99,12 +99,12 @@ button:hover {
 }
 
 @media screen and (max-width: 767px) {
-  .membership_body {
+  .signup_body {
     width: 100%;
     align-items: center;
   }
 
-  .container {
+  .signup_container {
     /* width: 100%;
     border-radius: 0;
     height: 63em; */
@@ -113,18 +113,18 @@ button:hover {
     border-radius: 0!important;
   }
 
-  .logo {
+  .signup_logo {
     margin-left: 13.5em;
     width: 21em; 
     height: 15em;
   }
 
-  .item {
+  .signup_item {
     margin: 0.5em 0.5em 0.5em 2.5em;
     font-size: 150%;
   }
 
-  .info {
+  .signup_info {
     margin: 0.7em auto;
     margin-right: 3em;
     padding-left: 15px;
@@ -148,11 +148,11 @@ button:hover {
 
   } */
 
-  .membership {
+  .signup_membership {
     margin-top: 25em;
   }
 
-  .login_text {
+  .signup_login_text {
     margin-left: 14em;
   }
 }

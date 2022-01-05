@@ -3,12 +3,13 @@ import style from "./signupModal.module.css";
 import dummy from "../dummy/dummy";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
-import { signupModal } from '../action';
+import { signupModal, signupState } from '../action';
 // require("dotenv").config();
 
 const SignupModal = () => {
     // const dispatch = useDispatch();
     // const { isModal } = useSelector((state) => state.signupModalReducer);
+    // const { isModal } = useSelector((state) => state.signupStateReducer);
     // const [signupInfo, setSignUpInfo] = useState({
     //   email: "",
     //   nickname: "",
@@ -36,16 +37,16 @@ const SignupModal = () => {
     //       .then((res) => {
     //         if (res.status === 201) {
     //           handleModal();
-    //           // handleSignup();
+    //           dispatch(signupState(!isModal))
     //           window.location.reload('/')
     //         }
     //       })
     //       .catch((err) => {
     //         console.log("회원가입에러", err.response.data);
-    //         if (err.response.data.message === "이미 존재하는 이메일입니다.") {
+    //         if (err.response.data.message === "email already exists") {
     //           setErrorMessage("이미 사용하고 있는 이메일입니다");
     //         } else if (
-    //           err.response.data.message === "이미 존재하는 닉네임입니다."
+    //           err.response.data.message === "nickname already exists"
     //         ) {
     //           setErrorMessage("이미 사용하고 있는 닉네임입니다");
     //         }
@@ -70,50 +71,50 @@ const SignupModal = () => {
     // }
   return (
     <div className={style.signup_body}>
-      <div className={style.container}>
-        <img className={style.logo} src="logo(background-white).png" alt="" />
+      <div className={style.signup_container}>
+        <img className={style.signup_logo} src="logo(background-white).png" alt="" />
         <input
-          className={style.myInfo}
+          className={style.signup_myInfo}
           type="text"
           placeholder="아이디"
           required
           // onChange={handleInputValue("email")}
         />
-        <div className={style.itemText}>아이디</div>
+        <div className={style.signup_itemText}>아이디</div>
         <input
-          className={style.myInfo}
+          className={style.signup_myInfo}
           type="text"
           placeholder="닉네임"
           required
           // onChange={handleInputValue("nickname")}
         />
-        <div className={style.itemText}>닉네임</div>
+        <div className={style.signup_itemText}>닉네임</div>
         <input
-          className={style.myInfo}
+          className={style.signup_myInfo}
           type="password"
           placeholder="비밀번호"
           required
           // onChange={handleInputValue("password")}
         />
-        <div className={style.itemText}>비밀번호</div>
+        <div className={style.signup_itemText}>비밀번호</div>
         <input
-          className={style.myInfo}
+          className={style.signup_myInfo}
           type="password"
           placeholder="비밀번호 확인"
           required
           // onChange={handleInputValue("repassword")}
         />
-        <div className={style.itemText}>비밀번호 확인</div>
+        <div className={style.signup_itemText}>비밀번호 확인</div>
         <button
-          className={style.membership}
+          className={style.signup_membership}
           // onClick={handleSignUp}
         >
           회원가입
         </button>
-        {/* <span className={style.message}>{errorMessage}</span> */}
-        <span className={style.login_text}>이미 All For You 회원이신가요 ?</span>
-        {/* <button className={style.login_bnt} onClick={handleSignup}> */}
-        <button className={style.login_bnt}>
+        {/* <span className={style.signup_message}>{errorMessage}</span> */}
+        <span className={style.signup_login_text}>이미 All For You 회원이신가요 ?</span>
+        {/* <button className={style.signup_login_bnt} onClick={dispatch(signupState(!isModal))}> */}
+        <button className={style.signup_login_bnt}>
           로그인
         </button>
       </div>
