@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className={style.footer}>
             <div className={style.container} >
                 <img className={style.logo} src="/image/logo.gif" alt="logo" />
-                <a
+                <a 
                     href="https://github.com/codestates/AllForYou"
                     target="_blank"
                 >
