@@ -607,5 +607,4 @@ const contents = [
     type: "music"
   },
 ]
-
 export default contents;

@@ -57,11 +57,11 @@ img {
 .individual {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
-  width: 15rem;
+  padding: 0.3rem;
+  width: 16rem;
 }
 .individual > a{
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
   line-height: 0.5rem;
 }
 .individual > svg{
@@ -76,8 +76,10 @@ img {
 }
 .role {
   margin-left: 0.3rem;
-  padding: 0 0.5rem;
+  padding: 0 0.3rem;
   background-color: #FAEEE0;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   text-align: center;
+  font-size: 0.8rem;
+  padding-top: 0.1rem;
 }
