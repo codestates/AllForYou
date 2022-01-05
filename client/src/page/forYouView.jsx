@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "./forYouView.module.css";
 import Comment from "../components/comment";
+import Recommend from "../components/recommend";
 
 const ForYouView = () => {
   const [comment, setComment] = useState('');
@@ -34,6 +35,7 @@ const ForYouView = () => {
               <span className={style.list_like}>좋아요</span>
             </div>
             {/* 리스트 컴포넌트 자리 */}
+            <Recommend />
           </div>
           <div className={style.shareBox}>
             <button className={style.btnUrl}>URL 공유하기</button>
