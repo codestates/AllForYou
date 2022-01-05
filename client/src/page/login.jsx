@@ -107,18 +107,18 @@ const Login = () => {
         // <SignupModal handleSignup={handleSignup} />
         <SignupModal />
       ) : (
-        <div className={style.login_body}>
-          <div className={style.login_container}>
-            <img className={style.login_logo} src="logo(background-white).png" />
+        <div className={style.body}>
+          <div className={style.container}>
+            <img className={style.logo} src="logo(background-white).png" />
             <input
-              className={style.login_myInfo}
+              className={style.myInfo}
               type="text"
               placeholder="아이디"
               // value={loginInfo.email}
               // onChange={handleInputValue("email")}
             />
             <input
-              className={style.login_myInfo}
+              className={style.myInfo}
               type="password"
               placeholder="비밀번호"
               // value={loginInfo.password}
@@ -128,7 +128,7 @@ const Login = () => {
             <button className={style.login} >
               로그인
             </button>
-            <span className={style.login_message}>{errorMessage}</span>
+            <span className={style.message}>{errorMessage}</span>
             <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
             <button className={style.google}>
               <img className={style.google_icon} src="google_icon.png" />
@@ -136,9 +136,9 @@ const Login = () => {
             <button className={style.kakao}> 
               <img className={style.kakao_icon} src="kakao_icon.png" />
             </button>
-            <span className={style.login_membership}>아직 All for you의 회원이 아니신가요?</span>
-            {/* <button className={style.login_membership_btn} onClick={handleSignup}> */}
-            <button className={style.login_membership_btn}>
+            <span className={style.membership}>아직 All for you의 회원이 아니신가요?</span>
+            {/* <button className={style.membership_btn} onClick={handleSignup}> */}
+            <button className={style.membership_btn}>
               회원가입
             </button>
           </div>

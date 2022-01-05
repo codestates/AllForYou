@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.signup_body {
+.body {
   z-index: 1;
   margin: 0;
   padding: 20px;
@@ -12,7 +12,7 @@
   background-color: rgba(0,0,0,0.5);
 }
 
-.signup_container {
+.container {
   margin: 3em auto;
   width: 30em;
   height: 45em;
@@ -20,13 +20,13 @@
   background-color: white
 }
 
-.signup_logo {
+.logo {
   margin-left: 5.5em;
   width: 21em; 
   height: 15em;
 }
 
-.signup_itemText {
+.itemText {
   margin: 0.4em 0.5em 0.5em 2.5em;
   display: block;
   float: left;
@@ -36,7 +36,7 @@
   background-color: white
 }
 
-.signup_myInfo {
+.myInfo {
   margin: 0 3em 0.7em 0.7em;
   padding-left: 15px;
   display: block;
@@ -48,7 +48,7 @@
   background-color: white
 }
 
-.signup_membership {
+.membership {
   display: block;
   margin: 0.7em auto;
   margin-top: 13em;
@@ -67,7 +67,7 @@ button:hover {
   cursor: pointer;
 }
 
-.signup_message {
+.message {
   display: block;
   text-align: center;
   font-weight: bold;
@@ -77,14 +77,14 @@ button:hover {
   background-color: white
 }
 
-.signup_login_text {
+.login_text {
   margin-left: 5em;
   font-weight: bold;
   font-size: 0.9em;
   background-color: white
 }
 
-.signup_login_bnt {
+.login_bnt {
   margin-top: 1.5em;
   margin-left: 1.5em;
   padding-right: 1.5em;
@@ -99,12 +99,12 @@ button:hover {
 }
 
 @media screen and (max-width: 767px) {
-  .signup_body {
+  .body {
     width: 100%;
     align-items: center;
   }
 
-  .signup_container {
+  .container {
     /* width: 100%;
     border-radius: 0;
     height: 63em; */
@@ -113,18 +113,18 @@ button:hover {
     border-radius: 0!important;
   }
 
-  .signup_logo {
+  .logo {
     margin-left: 13.5em;
     width: 21em; 
     height: 15em;
   }
 
-  .signup_item {
+  .item {
     margin: 0.5em 0.5em 0.5em 2.5em;
     font-size: 150%;
   }
 
-  .signup_info {
+  .info {
     margin: 0.7em auto;
     margin-right: 3em;
     padding-left: 15px;
@@ -148,11 +148,11 @@ button:hover {
 
   } */
 
-  .signup_membership {
+  .membership {
     margin-top: 25em;
   }
 
-  .signup_login_text {
+  .login_text {
     margin-left: 14em;
   }
 }

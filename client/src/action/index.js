@@ -6,6 +6,8 @@ export const ISLOGIN = "ISLOGIN";
 export const SET_ACCESSTOKEN = "SET_ACCESSTOKEN";
 export const PROFILE_IMG = "PROFILE_IMG";
 export const SIGNUP_STATE = "SIGNUP_STATE";
+export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
+export const MYPAGE_LIKES = "MYPAGE_LIKES";
 
 export const login = (state) => {
     return {
@@ -52,7 +54,21 @@ export const signupModal = (state) => {
 export const setAccessToken = (state) => {
     return {
         type: SET_ACCESSTOKEN,
-        payload: { accessToken: state.accessToken }
+        payload: { accessToken: state }
+    };
+}
+
+export const mypageReviews = (state) => {
+    return {
+        type: MYPAGE_REVIEWS,
+        payload: { mypageReviews: state }
+    };
+}
+
+export const mypageLikes = (state) => {
+    return {
+        type: MYPAGE_LIKES,
+        payload: { mypageLikes: state }
     };
 }
 

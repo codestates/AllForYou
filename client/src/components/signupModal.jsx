@@ -70,51 +70,51 @@ const SignupModal = () => {
     //   }
     // }
   return (
-    <div className={style.signup_body}>
-      <div className={style.signup_container}>
-        <img className={style.signup_logo} src="logo(background-white).png" alt="" />
+    <div className={style.body}>
+      <div className={style.container}>
+        <img className={style.logo} src="logo(background-white).png" alt="" />
         <input
-          className={style.signup_myInfo}
+          className={style.myInfo}
           type="text"
           placeholder="아이디"
           required
           // onChange={handleInputValue("email")}
         />
-        <div className={style.signup_itemText}>아이디</div>
+        <div className={style.itemText}>아이디</div>
         <input
-          className={style.signup_myInfo}
+          className={style.myInfo}
           type="text"
           placeholder="닉네임"
           required
           // onChange={handleInputValue("nickname")}
         />
-        <div className={style.signup_itemText}>닉네임</div>
+        <div className={style.itemText}>닉네임</div>
         <input
-          className={style.signup_myInfo}
+          className={style.myInfo}
           type="password"
           placeholder="비밀번호"
           required
           // onChange={handleInputValue("password")}
         />
-        <div className={style.signup_itemText}>비밀번호</div>
+        <div className={style.itemText}>비밀번호</div>
         <input
-          className={style.signup_myInfo}
+          className={style.myInfo}
           type="password"
           placeholder="비밀번호 확인"
           required
           // onChange={handleInputValue("repassword")}
         />
-        <div className={style.signup_itemText}>비밀번호 확인</div>
+        <div className={style.itemText}>비밀번호 확인</div>
         <button
-          className={style.signup_membership}
+          className={style.membership}
           // onClick={handleSignUp}
         >
           회원가입
         </button>
-        {/* <span className={style.signup_message}>{errorMessage}</span> */}
-        <span className={style.signup_login_text}>이미 All For You 회원이신가요 ?</span>
-        {/* <button className={style.signup_login_bnt} onClick={dispatch(signupState(!isModal))}> */}
-        <button className={style.signup_login_bnt}>
+        {/* <span className={style.message}>{errorMessage}</span> */}
+        <span className={style.login_text}>이미 All For You 회원이신가요 ?</span>
+        {/* <button className={style.login_bnt} onClick={dispatch(signupState(!isModal))}> */}
+        <button className={style.login_bnt}>
           로그인
         </button>
       </div>
