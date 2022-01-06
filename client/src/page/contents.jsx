@@ -11,6 +11,7 @@ const Contents = () => {
   const [select_2, setSelect_2] = useState("ALL");
 
   console.log("select_1", select_1);
+  console.log("select_2", select_2);
 
   // console.log(dummy2);
 
@@ -285,7 +286,7 @@ const Contents = () => {
               />
             </div>
           </div>
-          <div className={style.subtitle}>백색소리</div>
+          <div className={style.subtitle_sound}>백색소리</div>
           <div className={style.contents}>
             <div className={style.contents_part}>
               # 영상
@@ -305,7 +306,7 @@ const Contents = () => {
             </div>
           </div>
         </div>
-      ) : select_1 === "백색소리" ? (
+      ) : select_1 === "백색소리" && select_2 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.contents_part}>
             # 영상

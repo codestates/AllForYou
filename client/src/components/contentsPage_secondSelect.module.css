@@ -4,6 +4,7 @@
 }
 
 .contents_container {
+  margin: 1em;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -12,8 +13,9 @@
 .img_card {
   margin: 1em;
   object-fit: scale-down;
-  width: 17em;
+  width: 20em;
   height: 28em;
+  text-align: center;
 }
 
 .title {
