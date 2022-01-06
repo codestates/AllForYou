@@ -10,7 +10,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   contents.init({
-    content_name: DataTypes.STRING
+    title: DataTypes.STRING,
+    director: DataTypes.STRING,
+    year: DataTypes.INTEGER,
+    rating: DataTypes.INTEGER,
+    runtime: DataTypes.INTEGER,
+    summary: DataTypes.TEXT,
+    genres: DataTypes.STRING,
+    image: DataTypes.STRING,
+    category: DataTypes.STRING,
+    detail: DataTypes.STRING,
+    link: DataTypes.TEXT,
+    type: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'contents',
