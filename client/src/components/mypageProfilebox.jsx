@@ -21,7 +21,7 @@ function ProfileBox() {
     return (
         <div className={style.container}>
             <div className={style.info}>
-                <img className={style.img} src="logo(background-white).png" alt=""  />
+                <img className={style.img} src="sample_img.jpeg" alt=""  />
                 <p className={style.nickname}>
                     {/* {nickname} */}
                     nickname
