@@ -1,5 +1,5 @@
 module.exports = {
-    list: require("./list"),
+    contentsList: require("./list"),
     read: require("./read"),
     like: require("./like")
   };

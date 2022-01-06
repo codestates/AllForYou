@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require("./auth/accessToken");
 const userRouter = require("./users/userRouter");
 const reviewRouter = require("./reviews/reviewRouter");
+const contentRouter = require("./reviews/contentRouter");
 
 //users
 router.post("/users/signup", userRouter.signUp); // 회원가입(완료)
@@ -37,7 +38,7 @@ router.delete("/reviews/:postId/:commentId", auth.accessToken, null); // 리뷰 
 router.delete("/reviews/:postId/:likeId", auth.accessToken, null); // 리뷰 좋아요 지우기
 
 //contents(세환 진행중)
-router.get("/contents", null); // 컨텐츠 전체 불러오기
+router.get("/contents", contentRouter.list); // 컨텐츠 전체 불러오기
 router.get("/contents/:category", null); // 컨텐츠 카테고리 필터링
 router.get("/contents/:category/:type", null); // 컨텐츠 카테고리&타입 필터링
 router.get("/contents/:id", null); // 컨텐츠 하나 선택
