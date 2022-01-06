@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import style from "./mypageBox.module.css";
 import axios from 'axios';
-import dummy from "../dummy/dummy3"
-import { useSelector, useDispatch } from 'react-redux';
+import dummy from "../dummy/dummy3" 
 import { login, profileimg, setAccessToken } from '../action/index';
 
 function MyPageBox() {
-    // const dispatch = useDispatch();
     // const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
 
     return (
