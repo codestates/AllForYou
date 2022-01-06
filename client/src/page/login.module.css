@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.login_body {
+.body {
   z-index: 1;
   margin: 0;
   padding: 20px;
@@ -12,7 +12,7 @@
   background-color: rgba(0,0,0,0.5);
 }
 
-.login_container {
+.container {
   margin: 3em auto;
   width: 30em;
   height: 45em;
@@ -20,24 +20,24 @@
   background-color: white
 }
 
-.login_logo {
+.logo {
   margin-left: 5.5em;
   width: 21em; 
   height: 15em;
 }
 
 
-.login_myInfo:focus {
+.myInfo:focus {
   outline: none;
 }
 
-.login_myInfo::placeholder {
+.myInfo::placeholder {
   color: #B09171;
   font-size: 1.3em;
   font-weight: bold;
 }
 
-.login_myInfo {
+.myInfo {
   margin: 0 5.5em 0.7em 0.7em;
   padding-left: 25px;
   display: block;
@@ -109,7 +109,7 @@ button:hover {
   float: right;
 }
 
-.login_message {
+.message {
   display: block;
   text-align: center;
   color: red;
@@ -117,16 +117,16 @@ button:hover {
   font-size: 0.8em;
 }
 
-.login_membership {
+.membership {
   margin: 5.5em 0 0 3.5em;
   display: block;
-  align-items:flex-end;
+  align-items: flex-end;
   float: left;
   font-weight: bold;
   color: rgba(0,0,0,0.7);
 }
 
-.login_membership_btn {
+.membership_btn {
   margin: 3.1em 3.5em 0 0;
   padding: 0;
   display: block;
