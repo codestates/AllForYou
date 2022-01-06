@@ -16,6 +16,7 @@ const ForYouWriting = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [search, setSearch] = useState('');
+    const resultSearch = [];
 
     const formData = new FormData();
     formData.append('title', title);
@@ -32,28 +33,42 @@ const ForYouWriting = () => {
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
 
-    const handleSearch = () => {
-        const value = inputRef.current.value
-        setSearch(value)
+    // const handleSearch = () => {
+    //     const value = inputRef.current.value
+    //     setSearch(value)
+    // }
+
+    const handleSearchText = e => {
+        setSearch(e.target.value)
     }
 
-    const onClick = () => {
-        handleSearch();
-    }
     const onKeyPress = (e) => {
         if (e.key === 'Enter') {
-            handleSearch();
+            searchHandler();
         }
     }
 
-    const resultSearch = dummy2.filter((el) => {
-        let title = el.title;
-        for (let i = 0; i < title.length; i++) {
-            if (title[i] === search) {
-                return title[i]
-            }
-        }
-    });
+    // const resultSearch = dummy2.filter((el) => {
+    //     let title = el.title;
+    //     for (let i = 0; i < title.length; i++) {
+    //         if (title[i] === search) {
+    //             return title[i]
+    //         }
+    //     }
+    // });
+
+    const searchHandler = () => {
+        axios
+            .get(`${process.env.REACT_APP_API_URL}/search?keyword=${searchText}`, {
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(res => {
+                resultSearch(res.data.searchResult); //서버 코드 확인 필요
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
     const upoadImage = (e) => {
         e.preventDefault();
@@ -152,12 +167,12 @@ const ForYouWriting = () => {
                                     className={style.search}
                                     type="search"
                                     placeholder='Search...'
-                                    ref={inputRef}
                                     onKeyPress={onKeyPress}
+                                    onChange={handleSearchText}
                                 />
                                 <button
                                     className={style.btnSearch}
-                                    onClick={onClick}
+                                    onClick={() => searchHandler()}
                                 >검색</button>
                             </div>
                             <div className={style.addListBox_left}>
