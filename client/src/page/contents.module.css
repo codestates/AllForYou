@@ -11,6 +11,7 @@
 
 #firstSelect {
   margin: 1em 1.5em;
+  padding-left: 0.6em;
   width: 15em;
   height: 2em;
   font-size: 1.2em;
@@ -19,6 +20,7 @@
 }
 
 #secondSelect {
+  padding-left: 0.6em;
   width: 8em;
   height: 2em;
   font-size: 1.2em;
@@ -62,10 +64,22 @@
   flex-wrap: wrap;
 }
 
+.select_1_All_container {
+  margin: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .contents_part {
-  margin: 0.5em;
+  margin: 1.5em;
   /* margin-right: 40em; */
   font-size: 1.2em;
   font-weight: 700;
-  width: 45%;
+  /* width: 45%; */
+}
+
+.subtitle_sound {
+  margin: 1em 5em 1em 1em;
+  font-size: 1.3em;
+  font-weight: 700;
 }
