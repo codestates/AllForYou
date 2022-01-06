@@ -1,35 +1,36 @@
 import React, { useRef } from "react";
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
+import ForYouView from "./forYouView";
 import { useNavigate } from "react-router-dom";
 import dummy2 from '../dummy/dummy2';
 
 const ForYou = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate("/foryouwriting");
-    };
+  const handleClick = () => {
+    navigate("/foryouwriting");
+  };
 
-    console.log(dummy2)
-    const select = useRef();
-    const { image } = dummy2[0];
+  console.log(dummy2)
+  const select = useRef();
+  const { image } = dummy2[0];
 
-    // const select_1_category = dummy2.filter((el) => {
-    //   let category = el.category;
-    //   for (let i = 0; i < category.length; i++) {
-    //     if (category[i] === select) {
-    //       console.log("카테고리", category[i]);
-    //       return category[i];
-    //     } else if (select === "ALL") {
-    //       return category[i];
-    //     }
-    //   }
-    // });
+  // const select_1_category = dummy2.filter((el) => {
+  //   let category = el.category;
+  //   for (let i = 0; i < category.length; i++) {
+  //     if (category[i] === select) {
+  //       console.log("카테고리", category[i]);
+  //       return category[i];
+  //     } else if (select === "ALL") {
+  //       return category[i];
+  //     }
+  //   }
+  // });
 
-    return (
-        <div className={style.container}>
-            <div className={style.selectbox}>
+  return (
+    <div className={style.container}>
+      {/* <div className={style.selectbox}>
                 <select
                     className={style.category}
                     ref={select}
@@ -52,9 +53,10 @@ const ForYou = () => {
                 <ForYouCard />
                 <ForYouCard />
                 <ForYouCard />
-            </div>
-        </div>
-    );
+            </div> */}
+      <ForYouView />
+    </div>
+  );
 };
 
 export default ForYou;

@@ -4,6 +4,8 @@ export const LOGIN_MODAL = "LOGIN_MODAL";
 export const SIGNUP_MODAL = "SIGNUP_MODAL";
 export const ISLOGIN = "ISLOGIN";
 export const SET_ACCESSTOKEN = "SET_ACCESSTOKEN";
+export const PROFILE_IMG = "PROFILE_IMG";
+export const SIGNUP_STATE = "SIGNUP_STATE";
 
 export const login = (state) => {
     return {
@@ -19,12 +21,26 @@ export const login = (state) => {
     };
 };
 
+export const profileimg = (srcImg) => {
+    return {
+        type: PROFILE_IMG,
+        payload: { profileimg: srcImg }
+    };
+}
+
 export const loginModal = (state) => {
     return {
         type: LOGIN_MODAL,
         payload: { isModal: state }
     };
 };
+
+export const signupState = (state) => {
+    return {
+        type: SIGNUP_STATE,
+        payload: { isModal: state }
+    };
+}
 
 export const signupModal = (state) => {
     return {
