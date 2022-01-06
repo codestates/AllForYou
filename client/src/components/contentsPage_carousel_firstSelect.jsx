@@ -1,26 +1,21 @@
 import React from "react";
-import style from "./contentsPage_carousel.module.css";
+import style from "./contentsPage_carousel_firstSelect.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
-// import "./slick.css";
-// import "./slick-theme.css";
-
 const Wrap = styled.div`
-  margin: 5% auto;
+  margin: 3em auto;
   width: 100%;
   .slick-arrow {
-    transition: all 200ms ease-in;
+    transition: all 200ms ease-out;
   }
   .slick-prev:before,
   .slick-next:before {
-    line-height: 0.5;
+    line-height: 0.1;
     opacity: 0.6;
     color: #000000;
-    /* font-size: 25px; */
-    /* margin: 0.51em; */
     -webkit-font-smoothing: antialiased;
   }
   .slick-prev:hover,
@@ -28,15 +23,14 @@ const Wrap = styled.div`
     transform: scale(1.5);
   }
 `;
-const ContentsPage_carousel = ({ select_1_category }) => {
-  console.log("select_1_category", select_1_category);
 
+const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
   const settings = {
     className: "center",
     centerMode: true,
     infinite: true,
     centerPadding: "0px",
-    slidesToShow: 3,
+    slidesToShow: 6,
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
@@ -46,7 +40,7 @@ const ContentsPage_carousel = ({ select_1_category }) => {
         breakpoint: 960, //화면 사이즈 960px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-          slidesToShow: 3,
+          // slidesToShow: 5,
         },
       },
       {
@@ -60,7 +54,6 @@ const ContentsPage_carousel = ({ select_1_category }) => {
   };
   return (
     <div className={style.container}>
-      {/* <h2> Single Item</h2> */}
       <Wrap>
         <Slider {...settings} className={style.slick_list}>
           {select_1_category.map((el) => (
@@ -75,4 +68,4 @@ const ContentsPage_carousel = ({ select_1_category }) => {
   );
 };
 
-export default ContentsPage_carousel;
+export default ContentsPage_carousel_firstSelect;

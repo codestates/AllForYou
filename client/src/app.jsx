@@ -15,10 +15,7 @@ import { login, profileimg, setAccessToken } from './action/index';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import ContentsPage_carousel from "./components/contentsPage_carousel";
-
 import ForYouWriting from "./page/forYouWriting";
-
 
 function App() {
 //     const dispatch = useDispatch();
@@ -62,7 +59,6 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      {/* <ContentsPage_carousel /> */}
       {/* <ContentsModal /> */}
       {/* <SignupModal /> */}
       {/* <Login /> */}
