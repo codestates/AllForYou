@@ -39,8 +39,8 @@ router.delete("/reviews/:postId/:likeId", auth.accessToken, null); // 리뷰 좋
 
 //contents(세환 진행중)
 router.get("/contents", contentRouter.list); // 컨텐츠 전체 불러오기
-router.get("/contents/:category", null); // 컨텐츠 카테고리 필터링
-router.get("/contents/:category/:type", null); // 컨텐츠 카테고리&타입 필터링
-router.get("/contents/:id", null); // 컨텐츠 하나 선택
+router.get("/contents/:category", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링
+router.get("/contents/:category/:type", contentRouter.secondfilter); // 컨텐츠 카테고리&타입 필터링
+router.get("/contents/:id", contentRouter.detail); // 컨텐츠 하나 선택
 
 //https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
