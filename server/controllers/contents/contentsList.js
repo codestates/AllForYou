@@ -1,1 +1,5 @@
-const { users, contents  } = require("../../models");
+const { contents } = require("../../models");
+
+module.exports = (req, res) => {
+    
+}

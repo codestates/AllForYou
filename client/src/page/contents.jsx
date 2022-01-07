@@ -5,13 +5,27 @@ import dummy2 from "../dummy/dummy2";
 import ContentsPage_carousel from "../components/contentsPage_carousel";
 import ContentsPage_carousel_firstSelect from "../components/contentsPage_carousel_firstSelect";
 import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
+import ContentsModal from "../components/contentsModal";
 
 const Contents = () => {
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
+  const [contentsInfo, setContentsInfo] = useState({});
 
-  console.log("select_1", select_1);
-  console.log("select_2", select_2);
+  const [modal, setModal] = useState(false);
+
+  const handleModalOnOff = () => {
+    setModal(!modal);
+  };
+
+  const handleContentsInfo = (info) => {
+    setContentsInfo(info);
+    setModal(!modal);
+  };
+  console.log("info", contentsInfo);
+
+  // console.log("select_1", select_1);
+  // console.log("select_2", select_2);
 
   // console.log(dummy2);
 
@@ -46,7 +60,7 @@ const Contents = () => {
     }
   });
 
-  console.log("select_1_contents", select_1_category);
+  // console.log("select_1_contents", select_1_category);
 
   const select_2_contents = select_1_category.filter((el) => {
     if (select_2 === "ALL") {
@@ -56,7 +70,7 @@ const Contents = () => {
     }
   });
 
-  console.log("select_2_contents", select_2_contents);
+  // console.log("select_2_contents", select_2_contents);
 
   const handleSelect_1 = (select) => {
     setSelect_1(select.target.value);
@@ -101,8 +115,13 @@ const Contents = () => {
       <button className={style.search_btn}>
         <i className="fas fa-search"></i>
       </button>
-      {/* <div className={style.select_1}>{select_1}</div> */}
-      {/* <div className={style.select_2}>{select_2}</div> */}
+
+      {modal === true ? (
+        <ContentsModal
+          contentsInfo={contentsInfo}
+          handleModalOnOff={handleModalOnOff}
+        />
+      ) : null}
       {select_1 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.subtitle}>동기부여를 받고 싶다면 ?</div>
@@ -110,6 +129,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "동기부여"
                 )}
@@ -119,6 +140,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "동기부여"
                 )}
@@ -128,6 +151,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "동기부여"
                 )}
@@ -136,6 +161,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "동기부여"
                 )}
@@ -147,6 +174,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "도전"
                 )}
@@ -155,6 +184,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "도전"
                 )}
@@ -163,6 +194,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "도전"
                 )}
@@ -171,6 +204,8 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
+                handleModalOnOff={handleModalOnOff}
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "도전"
                 )}
