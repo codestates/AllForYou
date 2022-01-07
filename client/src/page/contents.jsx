@@ -129,7 +129,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "동기부여"
@@ -140,7 +139,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "동기부여"
@@ -151,7 +149,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "동기부여"
@@ -161,7 +158,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "동기부여"
@@ -174,7 +170,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "도전"
@@ -184,7 +179,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "도전"
@@ -194,7 +188,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "도전"
@@ -204,7 +197,6 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
-                handleModalOnOff={handleModalOnOff}
                 handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "도전"
@@ -219,6 +211,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "멘토"
                 )}
@@ -227,6 +220,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "멘토"
                 )}
@@ -235,6 +229,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "멘토"
                 )}
@@ -243,6 +238,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "멘토"
                 )}
@@ -254,6 +250,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "웃음"
                 )}
@@ -262,6 +259,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "웃음"
                 )}
@@ -270,6 +268,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "웃음"
                 )}
@@ -278,6 +277,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "웃음"
                 )}
@@ -291,6 +291,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "눈물"
                 )}
@@ -299,6 +300,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영화
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "movie" && el.category === "눈물"
                 )}
@@ -307,6 +309,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 책
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "book" && el.category === "눈물"
                 )}
@@ -315,6 +318,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "눈물"
                 )}
@@ -326,6 +330,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 영상
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "video" && el.category === "백색소리"
                 )}
@@ -334,6 +339,7 @@ const Contents = () => {
             <div className={style.contents_part}>
               # 음악
               <ContentsPage_carousel
+                handleContentsInfo={handleContentsInfo}
                 select_1_category={select_1_category.filter(
                   (el) => el.type === "music" && el.category === "백색소리"
                 )}
@@ -346,6 +352,7 @@ const Contents = () => {
           <div className={style.contents_part}>
             # 영상
             <ContentsPage_carousel_firstSelect
+              handleContentsInfo={handleContentsInfo}
               select_1_category={select_1_category.filter(
                 (el) => el.type === "video" && el.category === "백색소리"
               )}
@@ -354,6 +361,7 @@ const Contents = () => {
           <div className={style.contents_part}>
             # 음악
             <ContentsPage_carousel_firstSelect
+              handleContentsInfo={handleContentsInfo}
               select_1_category={select_1_category.filter(
                 (el) => el.type === "music" && el.category === "백색소리"
               )}
@@ -365,6 +373,7 @@ const Contents = () => {
           <div className={style.contents_part}>
             # 영상
             <ContentsPage_carousel_firstSelect
+              handleContentsInfo={handleContentsInfo}
               select_1_category={select_1_category.filter(
                 (el) => el.type === "video"
               )}
@@ -373,6 +382,7 @@ const Contents = () => {
           <div className={style.contents_part}>
             # 영화
             <ContentsPage_carousel_firstSelect
+              handleContentsInfo={handleContentsInfo}
               select_1_category={select_1_category.filter(
                 (el) => el.type === "movie"
               )}
@@ -381,6 +391,7 @@ const Contents = () => {
           <div className={style.contents_part}>
             # 책
             <ContentsPage_carousel_firstSelect
+              handleContentsInfo={handleContentsInfo}
               select_1_category={select_1_category.filter(
                 (el) => el.type === "book"
               )}
@@ -389,6 +400,7 @@ const Contents = () => {
           <div className={style.contents_part}>
             # 음악
             <ContentsPage_carousel_firstSelect
+              handleContentsInfo={handleContentsInfo}
               select_1_category={select_1_category.filter(
                 (el) => el.type === "music"
               )}
@@ -396,7 +408,10 @@ const Contents = () => {
           </div>
         </div>
       ) : (
-        <ContentsPage_secondSelect select_2_contents={select_2_contents} />
+        <ContentsPage_secondSelect
+          select_2_contents={select_2_contents}
+          handleContentsInfo={handleContentsInfo}
+        />
       )}
     </div>
   );
