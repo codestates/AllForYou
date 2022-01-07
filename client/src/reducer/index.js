@@ -11,7 +11,9 @@ const rootReducer = combineReducers({
     // signupModalReducer,
     // accessTokenReducer,
     // signupReducer,
+    mypageReducer,
     writingListReducer
+
 });
 
 export default rootReducer;

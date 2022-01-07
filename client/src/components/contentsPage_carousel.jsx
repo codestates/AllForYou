@@ -3,11 +3,60 @@ import style from "./contentsPage_carousel.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import styled from "styled-components";
 
 // import "./slick.css";
 // import "./slick-theme.css";
 
-const ContentsPage_carousel = () => {
+const Wrap = styled.div`
+  margin: 5% auto;
+  width: 100%;
+  .slick-arrow {
+    transition: all 200ms ease-in;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    /* background-color: black; */
+    font-family: "slick";
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 0.01;
+    opacity: 0.6;
+    color: #000000;
+    /* font-size: 25px; */
+    /* margin: 0.51em; */
+    -webkit-font-smoothing: antialiased;
+  }
+  .slick-prev:hover,
+  .slick-next:hover {
+    opacity: 0.3;
+  }
+  .slick-prev:before {
+    content: "‹";
+  }
+  [dir="rtl"] .slick-prev:before {
+    content: "›";
+  }
+
+  [dir="rtl"] .slick-next {
+    left: -10px;
+    top: 70px;
+    right: auto;
+  }
+  .slick-next:before {
+    content: "›";
+  }
+  [dir="rtl"] .slick-next:before {
+    content: "‹";
+  }
+`;
+const ContentsPage_carousel = ({
+  select_1_category,
+  handleContentsInfo,
+  handleModalOnOff,
+}) => {
+  // console.log("select_1_category", select_1_category);
+
   const settings = {
     className: "center",
     centerMode: true,
@@ -20,44 +69,31 @@ const ContentsPage_carousel = () => {
     responsive: [
       // 반응형 웹 구현 옵션
       {
-        breakpoint: 960, //화면 사이즈 960px일 때
+        breakpoint: 920, //화면 사이즈 960px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 768, //화면 사이즈 768px일 때
-        settings: {
-          //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
     ],
   };
   return (
     <div className={style.container}>
-      <h2> Single Item</h2>
-      <Slider {...settings} className={style.slick_list}>
-        <div>
-          <span className={style.img_card}>가</span>
-        </div>
-        <div>
-          <span className={style.img_card}>나</span>
-        </div>
-        <div>
-          <span className={style.img_card}>다</span>
-        </div>
-        <div>
-          <span className={style.img_card}>라</span>
-        </div>
-        <div>
-          <span className={style.img_card}>마</span>
-        </div>
-        <div>
-          <span className={style.img_card}>바</span>
-        </div>
-      </Slider>
+      <Wrap>
+        <Slider {...settings} className={style.slick_list}>
+          {select_1_category.map((el) => (
+            <div className={style.contents_container}>
+              <img
+                className={style.img_card}
+                src={el.image}
+                alt=""
+                onClick={() => handleContentsInfo(el)}
+              />
+              <span className={style.title}>{el.title}</span>
+            </div>
+          ))}
+        </Slider>
+      </Wrap>
     </div>
   );
 };

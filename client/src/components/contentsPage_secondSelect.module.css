@@ -1,0 +1,33 @@
+.container {
+  margin: 2em auto;
+  padding-left: 2.4em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contents_container {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.img_card {
+  margin: 1em;
+  object-fit: scale-down;
+  width: 15em;
+  height: 20em;
+  text-align: center;
+  transition: all 200ms ease-in;
+}
+
+.img_card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 700;
+  width: 13em;
+}

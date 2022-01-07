@@ -10,59 +10,14 @@ import Contents from "./page/contents";
 import Login from "./page/login";
 import SignupModal from "./components/signupModal";
 import ContentsModal from "./components/contentsModal";
-import { useState, useEffect } from "react";
-import { login, profileimg, setAccessToken } from './action/index';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-
-import ContentsPage_carousel from "./components/contentsPage_carousel";
 
 import ForYouWriting from "./page/forYouWriting";
 
-
 function App() {
-//     const dispatch = useDispatch();
-//     const { email, nickname, profileimg } = useSelector((state) => state.loginReducer);
-//     const { accessToken } = useSelector((state) => state.loginReducer);
-
-//     const [errMessage, setErrMessage] = useState("");
-
-//   const isAuthenticated = () => {
-//     axios
-//         .get(`${process.env.REACT_APP_SERVER_URL}/user/mypage`, {
-//         headers: {
-//             Authorization: `Bearer ${accessToken}`,
-//             "Content-Type": "application/json",
-//         },
-//         withCredentials: true,
-//     })
-//     .then((res) => {
-//         if(res) {
-//             // console.log(res.data.data.userInfo)
-//             const nickname = res.data.data.nickname;
-//             const email = res.data.data.email;
-//             const profileimg = res.data.data.profileimg;
-//             dispatch(login(nickname));
-//             dispatch(login(email));
-//             dispatch(profileimg(profileimg));
-//         } else {
-
-//         }
-//     })
-//     .catch((err) => {
-//         dispatch(login(false));
-//         setErrMessage("잘못된 요청입니다.");
-//     });
-// };
-
-// useEffect(() => {
-//     isAuthenticated();
-// }, []);
 
   return (
     <BrowserRouter>
       <Nav />
-      {/* <ContentsPage_carousel /> */}
       {/* <ContentsModal /> */}
       {/* <SignupModal /> */}
       {/* <Login /> */}
