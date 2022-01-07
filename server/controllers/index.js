@@ -28,7 +28,7 @@ router.get("/reviews", reviewRouter.reviewList); // 리뷰 전체 불러오기
 router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러오기
 
 router.post("/reviews", auth.accessToken, reviewRouter.reviewWrite); // 리뷰 작성하기
-// router.delete("/reviews/:postId", auth.accessToken, null); // 리뷰 삭제
+router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
 
 // router.post("/reviews/:postId/like", auth.accessToken, null) // 리뷰에 좋아요
 // router.post("/reviews/:postId/comment", auth.accessToken, null) // 리뷰에 댓글
