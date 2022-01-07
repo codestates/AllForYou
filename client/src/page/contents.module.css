@@ -12,7 +12,7 @@
 #firstSelect {
   margin: 1em 1.5em;
   padding-left: 0.6em;
-  width: 15em;
+  width: 17em;
   height: 2em;
   font-size: 1.2em;
   font-weight: 700;
@@ -82,4 +82,40 @@
   margin: 1em 5em 1em 1em;
   font-size: 1.3em;
   font-weight: 700;
+}
+
+@media screen and (max-width: 1700px) {
+  .search_input {
+    left: 35em;
+    width: 24em;
+    height: 3em;
+  }
+  .search_btn {
+    left: 43em;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  /* 모바일 */
+  #firstSelect {
+    font-size: 1em;
+  }
+  #secondSelect {
+    font-size: 1em;
+  }
+  .search_input {
+    margin: 1.5em;
+    left: 0;
+    top: 10.5em;
+    width: 22em;
+    height: 2.5em;
+  }
+  .search_btn {
+    left: 18.5em;
+    top: 10.15em;
+    font-size: 1.1em;
+  }
+  .select_1_All_container {
+    margin-top: 6em;
+  }
 }
