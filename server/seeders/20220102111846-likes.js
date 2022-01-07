@@ -6,7 +6,7 @@ module.exports = {
       id: 1,
       user_id : 1,
       review_id: null,
-      content_id: 1,
+      content_id: 301,
       createdAt: new Date()
     }]);
   },

@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+.mypage_container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #B09171;
+}
+
+.mypage_footer {
+    display: block;
+    background-color: white;
+}
+
+.error_message {
+    display: block;
+    text-align: center;
+    height: 20em;
+    font-size: xx-large;
+    font-weight: bold;
+    border-radius: 0.5 solid yellow;
+    border-width: 15px;
+}

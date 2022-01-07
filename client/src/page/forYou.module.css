@@ -1,0 +1,41 @@
+.container{
+  background-color: #b09171;
+}
+.selectbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10.5rem;
+  padding-right: 13.5rem;
+  padding-top:2rem;
+}
+.cardContainer{
+  position: relative;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+  height: auto;
+	padding-top: 2.5rem;
+}
+.category{
+  height:2rem;
+  background-color: rgba(255, 255, 255, 0.563);
+  border-radius: 0.3rem;
+  padding-left: 0.5rem;
+  font-size:1rem;
+}
+.btn{
+  text-align: center;
+  font-size: 1rem;
+  padding: 0;
+  width:8rem;
+  height:2.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.563);
+}
+.btn:hover{
+  background-color: black;
+  color: white;
+}

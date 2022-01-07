@@ -1,0 +1,34 @@
+.navContainer{
+  display: flex;
+  justify-content: space-between;
+  background-color: #B09171;
+}
+
+.logo {
+  width: 13rem;
+  margin: 1.5rem 2rem;
+}
+
+ul {
+  margin-right: 2rem;
+  list-style: none;
+  display: flex;
+  width: 50em;
+  justify-content: right;
+  align-items: center;
+}
+
+li {
+  margin: 1rem;
+}
+
+.btn {
+  border: none;
+  background-color: #B09171;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
+}
+.btn:hover {
+  color: white;
+  text-decoration: underline;
+}
