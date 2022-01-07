@@ -6,17 +6,19 @@ export const ISLOGIN = "ISLOGIN";
 export const SET_ACCESSTOKEN = "SET_ACCESSTOKEN";
 export const PROFILE_IMG = "PROFILE_IMG";
 export const SIGNUP_STATE = "SIGNUP_STATE";
+export const ADD_TO_LIST = "ADD_TO_LIST";
+export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 
 export const login = (state) => {
     return {
         type: LOGIN,
         payload: {
-        isLogin: state.isLogin,
-        isAdmin: state.isAdmin,
-        isOauth: state.isOauth,
-        id: state.id,
-        nickname: state.nickname,
-        email: state.email,
+            isLogin: state.isLogin,
+            isAdmin: state.isAdmin,
+            isOauth: state.isOauth,
+            id: state.id,
+            nickname: state.nickname,
+            email: state.email,
         },
     };
 };
@@ -61,3 +63,21 @@ export const logout = () => {
         type: LOGOUT,
     };
 };
+
+export const addToList = (content) => {
+    return {
+        type: ADD_TO_LIST,
+        payload: {
+            content
+        }
+    }
+}
+
+export const removeFromList = (contents) => {
+    return {
+        type: REMOVE_FROM_LIST,
+        payload: {
+            contents
+        }
+    }
+}

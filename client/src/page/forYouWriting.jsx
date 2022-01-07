@@ -3,6 +3,7 @@ import axios from 'axios';
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
 import SearchList from "../components/searchList";
+import AddList from "../components/addList";
 import dummy2 from '../dummy/dummy2';
 
 const ForYouWriting = () => {
@@ -34,8 +35,6 @@ const ForYouWriting = () => {
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
 
-
-
     //더미코드
     const handleSearch = () => {
         const value = inputRef.current.value
@@ -46,14 +45,6 @@ const ForYouWriting = () => {
             handleSearch();
         }
     }
-    const resultSearch = dummy2.filter((el) => {
-        let title = el.title;
-        for (let i = 0; i < title.length; i++) {
-            if (title[i] === search) {
-                return title[i]
-            }
-        }
-    });
 
     //axios 적용 코드
     // const handleSearchText = e => {
@@ -193,11 +184,13 @@ const ForYouWriting = () => {
                                 </div>
                                 {/* 검색 리스트 */}
                                 <SearchList
-                                    resultSearch={resultSearch}
+                                    search={search}
                                     checkedList={false}
                                 />
                             </div>
-                            <button className={style.btnAdd}>추가</button>
+                            <button
+                                className={style.btnAdd}
+                            >추가</button>
                         </div>
                         <div className={style.rightBox}>
                             <div className={style.addListBox_right}>
@@ -207,8 +200,7 @@ const ForYouWriting = () => {
                                     <span className={style.list_part}>구분</span>
                                 </div>
                                 {/* 추가한 리스트 */}
-                                <SearchList
-                                    resultSearch={resultSearch}
+                                <AddList
                                     checkedList={true}
                                 />
                             </div>
