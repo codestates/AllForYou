@@ -93,6 +93,7 @@ const contents = [
   {
     id: 5563371,
     title: "록키 발보아",
+
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -103,7 +104,7 @@ const contents = [
     category: "동기부여",
     detail: ["노력", "자신과싸움", "can"],
     link: "",
-    type: "movie"
+    type: ["movie"]
   },
   {
     id: 2,
@@ -118,11 +119,11 @@ const contents = [
     category: "동기부여",
     detail: ["노력", "자신과싸움", "can"],
     link: "",
-    type: "movie"
+    type: ["movie"]
   },
   {
     id: 6663,
-    title: "록키 발보아",
+    title: ["록키 발보아"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -133,7 +134,7 @@ const contents = [
     category: "동기부여",
     detail: ["노력", "자신과싸움", "can"],
     link: "",
-    type: "movie"
+    type: ["movie"]
   },
   {
     id: 5554,
