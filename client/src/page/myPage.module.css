@@ -15,3 +15,13 @@
     display: block;
     background-color: white;
 }
+
+.error_message {
+    display: block;
+    text-align: center;
+    height: 20em;
+    font-size: xx-large;
+    font-weight: bold;
+    border-radius: 0.5 solid yellow;
+    border-width: 15px;
+}

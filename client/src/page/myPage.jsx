@@ -17,7 +17,7 @@ import Footer from "../components/footer";
 
 const MyPage = () => {
   // const dispatch = useDispatch();
-  // const { email, nickname, profileimg } = useSelector((state) => state.loginReducer);
+  // const { isLogin, email, nickname, profileimg } = useSelector((state) => state.loginReducer);
   // const { accessToken } = useSelector((state) => state.accessTokenReducer);
   // const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
 
@@ -72,7 +72,7 @@ const userinfoEditHandler = () => {
 
   return (
     <>
-    {/* {accessToken ? ( */}
+    {/* {isLogin ? ( */}
       <div className={style.mypage_container}>
         <ProfileBox />
         <MyPageBox />
