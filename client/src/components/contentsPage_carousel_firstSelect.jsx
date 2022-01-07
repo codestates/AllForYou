@@ -11,16 +11,38 @@ const Wrap = styled.div`
   .slick-arrow {
     transition: all 200ms ease-out;
   }
+
   .slick-prev:before,
   .slick-next:before {
-    line-height: 0.1;
+    font-family: "slick";
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 0.01;
     opacity: 0.6;
     color: #000000;
     -webkit-font-smoothing: antialiased;
   }
   .slick-prev:hover,
   .slick-next:hover {
-    transform: scale(1.5);
+    opacity: 0.3;
+  }
+  .slick-prev:before {
+    content: "‹";
+  }
+  [dir="rtl"] .slick-prev:before {
+    content: "›";
+  }
+
+  [dir="rtl"] .slick-next {
+    left: -10px;
+    top: 70px;
+    right: auto;
+  }
+  .slick-next:before {
+    content: "›";
+  }
+  [dir="rtl"] .slick-next:before {
+    content: "‹";
   }
 `;
 
@@ -37,17 +59,24 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
     responsive: [
       // 반응형 웹 구현 옵션
       {
-        breakpoint: 960, //화면 사이즈 960px일 때
+        breakpoint: 1720, //화면 사이즈 960px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-          // slidesToShow: 5,
+          slidesToShow: 5,
         },
       },
       {
-        breakpoint: 768, //화면 사이즈 768px일 때
+        breakpoint: 1430, //화면 사이즈 960px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-          slidesToShow: 2,
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 920, //화면 사이즈 768px일 때
+        settings: {
+          //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+          slidesToShow: 1,
         },
       },
     ],
