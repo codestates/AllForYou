@@ -46,7 +46,10 @@ const Wrap = styled.div`
   }
 `;
 
-const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
+const ContentsPage_carousel_firstSelect = ({
+  select_1_category,
+  handleContentsInfo,
+}) => {
   const settings = {
     className: "center",
     centerMode: true,
@@ -87,7 +90,12 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
         <Slider {...settings} className={style.slick_list}>
           {select_1_category.map((el) => (
             <div className={style.contents_container}>
-              <img className={style.img_card} src={el.image} alt="" />
+              <img
+                className={style.img_card}
+                src={el.image}
+                alt=""
+                onClick={() => handleContentsInfo(el)}
+              />
               <span className={style.title}>{el.title}</span>
             </div>
           ))}
