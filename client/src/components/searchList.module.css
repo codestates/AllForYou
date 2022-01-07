@@ -1,0 +1,24 @@
+.container{
+  width: 17.5rem;
+  height: 1.7rem;
+  border-bottom: 1px solid rgb(196, 196, 196);
+  padding-left: 0.3rem;
+  padding-top: 0.2rem;
+  display:flex;
+}
+.list_title{
+  padding-top: 0.1rem;
+  margin-left: 0.2rem;
+  font-size: 0.8rem;
+  width: 10rem;
+  text-align:center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.list_part{
+  padding-top: 0.1rem;
+  font-size: 0.8rem;
+  width: 5rem;
+  text-align:center;
+}

@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
+import axios from 'axios';
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
-import AddList from "../components/addList";
+import SearchList from "../components/searchList";
 import dummy2 from '../dummy/dummy2';
 
 const ForYouWriting = () => {
@@ -16,7 +17,7 @@ const ForYouWriting = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [search, setSearch] = useState('');
-    const resultSearch = [];
+    // const [resultSearch, setResultSearch] = useState([]);
 
     const formData = new FormData();
     formData.append('title', title);
@@ -33,42 +34,49 @@ const ForYouWriting = () => {
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
 
-    // const handleSearch = () => {
-    //     const value = inputRef.current.value
-    //     setSearch(value)
-    // }
 
-    const handleSearchText = e => {
-        setSearch(e.target.value)
+
+    //더미코드
+    const handleSearch = () => {
+        const value = inputRef.current.value
+        setSearch(value)
     }
-
     const onKeyPress = (e) => {
         if (e.key === 'Enter') {
-            searchHandler();
+            handleSearch();
         }
     }
+    const resultSearch = dummy2.filter((el) => {
+        let title = el.title;
+        for (let i = 0; i < title.length; i++) {
+            if (title[i] === search) {
+                return title[i]
+            }
+        }
+    });
 
-    // const resultSearch = dummy2.filter((el) => {
-    //     let title = el.title;
-    //     for (let i = 0; i < title.length; i++) {
-    //         if (title[i] === search) {
-    //             return title[i]
-    //         }
+    //axios 적용 코드
+    // const handleSearchText = e => {
+    //     setSearch(e.target.value)
+    // }
+
+    // const onKeyPress = (e) => {
+    //     if (e.key === 'Enter') {
+    //         searchHandler();
     //     }
-    // });
-
-    const searchHandler = () => {
-        axios
-            .get(`${process.env.REACT_APP_API_URL}/search?keyword=${searchText}`, {
-                headers: { 'Content-Type': 'application/json' },
-            })
-            .then(res => {
-                resultSearch(res.data.searchResult); //서버 코드 확인 필요
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
+    // }
+    // const searchHandler = () => {
+    //     axios
+    //         .get(`${process.env.REACT_APP_API_URL}/search?keyword=${searchText}`, {
+    //             headers: { 'Content-Type': 'application/json' },
+    //         })
+    //         .then(res => {
+    //             setResultSearch(res.data.searchResult); //서버 코드 확인 필요
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // };
 
     const upoadImage = (e) => {
         e.preventDefault();
@@ -168,11 +176,13 @@ const ForYouWriting = () => {
                                     type="search"
                                     placeholder='Search...'
                                     onKeyPress={onKeyPress}
-                                    onChange={handleSearchText}
+                                    ref={inputRef} //더미 적용 코드
+                                // onChange={handleSearchText} //axios 적용 코드
                                 />
                                 <button
                                     className={style.btnSearch}
-                                    onClick={() => searchHandler()}
+                                    // onClick={() => searchHandler()} //axios 적용 코드
+                                    onClick={() => handleSearch()} //더미 적용 코드
                                 >검색</button>
                             </div>
                             <div className={style.addListBox_left}>
@@ -181,13 +191,11 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {resultSearch.map((el) => (
-                                    <AddList
-                                        key={el.id}
-                                        title={el.title}
-                                        type={el.type}
-                                    />
-                                ))}
+                                {/* 검색 리스트 */}
+                                <SearchList
+                                    resultSearch={resultSearch}
+                                    checkedList={false}
+                                />
                             </div>
                             <button className={style.btnAdd}>추가</button>
                         </div>
@@ -198,8 +206,11 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {/* 추후 무한 스크롤 적용 필요 */}
-                                <AddList />
+                                {/* 추가한 리스트 */}
+                                <SearchList
+                                    resultSearch={resultSearch}
+                                    checkedList={true}
+                                />
                             </div>
                             <button className={style.btnAdd}>삭제</button>
                         </div>
