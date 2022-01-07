@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       reviews.belongsTo(models.users, { foreignKey: { name: "user_id", allowNull: false }, onDelete: "CASCADE" });
       reviews.hasMany(models.likes, { foreignKey: "review_id"});
       reviews.hasMany(models.comments, { foreignKey: "review_id"});
-      reviews.hasMany(models.review_content, { foreignKey: "review_id"});
+      reviews.hasMany(models.reviews_contents, { foreignKey: "review_id"});
     }
   };
   reviews.init({

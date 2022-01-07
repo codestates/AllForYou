@@ -1,4 +1,5 @@
 module.exports = {
   reviewList: require("./reviewList"),
-  reviewPick: require("./reviewPick"),
+  reviewRead: require("./reviewRead"),
+  reviewWrite: require("./reviewWrite"),
 };
