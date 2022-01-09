@@ -1,16 +1,15 @@
 import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
 import SearchList from "../components/searchList";
-import AddList from "../components/addList";
-import dummy2 from '../dummy/dummy2';
+import { removeFromList } from '../action/index';
+import CartList from "../components/cartList";
 
 const ForYouWriting = () => {
-    //console.log(dummy2)
-    //사진 업로드, 카테고리, 제목, 글 내용, 리스트 post 보내기
-    //리스트 만들기
-    //input에 있는 단어를 담아서 검색 클릭이벤트 발생하면 get 요청
+    const state = useSelector(state => state.writingListReducer);
+    const dispatch = useDispatch();
     const inputRef = useRef();
     const fileInput = useRef(null);
     const [files, setFiles] = useState([]);
@@ -34,6 +33,10 @@ const ForYouWriting = () => {
         // setFiles(e.target.files);
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
+
+    const handleDelete = (id) => {
+        dispatch(removeFromList(id))
+    }
 
     //더미코드
     const handleSearch = () => {
@@ -178,33 +181,29 @@ const ForYouWriting = () => {
                             </div>
                             <div className={style.addListBox_left}>
                                 <div className={style.listHeader}>
-                                    <input className={style.checkbox} type="checkbox" />
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {/* 검색 리스트 */}
                                 <SearchList
                                     search={search}
                                     checkedList={false}
                                 />
                             </div>
-                            <button
-                                className={style.btnAdd}
-                            >추가</button>
                         </div>
                         <div className={style.rightBox}>
                             <div className={style.addListBox_right}>
                                 <div className={style.listHeader}>
-                                    <input className={style.checkbox} type="checkbox" />
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {/* 추가한 리스트 */}
-                                <AddList
-                                    checkedList={true}
-                                />
+                                {state.map((el, idx) => {
+                                    return <CartList
+                                        key={idx}
+                                        handleDelete={handleDelete}
+                                        content={el.contents}
+                                    />
+                                })}
                             </div>
-                            <button className={style.btnAdd}>삭제</button>
                         </div>
                     </div>
                 </div>

@@ -80,20 +80,20 @@ export const logout = () => {
     };
 };
 
-export const addToList = (content) => {
+export const addToList = (id) => {
     return {
         type: ADD_TO_LIST,
         payload: {
-            content
+            id
         }
     }
 }
 
-export const removeFromList = (contents) => {
+export const removeFromList = (id) => {
     return {
         type: REMOVE_FROM_LIST,
         payload: {
-            contents
+            id
         }
     }
 }
