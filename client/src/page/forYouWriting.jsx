@@ -108,32 +108,32 @@ const ForYouWriting = () => {
         ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
-        } else {
+        }
+        else {
             navigate('/foryou');
             dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
         }
+        // else {
+        //     const formData = new FormData();
+        //     formData.append('title', title);
+        //     formData.append('category', category);
+        //     formData.append('content', content);
+        //     formData.append('image', files);
 
-        // const formData = new FormData();
-        // formData.append('title', title);
-        // formData.append('category', category);
-        // formData.append('content', content);
-        // formData.append('image', files);
-
-        // if (match.path === '/post-create') {
-        //     await axios
-        //         .post(`${process.env.REACT_APP_API_URL}/posts`, formData, {
-        //             headers: {
-        //                 Authorization: `Bearer ${localStorage.accessToken}`,
-        //                 'Content-Type': 'multipart/form-data',
-        //             },
-        //         })
-        //         .then(() => {
-        //             navigate('/foryou');
-        //             dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        //         })
-        //         .catch((err) => {
-        //             if (err) throw err;
-        //         });
+        //         await axios
+        //             .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
+        //                 headers: {
+        //                     Authorization: `Bearer ${localStorage.accessToken}`,
+        //                     'Content-Type': 'multipart/form-data',
+        //                 },
+        //             })
+        //             .then(() => {
+        //                 navigate('/foryou');
+        //                 dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        //             })
+        //             .catch((err) => {
+        //                 if (err) throw err;
+        //             });
         // }
     }
 
@@ -247,7 +247,10 @@ const ForYouWriting = () => {
                         className={style.btnOk}
                         onClick={submitForm}
                     >등록</button>
-                    <button className={style.btnCancle}>취소</button>
+                    <button
+                        className={style.btnCancle}
+                        onClick={() => navigate('/foryou')}
+                    >취소</button>
                 </div>
             </div>
         </div >
