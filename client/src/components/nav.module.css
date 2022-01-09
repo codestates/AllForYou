@@ -9,7 +9,7 @@
   margin: 1.5rem 2rem;
 }
 
-ul {
+.list {
   margin-right: 2rem;
   list-style: none;
   display: flex;
@@ -18,7 +18,7 @@ ul {
   align-items: center;
 }
 
-li {
+.menu {
   margin: 1rem;
 }
 
