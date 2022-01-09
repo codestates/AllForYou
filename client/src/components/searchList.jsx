@@ -23,7 +23,6 @@ const SearchList = ({ search }) => {
     const handleClick = (content) => {
         if (!state.map((el) => el.contents.id).includes(content.id)) {
             dispatch(addToList(content))
-            console.log(`장바구니에 ${content.title}이(가) 추가되었습니다.`)
         }
         else {
             console.log('이미 추가된 상품입니다')

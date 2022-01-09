@@ -4,12 +4,14 @@ import axios from 'axios';
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
 import SearchList from "../components/searchList";
-import { removeFromList } from '../action/index';
+import { removeFromList, setMessageModal } from '../action/index';
 import CartList from "../components/cartList";
+import { useNavigate } from "react-router-dom";
 
 const ForYouWriting = () => {
     const state = useSelector(state => state.writingListReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const inputRef = useRef();
     const fileInput = useRef(null);
     const [files, setFiles] = useState([]);
@@ -17,13 +19,7 @@ const ForYouWriting = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [search, setSearch] = useState('');
-    // const [resultSearch, setResultSearch] = useState([]);
-
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('category', category);
-    formData.append('content', content);
-    formData.append('image', files);
+    // const [resultSearch, setResultSearch] = useState([]); //검색 axios에서 사용
 
     const handleText = (value) => {
         setContent(value)
@@ -49,7 +45,7 @@ const ForYouWriting = () => {
         }
     }
 
-    //axios 적용 코드
+    //검색 결과, axios 적용 코드
     // const handleSearchText = e => {
     //     setSearch(e.target.value)
     // }
@@ -102,6 +98,46 @@ const ForYouWriting = () => {
     //     URL.revokeObjectURL(fileImage); setFileImage("");
     // };
 
+    //'등록'버튼 클릭시
+    async function submitForm() {
+        if (
+            title === '' ||
+            content === '' ||
+            files.length === 0 ||
+            state.length === 0
+        ) {
+            dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
+            return;
+        } else {
+            navigate('/foryou');
+            dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        }
+
+        // const formData = new FormData();
+        // formData.append('title', title);
+        // formData.append('category', category);
+        // formData.append('content', content);
+        // formData.append('image', files);
+
+        // if (match.path === '/post-create') {
+        //     await axios
+        //         .post(`${process.env.REACT_APP_API_URL}/posts`, formData, {
+        //             headers: {
+        //                 Authorization: `Bearer ${localStorage.accessToken}`,
+        //                 'Content-Type': 'multipart/form-data',
+        //             },
+        //         })
+        //         .then(() => {
+        //             navigate('/foryou');
+        //             dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        //         })
+        //         .catch((err) => {
+        //             if (err) throw err;
+        //         });
+        // }
+    }
+
+
     return (
         <div className={style.container}>
             <div className={style.writingBox}>
@@ -132,7 +168,6 @@ const ForYouWriting = () => {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
-                            <option value="ALL">ALL</option>
                             <option value="동기부여">동기부여를 받고 싶다면 ?</option>
                             <option value="도전">도전하고 싶은 나에게</option>
                             <option value="멘토">현재 나의 상황에 멘토를 원하시나요 ?</option>
@@ -208,7 +243,10 @@ const ForYouWriting = () => {
                     </div>
                 </div>
                 <div className={style.buttonBox}>
-                    <button className={style.btnOk}>등록</button>
+                    <button
+                        className={style.btnOk}
+                        onClick={submitForm}
+                    >등록</button>
                     <button className={style.btnCancle}>취소</button>
                 </div>
             </div>

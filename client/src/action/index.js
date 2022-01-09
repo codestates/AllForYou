@@ -10,6 +10,7 @@ export const ADD_TO_LIST = "ADD_TO_LIST";
 export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
+export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
 
 export const login = (state) => {
     return {
@@ -97,3 +98,13 @@ export const removeFromList = (id) => {
         }
     }
 }
+
+export const setMessageModal = (boolean, content) => {
+    return {
+        type: SET_MESSAGE_MODAL,
+        payload: {
+            isModalOpen: boolean,
+            content,
+        },
+    };
+};
