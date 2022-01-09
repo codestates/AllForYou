@@ -12,6 +12,7 @@ import Login from "./page/login";
 import SignupModal from "./components/signupModal";
 import ContentsModal from "./components/contentsModal";
 import ForuModal from "./components/foruModal";
+import ResponsiveNav from "./components/responsiveNav";
 
 import ForYouWriting from "./page/forYouWriting";
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
+      <ResponsiveNav />
       {/* <ContentsModal /> */}
       {/* <SignupModal /> */}
       {/* <Login /> */}
