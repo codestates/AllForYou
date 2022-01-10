@@ -1,5 +1,5 @@
 module.exports = {
-    list: require("./contentsList"),
+    list: require("./contentsLikeList"),
     firstfilter: require("./contentsFirstFilter"),
     secondfilter: require("./contentsSecondFilter"),
     detail: require("./contentsDetail")

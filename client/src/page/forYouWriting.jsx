@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import style from "./forYouWriting.module.css";
-import EditorComponent from "../components/EditorComponent.jsx";
+import EditorComponent from "../components/editorComponent.jsx";
 import AddList from "../components/addList";
 import dummy2 from '../dummy/dummy2';
 

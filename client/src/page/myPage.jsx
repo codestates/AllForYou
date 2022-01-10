@@ -79,17 +79,17 @@ useEffect(() => {
 
   return (
     <>
-    {isLogin === true ? (
+    {/* {isLogin === true ? ( */}
       <div className={style.mypage_container}>
         <ProfileBox />
         <MyPageBox />
       </div>
       
-    ) : (
+    {/* ) : (
       <div className={style.message_box}>
         <div className={style.error_message}>로그인 후 이용 가능 합니다.</div>
       </div>
-    )}
+    )} */}
     </>
   );
 };
