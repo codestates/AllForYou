@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
 import loginReducer from "./loginReducer";
-import loginModalReducer from "./signupModalReducer";
+import loginModalReducer from "./loginModalReducer";
+import signupModalReducer from "./signupModalReducer";
+import accessTokenReducer from "./accessTokenReducer";
+import signupStateReducer from "./signupStateReducer";
+import mypageReducer from "./mypageReducer";
 import writingListReducer from "./writingListReducer";
 import foruModalReducer from "./foruModalReducer";
 

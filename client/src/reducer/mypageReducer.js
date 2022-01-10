@@ -1,4 +1,4 @@
-import { MYPAGE_REVIEWS, MYPAGE_LIKES } from '../actions/index';
+import { MYPAGE_REVIEWS, MYPAGE_LIKES } from '../action/index';
 
 const mypageInit = {
     mypageReviews: [],

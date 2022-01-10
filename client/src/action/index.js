@@ -43,14 +43,14 @@ export const loginModal = (state) => {
 export const signupState = (state) => {
     return {
         type: SIGNUP_STATE,
-        payload: { isModal: state }
+        payload: { isState: state }
     };
 }
 
 export const signupModal = (state) => {
     return {
         type: SIGNUP_MODAL,
-        payload: { isModal: state }
+        payload: { isState: state }
     };
 }
 
@@ -61,21 +61,21 @@ export const setAccessToken = (state) => {
     };
 }
 
-export const mypageReviews = (state) => {
+export const setMypageReviews = (state) => {
     return {
         type: MYPAGE_REVIEWS,
         payload: { mypageReviews: state }
     };
 }
 
-export const mypageLikes = (state) => {
+export const setMypageLikes = (state) => {
     return {
         type: MYPAGE_LIKES,
         payload: { mypageLikes: state }
     };
 }
 
-export const logout = () => {
+export const logout = (state) => {
     return {
         type: LOGOUT,
     };

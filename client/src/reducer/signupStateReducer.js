@@ -1,4 +1,4 @@
-import { SIGNUP_STATE } from '../actions/index';
+import { SIGNUP_STATE } from '../action/index';
 
 const signupStateReducer = (state = { isModal: false }, action) => {
     switch (action.type) {
