@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
       where: { user_id: id },
       order: 'updatedAt DESC'
     });
-    return res.status(200).json({ data: myReviews, message: "정보 전달 완료." });
+    return res.status(200).json({ data: myReviews, message: "내 리뷰리스트 전달 완료." });
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." })
