@@ -15,11 +15,10 @@ import ForuModal from "./components/foruModal";
 import ResponsiveNav from "./components/responsiveNav";
 
 import ForYouWriting from "./page/forYouWriting";
-import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const { isState } = useSelector((state) => state.signupModalReducer);
+  // const { isState } = useSelector((state) => state.signupModalReducer);
 
   const foruModal = useSelector((state) => state.foruModalReducer);
   const { messageModal } = foruModal
@@ -29,12 +28,12 @@ function App() {
       <Nav />
       <ResponsiveNav />
       {/* <ContentsModal /> */}
-      {isModal === true && isState === false ? (
+      {/* {isModal === true && isState === false ? (
         <Login />
       ) : null}
       {isState === true ? (
         <SignupModal />
-      ) : null}
+      ) : null} */}
       {/* <SignupModal /> */}
       {/* <Login /> */}
       <ForuModal
