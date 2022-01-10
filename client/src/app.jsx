@@ -22,7 +22,6 @@ function App() {
 
   const foruModal = useSelector((state) => state.foruModalReducer);
   const { messageModal } = foruModal
-  console.log(isState)
 
   return (
     <BrowserRouter>
