@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       year: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DATE
       },
       rating: {
         type: Sequelize.INTEGER
@@ -43,6 +43,9 @@ module.exports = {
       },
       type: {
         type: Sequelize.STRING
+      },
+      view: {
+        type: Sequelize.INTEGER
       }
     });
   },
