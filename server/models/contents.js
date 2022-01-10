@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class contents extends Model {
     static associate(models) {
       contents.hasMany(models.likes, { foreignKey: "content_id"});
-      contents.hasMany(models.review_content, { foreignKey: "content_id"});
+      contents.hasMany(models.reviews_contents, { foreignKey: "content_id"});
     }
   };
   contents.init({

@@ -20,15 +20,13 @@ module.exports = async (req, res) => {
   const crypt_password = await bcrypt.hash(password, 10);
 
   try{
-    await users.create({
+    const userInfo = await users.create({
         email,
         nickname,
         password: crypt_password
     })
-    .then((data) => {
-      sendEmail(data);
+      sendEmail(userInfo);
       return res.status(201).json({ message: "회원가입이 완료되었습니다." });
-    });
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." });
