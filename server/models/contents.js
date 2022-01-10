@@ -21,14 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     detail: DataTypes.STRING,
     link: DataTypes.TEXT,
-<<<<<<< HEAD
-    type: DataTypes.STRING
-=======
     type: DataTypes.STRING,
     view: {
       defaultValue : 0, type: DataTypes.INTEGER
     },
->>>>>>> 82ecc31057155991fbd7961748f9ad236217690e
   }, {
     sequelize,
     modelName: 'contents',
