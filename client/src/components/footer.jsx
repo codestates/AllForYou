@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className={style.footer}>
             <div className={style.container} >
                 <img className={style.logo} src="/image/logo.gif" alt="logo" />
-                <a 
+                <a
                     href="https://github.com/codestates/AllForYou"
                     target="_blank"
                 >
@@ -37,14 +37,14 @@ const Footer = () => {
                 </a>
             </div>
             <div className={style.teamContainer}>
-                <div>
+                <div className={style.box}>
                     <div className={style.individual}>
                         <span className={style.name}>
                             <p className={style.fullname}>이재영</p>
                             <p className={style.role}>Back-end</p>
                             <p className={style.role}>팀장</p>
                         </span>
-                        <a href="https://github.com/solheee" target="_blank">
+                        <a className={style.link} href="https://github.com/solheee" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
@@ -62,9 +62,9 @@ const Footer = () => {
                             </svg>
                             github
                         </a>
-                        <a href="mailto:09merus@gmail.com">
+                        <a className={style.link} href="mailto:09merus@gmail.com">
                             <MailIcon className={style.icon} />
-                            dlwodud9529@gmail.com
+                            pdlwodud9529@gmail.com
                         </a>
                     </div>
                     <div className={style.individual}>
@@ -72,7 +72,7 @@ const Footer = () => {
                             <p className={style.fullname}>홍세환</p>
                             <p className={style.role}>Full-stack</p>
                         </span>
-                        <a href="https://github.com/hihello1123" target="_blank">
+                        <a className={style.link} href="https://github.com/hihello1123" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
@@ -90,19 +90,19 @@ const Footer = () => {
                             </svg>
                             github
                         </a>
-                        <a href="meilto:thghbn@gmail.com">
+                        <a className={style.link} href="meilto:thghbn@gmail.com">
                             <MailIcon className={style.icon} />
                             gg9297@gmail.com
                         </a>
                     </div>
                 </div>
-                <div>
+                <div className={style.box}>
                     <div className={style.individual}>
                         <span className={style.name}>
                             <p className={style.fullname}>남태식</p>
                             <p className={style.role}>Front-end</p>
                         </span>
-                        <a href="https://github.com/chanyang721" target="_blank">
+                        <a className={style.link} href="https://github.com/chanyang721" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
@@ -120,7 +120,7 @@ const Footer = () => {
                             </svg>
                             github
                         </a>
-                        <a href="meilto:chanyang721@gmail.com">
+                        <a className={style.link} href="meilto:chanyang721@gmail.com">
                             <MailIcon className={style.icon} />
                             taesik1216@gmail.com
                         </a>
@@ -130,7 +130,7 @@ const Footer = () => {
                             <p className={style.fullname}>강사름</p>
                             <p className={style.role}>Front-end</p>
                         </span>
-                        <a href="https://github.com/sareum-k" target="_blank">
+                        <a className={style.link} href="https://github.com/sareum-k" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
@@ -148,7 +148,7 @@ const Footer = () => {
                             </svg>
                             github
                         </a>
-                        <a href="meilto:pmg752290@gmail.com">
+                        <a className={style.link} href="meilto:pmg752290@gmail.com">
                             <MailIcon className={style.icon} />
                             rkdtkfma@gmail.com
                         </a>

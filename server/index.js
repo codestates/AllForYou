@@ -21,11 +21,12 @@ app.use(
 app.get("/", (req, res) => {
     res.status(200).send("Welcome! everything is AllForYou");
   });
+
 app.use('/', controllers);
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 80
 
-let server
+let server;
 if (fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")) {
     // https 프로토콜 사용 시
     const privateKey = fs.readFileSync(__dirname + "/key.pem", "utf8")
