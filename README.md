@@ -14,7 +14,7 @@
 
 # 🎉 Link
 
-- http://www.allforyou.life/
+- http://www.allforyou.life
 
 ## 🛠 사용 스택
 ![final stack](https://user-images.githubusercontent.com/87467464/147616818-6ecf5a4f-49c0-46ea-b024-a4338bfe7ee3.png)
