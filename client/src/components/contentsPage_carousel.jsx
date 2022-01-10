@@ -50,11 +50,7 @@ const Wrap = styled.div`
     content: "‹";
   }
 `;
-const ContentsPage_carousel = ({
-  select_1_category,
-  handleContentsInfo,
-  handleModalOnOff,
-}) => {
+const ContentsPage_carousel = ({ select_1_category, handleContentsInfo }) => {
   // console.log("select_1_category", select_1_category);
 
   const settings = {

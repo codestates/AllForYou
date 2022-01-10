@@ -1,7 +1,5 @@
 import React from "react";
 import style from "./contentsModal.module.css";
-import dummy from "../dummy/dummy";
-import dummy_2 from "../dummy/dummy2";
 
 const ContentsModal = ({ contentsInfo, handleModalOnOff }) => {
   return (
@@ -11,7 +9,19 @@ const ContentsModal = ({ contentsInfo, handleModalOnOff }) => {
           &times;
         </span>
         <span className={style.title}>{contentsInfo.title}</span>
-        <span className={style.year}>개봉년도 {contentsInfo.year}</span>
+        <div className={style.info}>
+          <span className={style.year}>
+            개봉/출시/등록일: {contentsInfo.year}
+          </span>
+          <span className={style.runtime}>runtime: {contentsInfo.runtime}</span>
+
+          <a href={contentsInfo.link} target="_blank" className={style.link}>
+            해당 컨텐츠로 바로가기
+            <span className={style.pageMove}>
+              <i className="fas fa-external-link-alt"></i>
+            </span>
+          </a>
+        </div>
         <button className={style.like}>
           <i className="far fa-thumbs-up"></i>
         </button>
