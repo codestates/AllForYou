@@ -15,9 +15,9 @@ const Nav = () => {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/user/signout`)
       .then((res) => {
-          // dispatch(setAccessToken(null));
-          // dispatch(login(!isLogin));
-          window.location.reload('/');
+        // dispatch(setAccessToken(null));
+        // dispatch(login(!isLogin));
+        window.location.reload('/');
       })
   };
 
@@ -27,22 +27,22 @@ const Nav = () => {
         <img className={style.logo} src="/image/logo.gif" alt="logo" />
       </Link>
       <ul className={style.list}>
-        <li className={style.contents}>
+        <li className={style.menu}>
           <Link to="/contents">
             <button className={style.btn}>CONTENTS</button>
           </Link>
         </li>
-        <li className={style.foru}>
+        <li className={style.menu}>
           <Link to="/foryou">
             <button className={style.btn}>FOR U</button>
           </Link>
         </li>
-        <li className={style.mypage}>
+        <li className={style.menu}>
           <Link to="/mypage">
             <button className={style.btn}>MYPAGE</button>
           </Link>
         </li>
-        <li className={style.login}>
+        <li className={style.menu}>
           {/* <button className={style.btn} onClick={dispatch(loginModal(true))}>LOGIN</button> */}
           <button className={style.btn} >LOGIN</button>
         </li>
