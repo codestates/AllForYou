@@ -1,0 +1,75 @@
+.header{
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  background-color: #B09171;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menuBox{
+  display: flex;
+  margin-right: 3rem;
+}
+.logo {
+  width: 8rem;
+  margin: 1.5rem 2rem;
+}
+.header_menu {
+  margin-left: 3rem;
+  font-size: 1.1rem;
+}
+.header_menu:hover {
+  color: white;
+  text-decoration: underline;
+}
+.underbar{
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 4rem;
+  left: 0px;
+  bottom: 0px;
+  background-color: #B09171;
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+}
+.menubox{
+  margin-top: 1rem;
+  text-align: center;
+}
+.menubox:hover{
+  color: white;
+}
+.underbar_menu{
+  font-size: 0.9rem;
+}
+.icon {
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width:767px) {
+.logo {
+  width: 6rem;
+  margin: 1.5rem 2rem;
+}
+.header_menu {
+  margin-left: 3rem;
+  font-size: 0.9rem;
+}
+.underbar_menu{
+  font-size:0.9rem;
+}
+.icon {
+  font-size: 1.5rem;
+}
+}
+
+@media screen and (min-width: 1023px){
+  .tabletContainer{
+    display: none;
+  }
+}
