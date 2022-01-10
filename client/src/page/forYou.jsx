@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
-import ForYouView from "./forYouView";
 import { useNavigate } from "react-router-dom";
 import dummy2 from '../dummy/dummy2';
 
