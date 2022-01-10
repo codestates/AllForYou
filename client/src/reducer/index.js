@@ -13,10 +13,10 @@ import foruModalReducer from "./foruModalReducer";
 const rootReducer = combineReducers({
     loginReducer,
     loginModalReducer,
-    // signupModalReducer,
-    // accessTokenReducer,
-    // signupReducer,
-    // mypageReducer,
+    signupModalReducer,
+    accessTokenReducer,
+    signupStateReducer,
+    mypageReducer,
     writingListReducer,
     foruModalReducer
 });

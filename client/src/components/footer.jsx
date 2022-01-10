@@ -15,7 +15,7 @@ const Footer = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         width="24px"
                         height="24px"
-                        preserveaspectratio="xMidYMid"
+                        preserveAspectRatio="xMidYMid"
                         version="1.1"
                         viewBox="0 0 256 250"
                     >
@@ -49,7 +49,7 @@ const Footer = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
                                 height="24px"
-                                preserveaspectratio="xMidYMid"
+                                preserveAspectRatio="xMidYMid"
                                 version="1.1"
                                 viewBox="0 0 256 250"
                             >
@@ -77,7 +77,7 @@ const Footer = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
                                 height="24px"
-                                preserveaspectratio="xMidYMid"
+                                preserveAspectRatio="xMidYMid"
                                 version="1.1"
                                 viewBox="0 0 256 250"
                             >
@@ -107,7 +107,7 @@ const Footer = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
                                 height="24px"
-                                preserveaspectratio="xMidYMid"
+                                preserveAspectRatio="xMidYMid"
                                 version="1.1"
                                 viewBox="0 0 256 250"
                             >
@@ -135,7 +135,7 @@ const Footer = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24px"
                                 height="24px"
-                                preserveaspectratio="xMidYMid"
+                                preserveAspectRatio="xMidYMid"
                                 version="1.1"
                                 viewBox="0 0 256 250"
                             >
