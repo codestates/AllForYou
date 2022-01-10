@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ const ForYou = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selectedLike, setSelectedLike] = useState("최신순");
+  // const [review, setReview] = useState([]);
 
   const handleClick = () => {
     navigate("/foryouwriting");
@@ -21,6 +22,29 @@ const ForYou = () => {
       return category;
     }
   });
+
+  //axios review 정보 가져오기
+  // async function getPosts() {
+  //   await axios
+  //     .get(`${process.env.REACT_APP_SERVER_URL}/review`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //       },
+  //       withCredentials: true,
+  //     }
+  //     )
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         setReview(res.data)
+  //         console.log(res.data)
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     });
+  // }
+
+  // useEffect(() => getPosts(), []);
 
   return (
     <div className={style.container}>
