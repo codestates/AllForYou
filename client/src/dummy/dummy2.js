@@ -89,7 +89,7 @@ const contents = [
   },
   {
     id: 1233455441,
-    title: "록키 발보아",
+    title: ["록키 발보아"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -345,7 +345,7 @@ const contents = [
   },
   {
     id: 11,
-    title: "송해",
+    title: ["송해"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -375,7 +375,7 @@ const contents = [
   },
   {
     id: 13,
-    title: "송해",
+    title: ["송해"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -420,7 +420,7 @@ const contents = [
   },
   {
     id: 33314,
-    title: "송해",
+    title: ["송해"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -615,7 +615,7 @@ const contents = [
   },
   {
     id: 2244444,
-    title: "발신 제한",
+    title: ["발신 제한"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,
@@ -630,7 +630,7 @@ const contents = [
   },
   {
     id: 222222,
-    title: "발신 제한",
+    title: ["발신 제한"],
     director: "실베스터 스탤론",
     year: 2007,
     rating: 8.90,

@@ -1,16 +1,17 @@
 import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
 import style from "./forYouWriting.module.css";
 import EditorComponent from "../components/EditorComponent.jsx";
 import SearchList from "../components/searchList";
-import AddList from "../components/addList";
-import dummy2 from '../dummy/dummy2';
+import { removeFromList, setMessageModal } from '../action/index';
+import CartList from "../components/cartList";
+import { useNavigate } from "react-router-dom";
 
 const ForYouWriting = () => {
-    //console.log(dummy2)
-    //사진 업로드, 카테고리, 제목, 글 내용, 리스트 post 보내기
-    //리스트 만들기
-    //input에 있는 단어를 담아서 검색 클릭이벤트 발생하면 get 요청
+    const state = useSelector(state => state.writingListReducer);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const inputRef = useRef();
     const fileInput = useRef(null);
     const [files, setFiles] = useState([]);
@@ -18,13 +19,7 @@ const ForYouWriting = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [search, setSearch] = useState('');
-    // const [resultSearch, setResultSearch] = useState([]);
-
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('category', category);
-    formData.append('content', content);
-    formData.append('image', files);
+    // const [resultSearch, setResultSearch] = useState([]); //검색 axios에서 사용
 
     const handleText = (value) => {
         setContent(value)
@@ -34,6 +29,10 @@ const ForYouWriting = () => {
         // setFiles(e.target.files);
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
+
+    const handleDelete = (id) => {
+        dispatch(removeFromList(id))
+    }
 
     //더미코드
     const handleSearch = () => {
@@ -46,7 +45,7 @@ const ForYouWriting = () => {
         }
     }
 
-    //axios 적용 코드
+    //검색 결과, axios 적용 코드
     // const handleSearchText = e => {
     //     setSearch(e.target.value)
     // }
@@ -99,6 +98,46 @@ const ForYouWriting = () => {
     //     URL.revokeObjectURL(fileImage); setFileImage("");
     // };
 
+    //'등록'버튼 클릭시
+    async function submitForm() {
+        if (
+            title === '' ||
+            content === '' ||
+            files.length === 0 ||
+            state.length === 0
+        ) {
+            dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
+            return;
+        }
+        else {
+            navigate('/foryou');
+            dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        }
+        // else {
+        //     const formData = new FormData();
+        //     formData.append('title', title);
+        //     formData.append('category', category);
+        //     formData.append('content', content);
+        //     formData.append('image', files);
+
+        //         await axios
+        //             .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
+        //                 headers: {
+        //                     Authorization: `Bearer ${localStorage.accessToken}`,
+        //                     'Content-Type': 'multipart/form-data',
+        //                 },
+        //             })
+        //             .then(() => {
+        //                 navigate('/foryou');
+        //                 dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        //             })
+        //             .catch((err) => {
+        //                 if (err) throw err;
+        //             });
+        // }
+    }
+
+
     return (
         <div className={style.container}>
             <div className={style.writingBox}>
@@ -129,7 +168,6 @@ const ForYouWriting = () => {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
-                            <option value="ALL">ALL</option>
                             <option value="동기부여">동기부여를 받고 싶다면 ?</option>
                             <option value="도전">도전하고 싶은 나에게</option>
                             <option value="멘토">현재 나의 상황에 멘토를 원하시나요 ?</option>
@@ -178,39 +216,41 @@ const ForYouWriting = () => {
                             </div>
                             <div className={style.addListBox_left}>
                                 <div className={style.listHeader}>
-                                    <input className={style.checkbox} type="checkbox" />
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {/* 검색 리스트 */}
                                 <SearchList
                                     search={search}
                                     checkedList={false}
                                 />
                             </div>
-                            <button
-                                className={style.btnAdd}
-                            >추가</button>
                         </div>
                         <div className={style.rightBox}>
                             <div className={style.addListBox_right}>
                                 <div className={style.listHeader}>
-                                    <input className={style.checkbox} type="checkbox" />
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {/* 추가한 리스트 */}
-                                <AddList
-                                    checkedList={true}
-                                />
+                                {state.map((el, idx) => {
+                                    return <CartList
+                                        key={idx}
+                                        handleDelete={handleDelete}
+                                        content={el.contents}
+                                    />
+                                })}
                             </div>
-                            <button className={style.btnAdd}>삭제</button>
                         </div>
                     </div>
                 </div>
                 <div className={style.buttonBox}>
-                    <button className={style.btnOk}>등록</button>
-                    <button className={style.btnCancle}>취소</button>
+                    <button
+                        className={style.btnOk}
+                        onClick={submitForm}
+                    >등록</button>
+                    <button
+                        className={style.btnCancle}
+                        onClick={() => navigate('/foryou')}
+                    >취소</button>
                 </div>
             </div>
         </div >

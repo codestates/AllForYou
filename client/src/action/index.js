@@ -10,6 +10,7 @@ export const ADD_TO_LIST = "ADD_TO_LIST";
 export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
+export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
 
 export const login = (state) => {
     return {
@@ -80,20 +81,30 @@ export const logout = () => {
     };
 };
 
-export const addToList = (content) => {
+export const addToList = (id) => {
     return {
         type: ADD_TO_LIST,
         payload: {
-            content
+            id
         }
     }
 }
 
-export const removeFromList = (contents) => {
+export const removeFromList = (id) => {
     return {
         type: REMOVE_FROM_LIST,
         payload: {
-            contents
+            id
         }
     }
 }
+
+export const setMessageModal = (boolean, content) => {
+    return {
+        type: SET_MESSAGE_MODAL,
+        payload: {
+            isModalOpen: boolean,
+            content,
+        },
+    };
+};
