@@ -1,6 +1,15 @@
 module.exports = {
+<<<<<<< HEAD
+    listAll: require("./contentsListAll"),
+=======
     list: require("./contentsLikeList"),
+>>>>>>> origin/dev
     firstfilter: require("./contentsFirstFilter"),
-    secondfilter: require("./contentsSecondFilter"),
+    secondlikefilter: require("./contentsLikeFilter"),
+    seconddatefilter: require("./contentsDateFilter"),
     detail: require("./contentsDetail")
+<<<<<<< HEAD
+};
+=======
   };
+>>>>>>> origin/dev

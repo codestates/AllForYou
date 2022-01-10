@@ -15,7 +15,6 @@ import ForuModal from "./components/foruModal";
 import ResponsiveNav from "./components/responsiveNav";
 
 import ForYouWriting from "./page/forYouWriting";
-import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
@@ -35,8 +34,6 @@ function App() {
       {isState === true ? (
         <SignupModal />
       ) : null}
-      {/* <SignupModal /> */}
-      {/* <Login /> */}
       <ForuModal
         isOpen={messageModal.isModalOpen}
         content={messageModal.content}

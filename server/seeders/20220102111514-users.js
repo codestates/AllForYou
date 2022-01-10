@@ -22,6 +22,16 @@ module.exports = {
       user_picture : null,
       createdAt: new Date(),
       updatedAt: new Date()
+    },{
+      id : 3,
+      email : "test333@google.com",
+      nickname : "mytest",
+      // password : 1q2w3e4r
+      password : "$2b$10$hQ9wVHobKn.xCUSxwGiETO1rtLyo5R6IFnGdGaASmzQ.3Nz6f1FS.",
+      admin : false,
+      user_picture : null,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }]);
   },
 

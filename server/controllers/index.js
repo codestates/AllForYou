@@ -10,7 +10,11 @@ router.post("/users/signup", userRouter.signUp); // 회원가입(완료)
 router.post("/users/signin", userRouter.signIn); // 로그인(완료)
 router.post("/users/signout", auth.accessToken, userRouter.signOut); // 로그아웃(완료)
 
+<<<<<<< HEAD
+//oauth(세환 진행중)
+=======
 //oauth
+>>>>>>> origin/dev
 router.get("/users/kakao", userRouter.kakao); //  kakao 로그인(완료)
 // router.get("/users/kakaoCallback", userRouter.kakaoCallback); 
 router.get("/users/google", userRouter.google); // google 로그인(완료)
@@ -31,18 +35,24 @@ router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러
 router.post("/reviews", auth.accessToken, reviewRouter.reviewWrite); // 리뷰 작성하기
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
 
-// router.post("/reviews/:postId/like", auth.accessToken, null) // 리뷰에 좋아요
-// router.post("/reviews/:postId/comment", auth.accessToken, null) // 리뷰에 댓글
+router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLike) // 리뷰에 좋아요
+router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewComment) // 리뷰에 댓글
 
-// router.delete("/reviews/:postId/:commentId", auth.accessToken, null); // 리뷰 댓글 지우기
-// router.delete("/reviews/:postId/:likeId", auth.accessToken, null); // 리뷰 좋아요 지우기
+router.delete("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeD); // 리뷰 좋아요 지우기
+router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentD); // 리뷰 댓글 지우기
 
 //contents(세환 진행중)
-router.get("/contents", contentRouter.list); // 컨텐츠 전체 불러오기(완료)
+router.get("/contents", contentRouter.listAll); // 컨텐츠 전체 불러오기(완료)
 router.get("/contents/:category", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링(진행중)
-router.get("/contents/:category/:type", contentRouter.secondfilter); // 컨텐츠 카테고리&타입 필터링(진행중)
+router.get("/contents/like/:category/:type", contentRouter.secondlikefilter); // 컨텐츠 카테고리&타입 좋아요 순 필터링(진행중)
+router.get("/contents/:category/:type", contentRouter.seconddatefilter); // 컨텐츠 카테고리&타입 최신 순 필터링(진행중)
 router.get("/contents/:id", contentRouter.detail); // 컨텐츠 하나 선택
+<<<<<<< HEAD
+=======
 
 module.exports = router;
+>>>>>>> origin/dev
 
 //https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
+//https://github.com/codestates/DokDok-server
+//https://github.com/codestates/DokDok-client
