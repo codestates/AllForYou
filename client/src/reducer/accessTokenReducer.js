@@ -1,4 +1,4 @@
-import { SET_ACCESSTOKEN } from "../actions/index";
+import { SET_ACCESSTOKEN } from "../action/index";
 
 const accessTokenReducer = (state = { accessToken: null }, action) => {
     switch (action.type) {

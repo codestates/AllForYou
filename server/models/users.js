@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     nickname: DataTypes.STRING,
     password: DataTypes.STRING,
+    socialtype: DataTypes.STRING,
     admin: {
       defaultValue : false, type: DataTypes.BOOLEAN
     },

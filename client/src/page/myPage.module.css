@@ -16,12 +16,20 @@
     background-color: white;
 }
 
+.message_box {
+    display: block;
+    margin: 0.5em;
+}
+
 .error_message {
     display: block;
+    padding-top: 9em;
     text-align: center;
+    border: solid #B09171;
+    border-width: 20px;
+    border-radius: 0.5em;
     height: 20em;
     font-size: xx-large;
     font-weight: bold;
-    border-radius: 0.5 solid yellow;
     border-width: 15px;
 }
