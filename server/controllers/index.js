@@ -10,7 +10,11 @@ router.post("/users/signup", userRouter.signUp); // 회원가입(완료)
 router.post("/users/signin", userRouter.signIn); // 로그인(완료)
 router.post("/users/signout", auth.accessToken, userRouter.signOut); // 로그아웃(완료)
 
+<<<<<<< HEAD
 //oauth(세환 진행중)
+=======
+//oauth
+>>>>>>> origin/dev
 router.get("/users/kakao", userRouter.kakao); //  kakao 로그인(완료)
 // router.get("/users/kakaoCallback", userRouter.kakaoCallback); 
 router.get("/users/google", userRouter.google); // google 로그인(완료)
@@ -43,6 +47,11 @@ router.get("/contents/:category", contentRouter.firstfilter); // 컨텐츠 카�
 router.get("/contents/like/:category/:type", contentRouter.secondlikefilter); // 컨텐츠 카테고리&타입 좋아요 순 필터링(진행중)
 router.get("/contents/:category/:type", contentRouter.seconddatefilter); // 컨텐츠 카테고리&타입 최신 순 필터링(진행중)
 router.get("/contents/:id", contentRouter.detail); // 컨텐츠 하나 선택
+<<<<<<< HEAD
+=======
+
+module.exports = router;
+>>>>>>> origin/dev
 
 //https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
 //https://github.com/codestates/DokDok-server
