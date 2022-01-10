@@ -1,15 +1,21 @@
 .navContainer{
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 5rem;
+  left: 0px;
+  top: 0px;
   display: flex;
   justify-content: space-between;
   background-color: #B09171;
 }
 
 .logo {
-  width: 13rem;
-  margin: 1.5rem 2rem;
+  width: 8rem;
+  margin: 1rem 2rem;
 }
 
-ul {
+.list {
   margin-right: 2rem;
   list-style: none;
   display: flex;
@@ -18,8 +24,15 @@ ul {
   align-items: center;
 }
 
-li {
+.menu {
   margin: 1rem;
+}
+
+.logoutBtn {
+  border: none;
+  background-color: #B09171;
+  font-size: 1.1rem;
+  padding-left: 1.5rem;
 }
 
 .btn {
@@ -31,4 +44,9 @@ li {
 .btn:hover {
   color: white;
   text-decoration: underline;
+}
+@media screen and (max-width: 1023px){
+  .navContainer {
+    display: none;
+  }
 }

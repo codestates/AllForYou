@@ -1,6 +1,6 @@
-import { LOGIN_MODAL } from '../actions/index';
+import { LOGIN_MODAL } from '../action/index';
 
-const loginModmalReducer = (state = { isModal: false }, action) => {
+const loginModalReducer = (state = { isModal: false }, action) => {
   switch (action.type) {
     case LOGIN_MODAL:
       return { isModal: action.payload.isModal };

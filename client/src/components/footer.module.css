@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
 }
@@ -48,7 +47,7 @@ img {
   width: 100%;
   justify-content: center;
 }
-.teamContainer > div{
+.box{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -58,9 +57,9 @@ img {
   display: flex;
   flex-direction: column;
   padding: 0.3rem;
-  width: 16rem;
+  width: 17rem;
 }
-.individual > a{
+.link{
   margin: 0.3rem 0;
   line-height: 0.5rem;
 }
@@ -82,4 +81,42 @@ img {
   text-align: center;
   font-size: 0.8rem;
   padding-top: 0.1rem;
+}
+@media screen and (max-width:1023px) {
+  .container {
+    margin-right: 1rem;
+    padding-right: 2rem;
+  }
+  .individual {
+  padding: 0 2rem;
+}
+.link{
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+}
+
+@media screen and (max-width:767px) {
+  .container {
+    margin-right: 1rem;
+    padding-right: 2rem;
+  }
+  .teamContainer{
+    flex-direction: column;
+    align-items: center;
+  }
+  .individual{
+    margin-bottom: 1.5rem;
+  }
+.icon{
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.link{
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
 }

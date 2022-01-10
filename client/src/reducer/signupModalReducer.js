@@ -1,9 +1,9 @@
-import { SIGNUP_MODAL } from '../actions/index';
+import { SIGNUP_MODAL } from '../action/index';
 
-const signupModalReducer = (state = { isModal: false }, action) => {
+const signupModalReducer = (state = { isState: false }, action) => {
   switch (action.type) {
     case SIGNUP_MODAL:
-      return { isModal: action.payload.isModal };
+      return { isState: action.payload.isState };
 
     default:
       return state;

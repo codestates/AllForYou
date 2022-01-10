@@ -6,8 +6,11 @@ export const ISLOGIN = "ISLOGIN";
 export const SET_ACCESSTOKEN = "SET_ACCESSTOKEN";
 export const PROFILE_IMG = "PROFILE_IMG";
 export const SIGNUP_STATE = "SIGNUP_STATE";
+export const ADD_TO_LIST = "ADD_TO_LIST";
+export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
+export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
 
 export const login = (state) => {
     return {
@@ -40,14 +43,14 @@ export const loginModal = (state) => {
 export const signupState = (state) => {
     return {
         type: SIGNUP_STATE,
-        payload: { isModal: state }
+        payload: { isState: state }
     };
 }
 
 export const signupModal = (state) => {
     return {
         type: SIGNUP_MODAL,
-        payload: { isModal: state }
+        payload: { isState: state }
     };
 }
 
@@ -58,22 +61,50 @@ export const setAccessToken = (state) => {
     };
 }
 
-export const mypageReviews = (state) => {
+export const setMypageReviews = (state) => {
     return {
         type: MYPAGE_REVIEWS,
         payload: { mypageReviews: state }
     };
 }
 
-export const mypageLikes = (state) => {
+export const setMypageLikes = (state) => {
     return {
         type: MYPAGE_LIKES,
         payload: { mypageLikes: state }
     };
 }
 
-export const logout = () => {
+export const logout = (state) => {
     return {
         type: LOGOUT,
+    };
+};
+
+export const addToList = (id) => {
+    return {
+        type: ADD_TO_LIST,
+        payload: {
+            id
+        }
+    }
+}
+
+export const removeFromList = (id) => {
+    return {
+        type: REMOVE_FROM_LIST,
+        payload: {
+            id
+        }
+    }
+}
+
+export const setMessageModal = (boolean, content) => {
+    return {
+        type: SET_MESSAGE_MODAL,
+        payload: {
+            isModalOpen: boolean,
+            content,
+        },
     };
 };

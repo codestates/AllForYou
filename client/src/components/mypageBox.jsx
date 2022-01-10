@@ -3,9 +3,10 @@ import style from "./mypageBox.module.css";
 import axios from 'axios';
 import dummy from "../dummy/dummy3" 
 import { login, profileimg, setAccessToken } from '../action/index';
+import { useSelector } from 'react-redux';
 
 function MyPageBox() {
-    // const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
+    const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
 
     return (
     <div className={style.container}>
