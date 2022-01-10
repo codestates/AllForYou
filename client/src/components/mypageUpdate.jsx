@@ -13,7 +13,9 @@ function MyPgaeUpdate() {
 
     return (
         <div>
+            <div>
             회원정보 수정
+            </div>
         </div>
     );
 };
