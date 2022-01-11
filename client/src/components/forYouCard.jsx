@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./forYouCard.module.css";
 
-const ForYouCard = ({ img }) => {
+const ForYouCard = ({ review, onClick }) => {
     // const handleClickShowmore = () => {
     //     history.push({
     //         pathname: `/planpage/${id}`,
@@ -52,7 +52,7 @@ const ForYouCard = ({ img }) => {
     // };
 
     return (
-        <div className={style.container}>
+        <div className={style.container} onClick={onClick}>
             <div
                 className={style.contentbox}
             // onClick={handleClickShowmore}
@@ -61,13 +61,19 @@ const ForYouCard = ({ img }) => {
                     // src={`https://source.unsplash.com/random?${Math.floor(
                     //     Math.random() * 100,
                     // )}/1600x900?blue,water`}
-                    src={img}
+                    src={review.image}
                     alt=""
                 />
                 <div className={style.textbox}>
-                    <p className={style.title}>새로운 도전이 두려울 때</p>
-                    <p className={style.writer}>by 사루미</p>
-                    <div className={style.category}>새로운 도전이 하고 싶을 때</div>
+                    <div className={style.titleBox}>
+                        <p className={style.title}>{review.title}</p>
+                        <div className={style.icon}>
+                            <i className="far fa-heart"></i>
+                            <div className={style.iconText}>좋아요 10개</div>
+                        </div>
+                    </div>
+                    <p className={style.writer}>by {review.user_id}</p>
+                    <div className={style.category}>{review.category}</div>
                 </div>
             </div>
             <div className={style.sharebox}>
@@ -87,14 +93,3 @@ const ForYouCard = ({ img }) => {
 };
 
 export default ForYouCard;
-
-
-{/* <PlanSummary
-    key={idx}
-    id={plan.id}
-    title={plan.title}
-    desc={plan.desc}
-    writer={plan.writer}
-    dayCount={plan.dayCount}
-    representAddr={plan.representAddr}
-/> */}
