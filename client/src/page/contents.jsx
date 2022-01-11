@@ -10,7 +10,10 @@ import ContentsModal from "../components/contentsModal";
 const Contents = () => {
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
+  const [select_3, setSelect_3] = useState("ALL");
   const [contentsInfo, setContentsInfo] = useState({});
+
+  const [contentsList, setContentsList] = useState({});
 
   const [modal, setModal] = useState(false);
 
@@ -38,8 +41,8 @@ const Contents = () => {
   //       withCredentials: true,
   //     })
   //     .then((data) => {
-  //       const foodInfo = data.data.data.foodInfo;
-  //       setProduct(foodInfo);
+  //       const list = data.data.data.list;
+  //       setContentsList(list);
   //     });
   // };
 
@@ -80,6 +83,12 @@ const Contents = () => {
     setSelect_2(select.target.value);
   };
 
+  const handleSelect_3 = (select) => {
+    setSelect_3(select.target.value);
+  };
+
+  console.log(select_3);
+
   return (
     <div className={style.container}>
       <select
@@ -115,7 +124,16 @@ const Contents = () => {
       <button className={style.search_btn}>
         <i className="fas fa-search"></i>
       </button>
-
+      {select_1 !== "ALL" && select_2 !== "ALL" ? (
+        <select
+          name="thirdSelect"
+          id={style.thirdSelect}
+          onChange={handleSelect_3}
+        >
+          <option value="new">최신순</option>
+          <option value="like">좋아요순</option>
+        </select>
+      ) : null}
       {modal === true ? (
         <ContentsModal
           contentsInfo={contentsInfo}
