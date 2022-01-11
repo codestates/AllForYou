@@ -1,10 +1,14 @@
 import React from "react";
 import style from "./contentsPage_secondSelect.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { contentsModal } from "../action";
 
-const ContentsPage_secondSelect = ({
-  select_2_contents,
-  handleContentsInfo,
-}) => {
+const ContentsPage_secondSelect = ({ select_2_contents }) => {
+  const dispatch = useDispatch();
+
+  const handleContentsInfo = (info) => {
+    dispatch(contentsModal(true, info));
+  };
   return (
     <div className={style.container}>
       {select_2_contents.map((el) => (

@@ -1,7 +1,7 @@
 ---
 name: Issue Task 템플릿
-about: 매일매일 해야 할 일들을 기록
-title: "[Task] 이름 / 날짜"
+about: 자신이 담당할 기능을 기록
+title: "[Task] 이름/기능"
 labels: ''
 assignees: ''
 

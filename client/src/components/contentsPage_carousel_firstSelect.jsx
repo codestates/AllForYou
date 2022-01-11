@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
+import { useDispatch, useSelector } from "react-redux";
+import { contentsModal } from "../action";
+
 const Wrap = styled.div`
   margin: 3em auto;
   width: 100%;
@@ -46,10 +49,7 @@ const Wrap = styled.div`
   }
 `;
 
-const ContentsPage_carousel_firstSelect = ({
-  select_1_category,
-  handleContentsInfo,
-}) => {
+const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
   const settings = {
     className: "center",
     centerMode: true,
@@ -84,6 +84,13 @@ const ContentsPage_carousel_firstSelect = ({
       },
     ],
   };
+
+  const dispatch = useDispatch();
+
+  const handleContentsInfo = (info) => {
+    dispatch(contentsModal(true, info));
+  };
+
   return (
     <div className={style.container}>
       <Wrap>

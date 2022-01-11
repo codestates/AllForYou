@@ -1,11 +1,28 @@
 import React from "react";
 import style from "./contentsModal.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { contentsModal } from "../action";
 
-const ContentsModal = ({ contentsInfo, handleModalOnOff }) => {
+const ContentsModal = () => {
+  const contentsInfo = useSelector(
+    (state) => state.contentsModalReducer.contentsModal.info
+  );
+
+  const modal = useSelector(
+    (state) => state.contentsModalReducer.contentsModal
+  );
+  const dispatch = useDispatch();
+
+  const modalOff = () => {
+    dispatch(contentsModal(false, {}));
+  };
+
+  console.log("modal", modal);
+  console.log("contentsInfo", contentsInfo);
   return (
-    <div className={style.main} onClick={handleModalOnOff}>
+    <div className={style.main} onClick={modalOff}>
       <div className={style.container} onClick={(e) => e.stopPropagation()}>
-        <span className={style.close} onClick={handleModalOnOff}>
+        <span className={style.close} onClick={modalOff}>
           &times;
         </span>
         <span className={style.title}>{contentsInfo.title}</span>
