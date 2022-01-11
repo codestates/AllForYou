@@ -45,7 +45,7 @@ router.get("/contents/:category/:type", contentRouter.seconddatefilter); // 컨�
 router.get("/contents/:id", contentRouter.detail); // 컨텐츠 하나 선택
 router.get("/contents/:search", contentRouter.search); // 컨텐츠 검색
 
-module.exports = router;search
+module.exports = router;
 
 //https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
 //https://github.com/codestates/DokDok-server

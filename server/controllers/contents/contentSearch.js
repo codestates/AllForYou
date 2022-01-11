@@ -43,11 +43,11 @@ module.exports = async(req, res) => {
         const contentLike = await contentId.data.map(async (el) => {
             return await likes.count({ where: { content_id: el } })
         });
-        const contentData = {
+        const contentResultData = {
             contentData: contentData,
             contentLike: contentLike
         }
-        res.status(200).json({data: contentData, message: 'list import successful'})
+        res.status(200).json({data: contentResultData, message: 'list import successful'})
     }
     catch(err) {
         res.status(500).json({ message: 'server error' })

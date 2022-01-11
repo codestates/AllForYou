@@ -11,27 +11,39 @@ export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
+export const SET_USERINFO = 'SET_USERINFO';
 
-export const login = (state) => {
+// export const login = (booleanLogin, booleanAdmin, nickname, email, booleanOauth, profileimg) => {
+//     return {
+//         type: LOGIN,
+//         payload: {
+//             isLogin: booleanLogin,
+//             isAdmin: booleanAdmin,
+//             nickname: nickname,
+//             email: email,
+//             isOauth: booleanOauth,
+//             profileimg: profileimg
+//         },
+//     };
+// };
+
+export const login = (isLogin) => {
     return {
         type: LOGIN,
         payload: {
-            isLogin: state.isLogin,
-            isAdmin: state.isAdmin,
-            isOauth: state.isOauth,
-            id: state.id,
-            nickname: state.nickname,
-            email: state.email,
+            isLogin
         },
     };
 };
 
-export const profileimg = (srcImg) => {
+export const setUserinfo = (userinfo) => {
     return {
-        type: PROFILE_IMG,
-        payload: { profileimg: srcImg }
+        type: SET_USERINFO,
+        payload: {
+            ...userinfo,
+        },
     };
-}
+};
 
 export const loginModal = (state) => {
     return {
@@ -39,13 +51,6 @@ export const loginModal = (state) => {
         payload: { isModal: state }
     };
 };
-
-// export const signupState = (state) => {
-//     return {
-//         type: SIGNUP_STATE,
-//         payload: { isState: state }
-//     };
-// }
 
 export const signupModal = (state) => {
     return {
