@@ -1,6 +1,6 @@
 .container{
   background-color: #b09171;
-  padding-top: 1rem;
+  padding-top: 4rem;
   padding-bottom: 5rem;
 }
 .viewBox{
@@ -152,4 +152,92 @@
 .btnOk:hover{
   background-color: black;
   color: white;
+}
+
+
+@media screen and  (max-width:1023px) {
+.viewBox{
+  width:85%;
+}
+}
+
+@media screen and  (max-width:767px) {
+.viewBox{
+  width:90%;
+  padding-top: 1.5rem;
+}
+.titleBox{
+  width: 20rem;
+}
+.title{
+  font-size: 1.1rem;
+}
+.category{
+  width: 12rem;
+  font-size: 0.9rem;
+}
+.date{
+  margin-right: 1rem;
+}
+.date, .writer{
+  font-size: 0.8rem;
+}
+.imgBox{
+  width: 19rem;
+}
+.img{
+  width: 100%;
+  height: 12rem;
+}
+.textBox{
+  width: 19rem;
+}
+.textTittle{
+  font-size: 1rem;
+}
+.textContent{
+  height: 8rem;
+}
+.listBox{
+  width: 19rem;
+}
+.listTitle{
+  font-size: 1rem;
+}
+.list_num{
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+}
+.list_title{
+  width: 7rem;
+  margin-right: 1rem;
+}
+.list_part{
+  width: 3rem;
+  margin-right: 1rem;
+}
+.list_like{
+  width: 2.5rem;
+}
+.btnUrl, .btnKakao{
+  font-size: 0.8rem;
+  width: 6rem;
+  height: 1.5rem;
+  border-radius:0.3rem;
+}
+.commentBox{
+  margin: 0 auto;
+  width: 19rem;
+  padding-bottom: 5rem;
+}
+.commentText{
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+.btnOk{
+  width: 3.5rem;
+  height: 1.5rem;
+  font-size: 0.8rem;
+  border-radius: 0.6rem;
+}
 }

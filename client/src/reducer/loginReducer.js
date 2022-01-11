@@ -23,8 +23,9 @@ const loginReducer = (
         oauth: action.payload.oauth,
       };
     case PROFILE_IMG:
-      return { ...state, 
-        profileimg: action.payload.profileimg 
+      return {
+        ...state,
+        profileimg: action.payload.profileimg
       };
     case LOGOUT:
       return {
