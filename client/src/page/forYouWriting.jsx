@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import EditorComponent from "../components/editorComponent.jsx";
 import SearchList from "../components/searchList";
 import CartList from "../components/cartList";
+// require("dotenv").config();
 
 const ForYouWriting = () => {
     const state = useSelector(state => state.writingListReducer);
@@ -71,32 +72,7 @@ const ForYouWriting = () => {
     const upoadImage = (e) => {
         e.preventDefault();
         fileInput.current.click();
-
-        // const formData = new FormData();
-        // formData.append("image", Content);
-        // console.log(formData);
-
-        //     axios
-        //         .post(`${process.env.REACT_APP_SERVER_URL}/uploads3`, formData, {
-        //             header: {
-        //                 "content-type": "multipart/form-data",
-        //                 Authorization: `Bearer ${accessToken}`
-        //             },
-        //             withCredentials: true
-        //         })
-        //         .then(res => {
-        //             console.log(res.data);
-        //             setFilePath(res.data.fileName);
-        //         })
-        //         .catch(error => {
-        //             console.error(error);
-        //         });
     };
-
-    // 이미지 파일 삭제 
-    // const deleteFileImage = () => {
-    //     URL.revokeObjectURL(fileImage); setFileImage("");
-    // };
 
     //'등록'버튼 클릭시
     async function submitForm() {
@@ -109,32 +85,34 @@ const ForYouWriting = () => {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
         }
-        else {
-            navigate('/foryou');
-            dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        }
         // else {
-        //     const formData = new FormData();
-        //     formData.append('title', title);
-        //     formData.append('category', category);
-        //     formData.append('content', content);
-        //     formData.append('image', files);
-
-        //         await axios
-        //             .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
-        //                 headers: {
-        //                     Authorization: `Bearer ${localStorage.accessToken}`,
-        //                     'Content-Type': 'multipart/form-data',
-        //                 },
-        //             })
-        //             .then(() => {
-        //                 navigate('/foryou');
-        //                 dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        //             })
-        //             .catch((err) => {
-        //                 if (err) throw err;
-        //             });
+        //     navigate('/foryou');
+        //     dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
         // }
+        else {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('category', category);
+            formData.append('content', content);
+            formData.append('image', files);
+
+            await axios
+                .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.accessToken}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                })
+                .then(() => {
+                    navigate('/foryou');
+                    dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+                })
+                .catch((err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                });
+        }
     }
 
 

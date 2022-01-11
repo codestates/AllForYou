@@ -31,4 +31,37 @@
 }
 .like{
   font-size:0.9rem;
+
+}
+
+@media screen and  (max-width:767px) {
+.container{
+  height: 5rem;
+  display:flex;
+  align-items:center;
+  justify-content:left;
+}
+.num{
+  margin-left:1rem;
+  margin-right:1.3rem;
+}
+.img{
+  margin-top: 1.2rem;
+  margin-right: 0.7rem;
+  width:2.5rem;
+  height:2.5rem;
+}
+.title{
+  margin-right: 1rem;
+  width:15rem;
+  font-size: 0.8rem;
+}
+.type{
+  margin-right: 1.8rem;
+  font-size:0.8rem;
+}
+.like{
+  font-size:0.8rem;
+  margin-right: 1rem;
+}
 }
