@@ -77,6 +77,20 @@
   color: white;
 }
 .btnKakao:hover{
-  background-color: #f5d41b;
-  color: black;
+  background-color: black;
+  color: #f9e000;
+}
+
+@media screen and  (max-width:1023px) {
+  .container{
+  margin-right: 2rem;
+  width: 21rem;
+}
+}
+
+@media screen and  (max-width:767px) {
+.container{
+  margin-right: 4rem;
+  width: 25rem;
+}
 }

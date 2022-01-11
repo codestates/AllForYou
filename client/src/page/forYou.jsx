@@ -24,7 +24,7 @@ const ForYou = () => {
   });
 
   //axios review 정보 가져오기
-  // async function getPosts() {
+  // async function getreviews() {
   //   await axios
   //     .get(`${process.env.REACT_APP_SERVER_URL}/review`, {
   //       headers: {
@@ -44,7 +44,7 @@ const ForYou = () => {
   //     });
   // }
 
-  // useEffect(() => getPosts(), []);
+  // useEffect(() => getreviews(), []);
 
   return (
     <div className={style.container}>
