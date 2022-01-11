@@ -7,6 +7,8 @@ import styled from "styled-components";
 
 // import "./slick.css";
 // import "./slick-theme.css";
+import { useDispatch, useSelector } from "react-redux";
+import { contentsModal } from "../action";
 
 const Wrap = styled.div`
   margin: 5% auto;
@@ -50,8 +52,20 @@ const Wrap = styled.div`
     content: "‹";
   }
 `;
-const ContentsPage_carousel = ({ select_1_category, handleContentsInfo }) => {
+
+const ContentsPage_carousel = ({ select_1_category }) => {
   // console.log("select_1_category", select_1_category);
+
+  const state = useSelector((state) => state.contentsModalReducer);
+  // console.log("reduxInfo", state);
+  const dispatch = useDispatch();
+
+  const handleContentsInfo = (info) => {
+    console.log("클릭", info);
+    dispatch(contentsModal(true, info));
+    // setContentsInfo(info);
+    // setModal(!modal);
+  };
 
   const settings = {
     className: "center",
