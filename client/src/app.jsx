@@ -15,6 +15,7 @@ import ForuModal from "./components/foruModal";
 import ResponsiveNav from "./components/responsiveNav";
 
 import ForYouWriting from "./page/forYouWriting";
+import ForYouView from "./page/forYouView";
 
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
@@ -46,6 +47,7 @@ function App() {
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
+        <Route path="/foryouview" element={<ForYouView />} />
       </Routes>
       <Footer />
     </BrowserRouter>

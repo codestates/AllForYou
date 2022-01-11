@@ -10,10 +10,6 @@ const ForYou = () => {
   const [selectedLike, setSelectedLike] = useState("최신순");
   // const [review, setReview] = useState([]);
 
-  const handleClick = () => {
-    navigate("/foryouwriting");
-  };
-
   const filteredCategory = dummy3.filter((el) => {
     let category = el.category;
     if (selectedCategory === "ALL") {
@@ -71,13 +67,14 @@ const ForYou = () => {
             <option value="좋아요 순">좋아요순</option>
           </select>
         </div>
-        <button className={style.btn} onClick={handleClick}>리스트 작성하기</button>
+        <button className={style.btn} onClick={() => navigate("/foryouwriting")}>리스트 작성하기</button>
       </div>
       <div className={style.cardContainer}>
         {filteredCategory.map((review) => {
           return <ForYouCard
             key={review.id}
             review={review}
+            onClick={() => navigate("/foryouview")}
           />
         })}
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./forYouCard.module.css";
 
-const ForYouCard = ({ review }) => {
+const ForYouCard = ({ review, onClick }) => {
     // const handleClickShowmore = () => {
     //     history.push({
     //         pathname: `/planpage/${id}`,
@@ -52,7 +52,7 @@ const ForYouCard = ({ review }) => {
     // };
 
     return (
-        <div className={style.container}>
+        <div className={style.container} onClick={onClick}>
             <div
                 className={style.contentbox}
             // onClick={handleClickShowmore}
