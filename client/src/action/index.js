@@ -11,6 +11,7 @@ export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
+export const CONTENTS_MODAL = "CONTENTS_MODAL"
 
 export const login = (state) => {
     return {
@@ -106,5 +107,15 @@ export const setMessageModal = (boolean, content) => {
             isModalOpen: boolean,
             content,
         },
+    };
+};
+
+export const contentsModal = (boolean, info) => {
+    return {
+        type: CONTENTS_MODAL,
+        payload: {
+            modalOnOff: boolean,
+            info,
+        }
     };
 };
