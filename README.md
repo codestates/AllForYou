@@ -13,8 +13,8 @@
 - 사용자가 ‘나중에 보기’ 버튼을 누른 컨텐츠를 따로 볼 수 있습니다.(advenced)
 
 # 🎉 Link
-
 - http://www.allforyou.life
+
 
 ## 🛠 사용 스택
 ![final stack](https://user-images.githubusercontent.com/87467464/147616818-6ecf5a4f-49c0-46ea-b024-a4338bfe7ee3.png)

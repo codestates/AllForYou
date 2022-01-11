@@ -1,0 +1,96 @@
+.container{
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-right: 4rem;
+  width: 25rem;
+  background-color:white;
+  -webkit-box-shadow: 1px 8px 5px 3px rgba(0,0,0,0.15); 
+  box-shadow: 1px 8px 5px 3px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+.container:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+}
+.img {
+  width:100%;
+  height:10rem;
+  margin:0;
+  overflow: hidden;
+}
+.textbox{
+  text-align: left;
+  margin-left: 1rem;
+  width: 100%;
+}
+.titleBox{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  margin-top: 1rem;
+}
+.title{
+  font-size:1.2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 15rem;
+}
+.icon{
+  margin-right: 2.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.iconText{
+  font-size:0.7rem;
+  margin-top: 0.4rem;
+}
+.icon:hover, .iconText:hover{
+  color:rgb(186, 19, 19);
+}
+.writer{
+  margin: 0;
+}
+.category{
+  background-color:#B09171;
+  width:16rem;
+  height:1.7rem;
+  padding: 0.3rem 1rem;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.btnUrl, .btnKakao{
+  background-color: white;
+  width: 50%;
+  padding: 0.6rem 0;
+  box-sizing: border-box;
+  border: 0.1rem solid rgb(181, 181, 181);
+  color: black;
+  font-size: 0.9rem;
+}
+.btnUrl:hover{
+  background-color: black;
+  color: white;
+}
+.btnKakao:hover{
+  background-color: black;
+  color: #f9e000;
+}
+
+@media screen and  (max-width:1023px) {
+  .container{
+  margin-right: 2rem;
+  width: 21rem;
+}
+}
+
+@media screen and  (max-width:767px) {
+.container{
+  margin-right: 4rem;
+  width: 25rem;
+}
+}
