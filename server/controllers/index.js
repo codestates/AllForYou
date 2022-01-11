@@ -43,8 +43,9 @@ router.get("/contents/:category", contentRouter.firstfilter); // 컨텐츠 카�
 router.get("/contents/like/:category/:type", contentRouter.secondlikefilter); // 컨텐츠 카테고리&타입 좋아요 순 필터링(진행중)
 router.get("/contents/:category/:type", contentRouter.seconddatefilter); // 컨텐츠 카테고리&타입 최신 순 필터링(진행중)
 router.get("/contents/:id", contentRouter.detail); // 컨텐츠 하나 선택
+router.get("/contents/:search", contentRouter.search); // 컨텐츠 검색
 
-module.exports = router;
+module.exports = router;search
 
 //https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
 //https://github.com/codestates/DokDok-server

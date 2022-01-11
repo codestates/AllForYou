@@ -1,18 +1,19 @@
-const { contents } = require("../../models");
+const { contents, likes } = require("../../models");
+const seqFn = require("sequelize-fn");
 
-module.exports = (req, res) => {
+module.exports = async(req, res) => {
+    try {
     const categoryFilter = req.query.category;
     const typeFilter = req.query.type;
-    contents.findAll({
+    const categoryData = await contents.findAll({
         where: {
             category: categoryFilter
         }
-    }).then((categoryData) => {
-        categoryData.findAll({
+    })  
+    const typeData = categoryData.findAll({
             type: typeFilter
         })
-    }).then((typeData) => {
-        typeData.findAll({
+    const likeFilterData = typeData.findAll({
             attributes: [
                 "id",
                 "title",
@@ -30,13 +31,26 @@ module.exports = (req, res) => {
                 "createdAt",
                 "updatedAt"
             ],
-            order:[{model: contents}, 'year', ' DESC'],
-        }).then((result) => {
-            return res.status(200).json({data: result, message: "successfully viewed the data type individual page"})
+            include: [{ model: likes, attributes: ["content_id"] }],
+            order:[{model: likes}, sequelize.fn('COUNT', sequelize.col('content_id')), ' DESC'],
         })
-    })
-    .catch((err) => {
-        console.log(err)
+        const contentId = await filterData.data.map((el) => { return el.id; });
+        const contentLike = await contentId.data.map(async (el) => {
+            return await likes.findAll({
+                where: { 
+                    content_id: el 
+                },
+                attributes: [ "content_id" ],
+                order:[{model: likes}, sequelize.fn('COUNT', sequelize.col('content_id')), ' DESC'],
+            })
+        })
+        const contentData = {
+            likeFilterData: likeFilterData,
+            contentLike: contentLike
+        }
+            return res.status(200).json({data: contentData, message: "successfully viewed the data type individual page"})
+    }
+    catch(err) {
         return res.status(500).json({ data: null, message: "server error" })
-    }) 
+    }
 };

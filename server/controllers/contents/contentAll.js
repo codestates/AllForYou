@@ -1,20 +1,21 @@
-const { contents } = require("../../models");
-const { likes } = require("../../models");
+const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
     try {
         const contentsList = await contents.findAll({
             where: {
-                title: req.body.title
+                id: req.params.id
             }
         })
-        const like = `SELECT COUNT(content_id) FROM likes WRERE content_id =${id}`
-        const contentLike = await likes.findAll({
-            where: {
-                content_id: like
-            }
-        })
-        return res.status(200).json({data: {contentsList, contentLike}, message: "successfully contents show all"})
+        const contentId = await contentsList.data.map((el) => { return el.id; });
+        const contentLike = await contentId.data.map(async (el) => {
+            return await likes.count({ where: { content_id: el } })
+        });
+        const contentData = {
+            contentsList: contentsList,
+            contentLike: contentLike
+        }
+        return res.status(200).json({data: contentData, message: "successfully contents show all"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })

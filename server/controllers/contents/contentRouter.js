@@ -3,5 +3,6 @@ module.exports = {
     firstfilter: require("./contentsFirstFilter"),
     secondlikefilter: require("./contentsLikeFilter"),
     seconddatefilter: require("./contentsDateFilter"),
-    detail: require("./contentsDetail")
+    detail: require("./contentsDetail"),
+    search: require("./contentsSearch")
 };
