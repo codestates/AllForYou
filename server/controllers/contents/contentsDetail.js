@@ -1,4 +1,4 @@
-const { contents } = require("../../models");
+const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
     try {
@@ -7,7 +7,16 @@ module.exports = async(req, res) => {
                 id: req.params.id
             }
         })
-        return res.status(200).json({data: contentsDetailList, message: "successfully viewed the details page"})
+        const contentLike = await likes.count({ 
+            where: { 
+                content_id: contentsDetailList.data.id 
+            } 
+        })
+        const contentDetailData = {
+            contentsDetailList: contentsDetailList,
+            contentLike: contentLike
+        }
+        return res.status(200).json({data: contentDetailData, message: "successfully viewed the details page"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })
