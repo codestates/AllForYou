@@ -6,7 +6,6 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import '@fortawesome/fontawesome-free/js/all.js';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

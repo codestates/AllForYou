@@ -1,6 +1,9 @@
 const { users, reviews, reviews_contents, contents  } = require("../../models");
 
 module.exports = async (req, res) => {
+  
+
+
   try{
     const reviewList = await reviews.findAll({
       attributes: [
@@ -20,3 +23,5 @@ module.exports = async (req, res) => {
     return res.status(500).json({ data: err, message: "서버 오류." })
   }
 }
+
+/// reviews?sort="like" or /reviews?sort="date" 

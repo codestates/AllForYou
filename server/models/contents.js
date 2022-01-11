@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     detail: DataTypes.STRING,
     link: DataTypes.TEXT,
     type: DataTypes.STRING,
+    view: {
+      defaultValue : 0, type: DataTypes.INTEGER
+    },
   }, {
     sequelize,
     modelName: 'contents',

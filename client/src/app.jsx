@@ -17,6 +17,7 @@ import ResponsiveNav from "./components/responsiveNav";
 import ForYouWriting from "./page/forYouWriting";
 import ForYouView from "./page/forYouView";
 
+
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isState } = useSelector((state) => state.signupModalReducer);
@@ -35,8 +36,6 @@ function App() {
       {isState === true ? (
         <SignupModal />
       ) : null}
-      {/* <SignupModal /> */}
-      {/* <Login /> */}
       <ForuModal
         isOpen={messageModal.isModalOpen}
         content={messageModal.content}

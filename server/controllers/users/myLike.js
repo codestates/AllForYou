@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
       }],
       order: 'createdAt DESC'
     })
-    return res.status(200).json({ data: myLikes, message: "정보 전달 완료." });
+    return res.status(200).json({ data: myLikes, message: "내 좋아요리스트 전달 완료." });
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." })
