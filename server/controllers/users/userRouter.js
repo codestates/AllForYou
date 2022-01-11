@@ -7,4 +7,6 @@ module.exports = {
   withdrawal: require("./withdrawal"),
   myLike: require("./myLike"),
   myReview: require("./myReview"),
+  kakao: require("./kakao"),
+  google: require("./google"),
 };

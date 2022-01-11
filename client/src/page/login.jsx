@@ -3,25 +3,26 @@ import style from "./login.module.css";
 import axios from "axios";
 import SignupModal from "../components/signupModal";
 import { useSelector, useDispatch } from 'react-redux';
-import { loginModal, setAccessToken, login, signupState, signupModal } from '../action/index';
-// require("dotenv").config();
+import { loginModal, setAccessToken, setUserinfo, login, signupModal } from '../action/index';
 
 const Login = () => {
   const dispatch = useDispatch();
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const { isLogin, accessToken, email, nickname } = useSelector((state) => state.loginReducer);
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
+  const { isLogin } = useSelector((state) => state.loginReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [failMessage, setFailMessage] = useState(false)
-  const [signupOnOff, setSignupOnOff] = useState(false);
-  const [loginInfo, setLoginInfo] = useState({
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleInputValue = (key) => (e) => {
-    setLoginInfo({ ...loginInfo, [key]: e.target.value });
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleLoginModal = () => {
@@ -39,26 +40,33 @@ const Login = () => {
     return false;
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (!loginInfo.email || !loginInfo.password) {
+  const handleLogin = () => {
+    const userData = { email, password };
+    if (!email || !password) {
       setFailMessage(true);
       setTimeout(function() { setFailMessage(false) }, 3000);
     } else {
       axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/user/signin`, loginInfo, {
+        .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData, {
+          headers: {
+            cookies: `jwt ${accessToken}`,
+            "Content-Type": "application/json",
+        },
           withCredentials: true,
         })
         .then((res) => {
+          console.log(res)
           const token = res.data.accessToken;
           dispatch(setAccessToken(token));
-          dispatch(login(!isLogin));
+          dispatch(login(true));
+          setEmail("");
+          setPassword("");
           handleLoginModal();
-          window.location.reload('/');
+          // window.location.reload('/');
         })
         .catch((err) => {
           if (
-            err.response.data.message === "login failed"
+            err.message === "존재하지 않는 계정입니다." || "비밀번호가 일치하지 않습니다."
           ) {
             setFailMessage(true);
             setTimeout(function() { setFailMessage(false) }, 3000);
@@ -66,23 +74,23 @@ const Login = () => {
         });
     }
   };
-  console.log(isLogin)
+  
 
   const modalOutSide = (e) => {
     if (e.target === e.currentTarget) {
       dispatch(loginModal(false))
     }
   }
-
+  console.log(isLogin);
   const handleClick = useCallback(() => {
-    if (loginInfo.email === "") {
+    if (email === "") {
       setErrorMessage("이메일을 입력해주세요.");
       setTimeout(function() { setErrorMessage("") }, 3000);
-    } else if (!checkEmail(loginInfo.email)) {
+    } else if (!checkEmail(email)) {
       setErrorMessage("올바른 메일 양식으로 입력해주세요.");
       setTimeout(function() { setErrorMessage("") }, 3000);
       return;
-    } else if (loginInfo.password === "") {
+    } else if (password === "") {
       setErrorMessage("비밀번호를 입력해주세요.");
       setTimeout(function() { setErrorMessage("") }, 3000);
     } else {
@@ -90,7 +98,7 @@ const Login = () => {
       setErrorMessage("");
       return;
     }
-  }, [loginInfo.email, loginInfo.password, errorMessage]);
+  }, [email, password, errorMessage]);
 
   const handleSignup = () => {
     dispatch(signupModal(true))
@@ -102,9 +110,6 @@ const Login = () => {
 
   return (
     <>
-      {/* {isState === true ? (
-        <SignupModal />
-      ) : ( */}
         <div className={style.body} onClick={modalOutSide}>
           <div className={style.container}>
             <img className={style.logo} src="logo(background-white).png" />
@@ -112,18 +117,17 @@ const Login = () => {
               className={style.myInfo}
               type="text"
               placeholder="아이디"
-              value={loginInfo.email}
-              onChange={handleInputValue("email")}
+              // value={email}
+              onChange={onChangeEmail}
             />
             <input
               className={style.myInfo}
               type="password"
               placeholder="비밀번호"
-              value={loginInfo.password}
-              onChange={handleInputValue("password")}
+              // value={password}
+              onChange={onChangePassword}
             />
-            <button className={style.login} onClick={() => handleClick()}>
-            {/* <button className={style.login} > */}
+            <button className={style.loginButton} onClick={() => handleClick()}>
               로그인
             </button>
             <span className={style.message}>{errorMessage}</span>
@@ -136,15 +140,14 @@ const Login = () => {
             </button>
             <span className={style.membership}>아직 All for you의 회원이 아니신가요?</span>
             <button className={style.membership_btn} onClick={handleSignup}>
-            {/* <button className={style.membership_btn}> */}
               회원가입
             </button>
           </div>
         </div>
-      {/* )} */}
     </>
   );
 };
 
 
 export default Login;
+

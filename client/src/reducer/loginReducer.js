@@ -1,42 +1,25 @@
-import { LOGIN, PROFILE_IMG, LOGOUT } from '../action/index';
+import { LOGIN, SET_USERINFO } from '../action/index';
 
-const loginReducer = (
-  state = {
-    isLogin: false,
-    isAdmin: false,
-    id: null,
-    nickname: null,
-    email: null,
-    oauth: false,
+export const initialState = {
+  isLogin: false,
+  userinfo: {
+    nickname: '',
+    email: '',
+    profileImage: '',
   },
-  action
-) => {
+};
+
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         isLogin: action.payload.isLogin,
-        isAdmin: action.payload.isAdmin,
-        id: action.payload.id,
-        nickname: action.payload.nickname,
-        email: action.payload.email,
-        oauth: action.payload.oauth,
-      };
-    case PROFILE_IMG:
-      return {
-        ...state,
-        profileimg: action.payload.profileimg
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        isLogin: false,
-        isAdmin: false,
-        id: null,
-        nickname: null,
-        email: null,
-        oauth: false,
-      };
+      });
+
+    case SET_USERINFO:
+      return Object.assign({}, state, {
+        userinfo: action.payload,
+      });
 
     default:
       return state;

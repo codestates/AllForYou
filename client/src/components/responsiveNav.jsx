@@ -15,7 +15,7 @@ const ResponsiveNav = () => {
 
   const handleLogout = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/user/signout`)
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
         // dispatch(setAccessToken(null));
         // dispatch(login(!isLogin));

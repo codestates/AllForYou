@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from "./mypageProfilebox.module.css";
 import { useSelector } from 'react-redux';
-// import axios from 'axios';
 
 function ProfileBox() {
 const { email, nickname, profileimg } = useSelector((state) => state.loginReducer);
