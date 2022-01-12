@@ -22,7 +22,7 @@ const Wrap = styled.div`
     font-weight: 900;
     line-height: 0.01;
     opacity: 0.6;
-    color: #000000;
+    color: white;
     -webkit-font-smoothing: antialiased;
   }
   .slick-prev:hover,
@@ -55,7 +55,7 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
     centerMode: true,
     infinite: true,
     centerPadding: "0px",
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
@@ -65,18 +65,18 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
         breakpoint: 1720, //화면 사이즈 960px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-          slidesToShow: 5,
+          slidesToShow: 4,
         },
       },
       {
-        breakpoint: 1430, //화면 사이즈 960px일 때
+        breakpoint: 1480, //화면 사이즈 960px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
           slidesToShow: 3,
         },
       },
       {
-        breakpoint: 920, //화면 사이즈 768px일 때
+        breakpoint: 1000, //화면 사이즈 768px일 때
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
           slidesToShow: 1,
@@ -104,6 +104,7 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
                 onClick={() => handleContentsInfo(el)}
               />
               <span className={style.title}>{el.title}</span>
+              <span className={style.like}>좋아요{}</span>
             </div>
           ))}
         </Slider>

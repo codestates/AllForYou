@@ -24,7 +24,8 @@ const Wrap = styled.div`
     font-weight: 700;
     line-height: 0.01;
     opacity: 0.6;
-    color: #000000;
+    /* color: #000000; */
+    color: white;
     /* font-size: 25px; */
     /* margin: 0.51em; */
     -webkit-font-smoothing: antialiased;
@@ -100,6 +101,7 @@ const ContentsPage_carousel = ({ select_1_category }) => {
                 onClick={() => handleContentsInfo(el)}
               />
               <span className={style.title}>{el.title}</span>
+              <span className={style.like}>좋아요{}</span>
             </div>
           ))}
         </Slider>
