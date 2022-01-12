@@ -44,26 +44,26 @@ module.exports = async(req, res) => {
                 { model: likes, attributes: [ "id" ] }
             ]
         })
-        // let contentsList = contentData.map((el) => {
-        //     return {
-        //         "id": el.id,
-        //         "title": el.title,
-        //         "director": el.director,
-        //         "year": el.year,
-        //         "rating": el.rating,
-        //         "runtime": el.runtime,
-        //         "summary": el.summary,
-        //         "genres": el.genres,
-        //         "image": el.image,
-        //         "category": el.category,
-        //         "like": el.likes.length,
-        //         "detail": el.detail,
-        //         "link": el.link,
-        //         "type": el.type,
-        //         "view": el.view,
-        //     }
-        // })
-        res.status(200).json({data: contentData, message: 'list import successful'})
+        let contentsList = contentData.map((el) => {
+            return {
+                "id": el.id,
+                "title": el.title,
+                "director": el.director,
+                "year": el.year,
+                "rating": el.rating,
+                "runtime": el.runtime,
+                "summary": el.summary,
+                "genres": el.genres,
+                "image": el.image,
+                "category": el.category,
+                "like": el.likes.length,
+                "detail": el.detail,
+                "link": el.link,
+                "type": el.type,
+                "view": el.view,
+            }
+        })
+        res.status(200).json({data: contentsList, message: 'list import successful'})
     }
     catch(err) {
         res.status(500).json({ message: 'server error' })

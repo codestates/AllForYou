@@ -1,23 +1,33 @@
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
+    const categoryFilter = req.query.c;
+    const typeFilter = req.query.t;
+    const type = req.query.s;
     try {
-    const categoryFilter = req.params.categoryName;
-    const typeFilter = req.params.typeName;
-    const categoryData = await contents.findAll({
-        where: {
-            category: categoryFilter
-        }
-    })  
-    const typeData = categoryData.findAll({
-            where: {
-                type: typeFilter
+        const categoryData = await contents.findAll({
+            where:{
+                [Op.and]: [
+                    {
+                        category: {
+                            [Op.like]: `${categoryFilter}%`,
+                        }
+                    },
+                    {
+                        type: {
+                            [Op.like]: `${typeFilter}%`,
+                        }
+                    },
+                ]
             },
             include: [
                 { model: likes, attributes: [ "id" ] }
             ]
-        })
-        let contentsList = typeData.map((el) => {
+        })  
+
+        let contentsList = categoryData.map((el) => {
             return {
                 "id": el.id,
                 "title": el.title,
@@ -36,14 +46,11 @@ module.exports = async(req, res) => {
                 "view": el.view,
             }
         })
-        if(type === "date") {
-            contentsList = contentsList.sort((a, b) => b.year - a.year)
-        }
-        else if(type === "like") {
+        if(type === "like") {
             contentsList = contentsList.sort((a, b) => b.like - a.like)
         }
         else {
-            return res.status(409).json({data: null, message: "not authorized"})
+            contentsList = contentsList.sort((a, b) => b.year - a.year)
         }
         return res.status(200).json({data: contentsList, message: "successfully viewed the data type individual page"})
     }
