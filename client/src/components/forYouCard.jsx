@@ -68,11 +68,11 @@ const ForYouCard = ({ review, onClick }) => {
                     <div className={style.titleBox}>
                         <p className={style.title}>{review.title}</p>
                         <div className={style.icon}>
-                            <i className="far fa-heart"></i>
-                            <div className={style.iconText}>좋아요 10개</div>
+                            <i className="fas fa-heart"></i>
+                            <div className={style.iconText}>좋아요 {review.like}개</div>
                         </div>
                     </div>
-                    <p className={style.writer}>by {review.user_id}</p>
+                    <p className={style.writer}>by {review.nickname}</p>
                     <div className={style.category}>{review.category}</div>
                 </div>
             </div>
