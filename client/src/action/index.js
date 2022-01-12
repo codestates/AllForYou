@@ -54,13 +54,6 @@ export const loginModal = (state) => {
     };
 };
 
-export const signupState = (state) => {
-    return {
-        type: SIGNUP_STATE,
-        payload: { isState: state }
-    };
-}
-
 export const signupModal = (state) => {
     return {
         type: SIGNUP_MODAL,

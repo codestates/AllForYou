@@ -28,8 +28,6 @@ module.exports = async(req, res) => {
                 "detail",
                 "link",
                 "type",
-                "createdAt",
-                "updatedAt"
             ],
             include: [{ model: likes, attributes: ["content_id"] }],
             order:[{model: likes}, sequelize.fn('COUNT', sequelize.col('content_id')), ' DESC'],

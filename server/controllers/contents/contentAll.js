@@ -2,20 +2,29 @@ const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
     try {
-        const contentsList = await contents.findAll({
-            where: {
-                id: req.params.id
+        const contentsData = await contents.findAll({
+            attributes: [
+                "id",
+                "title",
+                "image",
+                "category",
+            ],
+            include: [
+                { model: likes, attributes: [ "id" ] }
+            ]
+        })
+        console.log(contentsData)
+        let contentsList = contentsData.map((el) => {
+            return {
+                "id": el.id,
+                "title": el.title,
+                "category": el.category,
+                "like": el.likes.length,
+                "image": el.image,
             }
         })
-        const contentId = await contentsList.data.map((el) => { return el.id; });
-        const contentLike = await contentId.data.map(async (el) => {
-            return await likes.count({ where: { content_id: el } })
-        });
-        const contentData = {
-            contentsList: contentsList,
-            contentLike: contentLike
-        }
-        return res.status(200).json({data: contentData, message: "successfully contents show all"})
+        console.log(contentsList)
+        return res.status(200).json({data: contentsList, message: "successfully contents show all"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })

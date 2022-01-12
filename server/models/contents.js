@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue : 0, type: DataTypes.INTEGER
     },
   }, {
+    timestamps: false,
     sequelize,
     modelName: 'contents',
   });

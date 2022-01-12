@@ -27,8 +27,6 @@ module.exports = async(req, res) => {
                 "detail",
                 "link",
                 "type",
-                "createdAt",
-                "updatedAt"
             ],
             order:[{model: contents}, 'year', ' DESC'],
         })
