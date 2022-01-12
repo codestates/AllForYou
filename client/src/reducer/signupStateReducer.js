@@ -1,13 +1,13 @@
-import { SIGNUP_STATE } from '../action/index';
+// import { SIGNUP_STATE } from '../action/index';
 
-const signupStateReducer = (state = { isModal: false }, action) => {
-    switch (action.type) {
-        case SIGNUP_STATE:
-        return { isModal: action.payload.isModal };
+// const signupStateReducer = (state = { isModal: false }, action) => {
+//     switch (action.type) {
+//         case SIGNUP_STATE:
+//         return { isModal: action.payload.isModal };
 
-    default:
-        return state;
-    }
-};
+//     default:
+//         return state;
+//     }
+// };
 
-export default signupStateReducer;
+// export default signupStateReducer;

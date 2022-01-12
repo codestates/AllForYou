@@ -11,27 +11,43 @@ export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
+<<<<<<< HEAD
+export const SET_USERINFO = 'SET_USERINFO';
+=======
+export const CONTENTS_MODAL = "CONTENTS_MODAL"
+>>>>>>> c8db02040c4ebe68dd561fc5aa1e4cf4222c75b2
 
-export const login = (state) => {
+// export const login = (booleanLogin, booleanAdmin, nickname, email, booleanOauth, profileimg) => {
+//     return {
+//         type: LOGIN,
+//         payload: {
+//             isLogin: booleanLogin,
+//             isAdmin: booleanAdmin,
+//             nickname: nickname,
+//             email: email,
+//             isOauth: booleanOauth,
+//             profileimg: profileimg
+//         },
+//     };
+// };
+
+export const login = (isLogin) => {
     return {
         type: LOGIN,
         payload: {
-            isLogin: state.isLogin,
-            isAdmin: state.isAdmin,
-            isOauth: state.isOauth,
-            id: state.id,
-            nickname: state.nickname,
-            email: state.email,
+            isLogin
         },
     };
 };
 
-export const profileimg = (srcImg) => {
+export const setUserinfo = (userinfo) => {
     return {
-        type: PROFILE_IMG,
-        payload: { profileimg: srcImg }
+        type: SET_USERINFO,
+        payload: {
+            ...userinfo,
+        },
     };
-}
+};
 
 export const loginModal = (state) => {
     return {
@@ -40,6 +56,8 @@ export const loginModal = (state) => {
     };
 };
 
+<<<<<<< HEAD
+=======
 export const signupState = (state) => {
     return {
         type: SIGNUP_STATE,
@@ -47,6 +65,7 @@ export const signupState = (state) => {
     };
 }
 
+>>>>>>> c8db02040c4ebe68dd561fc5aa1e4cf4222c75b2
 export const signupModal = (state) => {
     return {
         type: SIGNUP_MODAL,
@@ -106,5 +125,15 @@ export const setMessageModal = (boolean, content) => {
             isModalOpen: boolean,
             content,
         },
+    };
+};
+
+export const contentsModal = (boolean, info) => {
+    return {
+        type: CONTENTS_MODAL,
+        payload: {
+            modalOnOff: boolean,
+            info,
+        }
     };
 };

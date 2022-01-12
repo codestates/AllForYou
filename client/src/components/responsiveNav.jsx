@@ -15,7 +15,7 @@ const ResponsiveNav = () => {
 
   const handleLogout = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/user/signout`)
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
         // dispatch(setAccessToken(null));
         // dispatch(login(!isLogin));
@@ -45,19 +45,19 @@ const ResponsiveNav = () => {
         </div>
         <div className={style.menubox}>
           <div className={style.icon} onClick={() => navigate('/contents')}>
-            <i class="fas fa-photo-video"></i>
+            <i className="fas fa-photo-video"></i>
           </div>
           <p className={style.underbar_menu} onClick={() => navigate('/contents')}>CONTENTS</p>
         </div>
         <div className={style.menubox}>
           <div className={style.icon} onClick={() => navigate('/foryou')}>
-            <i class="fas fa-list"></i>
+            <i className="fas fa-list"></i>
           </div>
           <p className={style.underbar_menu} onClick={() => navigate('/foryou')}>FOR U</p>
         </div>
         <div className={style.menubox}>
           <div className={style.icon} onClick={() => navigate('/')}>
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </div>
           <p className={style.underbar_menu} onClick={() => navigate('/')}>SEARCH</p>
         </div>
