@@ -13,6 +13,7 @@ export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
 export const SET_USERINFO = 'SET_USERINFO';
 export const CONTENTS_MODAL = "CONTENTS_MODAL"
+export const SET_POST = 'SET_POST';
 
 // export const login = (booleanLogin, booleanAdmin, nickname, email, booleanOauth, profileimg) => {
 //     return {
@@ -122,5 +123,12 @@ export const contentsModal = (boolean, info) => {
             modalOnOff: boolean,
             info,
         }
+    };
+};
+
+export const setPost = (post) => {
+    return {
+        type: SET_POST,
+        payload: post,
     };
 };

@@ -21,9 +21,10 @@ import ForYouView from "./page/forYouView";
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isState } = useSelector((state) => state.signupModalReducer);
+  const { isLogin } = useSelector((state) => state.loginReducer);
 
-  const foruModal = useSelector((state) => state.foruModalReducer);
-  const { messageModal } = foruModal
+  const foru = useSelector((state) => state.foruReducer);
+  const { messageModal, post } = foru
 
   return (
     <BrowserRouter>
@@ -46,7 +47,7 @@ function App() {
         <Route path="/foryou" element={<ForYou />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
-        <Route path="/foryouview" element={<ForYouView />} />
+        <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
