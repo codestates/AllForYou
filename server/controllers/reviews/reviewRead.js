@@ -1,4 +1,4 @@
-const { users, reviews, likes, reviews_contents, contents, comments } = require("../../models");
+const { users, reviews, likes, reviews_contents, contents } = require("../../models");
 
 module.exports = async (req, res) => {
   const review_id = req.params.postId;
@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
       include: [ 
         { 
           model: contents,
-          attributes: [ "title", "image", "category" ],
+          attributes: [ "title", "image", "type" ],
           include: { model: likes, attributes: [ "id" ] }
         } 
       ]
@@ -45,22 +45,15 @@ module.exports = async (req, res) => {
         "content_id": el.content_id,
         "title": el.content.title,
         "image": el.content.imgae,
-        "category": el.content.category,
+        "type": el.content.type,
         "likes": el.content.likes.length
       }
-    })
-
-    // 리뷰에 작성된 댓글 불러오기
-    const reviewComments = await comments.findAll({ 
-      where: { review_id: review_id },
-      include: [{ model: users, attributes: ["nickname"] }]
     })
 
     // 리뷰데이터 모음
     const reviewInfo = { 
       "reviewData": reviewData, 
-      "contentData": contentData,
-      "commentData": reviewComments
+      "contentData": contentData
     }
 
     return res.status(200).json({data: reviewInfo, message: "리뷰정보 전달 완료."})
