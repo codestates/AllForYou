@@ -25,12 +25,7 @@ module.exports = async (req, res) => {
         nickname,
         password: crypt_password
     })
-<<<<<<< HEAD
-      sendEmail(userInfo);
-      console.log(userInfo)
-=======
       //sendEmail(userInfo);
->>>>>>> 3bc0173f49f4a441b713d4b23633c9692937719c
       return res.status(201).json({ message: "회원가입이 완료되었습니다." });
   }
   catch(err) {
