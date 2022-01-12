@@ -1,13 +1,14 @@
-import { SET_MESSAGE_MODAL } from "../action/index";
+import { SET_MESSAGE_MODAL, SET_POST } from "../action/index";
 
 const initialState = {
     messageModal: {
         isModalOpen: false,
         content: '',
-    }
+    },
+    post: null,
 }
 
-const foruModalReducer = (state = initialState, action) => { //첫번째 인자는 기본값, 두번째 인자는 액션
+const foruReducer = (state = initialState, action) => { //첫번째 인자는 기본값, 두번째 인자는 액션
     switch (action.type) {//action type으로 분기
         case SET_MESSAGE_MODAL:
             return Object.assign({}, state, {
@@ -16,9 +17,14 @@ const foruModalReducer = (state = initialState, action) => { //첫번째 인자�
                 },
             });
 
+        case SET_POST:
+            return Object.assign({}, state, {
+                post: action.payload,
+            });
+
         default:
             return state;
     }
 }
 
-export default foruModalReducer;
+export default foruReducer;
