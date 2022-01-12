@@ -6,15 +6,18 @@ module.exports = async (req, res) => {
             attributes: [
                 "id",
                 "title",
-                "image",
-                "category",
-                "type",
                 "director",
-                "link",
+                "year",
+                "rating",
                 "runtime",
                 "summary",
-                "year",
-                "genres"
+                "genres",
+                "image",
+                "category",
+                "detail",
+                "link",
+                "type",
+                "view"
             ],
             include: [
                 { model: likes, attributes: ["id"] }
@@ -25,16 +28,19 @@ module.exports = async (req, res) => {
             return {
                 "id": el.id,
                 "title": el.title,
-                "category": el.category,
-                "like": el.likes.length,
-                "image": el.image,
-                "type": el.type,
                 "director": el.director,
-                "link": el.link,
+                "year": el.year,
+                "rating": el.rating,
                 "runtime": el.runtime,
                 "summary": el.summary,
-                "year": el.year,
-                "genres": el.genres
+                "genres": el.genres,
+                "image": el.image,
+                "category": el.category,
+                "like": el.likes.length,
+                "detail": el.detail,
+                "link": el.link,
+                "type": el.type,
+                "view": el.view,
             }
         })
         console.log(contentsList)
