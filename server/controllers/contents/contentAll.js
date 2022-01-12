@@ -14,20 +14,10 @@ module.exports = async (req, res) => {
                 "genres",
                 "image",
                 "category",
-<<<<<<< HEAD
                 "detail",
                 "link",
                 "type",
-                "view",
-=======
-                "type",
-                "director",
-                "link",
-                "runtime",
-                "summary",
-                "year",
-                "genres"
->>>>>>> d74cfe43003a618141ceef6e184ef64804ba9d63
+                "view"
             ],
             include: [
                 { model: likes, attributes: ["id"] }
@@ -47,29 +37,14 @@ module.exports = async (req, res) => {
                 "image": el.image,
                 "category": el.category,
                 "like": el.likes.length,
-<<<<<<< HEAD
                 "detail": el.detail,
                 "link": el.link,
                 "type": el.type,
                 "view": el.view,
             }
         })
-        // console.log(contentsList)
-        return res.status(200).json({data: contentsList, message: "successfully contents show all"})
-=======
-                "image": el.image,
-                "type": el.type,
-                "director": el.director,
-                "link": el.link,
-                "runtime": el.runtime,
-                "summary": el.summary,
-                "year": el.year,
-                "genres": el.genres
-            }
-        })
         console.log(contentsList)
         return res.status(200).json({ data: contentsList, message: "successfully contents show all" })
->>>>>>> d74cfe43003a618141ceef6e184ef64804ba9d63
     }
     catch (err) {
         return res.status(500).json({ data: null, message: "server error" })
