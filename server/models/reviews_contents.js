@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      reviews_contents.belongsTo(models.reviews, { foreignKey: { name: "user_id", allowNull: false }, onDelete: "CASCADE" });
-      reviews_contents.belongsTo(models.contents, { foreignKey: { name: "review_id", allowNull: false }, onDelete: "CASCADE" });
+      reviews_contents.belongsTo(models.reviews, { foreignKey: { name: "review_id", allowNull: false }, onDelete: "CASCADE" });
+      reviews_contents.belongsTo(models.contents, { foreignKey: { name: "content_id", allowNull: false }, onDelete: "CASCADE" });
     }
   };
   reviews_contents.init({
