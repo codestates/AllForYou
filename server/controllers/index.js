@@ -39,11 +39,10 @@ router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewC
 
 //contents(세환 진행중)
 router.get("/contents", contentRouter.listAll); // 컨텐츠 전체 불러오기(완료)
-router.get("/contents/:category", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링(진행중)
-router.get("/contents/like/:category/:type", contentRouter.secondlikefilter); // 컨텐츠 카테고리&타입 좋아요 순 필터링(진행중)
-router.get("/contents/:category/:type", contentRouter.seconddatefilter); // 컨텐츠 카테고리&타입 최신 순 필터링(진행중)
-router.get("/contents/:id", contentRouter.detail); // 컨텐츠 하나 선택
-router.get("/contents/:search", contentRouter.search); // 컨텐츠 검색
+router.get("/contents/category/:categoryName", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링(진행중)
+router.get("/contents/:categoryName/:typeName/:sort", contentRouter.secondfilter); // 컨텐츠 카테고리&타입 최신 순, 좋아요 순 필터링(진행중)
+router.get("/contents/:contentId", contentRouter.detail); // 컨텐츠 하나 선택
+router.get("/search", contentRouter.search); // 컨텐츠 검색
 
 module.exports = router;
 

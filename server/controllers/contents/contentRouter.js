@@ -1,8 +1,7 @@
 module.exports = {
     listAll: require("./contentAll"),
     firstfilter: require("./contentsFirstFilter"),
-    secondlikefilter: require("./contentsLikeFilter"),
-    seconddatefilter: require("./contentsDateFilter"),
+    secondfilter: require("./secondFilter"),
     detail: require("./contentsDetail"),
     search: require("./contentSearch")
 };

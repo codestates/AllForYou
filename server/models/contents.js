@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   contents.init({
     title: DataTypes.STRING,
     director: DataTypes.STRING,
-    year: DataTypes.INTEGER,
+    year: DataTypes.STRING,
     rating: DataTypes.INTEGER,
     runtime: DataTypes.INTEGER,
     summary: DataTypes.TEXT,

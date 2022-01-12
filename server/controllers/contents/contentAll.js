@@ -6,24 +6,44 @@ module.exports = async(req, res) => {
             attributes: [
                 "id",
                 "title",
+                "director",
+                "year",
+                "rating",
+                "runtime",
+                "summary",
+                "genres",
                 "image",
                 "category",
+                "detail",
+                "link",
+                "type",
+                "view",
             ],
             include: [
                 { model: likes, attributes: [ "id" ] }
             ]
         })
-        console.log(contentsData)
+        // console.log(contentsData)
         let contentsList = contentsData.map((el) => {
             return {
                 "id": el.id,
                 "title": el.title,
+                "director": el.director,
+                "year": el.year,
+                "rating": el.rating,
+                "runtime": el.runtime,
+                "summary": el.summary,
+                "genres": el.genres,
+                "image": el.image,
                 "category": el.category,
                 "like": el.likes.length,
-                "image": el.image,
+                "detail": el.detail,
+                "link": el.link,
+                "type": el.type,
+                "view": el.view,
             }
         })
-        console.log(contentsList)
+        // console.log(contentsList)
         return res.status(200).json({data: contentsList, message: "successfully contents show all"})
     }
     catch(err) {
