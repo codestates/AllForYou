@@ -32,15 +32,13 @@ module.exports = async (req, res) => {
       }
     })
 
-    if(type === "date") {
+    if(type === "like") {
+      reviewList = reviewList.sort((a, b) => b.like - a.like)
+    } 
+    else {
       reviewList = reviewList.sort((a, b) => b.createdAt - a.createdAt)
     }
-    else if(type === "like") {
-      reviewList = reviewList.sort((a, b) => b.like - a.like)
-    }
-    else {
-      return res.status(409).json({data: null, message: "잘못된 요청입니다."})
-    }
+    
     return res.status(200).json({data: reviewList, message: "리뷰 전체 전달 완료."})
   }
   catch(err) {

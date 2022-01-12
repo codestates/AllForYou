@@ -25,6 +25,10 @@ module.exports = async (req, res) => {
     const newPassword = await bcrypt.hash(password, 10);
 
     await users.update({ nickname: nickname, password: newPassword }, { where: { id: id } })
+    
+    if (req.file) {
+      await users.update({ user_picture: req.file.location }, { where: { id: id } })
+    }
 
     const userData = {
       id: userInfo.dataValues.id,
