@@ -5,7 +5,7 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useSelector, useDispatch } from 'react-redux';
-import { setPost, setAccessToken } from '../action/index';
+import { setPost } from '../action/index';
 
 const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
