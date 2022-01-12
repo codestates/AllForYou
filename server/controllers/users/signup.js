@@ -23,9 +23,9 @@ module.exports = async (req, res) => {
     const userInfo = await users.create({
         email,
         nickname,
-        password: crypt_password
+        password: crypt_password,
     })
-      //sendEmail(userInfo);
+      sendEmail(userInfo);
       return res.status(201).json({ message: "회원가입이 완료되었습니다." });
   }
   catch(err) {

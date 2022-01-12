@@ -22,6 +22,7 @@ function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   const foru = useSelector((state) => state.foruReducer);
   const { messageModal, post } = foru
@@ -44,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/contents" element={<Contents />} />
-        <Route path="/foryou" element={<ForYou />} />
+        <Route path="/foryou" element={<ForYou accessToken={accessToken} />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
         <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} />} />

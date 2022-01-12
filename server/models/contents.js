@@ -5,8 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class contents extends Model {
     static associate(models) {
-      contents.hasMany(models.likes, { foreignKey: "content_id"});
-      contents.hasMany(models.reviews_contents, { foreignKey: "content_id"});
+      contents.hasMany(models.likes, { foreignKey: "content_id" });
+      contents.hasMany(models.reviews_contents, { foreignKey: "content_id" });
     }
   };
   contents.init({
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     link: DataTypes.TEXT,
     type: DataTypes.STRING,
     view: {
-      defaultValue : 0, type: DataTypes.INTEGER
+      defaultValue: 0, type: DataTypes.INTEGER
     },
   }, {
     timestamps: false,

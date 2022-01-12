@@ -18,7 +18,7 @@ router.get("/users/google", userRouter.google); // google 로그인(완료)
 
 //mypage
 router.get("/users/mypage", auth.accessToken, userRouter.userInfo); // 유저정보 확인, 좋아요 누른 컨텐츠 5개, 내가쓴 리뷰글 5개(완료)
-router.patch("/users/mypage", auth.accessToken, userRouter.modifyUser); // 회원정보 수정(완료)
+router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정(완료)
 router.delete("/users/mypage", auth.accessToken, userRouter.withdrawal); // 회원탈퇴(완료)
 
 router.get("/users/mypage/myLike", auth.accessToken, userRouter.myLike); // 내가 좋아요 누른 컨텐츠 more(완료)
@@ -28,11 +28,14 @@ router.get("/users/mypage/myReview", auth.accessToken, userRouter.myReview); // 
 router.get("/reviews", reviewRouter.reviewList); // 리뷰 전체 불러오기
 router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러오기
 
-router.post("/reviews", auth.accessToken, reviewRouter.reviewWrite); // 리뷰 작성하기
+router.get("/reviews", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부
+router.get("/reviews", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기
+
+router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
 
-router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLike) // 리뷰에 좋아요
-router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewComment) // 리뷰에 댓글
+router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeC) // 리뷰에 좋아요
+router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentC) // 리뷰에 댓글
 
 router.delete("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeD); // 리뷰 좋아요 지우기
 router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentD); // 리뷰 댓글 지우기

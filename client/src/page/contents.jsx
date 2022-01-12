@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import style from "./contents.module.css";
 import dummy2 from "../dummy/dummy2";
@@ -6,74 +6,48 @@ import ContentsPage_carousel from "../components/contentsPage_carousel";
 import ContentsPage_carousel_firstSelect from "../components/contentsPage_carousel_firstSelect";
 import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
 import ContentsModal from "../components/contentsModal";
+import axios from "axios";
 
-import { useDispatch, useSelector } from "react-redux";
-// import { contentsModal } from "../action";
+import { useSelector } from "react-redux";
 
 const Contents = () => {
   const modal = useSelector(
     (state) => state.contentsModalReducer.contentsModal.modalOnOff
   );
-  // console.log("modal", modal);
-  // const dispatch = useDispatch();
 
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
   const [select_3, setSelect_3] = useState("ALL");
-  // const [contentsInfo, setContentsInfo] = useState({});
 
-  const [contentsList, setContentsList] = useState({});
+  const [contentsList, setContentsList] = useState([]);
 
-  // const [modal, setModal] = useState(false);
+  const contentstList = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {
+        withCredentials: true,
+      })
+      .then((data) => {
+        const contentsData = data.data.data;
+        // console.log("data", data.data.data);
+        // const list = data.data.data.list;
+        setContentsList(contentsData);
+      });
+  };
+  console.log("contentsList", contentsList);
 
-  // const handleModalOnOff = () => {
-  //   setModal(!modal);
-  //   dispatch(true);
-  // };
+  useEffect(() => {
+    contentstList();
+  }, []);
 
-  // const handleContentsInfo = (info) => {
-  //   setContentsInfo(info);
-  //   setModal(!modal);
-  // };
-  // console.log("info", contentsInfo);
-
-  // console.log("select_1", select_1);
-  // console.log("select_2", select_2);
-
-  // console.log(dummy2);
-
-  // const contentstList = () => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_SERVER_URL}/content/${select_1}/${select_2}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //       withCredentials: true,
-  //     })
-  //     .then((data) => {
-  //       const list = data.data.data.list;
-  //       setContentsList(list);
-  //     });
-  // };
-
-  const select_1_category = dummy2.filter((el) => {
+  const select_1_category = contentsList.filter((el) => {
     let category = el.category;
-    // for (let i = 0; i < category.length; i++) {
-    //   if (category[i] === select_1) {
-    //     console.log("카테고리", category[i]);
-    //     return category[i];
-    //   } else if (select_1 === "ALL") {
-    //     return category[i];
-    //   }
-    // }
+
     if (select_1 === "ALL") {
       return category;
     } else if (category === select_1) {
       return category;
     }
   });
-
-  // console.log("select_1_contents", select_1_category);
 
   const select_2_contents = select_1_category.filter((el) => {
     if (select_2 === "ALL") {
@@ -82,8 +56,6 @@ const Contents = () => {
       return el.type === select_2;
     }
   });
-
-  // console.log("select_2_contents", select_2_contents);
 
   const handleSelect_1 = (select) => {
     setSelect_1(select.target.value);
