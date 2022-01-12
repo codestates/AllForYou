@@ -26,6 +26,7 @@ module.exports = async (req, res) => {
         password: crypt_password
     })
       sendEmail(userInfo);
+      console.log(userInfo)
       return res.status(201).json({ message: "회원가입이 완료되었습니다." });
   }
   catch(err) {

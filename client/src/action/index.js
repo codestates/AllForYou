@@ -11,11 +11,8 @@ export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
-<<<<<<< HEAD
 export const SET_USERINFO = 'SET_USERINFO';
-=======
 export const CONTENTS_MODAL = "CONTENTS_MODAL"
->>>>>>> c8db02040c4ebe68dd561fc5aa1e4cf4222c75b2
 
 // export const login = (booleanLogin, booleanAdmin, nickname, email, booleanOauth, profileimg) => {
 //     return {
@@ -56,16 +53,6 @@ export const loginModal = (state) => {
     };
 };
 
-<<<<<<< HEAD
-=======
-export const signupState = (state) => {
-    return {
-        type: SIGNUP_STATE,
-        payload: { isState: state }
-    };
-}
-
->>>>>>> c8db02040c4ebe68dd561fc5aa1e4cf4222c75b2
 export const signupModal = (state) => {
     return {
         type: SIGNUP_MODAL,

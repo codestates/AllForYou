@@ -4,22 +4,33 @@ import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { setAccessToken, login, loginModal, setUserinfo } from '../action';
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
 const Nav = () => {
   const dispatch = useDispatch();
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
-  // const { accessToken } = useSelector((state) => state.loginReducer);
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
-  const handleLogout = async() => {
-    await axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
+  const handleLogout = () => {
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, null, {
+        headers: {
+          cookies: `jwt ${accessToken}`,
+          "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    })
       .then((res) => {
           console.log(res)
-          dispatch(setAccessToken(null));
+          // dispatch(setAccessToken(null));
           dispatch(setUserinfo(null))
           dispatch(login(false));
           // window.location.reload('/');
+      })
+      .catch((err) => {
+          console.log("서버 오류 입니다.")
       })
   };
   console.log(isLogin)

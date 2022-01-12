@@ -19,6 +19,7 @@ module.exports = async (req, res) => {
         nickname: userInfo.dataValues.nickname,
         user_picture: userInfo.dataValues.user_picture
     }
+    console.log(userData)
   
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });
     return res.status(200).cookie("jwt", token, {

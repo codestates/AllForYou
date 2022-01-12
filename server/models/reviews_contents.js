@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     review_id: DataTypes.INTEGER,
     content_id: DataTypes.INTEGER
   }, {
+    timestamps: false,
     sequelize,
     modelName: 'reviews_contents',
   });

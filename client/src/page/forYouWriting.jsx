@@ -69,99 +69,51 @@ const ForYouWriting = () => {
   //         });
   // };
 
-  const upoadImage = (e) => {
+  const uploadImage = (e) => {
     e.preventDefault();
     fileInput.current.click();
+};
 
-    // const formData = new FormData();
-    // formData.append("image", Content);
-    // console.log(formData);
-
-    //     axios
-    //         .post(`${process.env.REACT_APP_SERVER_URL}/uploads3`, formData, {
-    //             header: {
-    //                 "content-type": "multipart/form-data",
-    //                 Authorization: `Bearer ${accessToken}`
-    //             },
-    //             withCredentials: true
-    //         })
-    //         .then(res => {
-    //             console.log(res.data);
-    //             setFilePath(res.data.fileName);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         });
-    // };
-
-    const upoadImage = (e) => {
-        e.preventDefault();
-        fileInput.current.click();
-    };
-
-    //'등록'버튼 클릭시
-    async function submitForm() {
-        if (
-            title === '' ||
-            content === '' ||
-            files.length === 0 ||
-            state.length === 0
-        ) {
-            dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
-            return;
-        }
-        // else {
-        //     navigate('/foryou');
-        //     dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        // }
-        else {
-            const formData = new FormData();
-            formData.append('title', title);
-            formData.append('category', category);
-            formData.append('content', content);
-            formData.append('image', files);
-
-            await axios
-                .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.accessToken}`,
-                        'Content-Type': 'multipart/form-data',
-                    },
-                })
-                .then(() => {
-                    navigate('/foryou');
-                    dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-                })
-                .catch((err) => {
-                    if (err) {
-                        console.log(err)
-                    }
-                });
-        }
+//'등록'버튼 클릭시
+async function submitForm() {
+    if (
+        title === '' ||
+        content === '' ||
+        files.length === 0 ||
+        state.length === 0
+    ) {
+        dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
+        return;
     }
-    // else {
+    else {
+        navigate('/foryou');
+        dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+    }
+    // else
     //     const formData = new FormData();
     //     formData.append('title', title);
     //     formData.append('category', category);
     //     formData.append('content', content);
     //     formData.append('image', files);
 
-    //         await axios
-    //             .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
-    //                 headers: {
-    //                     Authorization: `Bearer ${localStorage.accessToken}`,
-    //                     'Content-Type': 'multipart/form-data',
-    //                 },
-    //             })
-    //             .then(() => {
-    //                 navigate('/foryou');
-    //                 dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-    //             })
-    //             .catch((err) => {
-    //                 if (err) throw err;
-    //             });
+    //     await axios
+    //         .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
+    //             headers: {
+    //                 Authorization: `Bearer ${localStorage.accessToken}`,
+    //                 'Content-Type': 'multipart/form-data',
+    //             },
+    //         })
+    //         .then(() => {
+    //             navigate('/foryou');
+    //             dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+    //         })
+    //         .catch((err) => {
+    //             if (err) {
+    //                 console.log(err)
+    //             }
+    //         });
     // }
-  }
+}
 
   return (
     <div className={style.container}>
@@ -176,7 +128,7 @@ const ForYouWriting = () => {
             onChange={fileHandle}
             ref={fileInput}
           />
-          <button className={style.btnImg} onClick={upoadImage}>
+          <button className={style.btnImg} onClick={uploadImage}>
             사진 업로드
           </button>
         </div>

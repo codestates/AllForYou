@@ -39,12 +39,12 @@ const MyPage = () => {
 
   const isAuthenticated = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, userData, {
-        headers: {
-            cookies: `jwt ${accessToken}`,
-            "Content-Type": "application/json",
-        },
-        withCredentials: true,
-    })
+      headers: {
+        cookies: `jwt ${accessToken}`,
+        "Content-Type": "application/json",
+    },
+    withCredentials: true,
+  })
     .then((res) => {
         if(res) {
             // console.log(res.data.data.userInfo)
