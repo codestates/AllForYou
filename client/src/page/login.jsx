@@ -49,7 +49,7 @@ const Login = () => {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData, {
           headers: {
-            cookies: `jwt ${accessToken}`,
+            AFUcookie: `jwt ${accessToken}`,
             "Content-Type": "application/json",
         },
           withCredentials: true,
