@@ -11,5 +11,5 @@ module.exports = {
   reviewCommentD: require("./reviewCommentD"),
   reviewContent: require("./reviewContent"),
 
-  // img: require("./img")
+  img: require("./img")
 };

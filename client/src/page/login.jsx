@@ -1,11 +1,9 @@
-
-   
 import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
 import SignupModal from "../components/signupModal";
 import { useSelector, useDispatch } from 'react-redux';
-import { loginModal, setAccessToken, setUserinfo, login, signupModal } from '../action/index';
+import { loginModal, setNickname, setProfileImage, login, signupModal } from '../action/index';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -52,8 +50,8 @@ const Login = () => {
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
           console.log(res.data)
-          // const token = res.data.accessToken;
-          // dispatch(setAccessToken(token));
+          const nickname = res.data.data.nickname;
+          dispatch(setNickname(nickname));
           dispatch(login(true));
           setEmail("");
           setPassword("");
