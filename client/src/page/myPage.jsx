@@ -38,23 +38,18 @@ const MyPage = () => {
   };
 
   const isAuthenticated = () => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, userData, {
-      headers: {
-        cookies: `jwt ${accessToken}`,
-        "Content-Type": "application/json",
-    },
-    withCredentials: true,
-  })
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, { withCredentials: true })
     .then((res) => {
         if(res) {
+            console.log(res.data)
             // console.log(res.data.data.userInfo)
-            const userinfo = res.data.data.userInfo;
-            const reviewlist = res.data.data.userReviews;
-            const likes = res.data.data.userLikes;
-            dispatch(setUserinfo(userinfo));
-            dispatch(mypageReviews(reviewlist));
-            dispatch(mypageLikes(likes));
-            console.log(userData)
+            // const userinfo = res.data.data.userInfo;
+            // const reviewlist = res.data.data.userReviews;
+            // const likes = res.data.data.userLikes;
+            // dispatch(setUserinfo(userinfo));
+            // dispatch(mypageReviews(reviewlist));
+            // dispatch(mypageLikes(likes));
+            // console.log(userData)
         }
     })
     .catch((err) => {
