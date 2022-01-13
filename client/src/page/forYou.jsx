@@ -19,14 +19,6 @@ const ForYou = ({ accessToken }) => {
     }
   });
 
-  // const handlesort = () => {
-  //   if (selected === '최신순') {
-  //     return getreviews()
-  //   }
-  //   return getLikereviews()
-
-  // }
-
   function getreviews() {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=date`, {

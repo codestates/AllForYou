@@ -28,10 +28,10 @@ router.get("/users/mypage/myReview", auth.accessToken, userRouter.myReview); // 
 router.get("/reviews", reviewRouter.reviewList); // 리뷰 전체 불러오기
 router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러오기
 
-router.get("/reviews", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부
-router.get("/reviews", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기
+router.get("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부
+router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기
 
-// router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
+router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
 
 router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeC) // 리뷰에 좋아요

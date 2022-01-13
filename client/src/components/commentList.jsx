@@ -1,13 +1,9 @@
 import React from "react";
-import style from "./comment.module.css";
+import style from "./commentList.module.css";
 
 const Comment = ({ comment, getComment }) => {
     // const [isEdit, setIsEdit] = useState(false);
     // const [commentValue, setCommentValue] = useState(comment.comment);
-
-    if (comment === null) {
-        return <></>;
-    }
 
     // const editComment = () => {
     //     axios
