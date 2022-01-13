@@ -4,18 +4,19 @@ import style from "./forYouView.module.css";
 import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setPost } from '../action/index';
 
 const ForYouView = ({ post, isLogin, accessToken }) => {
-  console.log({ post })
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
   const [likeColor, setLikeColor] = useState('#cccccc');
 
+  console.log("post state check", post);
+
   // 바로 첫 로딩 시 진행
   useEffect(() => {
-    getPostDetail();
+    // getPostDetail();
     // getComment();
     //   window.scrollTo(0, 0);
   }, []);
@@ -30,7 +31,7 @@ const ForYouView = ({ post, isLogin, accessToken }) => {
   //(이미지, 제목, 카테고리, 날짜, 글쓴이, 소개글, 리스트, 좋아요, 댓글)
   function getPostDetail() {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.reviewData.id}`) //post.reviewData.id
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`) //post.reviewData.id
       .then((res) => {
         if (res.status === 200) {
           dispatch(setPost(res.data.data));
@@ -112,7 +113,7 @@ const ForYouView = ({ post, isLogin, accessToken }) => {
 
   const getComment = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.reviewData.id}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${post.id}`)
       .then((res) => {
         setComment(res.data.data);
         console.log(res.data.data)
