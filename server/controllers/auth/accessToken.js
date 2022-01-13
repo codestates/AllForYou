@@ -2,7 +2,7 @@ const { verify } = require("jsonwebtoken");
 const { users } = require("../../models");
 
 exports.accessToken = async (req, res, next) => {
-  const cookie = req.cookies.accesstoken;
+  const cookie = req.cookies.jwt;
   try {
     if(!cookie) {
         return res.status(403).json({ message: "쿠키가 없습니다." });
