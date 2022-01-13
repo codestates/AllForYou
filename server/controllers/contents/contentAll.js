@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
                 "view": el.view,
             }
         })
-        console.log(contentsList)
+        // console.log(contentsList)
         return res.status(200).json({ data: contentsList, message: "successfully contents show all" })
     }
     catch (err) {
