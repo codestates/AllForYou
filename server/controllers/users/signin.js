@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
       sameSite: "None",
       httpOnly: true,
       secure: true
-    }).json({ message: "로그인에 성공하였습니다."});
+    }).json({ data: userData, message: "로그인에 성공하였습니다."});
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." });
