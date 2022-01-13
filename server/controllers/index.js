@@ -30,6 +30,7 @@ router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러
 
 router.get("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부
 router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기
+router.get("/reviews/content/:postId", reviewRouter.reviewContent); // 리뷰 컨텐츠 불러오기
 
 // router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제

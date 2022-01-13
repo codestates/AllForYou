@@ -49,9 +49,7 @@ const Login = () => {
       setTimeout(function() { setFailMessage(false) }, 3000);
     } else {
       axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData, {
-          withCredentials: true,
-        })
+        .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
           console.log(res.data)
           // const token = res.data.accessToken;
