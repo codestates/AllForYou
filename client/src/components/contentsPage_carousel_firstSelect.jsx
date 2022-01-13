@@ -104,7 +104,7 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
                 onClick={() => handleContentsInfo(el)}
               />
               <span className={style.title}>{el.title}</span>
-              <span className={style.like}>좋아요{}</span>
+              <span className={style.like}>좋아요{ }</span>
             </div>
           ))}
         </Slider>
