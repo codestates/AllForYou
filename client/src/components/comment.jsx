@@ -3,13 +3,13 @@ import style from "./comment.module.css";
 import CommentList from './commentList';
 
 const Comment = ({ comment, getComment }) => {
-    if (comment === null) {
+    if (comment.commentData === null) {
         return <></>;
     }
 
     return (
         <div className={style.container}>
-            {comment.map((comment) => (
+            {comment.commentData.map((comment) => (
                 <CommentList
                     key={comment.id}
                     comment={comment}

@@ -10,5 +10,5 @@ module.exports = {
   kakao: require("./kakao"),
   google: require("./google"),
 
-  // img: require("./img")
+  img: require("./img")
 };

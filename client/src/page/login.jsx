@@ -47,13 +47,7 @@ const Login = () => {
       setTimeout(function() { setFailMessage(false) }, 3000);
     } else {
       axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData, {
-          headers: {
-            cookies: `jwt ${accessToken}`,
-            "Content-Type": "application/json",
-        },
-          withCredentials: true,
-        })
+        .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
           console.log(res)
           const token = res.data.accessToken;

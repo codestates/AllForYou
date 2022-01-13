@@ -3,7 +3,6 @@ const { users } = require("../../models");
 const bcrypt = require('bcrypt'); // 비밀번호 암호화
 
 module.exports = async (req, res) => {
-  console.log(req)
   const { email, password } = req.body;
   try{
     const userInfo = await users.findOne({ where: { email: email }});
@@ -21,13 +20,13 @@ module.exports = async (req, res) => {
         user_picture: userInfo.dataValues.user_picture
     }
     console.log(userData)
-  
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });
-    return res.status(201).cookie("jwt", token, {
+  
+    return res.status(200).cookie("jwt", token, {
       sameSite: "None",
       httpOnly: true,
       secure: true
-    }).json({ message: "로그인에 성공하였습니다."});
+    }).json({ data: userData, message: "로그인에 성공하였습니다."});
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." });

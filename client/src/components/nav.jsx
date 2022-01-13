@@ -14,23 +14,15 @@ const Nav = () => {
   const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   const handleLogout = () => {
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, null, {
-        headers: {
-          cookies: `jwt ${accessToken}`,
-          "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
-          console.log(res)
-          // dispatch(setAccessToken(null));
+        console.log(res)
           dispatch(setUserinfo(null))
           dispatch(login(false));
-          // window.location.reload('/');
+          window.location.reload('/');
       })
       .catch((err) => {
-          console.log("서버 오류 입니다.")
+        console.log(err)
       })
   };
   console.log(isLogin)

@@ -9,6 +9,7 @@ module.exports = {
   reviewCommentG: require("./reviewCommentG"),
   reviewCommentC: require("./reviewCommentC"),
   reviewCommentD: require("./reviewCommentD"),
+  reviewContent: require("./reviewContent"),
 
-  // img: require("./img")
+  img: require("./img")
 };

@@ -16,7 +16,9 @@ import ResponsiveNav from "./components/responsiveNav";
 
 import ForYouWriting from "./page/forYouWriting";
 import ForYouView from "./page/forYouView";
+import axios from "axios";
 
+axios.defaults.withCredentials = true;
 
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
@@ -48,7 +50,7 @@ function App() {
         <Route path="/foryou" element={<ForYou accessToken={accessToken} />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
-        <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} />} />
+        <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} accessToken={accessToken} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
