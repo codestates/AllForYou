@@ -18,7 +18,7 @@ router.get("/users/google", userRouter.google); // google 로그인(완료)
 
 //mypage
 router.get("/users/mypage", auth.accessToken, userRouter.userInfo); // 유저정보 확인, 좋아요 누른 컨텐츠 5개, 내가쓴 리뷰글 5개(완료)
-router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정(완료)
+// router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정(완료)
 router.delete("/users/mypage", auth.accessToken, userRouter.withdrawal); // 회원탈퇴(완료)
 
 router.get("/users/mypage/myLike", auth.accessToken, userRouter.myLike); // 내가 좋아요 누른 컨텐츠 more(완료)
@@ -40,12 +40,12 @@ router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCom
 router.delete("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeD); // 리뷰 좋아요 지우기
 router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentD); // 리뷰 댓글 지우기
 
-//contents(세환 진행중)
+//contents
 router.get("/contents", contentRouter.listAll); // 컨텐츠 전체 불러오기(완료)
-router.get("/contents/category/:categoryName", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링(진행중)
-router.get("/filter", contentRouter.secondfilter); // 컨텐츠 카테고리&타입 최신 순, 좋아요 순 필터링(진행중)
-router.get("/contents/:contentId", contentRouter.detail); // 컨텐츠 하나 선택
-router.get("/search", contentRouter.search); // 컨텐츠 검색
+router.get("/contents/category/:categoryName", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링(완료)
+router.get("/filter", contentRouter.secondfilter); // 컨텐츠 카테고리&타입 최신순, 좋아요 순 필터링(완료)
+router.get("/contents/:contentId", contentRouter.detail); // 컨텐츠 하나 선택(완료)
+router.get("/search", contentRouter.search); // 컨텐츠 검색(완료)
 
 module.exports = router;
 
