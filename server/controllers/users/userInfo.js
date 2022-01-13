@@ -16,11 +16,12 @@ module.exports = async (req, res) => {
     // 내가 좋아요한 컨텐츠나 리뷰를 5개 추려서 주기
     const userLikes = await likes.findAll({
       where: { user_id: id },
+      attributes: [ "createdAt" ],
       include: [
-        { model: contents, attributes: [ "id", "content_name" ]},
+        { model: contents, attributes: [ "id", "title" ]},
         { model: reviews, attributes: [ "id", "title" ]}
       ],
-      order: [['createAt', 'DESC']],
+      order: [['createdAt', 'DESC']],
       limit: 5
     })
     

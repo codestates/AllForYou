@@ -15,18 +15,12 @@ const Nav = () => {
 
   const handleLogout = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, null, {
-        headers: {
-          cookies: `jwt ${accessToken}`,
-          "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
-      .then((res) => {
-          console.log(res)
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, {withCredentials: true})
+      .then(() => {
+          // console.log(res)
           // dispatch(setAccessToken(null));
-          dispatch(setUserinfo(null))
-          dispatch(login(false));
+          // dispatch(setUserinfo(null))
+          // dispatch(login(false));
           // window.location.reload('/');
       })
       .catch((err) => {
