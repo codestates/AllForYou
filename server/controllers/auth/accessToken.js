@@ -2,13 +2,12 @@ const { verify } = require("jsonwebtoken");
 const { users } = require("../../models");
 
 exports.accessToken = async (req, res, next) => {
-  console.log(req)
-  const AFUcookie = req.cookies.jwt;
+  const cookie = req.cookies.jwt;
   try {
-    if(!AFUcookie) {
+    if(!cookie) {
         return res.status(403).json({ message: "쿠키가 없습니다." });
     }
-    await verify(AFUcookie, process.env.ACCESS_SECRET, async (err, data) => {
+    await verify(cookie, process.env.ACCESS_SECRET, async (err, data) => {
         if (err) {
             return res.status(403).json({ message: "쿠키값이 맞지 않습니다." });
           }
@@ -17,7 +16,7 @@ exports.accessToken = async (req, res, next) => {
     if (!userInfo) {
         return res.status(400).json({ message: "유저가 존재하지 않습니다." });
       }
-    req.authorizations.id = userInfo.id;
+    req.cookies.id = userInfo.id;
     next();
   }
   catch(err) {

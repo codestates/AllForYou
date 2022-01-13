@@ -3,7 +3,6 @@ const { users } = require("../../models");
 const bcrypt = require('bcrypt'); // 비밀번호 암호화
 
 module.exports = async (req, res) => {
-  console.log(req)
   const { email, password } = req.body;
   try{
     const userInfo = await users.findOne({ where: { email: email }});
