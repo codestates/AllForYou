@@ -9,7 +9,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
+  const { jwt } = useSelector((state) => state.accessTokenReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -48,10 +48,6 @@ const Login = () => {
     } else {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData, {
-          headers: {
-            AFUcookie: `jwt ${accessToken}`,
-            "Content-Type": "application/json",
-        },
           withCredentials: true,
         })
         .then((res) => {

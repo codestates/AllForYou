@@ -15,11 +15,7 @@ const Nav = () => {
 
   const handleLogout = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, null, {
-        headers: {
-          cookies: `jwt ${accessToken}`,
-          "Content-Type": "application/json",
-      },
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, {
       withCredentials: true,
     })
       .then((res) => {
