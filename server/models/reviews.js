@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     text: DataTypes.TEXT,
     image: DataTypes.STRING
   }, {
+    timestamps: false,
     sequelize,
     modelName: 'reviews',
   });

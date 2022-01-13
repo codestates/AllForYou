@@ -3,6 +3,7 @@ const { users } = require("../../models");
 const bcrypt = require('bcrypt'); // 비밀번호 암호화
 
 module.exports = async (req, res) => {
+  console.log(req)
   const { email, password } = req.body;
   try{
     const userInfo = await users.findOne({ where: { email: email }});
@@ -22,7 +23,7 @@ module.exports = async (req, res) => {
     console.log(userData)
   
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });
-    return res.status(200).cookie("jwt", token, {
+    return res.status(201).cookie("jwt", token, {
       sameSite: "None",
       httpOnly: true,
       secure: true
