@@ -10,5 +10,5 @@ module.exports = {
   reviewCommentC: require("./reviewCommentC"),
   reviewCommentD: require("./reviewCommentD"),
 
-  // img: require("./img")
+  img: require("./img")
 };
