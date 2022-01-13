@@ -4,21 +4,21 @@ import style from "./forYouView.module.css";
 import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setPost } from '../action/index';
 
-const ForYouView = ({ post, isLogin }) => {
+const ForYouView = ({ post, isLogin, accessToken }) => {
+  console.log({ post })
   const dispatch = useDispatch();
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
   const [comment, setComment] = useState('');
   const [likeColor, setLikeColor] = useState('#cccccc');
 
   // 바로 첫 로딩 시 진행
-  // useEffect(() => {
-  //   getPostDetail();
-  //   getComment();
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    getPostDetail();
+    // getComment();
+    //   window.scrollTo(0, 0);
+  }, []);
 
   // useEffect(() => {
   //   if (isLogin) {
@@ -28,18 +28,19 @@ const ForYouView = ({ post, isLogin }) => {
 
   //axios 정보 가져오기
   //(이미지, 제목, 카테고리, 날짜, 글쓴이, 소개글, 리스트, 좋아요, 댓글)
-  // async function getPostDetail() {
-  //   await axios
-  //     .get(`${process.env.REACT_APP_API_URL}/reviews/${post.id}`)
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         dispatch(setPost(res.data.reviewInfo));
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     });
-  // }
+  function getPostDetail() {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.reviewData.id}`) //post.reviewData.id
+      .then((res) => {
+        if (res.status === 200) {
+          dispatch(setPost(res.data.data));
+          console.log(res.data.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
 
   // const getLikeInfo = () => {
   //   axios
@@ -68,52 +69,53 @@ const ForYouView = ({ post, isLogin }) => {
   //   return;
   // };
 
-  // const likePost = () => {
-  //   if (likeColor === '#cccccc') {
-  //     axios
-  //       .post(
-  //         `${process.env.REACT_APP_API_URL}/reviews/like`,
-  //         {
-  //           id: post.id,
-  //         },
-  //         {
-  //           headers: {
-  //             cookies: `jwt ${accessToken}`,
-  //           },
-  //           withCredentials: true,
-  //         },
-  //       )
-  //       .then(() => {
-  //         setLikeColor('#d62d20');
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       });
-  //   } else {
-  //     axios
-  //       .delete(`${process.env.REACT_APP_API_URL}/reviews/like`, {
-  //         data: {
-  //           id: post.id,
-  //         },
-  //         headers: {
-  //           cookies: `jwt ${accessToken}`,
-  //         },
-  //         withCredentials: true,
-  //       })
-  //       .then(() => {
-  //         setLikeColor('#cccccc');
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       });
-  //   }
-  // };
+  const likePost = () => {
+    if (likeColor === '#cccccc') {
+      axios
+        .post(
+          `${process.env.REACT_APP_SERVER_URL}/reviews/like`,
+          {
+            id: post.id,
+          },
+          {
+            headers: {
+              cookies: `jwt ${accessToken}`,
+            },
+            withCredentials: true,
+          },
+        )
+        .then(() => {
+          setLikeColor('#d62d20');
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    } else {
+      axios
+        .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/like`, {
+          data: {
+            id: post.id,
+          },
+          headers: {
+            cookies: `jwt ${accessToken}`,
+          },
+          withCredentials: true,
+        })
+        .then(() => {
+          setLikeColor('#cccccc');
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    }
+  };
 
   const getComment = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/reviews/comment/${post.id}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.reviewData.id}`)
       .then((res) => {
-        setComment(res.data.data); //추후 서버 data 확인 필요
+        setComment(res.data.data);
+        console.log(res.data.data)
       })
       .catch((err) => {
         console.log(err)
@@ -147,7 +149,8 @@ const ForYouView = ({ post, isLogin }) => {
             <div className={style.icon}>
               <i className="fas fa-heart"
                 style={{ color: `${likeColor}` }}
-              // onClick={() => checkLoginStatus(likePost)}
+                // onClick={() => checkLoginStatus(likePost)} //로그인 되면 테스트
+                onClick={() => likePost()}
               ></i>
             </div>
           </div>
@@ -158,7 +161,12 @@ const ForYouView = ({ post, isLogin }) => {
               <span className={style.list_part}>구분</span>
               <span className={style.list_like}>좋아요</span>
             </div>
-            {/* <Recommend post={post} /> */}
+            {/* {post.contentData.map((post) => (
+              <Recommend
+                post={post}
+                key={post.idx}
+              />
+            ))} */}
           </div>
           <div className={style.shareBox}>
             <button className={style.btnUrl}>URL 공유하기</button>

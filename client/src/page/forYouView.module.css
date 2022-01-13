@@ -55,10 +55,6 @@
   font-size: 1.2rem;
   font-weight: bold;
 }
-.textContent{
-  height: 10rem;
-  border: 1px solid black;
-}
 .listBox{
   margin: 0 auto;
   width: 37rem;
