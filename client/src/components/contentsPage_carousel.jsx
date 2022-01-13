@@ -93,7 +93,7 @@ const ContentsPage_carousel = ({ select_1_category }) => {
       <Wrap>
         <Slider {...settings} className={style.slick_list}>
           {select_1_category.map((el) => (
-            <div className={style.contents_container}>
+            <div className={style.contents_container} key={el.id}>
               <img
                 className={style.img_card}
                 src={el.image}
@@ -101,7 +101,7 @@ const ContentsPage_carousel = ({ select_1_category }) => {
                 onClick={() => handleContentsInfo(el)}
               />
               <span className={style.title}>{el.title}</span>
-              <span className={style.like}>좋아요{}</span>
+              <span className={style.like}>좋아요 {el.like}</span>
             </div>
           ))}
         </Slider>
