@@ -20,6 +20,7 @@ const ContentsPage_secondSelect = ({ select_2_contents }) => {
             onClick={() => handleContentsInfo(el)}
           />
           <span className={style.title}>{el.title}</span>
+          <span className={style.like}>좋아요{}</span>
         </div>
       ))}
     </div>

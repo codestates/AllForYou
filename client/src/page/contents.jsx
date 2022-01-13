@@ -17,7 +17,7 @@ const Contents = () => {
 
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
-  const [select_3, setSelect_3] = useState("ALL");
+  const [select_3, setSelect_3] = useState("new");
 
   const [contentsList, setContentsList] = useState([]);
 
@@ -69,7 +69,7 @@ const Contents = () => {
     setSelect_3(select.target.value);
   };
 
-  console.log(select_3);
+  console.log("select_3", select_3);
 
   return (
     <div className={style.container}>
@@ -320,6 +320,9 @@ const Contents = () => {
             </div>
           </div>
         </div>
+      ) : select_1 === "백색소리" &&
+        (select_2 === "movie" || select_2 === "book") ? (
+        <div className={style.comingsoon}>준비중입니다</div>
       ) : select_1 === "백색소리" && select_2 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.contents_part}>
