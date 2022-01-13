@@ -91,14 +91,6 @@
   color: rgb(211, 210, 209);
 }
 
-.contents {
-  /* margin: 1em; */
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #2e2d2d;
-  border-radius: 0.3em;
-}
-
 .select_1_All_container {
   margin: 1.5em 1.5em 0 1.5em;
   padding-bottom: 2em;
@@ -106,7 +98,17 @@
   flex-wrap: wrap;
 }
 
+.contents {
+  /* margin: 1em; */
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #2e2d2d;
+  border-radius: 0.3em;
+  justify-content: space-around;
+}
+
 .contents_part {
+  position: relative;
   padding: 0.8em;
   margin: 1.6em;
   /* margin-right: 40em; */
