@@ -57,6 +57,7 @@ const ForYou = ({ accessToken }) => {
       });
   }
 
+
   useEffect(() => {
     getreviews()
   }, []);
@@ -89,7 +90,6 @@ const ForYou = ({ accessToken }) => {
           <select
             className={style.sort}
             onChange={(e) => setSelected(e.target.value)}
-          // onClick={() => handlesort()}
           >
             <option value="최신순">최신순</option>
             <option value="좋아요순">좋아요순</option>
@@ -98,13 +98,12 @@ const ForYou = ({ accessToken }) => {
         <button className={style.btn} onClick={() => navigate("/foryouwriting")}>리스트 작성하기</button>
       </div>
       <div className={style.cardContainer}>
-        {filteredCategory.map((review) => {
-          return <ForYouCard
+        {filteredCategory.map((review) => (
+          <ForYouCard
             key={review.id}
             review={review}
-            onClick={() => navigate("/foryouview")}
           />
-        })}
+        ))}
       </div>
     </div>
   );

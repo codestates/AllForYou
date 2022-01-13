@@ -1,7 +1,12 @@
 import React from "react";
 import style from "./forYouCard.module.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setPost } from "../action";
 
-const ForYouCard = ({ review, onClick }) => {
+const ForYouCard = ({ review }) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     // const handleClickShowmore = () => {
     //     history.push({
     //         pathname: `/planpage/${id}`,
@@ -51,8 +56,13 @@ const ForYouCard = ({ review, onClick }) => {
     //     dispatch(notify(`클립보드 복사 완료 🙌🏻`));
     // };
 
+    const handlePostInfo = () => {
+        dispatch(setPost(review));
+        navigate("/foryouview")
+    }
+
     return (
-        <div className={style.container} onClick={onClick}>
+        <div className={style.container} onClick={handlePostInfo}>
             <div
                 className={style.contentbox}
             // onClick={handleClickShowmore}

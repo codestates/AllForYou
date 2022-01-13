@@ -300,15 +300,3 @@ border: 1px solid rgb(167, 167, 167);
   border-radius: 0.5rem;
 }
 }
-
-@media screen and  (max-width:1023px) {
-.container{
-  border: 1px solid blue;
-}
-}
-
-@media screen and  (max-width:767px) {
-.container{
-  border: 1px solid red;
-}
-}
