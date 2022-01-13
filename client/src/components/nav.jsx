@@ -1,3 +1,5 @@
+
+   
 import React from "react";
 import style from "./nav.module.css";
 import axios from "axios";
@@ -15,12 +17,8 @@ const Nav = () => {
 
   const handleLogout = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, {
-      withCredentials: true,
-    })
-      .then((res) => {
-          console.log(res)
-          // dispatch(setAccessToken(null));
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, {withCredentials: true})
+      .then(() => {
           dispatch(setUserinfo(null))
           dispatch(login(false));
           // window.location.reload('/');

@@ -1,3 +1,5 @@
+
+   
 import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
@@ -9,7 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const { jwt } = useSelector((state) => state.accessTokenReducer);
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -51,9 +53,9 @@ const Login = () => {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res)
-          const token = res.data.accessToken;
-          dispatch(setAccessToken(token));
+          console.log(res.data)
+          // const token = res.data.accessToken;
+          // dispatch(setAccessToken(token));
           dispatch(login(true));
           setEmail("");
           setPassword("");
@@ -146,4 +148,3 @@ const Login = () => {
 
 
 export default Login;
-

@@ -41,13 +41,14 @@ const MyPage = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, { withCredentials: true })
     .then((res) => {
         if(res) {
-          console.log(res.data)
+            console.log(res.data)
+            // console.log(res.data.data.userInfo)
             // const userinfo = res.data.data.userInfo;
-            // const reviewlist = res.data.data.userReviews;
-            // const likes = res.data.data.userLikes;
+            const reviewlist = res.data.data.userReviews;
+            const likes = res.data.data.userLikes;
             // dispatch(setUserinfo(userinfo));
-            // dispatch(mypageReviews(reviewlist));
-            // dispatch(mypageLikes(likes));
+            dispatch(mypageReviews(reviewlist));
+            dispatch(mypageLikes(likes));
             // console.log(userData)
         }
     })
