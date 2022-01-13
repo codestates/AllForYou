@@ -38,7 +38,7 @@ const MyPage = () => {
   };
 
   const isAuthenticated = () => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
     .then((res) => {
         if(res) {
             console.log(res.data)
