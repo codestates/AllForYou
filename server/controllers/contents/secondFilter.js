@@ -6,6 +6,7 @@ module.exports = async(req, res) => {
     const categoryFilter = req.query.c;
     const typeFilter = req.query.t;
     const type = req.query.s;
+    const contentsId = req.cookies.id;
     try {
         const categoryData = await contents.findAll({
             where:{
@@ -52,7 +53,28 @@ module.exports = async(req, res) => {
         else {
             contentsList = contentsList.sort((a, b) => b.year - a.year)
         }
-        return res.status(200).json({data: contentsList, message: "successfully viewed the data type individual page"})
+
+        const likesData = await likes.findAll({
+            whehe : {
+                user_id: contentsId
+            },
+            attributes: [
+                "content_id"
+            ]
+        })
+
+        let likesList = likesData.map((el) => {
+            return {
+                "content_id": el.content_id
+            }
+        })
+
+        const contentsDataSend = {
+            contentsList: contentsList,
+            likesList: likesList
+        }
+
+        return res.status(200).json({data: contentsDataSend, message: "successfully viewed the data type individual page"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })

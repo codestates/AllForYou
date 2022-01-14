@@ -1,7 +1,7 @@
 const { contents, likes } = require("../../models");
 
 module.exports = async (req, res) => {
-    const id = req.cookies.id;
+    const contentsId = req.cookies.id;
     try {
         const contentsData = await contents.findAll({
             attributes: [
@@ -47,13 +47,12 @@ module.exports = async (req, res) => {
 
         const likesData = await likes.findAll({
             whehe : {
-                user_id: id
+                user_id: contentsId
             },
             attributes: [
                 "content_id"
             ]
         })
-        // console.log(likesData)
 
         let likesList = likesData.map((el) => {
             return {
@@ -62,7 +61,7 @@ module.exports = async (req, res) => {
         })
         // console.log(likesList)
 
-        let contentsDataSend = {
+        const contentsDataSend = {
             contentsList: contentsList,
             likesList: likesList
         }

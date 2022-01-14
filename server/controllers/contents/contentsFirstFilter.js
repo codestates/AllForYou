@@ -2,6 +2,7 @@ const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
     const filter = req.params.categoryName;
+    const contentsId = req.cookies.id;
     try {
         const contentsFirstFilter = await contents.findAll({
             where: {
@@ -31,8 +32,28 @@ module.exports = async(req, res) => {
                 "view": el.view,
             }
         })
-        console.log(contentsList)
-        return res.status(200).json({data: contentsList, message: "successfully viewed the category individual page"})
+
+        const likesData = await likes.findAll({
+            whehe : {
+                user_id: contentsId
+            },
+            attributes: [
+                "content_id"
+            ]
+        })
+
+        let likesList = likesData.map((el) => {
+            return {
+                "content_id": el.content_id
+            }
+        })
+
+        const contentsDataSend = {
+            contentsList: contentsList,
+            likesList: likesList
+        }
+        
+        return res.status(200).json({data: contentsDataSend, message: "successfully viewed the category individual page"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })
