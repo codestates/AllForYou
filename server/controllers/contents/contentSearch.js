@@ -4,6 +4,7 @@ const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
     const searchWord = req.query.query;
+    const contentsId = req.cookies.id;
     try {
         const contentData = await contents.findAll({
             where:{
@@ -44,6 +45,7 @@ module.exports = async(req, res) => {
                 { model: likes, attributes: [ "id" ] }
             ]
         })
+
         let contentsList = contentData.map((el) => {
             return {
                 "id": el.id,
@@ -63,7 +65,29 @@ module.exports = async(req, res) => {
                 "view": el.view,
             }
         })
-        res.status(200).json({data: contentsList, message: 'list import successful'})
+        console.log(contentsList)
+
+        const likesData = await likes.findAll({
+            whehe : {
+                user_id: contentsId
+            },
+            attributes: [
+                "content_id"
+            ]
+        })
+
+        let likesList = likesData.map((el) => {
+            return {
+                "content_id": el.content_id
+            }
+        })
+
+        const contentsDataSend = {
+            contentsList: contentsList,
+            likesList: likesList
+        }
+
+        res.status(200).json({data: contentsDataSend, message: 'list import successful'})
     }
     catch(err) {
         res.status(500).json({ message: 'server error' })
