@@ -4,8 +4,8 @@ import style from "./commentInput.module.css";
 import { loginModal, setMessageModal } from '../action/index';
 import { useDispatch } from 'react-redux';
 
-const CommentInput = ({ getComment, post, isLogin, accessToken }) => {
-    const [comment, setComment] = useState('');
+const CommentInput = ({ getComment, post, isLogin }) => {
+    const [comment, setComment] = useState([]);
     const dispatch = useDispatch();
 
     const sendCommentToServer = () => {
@@ -19,15 +19,9 @@ const CommentInput = ({ getComment, post, isLogin, accessToken }) => {
 
         axios
             .post(
-                `${process.env.REACT_APP_API_URL}/reviews/comment/${post.id}`,
+                `${process.env.REACT_APP_SERVER_URL}/reviews/comment/${post.id}`,
                 {
                     comment: comment,
-                },
-                {
-                    headers: {
-                        cookies: `jwt ${accessToken}`,
-                    },
-                    withCredentials: true,
                 },
             )
             .then(() => {
@@ -38,7 +32,7 @@ const CommentInput = ({ getComment, post, isLogin, accessToken }) => {
             .catch((err) => {
                 console.log(err)
             });
-    };
+    }
 
     return (
         <div className={style.commentBox}>
