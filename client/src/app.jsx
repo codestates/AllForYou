@@ -26,6 +26,7 @@ function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   const foru = useSelector((state) => state.foruReducer);
   const { messageModal, post } = foru
