@@ -73,6 +73,12 @@
 .icon > svg{
   margin-right: 0.3rem;
 }
+.icon > svg:hover{
+  color:#d62d20;
+}
+.icon:hover{
+  color:#d62d20;
+}
 .icon{
   font-size:1.1rem;
   padding-bottom: 0.5rem;
