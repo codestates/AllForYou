@@ -47,9 +47,6 @@
   font-size:0.7rem;
   margin-top: 0.4rem;
 }
-.icon:hover, .iconText:hover{
-  color:rgb(186, 19, 19);
-}
 .writer{
   margin: 0;
 }

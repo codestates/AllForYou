@@ -5,7 +5,7 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch } from 'react-redux';
-import { setPost } from '../action/index';
+import { loginModal, setPost } from '../action/index';
 
 const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
@@ -23,11 +23,11 @@ const ForYouView = ({ post, isLogin }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  // useEffect(() => {
-  //   if (isLogin) {
-  //     getLikeInfo();
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (isLogin) {
+      getLikeInfo();
+    }
+  }, []);
 
   //axios 정보 가져오기
   //(이미지, 제목, 카테고리, 날짜, 글쓴이, 소개글, 리스트, 좋아요, 댓글)
@@ -51,7 +51,6 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setContent(res.data.data);
-          console.log('content', res.data.data)
         }
       })
       .catch((err) => {
@@ -59,36 +58,35 @@ const ForYouView = ({ post, isLogin }) => {
       });
   }
 
-  // const getLikeInfo = () => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URL}/reviews/like/${post.id}`)
-  //     .then((res) => {
-  //       if (res.data.like) { //추후 서버 확인 필요(true면 색 변경)
-  //         setLikeColor('#d62d20');
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     });
-  // };
+  const getLikeInfo = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
+      .then((res) => {
+        if (res.data.data) { //추후 서버 확인 필요(true면 색 변경)
+          setLikeColor('#d62d20');
+          console.log('like', res.data.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  };
 
-  // const checkLoginStatus = (callback) => {
-  //   if (isLogin) {
-  //     callback();
-  //   } else {
-  //     // dispatch(setLoginModal(true)); //추후 세환님 모달 확인 후 적용 필요
-  //   }
-  //   return;
-  // };
+  const checkLoginStatus = (callback) => {
+    if (isLogin) {
+      callback();
+    } else {
+      dispatch(loginModal(true));
+      return;
+    }
+    return;
+  };
 
   const likePost = () => {
     if (likeColor === '#cccccc') {
       axios
         .post(
-          `${process.env.REACT_APP_SERVER_URL}/reviews/like`,
-          {
-            id: post.id,
-          })
+          `${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
         .then(() => {
           setLikeColor('#d62d20');
         })
@@ -97,11 +95,7 @@ const ForYouView = ({ post, isLogin }) => {
         });
     } else {
       axios
-        .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/like`, {
-          data: {
-            id: post.id,
-          }
-        })
+        .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
         .then(() => {
           setLikeColor('#cccccc');
         })
@@ -116,7 +110,6 @@ const ForYouView = ({ post, isLogin }) => {
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${post.id}`)
       .then((res) => {
         setComment(res.data.data);
-        console.log(res.data.data);
       })
       .catch((err) => {
         if (err) throw err;
@@ -147,11 +140,12 @@ const ForYouView = ({ post, isLogin }) => {
         <div className={style.listBox}>
           <div className={style.texthead}>
             <p className={style.listTitle}>추천 리스트</p>
-            <div className={style.icon}>
+            <div
+              className={style.icon}
+              onClick={() => checkLoginStatus(likePost)}
+            >
               <i className="fas fa-heart"
                 style={{ color: `${likeColor}` }}
-                // onClick={() => checkLoginStatus(likePost)} //로그인 되면 테스트
-                onClick={() => likePost()}
               ></i>
             </div>
           </div>

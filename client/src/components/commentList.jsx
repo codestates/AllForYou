@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import style from "./commentList.module.css";
 import { useSelector } from 'react-redux';
 
@@ -7,43 +8,38 @@ const Comment = ({ comment, getComment }) => {
     const [isEdit, setIsEdit] = useState(false);
     const [commentValue, setCommentValue] = useState(comment.comment);
 
-    // const editComment = () => {
-    //     axios
-    //         .patch(
-    //             `${process.env.REACT_APP_API_URL}/comments/${comment.id}`,
-    //             {
-    //                 comment: commentValue,
-    //             },
-    //             {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     Authorization: `Bearer ${localStorage.accessToken}`,
-    //                 },
-    //             },
-    //         )
-    //         .then(() => {
-    //             setIsEdit(false);
-    //             getCommentList();
-    //         })
-    //         .catch((err) => {
-    //             if (err) throw err;
-    //         });
-    // };
+    const editComment = () => {
+        axios
+            .patch(
+                `${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`,
+                {
+                    comment: commentValue,
+                    id: comment.id
+                },
+            )
+            .then(() => {
+                setIsEdit(false);
+                getComment();
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
 
-    // const deleteComment = () => {
-    //     axios
-    //         .delete(`${process.env.REACT_APP_API_URL}/comments/${comment.id}`, {
-    //             headers: {
-    //                 Authorization: `Bearer ${localStorage.accessToken}`,
-    //             },
-    //         })
-    //         .then(() => {
-    //             getCommentList();
-    //         })
-    //         .catch((err) => {
-    //             if (err) throw err;
-    //         });
-    // };
+    const deleteComment = () => {
+        axios
+            .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`,
+                {
+                    id: comment.id
+                },
+            )
+            .then(() => {
+                getComment();
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    };
 
     return (
         <div className={style.box}>
@@ -51,38 +47,44 @@ const Comment = ({ comment, getComment }) => {
                 <div className={style.userBox}>
                     <img className={style.img} />
                     <div className={style.name}>{comment.nickname}</div>
-                    <div >
-                        <i className="fas fa-check"></i>
-                        <i
-                            className="fas fa-times"
-                        ></i>
-                    </div>
-                    <div>
-                        <i className="fas fa-edit"></i>
-                        <i className="fas fa-trash-alt"></i>
-                    </div>
-                    {/* {comment.nickname === nickname ? (
-                        <React.Fragment>
-                            <div className={isEdit ? null : 'hide'}>
-                                <i className="fas fa-check" onClick={editComment}></i>
-                                <i
-                                    className="fas fa-times"
+                    {comment.nickname === nickname ? (
+                        <>
+                            <div className={`${isEdit ? null : style.hide}`}>
+                                <span className={style.confirmBtn} onClick={editComment}>
+                                    <i className="fas fa-check" ></i>
+                                </span>
+                                <span
+                                    className={style.gobackBtn}
                                     onClick={() => {
                                         setIsEdit(false);
                                         setCommentValue(comment.comment);
-                                    }}
-                                ></i>
+                                    }}>
+                                    <i className="fas fa-times"></i>
+                                </span>
                             </div>
-                            <div className={isEdit ? 'hide' : null}>
-                                <i className="fas fa-edit" onClick={() => setIsEdit(true)}></i>
-                                <i className="fas fa-trash-alt" onClick={deleteComment}></i>
+                            <div className={`${isEdit ? style.hide : null}`}>
+                                <button
+                                    className={style.correctionBtn}
+                                    onClick={() => setIsEdit(true)}
+                                >수정</button>
+                                <button
+                                    className={style.cancelBtn}
+                                    onClick={deleteComment}
+                                >삭제</button>
                             </div>
-                        </React.Fragment>
-                    ) : null} */}
+                        </>
+                    ) : null}
                 </div>
                 <div className={style.date}>{comment.createdAt}</div>
             </div>
-            <div className={style.comment}>{comment.comment}</div>
+            <textarea
+                className={`${isEdit ? null : style.hide}`}
+                type="text"
+                value={commentValue}
+                onChange={(e) => setCommentValue(e.target.value)}
+                maxLength="300"
+            ></textarea>
+            <div className={`${isEdit ? style.hide : style.comment}`}>{comment.comment}</div>
         </div>
     );
 };
