@@ -1,0 +1,35 @@
+const { reviews, reviews_contents } = require("../../models");
+
+module.exports = async (req, res) => {
+  const review_id = req.params.postId;
+  const { category, title, text, content_id } = req.body; // 컨텐츠 데이터 id를 받아온다.
+  const image = req.file.location;
+
+  try{
+    const rewiewData = await reviews.update(
+      { category: category, title: title, text: text, image: image, updateAt: new Date() },
+      { where: { id: review_id } }
+    );
+
+    // reviews_contents 테이블 클리어
+    content_id.map(async (el) => {
+      await reviews_contents.destroy({ 
+        review_id: rewiewData.id,
+        content_id: el
+      })
+    })
+
+    // 받아온 id값을 이용하여 테이블 재생성
+    content_id.map(async (el) => {
+      await reviews_contents.create({ 
+        review_id: rewiewData.id,
+        content_id: el
+      })
+    })
+
+    return res.status(201).json({ data: rewiewData.id, message: "리뷰 수정완료." });
+  }
+  catch(err) {
+    return res.status(500).json({ data: err, message: "서버 오류." });
+  }
+}

@@ -1,9 +1,9 @@
 const { users, comments } = require("../../models");
 
 module.exports = async (req, res) => {
-  const review_id = req.params.postId; // 리뷰아이디
-  const user_id = req.cookies.id; // 유저아이디
-  const id = req.body.id; // 댓글아이디
+  const review_id = req.params.postId;
+  const user_id = req.cookies.id;
+  const { comment, id } = req.body;
 
   try{
     const commentsInfo = await comments.findOne({
@@ -17,8 +17,8 @@ module.exports = async (req, res) => {
     if(!commentsInfo) {
       return res.status(409).send('잘못된 요청입니다.');
     }
-
-    await comments.destroy({ where: { id: id }});
+    
+    await comments.update({ comment: comment },{ wherer: { id: id, user_id: user_id, review_id: review_id }});
 
     const reviewCommentData = await comments.findAll({ 
       where: { review_id: review_id },
@@ -38,7 +38,7 @@ module.exports = async (req, res) => {
       }
     })
 
-    return res.status(201).json({ data: reviewComments, message: "댓글 제거완료." });
+    return res.status(201).json({ data: reviewComments, message: "댓글 수정완료." });
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." });

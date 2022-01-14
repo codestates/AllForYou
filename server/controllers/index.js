@@ -18,29 +18,32 @@ router.get("/users/google", userRouter.google); // google 로그인(완료)
 
 //mypage
 router.get("/users/mypage", auth.accessToken, userRouter.userInfo); // 유저정보 확인, 좋아요 누른 컨텐츠 5개, 내가쓴 리뷰글 5개(완료)
-router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정(완료)
+router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정
 router.delete("/users/mypage", auth.accessToken, userRouter.withdrawal); // 회원탈퇴(완료)
 
 router.get("/users/mypage/myLike", auth.accessToken, userRouter.myLike); // 내가 좋아요 누른 컨텐츠 more(완료)
 router.get("/users/mypage/myReview", auth.accessToken, userRouter.myReview); // 내가쓴 리뷰글 more(완료)
 
 //reviews(재영 진행중)
-router.get("/reviews", reviewRouter.reviewList); // 리뷰 전체 불러오기
-router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러오기
+router.get("/reviews", reviewRouter.reviewList); // 리뷰 전체 불러오기(완료)
+router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러오기(완료)
 
-router.get("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부
-router.get("/reviews/get/userlike", auth.accessToken, reviewRouter.reviewUserLike); // 사용자가 좋아요 한 리뷰리스트
-router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기
-router.get("/reviews/content/:postId", reviewRouter.reviewContent); // 리뷰 컨텐츠 불러오기
+router.get("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부(완료)
+router.get("/reviews/get/userlike", auth.accessToken, reviewRouter.reviewUserLike); // 사용자가 좋아요 한 리뷰리스트(완료)
+router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기(완료)
+router.get("/reviews/content/:postId", reviewRouter.reviewContent); // 리뷰 컨텐츠 불러오기(완료)
 
-router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
+router.post("/reviews", auth.accessToken, reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
+router.patch("reviews/:postId", auth.accessToken, reviewRouter.img, reviewRouter.modifyRewiew)
 
-router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeC) // 리뷰에 좋아요
-router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentC) // 리뷰에 댓글 작성
+router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeC) // 리뷰에 좋아요(완료)
+router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentC) // 리뷰에 댓글 작성 (시간값 오류)
 
-router.delete("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeD); // 리뷰 좋아요 지우기
-router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentD); // 리뷰 댓글 지우기
+router.delete("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeD); // 리뷰 좋아요 지우기(완료)
+router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentD); // 리뷰 댓글 지우기(완료)
+
+router.patch("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentP); // 리뷰 댓글 수정
 
 //contents
 router.get("/contents", contentRouter.listAll); // 컨텐츠 전체 불러오기(완료)
