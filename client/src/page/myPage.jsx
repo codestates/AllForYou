@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./myPage.module.css";
 import { useSelector } from 'react-redux';
-import dummy from "../dummy/dummy";
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";

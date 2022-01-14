@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import style from "./mypageBox.module.css";
+import MyReviewsDetail from "../page/myReviewsDetail";
+import MyLikesDetail from "../page/myLikesDetail";
 
 function MyPageBox({ reviews, likes }) {
-
-    // const reviewTwo = reviews[1].createdAt.split('T')[0]
-    // const reviewsDateCheck = new Date(firstReviewDate[0]); 
-    // const reviewYear = reviewsDateCheck.getFullYear(); 
-    // const reviewMonth = reviewsDateCheck.getMonth() + 1; 
-    // const reviewDay = reviewsDateCheck.getDate(); 
-    // reviewDate.push(`${reviewYear}-${reviewMonth >= 10 ? reviewMonth : '0' + reviewMonth}-${reviewDay >= 10 ? reviewDay : '0' + reviewDay}`);
-    // const likesDateCheck = new Date(firstLikeDate[0]); 
-    // const likeYear = likesDateCheck.getFullYear(); 
-    // const likeMonth = likesDateCheck.getMonth() + 1; 
-    // const likeDay = likesDateCheck.getDate(); 
-    // likeDate.push(`${likeYear}-${likeMonth >= 10 ? likeMonth : '0' + likeMonth}-${likeDay >= 10 ? likeDay : '0' + likeDay}`);
-    // console.log(reviewDate)
-    // console.log(likeDate)
 
     return (
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
-        <button className={style.more_button}>more
-            <p className={style.more_icon}><i className="fas fa-angle-right" /></p>
+        <button className={style.more_button} >more
+            <p className={style.more_icon}>
+                <i className="fas fa-angle-right" >
+                    <MyReviewsDetail />
+                </i>
+            </p>
         </button>
         <div className={style.box}>
             {reviews ? (
@@ -93,7 +85,11 @@ function MyPageBox({ reviews, likes }) {
                 </div>
                 <span className={style.likes_title}>좋아요 표시한 콘텐츠</span>
                 <button className={style.more_button}>more
-                    <p className={style.more_icon}><i className="fas fa-angle-right" /></p>
+                    <p className={style.more_icon}>
+                        <i className="fas fa-angle-right" >
+                            <MyLikesDetail />
+                        </i>
+                    </p>
                 </button>
                 <div className={style.box}>
                     {likes ? (
