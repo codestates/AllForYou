@@ -18,7 +18,7 @@ router.get("/users/google", userRouter.google); // google 로그인(완료)
 
 //mypage
 router.get("/users/mypage", auth.accessToken, userRouter.userInfo); // 유저정보 확인, 좋아요 누른 컨텐츠 5개, 내가쓴 리뷰글 5개(완료)
-// router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정(완료)
+router.patch("/users/mypage", auth.accessToken, userRouter.img, userRouter.modifyUser); // 회원정보 수정(완료)
 router.delete("/users/mypage", auth.accessToken, userRouter.withdrawal); // 회원탈퇴(완료)
 
 router.get("/users/mypage/myLike", auth.accessToken, userRouter.myLike); // 내가 좋아요 누른 컨텐츠 more(완료)
@@ -32,7 +32,7 @@ router.get("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeG);
 router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기
 router.get("/reviews/content/:postId", reviewRouter.reviewContent); // 리뷰 컨텐츠 불러오기
 
-router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
+// router.post("/reviews", auth.accessToken,reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
 
 router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeC) // 리뷰에 좋아요
@@ -49,7 +49,3 @@ router.get("/contents/:contentId", contentRouter.detail); // 컨텐츠 하나 �
 router.get("/search", contentRouter.search); // 컨텐츠 검색(완료)
 
 module.exports = router;
-
-//https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
-//https://github.com/codestates/DokDok-server
-//https://github.com/codestates/DokDok-client
