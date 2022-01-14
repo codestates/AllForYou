@@ -8,14 +8,29 @@ import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
 import ContentsModal from "../components/contentsModal";
 import ComingSoon from "../components/comingSoon";
 import ContentsSearchList from "../components/contentsSearchList";
+import { useDispatch, useSelector } from "react-redux";
+import { scrollTop } from "../action";
 import axios from "axios";
-
-import { useSelector } from "react-redux";
 
 const Contents = () => {
   const modal = useSelector(
     (state) => state.contentsModalReducer.contentsModal.modalOnOff
   );
+
+  const dispatch = useDispatch();
+
+  const selectLength = useSelector(
+    (state) => state.contentsScrollReducer.contentsScroll.scrollLength
+  );
+
+  const buttonOnOff = useSelector(
+    (state) => state.contentsScrollReducer.contentsScroll.buttonOnOff
+  );
+
+  console.log("buttonOnOff", buttonOnOff);
+
+  console.log("window", window.pageYOffset);
+  // console.log("scrollTop", scrollTop);
 
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
@@ -113,6 +128,36 @@ const Contents = () => {
 
   console.log("select_3", select_3);
 
+  const handleFollow = () => {
+    dispatch(scrollTop(false, window.pageYOffset));
+    if (selectLength > 800) {
+      // 100 이상이면 버튼이 보이게
+      dispatch(scrollTop(true, window.pageYOffset));
+    } else {
+      // 100 이하면 버튼이 사라지게
+      dispatch(scrollTop(false, window.pageYOffset));
+    }
+  };
+
+  const handleTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    dispatch(scrollTop(false, 0));
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener("scroll", handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener("scroll", handleFollow);
+    };
+  });
+
   return (
     <div className={style.container}>
       <select
@@ -165,6 +210,17 @@ const Contents = () => {
         </select>
       ) : null}
       {modal === true ? <ContentsModal /> : null}
+      <div className={style.topBtnContainer}>
+        <button
+          className={`${buttonOnOff ? style.topbutton : style.deleteBtn}`} // 버튼 노출 여부
+          // className={style.topbutton}
+          onClick={handleTop} // 버튼 클릭시 함수 호출
+        >
+          <span className={style.triangle}>
+            <i className="fas fa-caret-up"></i>
+          </span>
+        </button>
+      </div>
       {contentsSearch.length !== 0 ? (
         <ContentsSearchList
           contentsSearch={contentsSearch}
