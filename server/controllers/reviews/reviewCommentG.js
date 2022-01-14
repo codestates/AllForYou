@@ -6,7 +6,8 @@ module.exports = async (req, res) => {
   try{
     const reviewCommentData = await comments.findAll({ 
       where: { review_id: review_id },
-      include: [{ model: users, attributes: ["nickname"] }]
+      include: [{ model: users, attributes: ["nickname"] }],
+      order: [['createdAt', 'DESC']]
     })
 
     const reviewComments = reviewCommentData.map((el) => {
@@ -21,7 +22,7 @@ module.exports = async (req, res) => {
       }
     })
 
-    return res.status(200).json({data: reviewComments, message: "리뷰정보 전달 완료."})
+    return res.status(200).json({ data: reviewComments, message: "리뷰정보 전달 완료." })
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." })

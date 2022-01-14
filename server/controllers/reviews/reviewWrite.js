@@ -22,12 +22,9 @@ module.exports = async (req, res) => {
         content_id: el
       })
     })
-    return res.status(201).json({ message: "리뷰 작성완료." });
+    return res.status(201).json({ data: rewiewData.id, message: "리뷰 작성완료." });
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." });
   }
 }
-
-// 컨텐츠 받을때 아이디값을 배열로 받아온다.
-// 리뷰 제목이 중첩이면 요청을 받지 말아야하는지
