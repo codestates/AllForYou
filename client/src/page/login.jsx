@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
-import SignupModal from "../components/signupModal";
 import { useSelector, useDispatch } from 'react-redux';
 import { loginModal, setNickname, setProfileImage, login, signupModal } from '../action/index';
 
@@ -9,8 +8,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
-  const { isLogin } = useSelector((state) => state.loginReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [failMessage, setFailMessage] = useState(false)
@@ -110,7 +107,7 @@ const Login = () => {
             <input
               className={style.myInfo}
               type="text"
-              placeholder="아이디"
+              placeholder="이메일"
               // value={email}
               onChange={onChangeEmail}
             />
