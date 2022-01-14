@@ -11,23 +11,13 @@ export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
-export const SET_USERINFO = 'SET_USERINFO';
 export const CONTENTS_MODAL = "CONTENTS_MODAL"
 export const SET_POST = 'SET_POST';
-
-// export const login = (booleanLogin, booleanAdmin, nickname, email, booleanOauth, profileimg) => {
-//     return {
-//         type: LOGIN,
-//         payload: {
-//             isLogin: booleanLogin,
-//             isAdmin: booleanAdmin,
-//             nickname: nickname,
-//             email: email,
-//             isOauth: booleanOauth,
-//             profileimg: profileimg
-//         },
-//     };
-// };
+export const SET_NICKNAME = 'SET_NICKNAME';
+export const SET_EMAIL = 'SET_EMAIL';
+export const SET_IMAGE = 'SET_IMAGE';
+export const REVIEWS_DATE =  "REVIEWS_DATE";
+export const LIKES_DATE = "LIKES_DATE";
 
 export const login = (isLogin) => {
     return {
@@ -38,11 +28,48 @@ export const login = (isLogin) => {
     };
 };
 
-export const setUserinfo = (userinfo) => {
+export const setReviewsDate= (reviewsDate) => {
     return {
-        type: SET_USERINFO,
+        type: REVIEWS_DATE,
         payload: {
-            ...userinfo,
+            reviewsDate
+        },
+    };
+};
+
+export const setLikesDate= (likesDate) => {
+    return {
+        type: LIKES_DATE,
+        payload: {
+            likesDate
+        },
+    };
+};
+
+export const setNickname= (nickname) => {
+    return {
+        type: SET_NICKNAME,
+        payload: {
+            nickname
+        },
+    };
+};
+
+export const setEmailData= (emaildata) => {
+    return {
+        type: SET_EMAIL,
+        payload: {
+            emaildata
+        },
+    };
+};
+
+
+export const setProfileImage= (profileImage) => {
+    return {
+        type: SET_IMAGE,
+        payload: {
+            profileImage
         },
     };
 };
@@ -68,17 +95,21 @@ export const setAccessToken = (state) => {
     };
 }
 
-export const setMypageReviews = (state) => {
+export const setMypageReviews = (mypageReviews) => {
     return {
         type: MYPAGE_REVIEWS,
-        payload: { mypageReviews: state }
+        payload: {
+            mypageReviews
+        },
     };
 }
 
-export const setMypageLikes = (state) => {
+export const setMypageLikes = (mypageLikes) => {
     return {
         type: MYPAGE_LIKES,
-        payload: { mypageLikes: state }
+        payload: {
+            mypageLikes
+        },
     };
 }
 
