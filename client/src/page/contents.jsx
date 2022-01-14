@@ -6,9 +6,14 @@ import ContentsPage_carousel from "../components/contentsPage_carousel";
 import ContentsPage_carousel_firstSelect from "../components/contentsPage_carousel_firstSelect";
 import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
 import ContentsModal from "../components/contentsModal";
+import ComingSoon from "../components/comingSoon";
+import ContentSearchList from "../components/contentsSearchList";
 import axios from "axios";
 
+import styled from "styled-components";
+
 import { useSelector } from "react-redux";
+import ContentsSearchList from "../components/contentsSearchList";
 
 const Contents = () => {
   const modal = useSelector(
@@ -17,23 +22,24 @@ const Contents = () => {
 
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
-  const [select_3, setSelect_3] = useState("new");
+  const [select_3, setSelect_3] = useState("date");
 
   const [contentsList, setContentsList] = useState([]);
+  const [dataLikeSort, setDataLikeSort] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [contentsSearch, setContentsSearch] = useState([]);
+  const [showText, setShowText] = useState("");
 
+  // contents 모두 불러오기
   const contentstList = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
       .then((data) => {
         const contentsData = data.data.data;
-        // console.log("data", data.data.data);
-        // const list = data.data.data.list;
         setContentsList(contentsData);
       });
   };
-  console.log("contentsList", contentsList);
+  // console.log("contentsList", contentsList);
 
   useEffect(() => {
     contentstList();
@@ -49,13 +55,56 @@ const Contents = () => {
     }
   });
 
-  const select_2_contents = select_1_category.filter((el) => {
-    if (select_2 === "ALL") {
-      return el;
-    } else if (el.type === select_2) {
-      return el.type === select_2;
+  // const select_2_contents = select_1_category.filter((el) => {
+  //   if (select_2 === "ALL") {
+  //     return el;
+  //   } else if (el.type === select_2) {
+  //     return el.type === select_2;
+  //   }
+  // });
+
+  //contents 최신, 좋아요 순으로 정렬
+  const dataLike = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/filter?c=${select_1}&t=${select_2}&s=${select_3}`
+      )
+      .then((data) => {
+        const sort = data.data.data;
+        setDataLikeSort(sort);
+      });
+  };
+
+  useEffect(() => {
+    if (select_1 !== "ALL" && select_2 !== "ALL") {
+      return dataLike();
     }
-  });
+  }, [select_1, select_2, select_3]);
+
+  const handleSearchText = (e) => {
+    setSearchText(e.target.value);
+  };
+  console.log("searchText", searchText);
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setShowText(searchText);
+      searchHandler();
+    }
+  };
+  const searchHandler = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${searchText}`, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((res) => {
+        const searchData = res.data.data;
+        setContentsSearch(searchData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleSelect_1 = (select) => {
     setSelect_1(select.target.value);
@@ -70,7 +119,14 @@ const Contents = () => {
   };
 
   console.log("select_3", select_3);
-
+  const SelectStyle = styled.select`
+    #firstSelect {
+      display: none;
+    }
+    #secondSelect {
+      display: none;
+    }
+  `;
   return (
     <div className={style.container}>
       <select
@@ -102,6 +158,8 @@ const Contents = () => {
         className={style.search_input}
         type="search"
         placeholder="검색어를 입력해주세요"
+        onChange={handleSearchText}
+        onKeyDown={onKeyPress}
       />
       <button className={style.search_btn}>
         <i className="fas fa-search"></i>
@@ -112,12 +170,17 @@ const Contents = () => {
           id={style.thirdSelect}
           onChange={handleSelect_3}
         >
-          <option value="new">최신순</option>
+          <option value="date">최신순</option>
           <option value="like">좋아요순</option>
         </select>
       ) : null}
       {modal === true ? <ContentsModal /> : null}
-      {select_1 === "ALL" ? (
+      {contentsSearch.length !== 0 ? (
+        <ContentsSearchList
+          contentsSearch={contentsSearch}
+          showText={showText}
+        />
+      ) : select_1 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.subtitle}>동기부여를 받고 싶다면 ?</div>
           <div className={style.contents}>
@@ -300,7 +363,7 @@ const Contents = () => {
               />
             </div>
           </div>
-          <div className={style.subtitle_sound}>백색소리</div>
+          <div className={style.subtitle}>백색소리</div>
           <div className={style.contents}>
             <div className={style.contents_part}>
               # 영상
@@ -322,7 +385,7 @@ const Contents = () => {
         </div>
       ) : select_1 === "백색소리" &&
         (select_2 === "movie" || select_2 === "book") ? (
-        <div className={style.comingsoon}>준비중입니다</div>
+        <ComingSoon />
       ) : select_1 === "백색소리" && select_2 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.contents_part}>
@@ -378,7 +441,7 @@ const Contents = () => {
           </div>
         </div>
       ) : (
-        <ContentsPage_secondSelect select_2_contents={select_2_contents} />
+        <ContentsPage_secondSelect dataLikeSort={dataLikeSort} />
       )}
     </div>
   );

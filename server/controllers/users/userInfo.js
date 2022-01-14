@@ -1,20 +1,8 @@
-const { users, reviews, likes, contents } = require("../../models");
+const { reviews, likes, contents } = require("../../models");
 
 module.exports = async (req, res) => { 
   const id = req.cookies.id;
   try {
-    const userInfo = await users.findOne({ 
-      where: { id: id },
-      attributes: [
-        "id",
-        "email",
-        "nickname",
-        "img",
-        "createdAt",
-        "updatedAt"
-      ]
-    })
-
     const userReviews = await reviews.findAll({
       where: { user_id: id },
       attributes: [
@@ -28,15 +16,16 @@ module.exports = async (req, res) => {
     // 내가 좋아요한 컨텐츠나 리뷰를 5개 추려서 주기
     const userLikes = await likes.findAll({
       where: { user_id: id },
+      attributes: [ "createdAt" ],
       include: [
-        { model: contents, attributes: [ "id", "content_name" ]},
+        { model: contents, attributes: [ "id", "title" ]},
         { model: reviews, attributes: [ "id", "title" ]}
       ],
-      order: [['createAt', 'DESC']],
+      order: [['createdAt', 'DESC']],
       limit: 5
     })
     
-    const userData = { userInfo: userInfo.dataValues, userReviews: userReviews, userLikes: userLikes }
+    const userData = { userReviews: userReviews, userLikes: userLikes }
     return res.status(200).json({ data: userData, message: "정보 전달 완료." });
   }
   catch(err) {

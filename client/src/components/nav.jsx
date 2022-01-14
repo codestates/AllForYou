@@ -3,7 +3,7 @@ import style from "./nav.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import { setAccessToken, login, loginModal, setUserinfo } from '../action';
+import { setAccessToken, login, loginModal } from '../action';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
@@ -14,23 +14,14 @@ const Nav = () => {
   const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   const handleLogout = () => {
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`, null, {
-        headers: {
-          cookies: `jwt ${accessToken}`,
-          "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
-          console.log(res)
-          // dispatch(setAccessToken(null));
-          dispatch(setUserinfo(null))
+        console.log(res)
           dispatch(login(false));
-          // window.location.reload('/');
+          window.location.reload('/');
       })
       .catch((err) => {
-          console.log("서버 오류 입니다.")
+        console.log(err)
       })
   };
   console.log(isLogin)

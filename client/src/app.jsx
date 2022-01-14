@@ -16,7 +16,9 @@ import ResponsiveNav from "./components/responsiveNav";
 
 import ForYouWriting from "./page/forYouWriting";
 import ForYouView from "./page/forYouView";
+import axios from "axios";
 
+axios.defaults.withCredentials = true;
 
 function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
