@@ -5,7 +5,7 @@ import { loginModal, setMessageModal } from '../action/index';
 import { useDispatch } from 'react-redux';
 
 const CommentInput = ({ getComment, post, isLogin }) => {
-    const [comment, setComment] = useState([]);
+    const [comment, setComment] = useState('');
     const dispatch = useDispatch();
 
     const sendCommentToServer = () => {
@@ -24,10 +24,12 @@ const CommentInput = ({ getComment, post, isLogin }) => {
                     comment: comment,
                 },
             )
-            .then(() => {
-                dispatch(setMessageModal(true, '댓글을 등록했습니다.'));
-                getComment();
-                setComment('');
+            .then((res) => {
+                if (res.status === 201) {
+                    dispatch(setMessageModal(true, '댓글을 등록했습니다.'));
+                    getComment();
+                    setComment('');
+                }
             })
             .catch((err) => {
                 console.log(err)

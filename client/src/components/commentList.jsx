@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./commentList.module.css";
+import { useSelector } from 'react-redux';
 
 const Comment = ({ comment, getComment }) => {
-    // const [isEdit, setIsEdit] = useState(false);
-    // const [commentValue, setCommentValue] = useState(comment.comment);
+    const { nickname } = useSelector((state) => state.loginReducer);
+    const [isEdit, setIsEdit] = useState(false);
+    const [commentValue, setCommentValue] = useState(comment.comment);
 
     // const editComment = () => {
     //     axios
@@ -49,6 +51,34 @@ const Comment = ({ comment, getComment }) => {
                 <div className={style.userBox}>
                     <img className={style.img} />
                     <div className={style.name}>{comment.nickname}</div>
+                    <div >
+                        <i className="fas fa-check"></i>
+                        <i
+                            className="fas fa-times"
+                        ></i>
+                    </div>
+                    <div>
+                        <i className="fas fa-edit"></i>
+                        <i className="fas fa-trash-alt"></i>
+                    </div>
+                    {/* {comment.nickname === nickname ? (
+                        <React.Fragment>
+                            <div className={isEdit ? null : 'hide'}>
+                                <i className="fas fa-check" onClick={editComment}></i>
+                                <i
+                                    className="fas fa-times"
+                                    onClick={() => {
+                                        setIsEdit(false);
+                                        setCommentValue(comment.comment);
+                                    }}
+                                ></i>
+                            </div>
+                            <div className={isEdit ? 'hide' : null}>
+                                <i className="fas fa-edit" onClick={() => setIsEdit(true)}></i>
+                                <i className="fas fa-trash-alt" onClick={deleteComment}></i>
+                            </div>
+                        </React.Fragment>
+                    ) : null} */}
                 </div>
                 <div className={style.date}>{comment.createdAt}</div>
             </div>
