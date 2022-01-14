@@ -1,16 +1,13 @@
 import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
-import SignupModal from "../components/signupModal";
 import { useSelector, useDispatch } from 'react-redux';
-import { loginModal, setAccessToken, setUserinfo, login, signupModal } from '../action/index';
+import { loginModal, setNickname, setProfileImage, login, signupModal } from '../action/index';
 
 const Login = () => {
   const dispatch = useDispatch();
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
-  const { isLogin } = useSelector((state) => state.loginReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [failMessage, setFailMessage] = useState(false)
@@ -49,9 +46,11 @@ const Login = () => {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
-          console.log(res)
-          const token = res.data.accessToken;
-          dispatch(setAccessToken(token));
+          console.log(res.data)
+          const nickname = res.data.data.nickname;
+          const email = res.data.data.email;
+          dispatch(setEmail())
+          dispatch(setNickname(nickname));
           dispatch(login(true));
           setEmail("");
           setPassword("");
@@ -110,7 +109,7 @@ const Login = () => {
             <input
               className={style.myInfo}
               type="text"
-              placeholder="아이디"
+              placeholder="이메일"
               // value={email}
               onChange={onChangeEmail}
             />
@@ -144,4 +143,3 @@ const Login = () => {
 
 
 export default Login;
-

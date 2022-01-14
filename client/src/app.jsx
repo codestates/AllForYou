@@ -9,6 +9,8 @@ import MyPage from "./page/myPage";
 import ForYou from "./page/forYou";
 import Contents from "./page/contents";
 import Login from "./page/login";
+import MyReviewsDetail from "./page/myReviewsDetail";
+import MyLikesDetail from "./page/myLikesDetail";
 import SignupModal from "./components/signupModal"
 import ContentsModal from "./components/contentsModal";
 import ForuModal from "./components/foruModal";
@@ -47,10 +49,12 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/contents" element={<Contents />} />
-        <Route path="/foryou" element={<ForYou accessToken={accessToken} />} />
+        <Route path="/foryou" element={<ForYou />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
         <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} accessToken={accessToken} />} />
+        <Route path="/reviewsdetail" element={<MyReviewsDetail />} />
+        <Route path="/likesdetail" element={<MyLikesDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>

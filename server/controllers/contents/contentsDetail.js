@@ -1,7 +1,8 @@
-const { contents, likes } = require("../../models");
+const { contents, likes, users } = require("../../models");
 
 module.exports = async(req, res) => {
     const contents_id = req.params.contentId;
+    const contentsId = req.cookies.id;
     try {
         const contentData = await contents.findOne({
             where: {
@@ -29,8 +30,28 @@ module.exports = async(req, res) => {
             "type": contentData.type,
             "view": contentData.view,
         }
-        console.log(contentsDetail)
-        return res.status(200).json({data: contentsDetail, message: "successfully viewed the details page"})
+
+        const likesData = await users.findOne({
+            whehe : {
+                id: contentsId
+            },
+            include: [
+                { model: likes, attributes: ["content_id"] }
+            ]
+        })
+
+        const likesList = likesData.dataValues.likes.map((el) => {
+            return {
+                "content_id": el.content_id
+            }
+        })
+
+        const contentsDataSend = {
+            contentsDetail: contentsDetail,
+            likesList: likesList
+        }
+
+        return res.status(200).json({data: contentsDataSend, message: "successfully viewed the details page"})
     }
     catch(err) {
         return res.status(500).json({ data: err, message: "server error" })

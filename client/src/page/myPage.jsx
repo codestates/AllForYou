@@ -1,55 +1,33 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./myPage.module.css";
-import { useSelector, useDispatch } from 'react-redux';
-import dummy from "../dummy/dummy";
+import { useSelector } from 'react-redux';
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
+import MyPgaeUpdate from "../components/mypageUpdate";
+import ModalWithdraw from "../components/ModalWithdraw";
 import Footer from "../components/footer";
-import { 
-  login, 
-  setUserinfo,
-  setAccessToken, 
-  setMypageReviews, 
-  setMypageLikes 
-} from '../action/index';
 
 const MyPage = () => {
-  const dispatch = useDispatch();
   const { isLogin } = useSelector((state) => state.loginReducer); 
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
-  const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
+  const { updateInfo } = useSelector((state) => state.loginReducer);
+  const { withdrawModal } = useSelector((state) => state.loginReducer);
 
   const [errMessage, setErrMessage] = useState("");
   const [isWithdrawModal, setIsWithdrawModal] = useState(false);
   const [isEditModal, setIsEditModal] = useState(false);
-  const [userData, setUserData] = useState({
-    email: "",
-    nickname: "",
-    img: ""
-  });
-
-  const withModalHandler = () => {
-    setIsWithdrawModal(!isWithdrawModal);
-  };
-
-  const userinfoEditHandler = () => {
-    setIsEditModal(!isEditModal);
-  };
+  const [reviews, setReviews] = useState(null);
+  const [likes, setLikes] = useState(null);
 
   const isAuthenticated = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
     .then((res) => {
         if(res) {
             console.log(res.data)
-            // console.log(res.data.data.userInfo)
-            // const userinfo = res.data.data.userInfo;
-            // const reviewlist = res.data.data.userReviews;
-            // const likes = res.data.data.userLikes;
-            // dispatch(setUserinfo(userinfo));
-            // dispatch(mypageReviews(reviewlist));
-            // dispatch(mypageLikes(likes));
-            // console.log(userData)
+            const reviewlist = res.data.data.userReviews;
+            const likeslist = res.data.data.userLikes;
+            setReviews(reviewlist);
+            setLikes(likeslist);
         }
     })
     .catch((err) => {
@@ -66,8 +44,13 @@ const MyPage = () => {
     <>
     {isLogin === true ? (
       <div className={style.mypage_container}>
+        {updateInfo === true ? (<MyPgaeUpdate />) : null}
+        {withdrawModal === true ? (<ModalWithdraw />) : null}
         <ProfileBox />
-        <MyPageBox />
+        <MyPageBox 
+        reviews={reviews}
+        likes={likes}
+        />
       </div>
       
     ) : (

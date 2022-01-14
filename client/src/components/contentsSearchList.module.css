@@ -1,3 +1,12 @@
+.search_container {
+  margin: 1em;
+  padding: 0.5em 0 0 0em;
+  font-size: 2em;
+}
+
+.search_text {
+  color: rgb(210, 210, 210);
+}
 .container {
   margin: auto;
   margin-left: 5em;

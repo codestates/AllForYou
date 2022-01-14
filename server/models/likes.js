@@ -15,9 +15,13 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER,
     review_id: DataTypes.INTEGER,
     content_id: DataTypes.INTEGER,
+<<<<<<< HEAD
     createdAt: {
       defaultValue : new Date(), type:DataTypes.DATE
     }
+=======
+    page: DataTypes.INTEGER
+>>>>>>> 45eaa704b124e6ef80d9a1350ce2f3382d057c37
   }, {
     timestamps: false,
     sequelize,

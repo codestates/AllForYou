@@ -1,11 +1,12 @@
 const sequelize = require("sequelize");
 const Op = sequelize.Op;
-const { contents, likes } = require("../../models");
+const { contents, likes, users } = require("../../models");
 
 module.exports = async(req, res) => {
     const categoryFilter = req.query.c;
     const typeFilter = req.query.t;
     const type = req.query.s;
+    const contentsId = req.cookies.id;
     try {
         const categoryData = await contents.findAll({
             where:{
@@ -52,7 +53,28 @@ module.exports = async(req, res) => {
         else {
             contentsList = contentsList.sort((a, b) => b.year - a.year)
         }
-        return res.status(200).json({data: contentsList, message: "successfully viewed the data type individual page"})
+
+        const likesData = await users.findOne({
+            whehe : {
+                id: contentsId
+            },
+            include: [
+                { model: likes, attributes: ["content_id"] }
+            ]
+        })
+
+        const likesList = likesData.dataValues.likes.map((el) => {
+            return {
+                "content_id": el.content_id
+            }
+        })
+
+        const contentsDataSend = {
+            contentsList: contentsList,
+            likesList: likesList
+        }
+
+        return res.status(200).json({data: contentsDataSend, message: "successfully viewed the data type individual page"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })

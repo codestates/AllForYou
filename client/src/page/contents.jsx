@@ -6,34 +6,51 @@ import ContentsPage_carousel from "../components/contentsPage_carousel";
 import ContentsPage_carousel_firstSelect from "../components/contentsPage_carousel_firstSelect";
 import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
 import ContentsModal from "../components/contentsModal";
+import ComingSoon from "../components/comingSoon";
+import ContentsSearchList from "../components/contentsSearchList";
+import { useDispatch, useSelector } from "react-redux";
+import { scrollTop } from "../action";
 import axios from "axios";
-
-import { useSelector } from "react-redux";
 
 const Contents = () => {
   const modal = useSelector(
     (state) => state.contentsModalReducer.contentsModal.modalOnOff
   );
 
+  const dispatch = useDispatch();
+
+  const selectLength = useSelector(
+    (state) => state.contentsScrollReducer.contentsScroll.scrollLength
+  );
+
+  const buttonOnOff = useSelector(
+    (state) => state.contentsScrollReducer.contentsScroll.buttonOnOff
+  );
+
+  console.log("buttonOnOff", buttonOnOff);
+
+  console.log("window", window.pageYOffset);
+  // console.log("scrollTop", scrollTop);
+
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
-  const [select_3, setSelect_3] = useState("new");
+  const [select_3, setSelect_3] = useState("date");
 
   const [contentsList, setContentsList] = useState([]);
+  const [dataLikeSort, setDataLikeSort] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [contentsSearch, setContentsSearch] = useState([]);
+  const [showText, setShowText] = useState("");
 
+  // contents 모두 불러오기
   const contentstList = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
       .then((data) => {
-        const contentsData = data.data.data;
-        // console.log("data", data.data.data);
-        // const list = data.data.data.list;
+        const contentsData = data.data.data.contentsList;
         setContentsList(contentsData);
       });
   };
-  console.log("contentsList", contentsList);
 
   useEffect(() => {
     contentstList();
@@ -49,13 +66,53 @@ const Contents = () => {
     }
   });
 
-  const select_2_contents = select_1_category.filter((el) => {
-    if (select_2 === "ALL") {
-      return el;
-    } else if (el.type === select_2) {
-      return el.type === select_2;
+  const dataLike = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/filter?c=${select_1}&t=${select_2}&s=${select_3}`
+      )
+      .then((data) => {
+        const sort = data.data.data;
+        setDataLikeSort(sort);
+      });
+  };
+
+  useEffect(() => {
+    if (select_1 !== "ALL" && select_2 !== "ALL") {
+      return dataLike();
     }
-  });
+  }, [select_1, select_2, select_3]);
+
+  const handleSearchText = (e) => {
+    setSearchText(e.target.value);
+  };
+  console.log("searchText", searchText);
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setShowText(searchText);
+      searchHandler();
+    }
+  };
+
+  const searchClick = () => {
+    setShowText(searchText);
+    searchHandler();
+  };
+
+  const searchHandler = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${searchText}`, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((res) => {
+        const searchData = res.data.data;
+        setContentsSearch(searchData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleSelect_1 = (select) => {
     setSelect_1(select.target.value);
@@ -71,12 +128,44 @@ const Contents = () => {
 
   console.log("select_3", select_3);
 
+  const handleFollow = () => {
+    dispatch(scrollTop(false, window.pageYOffset));
+    if (selectLength > 800) {
+      // 100 이상이면 버튼이 보이게
+      dispatch(scrollTop(true, window.pageYOffset));
+    } else {
+      // 100 이하면 버튼이 사라지게
+      dispatch(scrollTop(false, window.pageYOffset));
+    }
+  };
+
+  const handleTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    dispatch(scrollTop(false, 0));
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener("scroll", handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener("scroll", handleFollow);
+    };
+  });
+
   return (
     <div className={style.container}>
       <select
         name="firstSelect"
         id={style.firstSelect}
         onChange={handleSelect_1}
+        className={`${contentsSearch.length !== 0 ? style.select : ""}`}
+        // `submenu${index === currenTab ? " focused" : ""}`
       >
         <option value="ALL">ALL</option>
         <option value="동기부여">동기부여를 받고 싶다면 ?</option>
@@ -91,6 +180,7 @@ const Contents = () => {
         name="secondSelect"
         id={style.secondSelect}
         onChange={handleSelect_2}
+        className={`${contentsSearch.length !== 0 ? style.select : ""}`}
       >
         <option value="ALL">ALL</option>
         <option value="movie">영화</option>
@@ -102,8 +192,10 @@ const Contents = () => {
         className={style.search_input}
         type="search"
         placeholder="검색어를 입력해주세요"
+        onChange={handleSearchText}
+        onKeyDown={onKeyPress}
       />
-      <button className={style.search_btn}>
+      <button className={style.search_btn} onClick={searchClick}>
         <i className="fas fa-search"></i>
       </button>
       {select_1 !== "ALL" && select_2 !== "ALL" ? (
@@ -111,13 +203,30 @@ const Contents = () => {
           name="thirdSelect"
           id={style.thirdSelect}
           onChange={handleSelect_3}
+          className={`${contentsSearch.length !== 0 ? style.select : ""}`}
         >
-          <option value="new">최신순</option>
+          <option value="date">최신순</option>
           <option value="like">좋아요순</option>
         </select>
       ) : null}
       {modal === true ? <ContentsModal /> : null}
-      {select_1 === "ALL" ? (
+      <div className={style.topBtnContainer}>
+        <button
+          className={`${buttonOnOff ? style.topbutton : style.deleteBtn}`} // 버튼 노출 여부
+          // className={style.topbutton}
+          onClick={handleTop} // 버튼 클릭시 함수 호출
+        >
+          <span className={style.triangle}>
+            <i className="fas fa-caret-up"></i>
+          </span>
+        </button>
+      </div>
+      {contentsSearch.length !== 0 ? (
+        <ContentsSearchList
+          contentsSearch={contentsSearch}
+          showText={showText}
+        />
+      ) : select_1 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.subtitle}>동기부여를 받고 싶다면 ?</div>
           <div className={style.contents}>
@@ -300,7 +409,7 @@ const Contents = () => {
               />
             </div>
           </div>
-          <div className={style.subtitle_sound}>백색소리</div>
+          <div className={style.subtitle}>백색소리</div>
           <div className={style.contents}>
             <div className={style.contents_part}>
               # 영상
@@ -322,7 +431,7 @@ const Contents = () => {
         </div>
       ) : select_1 === "백색소리" &&
         (select_2 === "movie" || select_2 === "book") ? (
-        <div className={style.comingsoon}>준비중입니다</div>
+        <ComingSoon />
       ) : select_1 === "백색소리" && select_2 === "ALL" ? (
         <div className={style.select_1_All_container}>
           <div className={style.contents_part}>
@@ -378,7 +487,7 @@ const Contents = () => {
           </div>
         </div>
       ) : (
-        <ContentsPage_secondSelect select_2_contents={select_2_contents} />
+        <ContentsPage_secondSelect dataLikeSort={dataLikeSort} />
       )}
     </div>
   );

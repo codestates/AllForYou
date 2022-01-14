@@ -53,6 +53,9 @@
   color: #5c5c5c;
 }
 
+.select {
+  display: none;
+}
 .search_input {
   position: absolute;
   margin-top: 1em;
@@ -99,7 +102,7 @@
 }
 
 .contents {
-  /* margin: 1em; */
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   background-color: #2e2d2d;
@@ -130,6 +133,44 @@
 .comingsoon {
   font-size: 20em;
   z-index: 1;
+}
+
+.topBtnContainer {
+  position: relative;
+}
+
+.topbutton {
+  position: fixed;
+  top: 60em;
+  right: 4em;
+  width: 5em;
+  height: 5em;
+  background-color: #dbd9d6;
+  border-radius: 100%;
+  border: none;
+  letter-spacing: -0.06em;
+  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in;
+  z-index: 996;
+}
+.topbutton:hover {
+  color: black;
+}
+
+.triangle {
+  position: fixed;
+  top: 17.1em;
+  right: 1.35em;
+  font-size: 3.5em;
+  z-index: 997;
+}
+
+.triangle:hover {
+  color: aliceblue;
+}
+
+.deleteBtn {
+  display: none;
 }
 
 @media screen and (max-width: 1780px) {

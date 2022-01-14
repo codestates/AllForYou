@@ -1,129 +1,163 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import style from "./mypageBox.module.css";
-import axios from 'axios';
-import dummy from "../dummy/dummy3" 
-import { useSelector, useDispatch } from 'react-redux';
+import MyReviewsDetail from "../page/myReviewsDetail";
+import MyLikesDetail from "../page/myLikesDetail";
 
-function MyPageBox() {
-    const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
-
-    const [reviewData, setReviewData] = useState(null);
-    const [likesData, setLikesData] = useState(null);
+function MyPageBox({ reviews, likes }) {
 
     return (
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
-        <button className={style.more_button}>more
-            <p className={style.more_icon}><i className="fas fa-angle-right" /></p>
-        </button>
+        <Link to="/reviewsdetail">
+            <button className={style.more_button} >more
+                <p className={style.more_icon}>
+                    <i className="fas fa-angle-right" />
+                </p>
+            </button>
+        </Link>
         <div className={style.box}>
-            {reviewData ? (
+            {reviews ? (
                 <>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[0].id}`}>{mypageReviews[0].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[0].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[0].id}`}>{mypageReviews[0].createdAt}</a>
-                        2022-01-05
+                    {reviews[0] ? (
+                    <>
+                        <span className={style.mydata}>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[0]}`}>{reviews[0].title}</a>
+                        </span>
+                        <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[0]}`}>
+                            <span className={style.mydata_date}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[0]}`}>{reviews[0].createdAt.split('T')[0]}</a>
+                            </span>
+                        </a>
+                    </>
+                    ) : null}
+                    {reviews[1] ? (
+                        <>
+                    <span className={style.mydata}>
+                        <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[1]}`}>{reviews[1].title}</a>
                     </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[1].id}`}>{mypageReviews[1].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[1].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[1].id}`}>{mypageReviews[1].createdAt}</a>
-                        2022-01-01             
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[2].id}`}>{mypageReviews[2].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[2].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[2].id}`}>{mypageReviews[2].createdAt}</a>
-                        2021-12-24
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[3].id}`}>{mypageReviews[3].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[3].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[3].id}`}>{mypageReviews[3].createdAt}</a>
-                        2021-11-05
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[4].id}`}>{mypageReviews[4].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[4].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageReviews[4].id}`}>{mypageReviews[4].createdAt}</a>
-                        2021-10-29
-                    </span>
-                </a>
+                    <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[1]}`}>
+                        <span className={style.mydata_date}>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[1]}`}>{reviews[1].createdAt.split('T')[0]}</a>     
+                        </span>
+                    </a>
+                    </>
+                    ) : null}
+                    {reviews[2] ? (
+                    <>
+                        <span className={style.mydata}>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[2]}`}>{reviews[2].title}</a>
+                        </span>
+                        <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[2]}`}>
+                            <span className={style.mydata_date}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[2]}`}>{reviews[2].createdAt.split('T')[0]}</a>
+                            </span>
+                        </a>
+                    </>
+                    ) : null}
+                    {reviews[3] ? (
+                    <>
+                        <span className={style.mydata}>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[3]}`}>{reviews[3].title}</a>
+                        </span>
+                        <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[3]}`}>
+                            <span className={style.mydata_date}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[3]}`}>{reviews[3].createdAt.split('T')[0]}</a>
+                            </span>
+                        </a>
+                    </>
+                    ): null}
+                    {reviews[4] ? (
+                    <>
+                        <span className={style.mydata}>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[4]}`}>{reviews[4].title}</a>
+                        </span>
+                        <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[4]}`}>
+                            <span className={style.mydata_date}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${reviews[4]}`}>{reviews[4].createdAt.split('T')[0]}</a>
+                            </span>
+                        </a>
+                    </>
+                    ) : null}
                 </>
-            ) : (
-            <p className={style.empty_reviewbox}>등록 된 리뷰가 없습니다.</p>
-            )}
-        </div>
-        <span className={style.likes_title}>좋아요 표시한 콘텐츠</span>
-        <button className={style.more_button}>more
-            <p className={style.more_icon}><i className="fas fa-angle-right" /></p>
-        </button>
-        <div className={style.box}>
-            {likesData ? (
-                <>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageLikes[0].id}`}>{mypageLikes[0].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageLikes[0].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageLikes[0].id}`}>{mypageLikes[0].createdAt}</a>
-                        2022-01-03
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageLikes[1].id}`}>{mypageLikes[1].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/users/reviews/:${mypageLikes[1].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[1].id}`}>{mypageLikes[1].createdAt}</a>
-                        2021-12-12            
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[2].id}`}>{mypageLikes[2].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[2].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[2].id}`}>{mypageLikes[2].createdAt}</a>
-                        2021-12-23
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[3].id}`}>{mypageLikes[3].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[3].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[3].id}`}>{mypageLikes[3].createdAt}</a>
-                        2021-11-19
-                    </span>
-                </a>
-                <span className={style.mydata}>
-                    <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[4].id}`}>{mypageLikes[4].title}</a>
-                </span>
-                <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[4].id}`}>
-                    <span className={style.mydata_date}>
-                        <a href={`${process.env.REACT_APP_SERVER_URL}/user/reviews/:${mypageLikes[4].id}`}>{mypageLikes[4].createdAt}</a>
-                        2021-11-17
-                    </span>
-                </a>
-                </>
-            ) : (
-            <p className={style.empty_likesbox}>좋아요를 표시한 콘텐츠가 없습니다.</p>
+                ) : (
+                    <p className={style.empty_reviewbox}>등록 된 리뷰가 없습니다.</p>
+                )}
+                </div>
+                <span className={style.likes_title}>좋아요 표시한 콘텐츠</span>
+                <Link to="/likesdetail">
+                    <button className={style.more_button}>more
+                        <p className={style.more_icon}>
+                            <i className="fas fa-angle-right" />
+                        </p>
+                    </button>
+                </Link>
+                <div className={style.box}>
+                    {likes ? (
+                        <>
+                        {likes[0] ? (
+                        <>
+                            <span className={style.mydata}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[0].content.id}`}>{likes[0].content.title}</a>
+                            </span>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[0].content.id}`}>
+                                <span className={style.mydata_date}>
+                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[0].content.id}`}>{likes[0].createdAt.split('T')[0]}</a>
+                                </span>
+                            </a>
+                        </>
+                        ) : null}
+                        {likes[1] ? (
+                        <>
+                            <span className={style.mydata}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[1].content.id}`}>{likes[1].content.title}</a>
+                            </span>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[1].content.id}`}>
+                                <span className={style.mydata_date}>
+                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[1].content.id}`}>{likes[1].createdAt.split('T')[0]}</a>           
+                                </span>
+                            </a>
+                        </>
+                        ) : null}
+                        {likes[2] ? (
+                        <>
+                            <span className={style.mydata}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[2].content.id}`}>{likes[2].content.title}</a>
+                            </span>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[2].content.id}`}>
+                                <span className={style.mydata_date}>
+                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[2].content.id}`}>{likes[2].createdAt.split('T')[0]}</a>
+                                </span>
+                            </a>
+                        </>
+                        ) : null}
+                        {likes[3] ? (
+                        <>
+                            <span className={style.mydata}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[3].content.id}`}>{likes[3].content.title}</a>
+                            </span>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[3].content.id}`}>
+                                <span className={style.mydata_date}>
+                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[3].content.id}`}>{likes[3].createdAt.split('T')[0]}</a>
+                                </span>
+                            </a>
+                        </>
+                        ) : null}
+                        {likes[4] ? (
+                        <>
+                            <span className={style.mydata}>
+                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[4].content.id}`}>{likes[4].content.title}</a>
+                            </span>
+                            <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[4].content.id}`}>
+                                <span className={style.mydata_date}>
+                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${likes[4].content.id}`}>{likes[4].createdAt.split('T')[0]}</a>
+                                </span>
+                            </a>
+                        </>
+                        ): null}
+                    </>
+                ) : (
+                <p className={style.empty_likesbox}>좋아요를 표시한 콘텐츠가 없습니다.</p>
             )}
         </div>
     </div>
