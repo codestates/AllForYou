@@ -14,6 +14,7 @@ export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
 export const SET_USERINFO = 'SET_USERINFO';
 export const CONTENTS_MODAL = "CONTENTS_MODAL"
 export const SET_POST = 'SET_POST';
+export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
 // export const login = (booleanLogin, booleanAdmin, nickname, email, booleanOauth, profileimg) => {
 //     return {
@@ -130,5 +131,14 @@ export const setPost = (post) => {
     return {
         type: SET_POST,
         payload: post,
+    };
+};
+
+export const contentsLike = (boolean) => {
+    return {
+        type: CONTENTS_LIKE,
+        payload: {
+            likeOnOff: boolean
+        }
     };
 };

@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./contentsModal.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { contentsModal } from "../action";
+import { contentsLike } from "../action";
 
 const ContentsModal = () => {
   const contentsInfo = useSelector(
     (state) => state.contentsModalReducer.contentsModal.info
   );
 
-  const modal = useSelector(
-    (state) => state.contentsModalReducer.contentsModal
-  );
+  const modal = useSelector((state) => state.contentsModalReducer);
+
+  // const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
+
+  // console.log("like", like);
+  // console.log(contentsLike());
+  // console.log("modal", modal);
+
   const dispatch = useDispatch();
 
   const modalOff = () => {
     dispatch(contentsModal(false, {}));
   };
 
-  console.log("modal", modal);
-  console.log("contentsInfo", contentsInfo);
+  // const likeOnOff = () => {
+  //   dispatch(contentsLike(!like));
+  // };
+
+  // console.log("contentsInfo", contentsInfo);
   return (
     <div className={style.main} onClick={modalOff}>
       <div className={style.container} onClick={(e) => e.stopPropagation()}>
@@ -41,6 +50,11 @@ const ContentsModal = () => {
         </div>
         <button className={style.like}>
           <i className="far fa-thumbs-up"></i>
+          {/* {like ? (
+            <i className="fas fa-thumbs-up"></i>
+          ) : (
+            <i className="far fa-thumbs-up"></i>
+          )} */}
         </button>
         <div className={style.list}>
           <img className={style.image} src={contentsInfo.image} alt="" />
