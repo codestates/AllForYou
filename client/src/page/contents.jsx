@@ -32,7 +32,7 @@ const Contents = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
       .then((data) => {
-        const contentsData = data.data.data;
+        const contentsData = data.data.data.contentsList;
         setContentsList(contentsData);
       });
   };
