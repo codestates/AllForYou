@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     title: DataTypes.STRING,
     text: DataTypes.TEXT,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    page: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'reviews',

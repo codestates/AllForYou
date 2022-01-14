@@ -82,7 +82,7 @@ const SignupModal = () => {
         <input
           className={style.myInfo}
           type="text"
-          placeholder="아이디"
+          placeholder="이메일"
           required
           onChange={handleInputValue("email")}
         />

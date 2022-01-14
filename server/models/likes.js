@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   likes.init({
     user_id: DataTypes.INTEGER,
     review_id: DataTypes.INTEGER,
-    content_id: DataTypes.INTEGER
+    content_id: DataTypes.INTEGER,
+    page: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'likes',

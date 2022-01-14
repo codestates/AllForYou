@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from "./mypageProfilebox.module.css";
+import MyPgaeUpdate from "./mypageUpdate"
 import { useSelector } from 'react-redux';
 import { setNickname } from '../action';
 
@@ -26,6 +27,7 @@ const withModalHandler = () => {
                 <p className={style.nickname}>
                     {nickname}
                 </p>
+                {isOpenModal === true ? <MyPgaeUpdate /> : null}
                 <button className={style.update} onClick={handleMypageModal}>
                     회원정보 수정
                 </button>
