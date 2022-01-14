@@ -21,7 +21,7 @@ const ForYou = ({ accessToken }) => {
 
   function getreviews() {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=date`, {
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews`, {
         headers: {
           cookies: `jwt ${accessToken}`,
         },

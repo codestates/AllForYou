@@ -16,8 +16,11 @@ export const SET_POST = 'SET_POST';
 export const SET_NICKNAME = 'SET_NICKNAME';
 export const SET_EMAIL = 'SET_EMAIL';
 export const SET_IMAGE = 'SET_IMAGE';
-export const REVIEWS_DATE =  "REVIEWS_DATE";
+export const REVIEWS_DATE = "REVIEWS_DATE";
 export const LIKES_DATE = "LIKES_DATE";
+export const SCROLL_TOP = "SCROLL_TOP";
+
+export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
 export const login = (isLogin) => {
     return {
@@ -28,7 +31,7 @@ export const login = (isLogin) => {
     };
 };
 
-export const setReviewsDate= (reviewsDate) => {
+export const setReviewsDate = (reviewsDate) => {
     return {
         type: REVIEWS_DATE,
         payload: {
@@ -37,7 +40,7 @@ export const setReviewsDate= (reviewsDate) => {
     };
 };
 
-export const setLikesDate= (likesDate) => {
+export const setLikesDate = (likesDate) => {
     return {
         type: LIKES_DATE,
         payload: {
@@ -46,7 +49,7 @@ export const setLikesDate= (likesDate) => {
     };
 };
 
-export const setNickname= (nickname) => {
+export const setNickname = (nickname) => {
     return {
         type: SET_NICKNAME,
         payload: {
@@ -55,7 +58,7 @@ export const setNickname= (nickname) => {
     };
 };
 
-export const setEmailData= (emaildata) => {
+export const setEmailData = (emaildata) => {
     return {
         type: SET_EMAIL,
         payload: {
@@ -65,7 +68,7 @@ export const setEmailData= (emaildata) => {
 };
 
 
-export const setProfileImage= (profileImage) => {
+export const setProfileImage = (profileImage) => {
     return {
         type: SET_IMAGE,
         payload: {
@@ -161,5 +164,24 @@ export const setPost = (post) => {
     return {
         type: SET_POST,
         payload: post,
+    };
+};
+
+export const contentsLike = (boolean) => {
+    return {
+        type: CONTENTS_LIKE,
+        payload: {
+            likeOnOff: boolean
+        }
+    };
+};
+
+export const scrollTop = (boolean, number) => {
+    return {
+        type: SCROLL_TOP,
+        payload: {
+            buttonOnOff: boolean,
+            scrollLength: number
+        }
     };
 };

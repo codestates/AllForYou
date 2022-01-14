@@ -53,6 +53,9 @@
   color: #5c5c5c;
 }
 
+.select {
+  display: none;
+}
 .search_input {
   position: absolute;
   margin-top: 1em;

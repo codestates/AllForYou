@@ -7,13 +7,10 @@ import ContentsPage_carousel_firstSelect from "../components/contentsPage_carous
 import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
 import ContentsModal from "../components/contentsModal";
 import ComingSoon from "../components/comingSoon";
-import ContentSearchList from "../components/contentsSearchList";
+import ContentsSearchList from "../components/contentsSearchList";
 import axios from "axios";
 
-import styled from "styled-components";
-
 import { useSelector } from "react-redux";
-import ContentsSearchList from "../components/contentsSearchList";
 
 const Contents = () => {
   const modal = useSelector(
@@ -35,11 +32,10 @@ const Contents = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
       .then((data) => {
-        const contentsData = data.data.data;
+        const contentsData = data.data.data.contentsList;
         setContentsList(contentsData);
       });
   };
-  // console.log("contentsList", contentsList);
 
   useEffect(() => {
     contentstList();
@@ -55,15 +51,6 @@ const Contents = () => {
     }
   });
 
-  // const select_2_contents = select_1_category.filter((el) => {
-  //   if (select_2 === "ALL") {
-  //     return el;
-  //   } else if (el.type === select_2) {
-  //     return el.type === select_2;
-  //   }
-  // });
-
-  //contents 최신, 좋아요 순으로 정렬
   const dataLike = () => {
     axios
       .get(
@@ -91,6 +78,12 @@ const Contents = () => {
       searchHandler();
     }
   };
+
+  const searchClick = () => {
+    setShowText(searchText);
+    searchHandler();
+  };
+
   const searchHandler = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${searchText}`, {
@@ -119,20 +112,15 @@ const Contents = () => {
   };
 
   console.log("select_3", select_3);
-  const SelectStyle = styled.select`
-    #firstSelect {
-      display: none;
-    }
-    #secondSelect {
-      display: none;
-    }
-  `;
+
   return (
     <div className={style.container}>
       <select
         name="firstSelect"
         id={style.firstSelect}
         onChange={handleSelect_1}
+        className={`${contentsSearch.length !== 0 ? style.select : ""}`}
+        // `submenu${index === currenTab ? " focused" : ""}`
       >
         <option value="ALL">ALL</option>
         <option value="동기부여">동기부여를 받고 싶다면 ?</option>
@@ -147,6 +135,7 @@ const Contents = () => {
         name="secondSelect"
         id={style.secondSelect}
         onChange={handleSelect_2}
+        className={`${contentsSearch.length !== 0 ? style.select : ""}`}
       >
         <option value="ALL">ALL</option>
         <option value="movie">영화</option>
@@ -161,7 +150,7 @@ const Contents = () => {
         onChange={handleSearchText}
         onKeyDown={onKeyPress}
       />
-      <button className={style.search_btn}>
+      <button className={style.search_btn} onClick={searchClick}>
         <i className="fas fa-search"></i>
       </button>
       {select_1 !== "ALL" && select_2 !== "ALL" ? (
@@ -169,6 +158,7 @@ const Contents = () => {
           name="thirdSelect"
           id={style.thirdSelect}
           onChange={handleSelect_3}
+          className={`${contentsSearch.length !== 0 ? style.select : ""}`}
         >
           <option value="date">최신순</option>
           <option value="like">좋아요순</option>

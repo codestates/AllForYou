@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
       return {
         "content_id": contentId,
         "title": el.content.title,
-        "image": el.content.imgae,
+        "image": el.content.image,
         "type": el.content.type,
         "likes": el.content.likes.length
       }

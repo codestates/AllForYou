@@ -49,7 +49,3 @@ router.get("/contents/:contentId", contentRouter.detail); // 컨텐츠 하나 �
 router.get("/search", contentRouter.search); // 컨텐츠 검색(완료)
 
 module.exports = router;
-
-//https://github.com/codestates/moongori/blob/main/server/controllers/index.js 참조
-//https://github.com/codestates/DokDok-server
-//https://github.com/codestates/DokDok-client

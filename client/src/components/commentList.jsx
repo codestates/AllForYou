@@ -44,17 +44,15 @@ const Comment = ({ comment, getComment }) => {
     // };
 
     return (
-        <div className={style.container}>
-            <div className={style.box}>
-                <div className={style.infoBox}>
-                    <div className={style.userBox}>
-                        <img className={style.img} />
-                        <div className={style.name}>{comment.nickname}</div>
-                    </div>
-                    <div className={style.date}>{comment.createdAt}</div>
+        <div className={style.box}>
+            <div className={style.infoBox}>
+                <div className={style.userBox}>
+                    <img className={style.img} />
+                    <div className={style.name}>{comment.nickname}</div>
                 </div>
-                <div className={style.comment}>{comment.comment}</div>
+                <div className={style.date}>{comment.createdAt}</div>
             </div>
+            <div className={style.comment}>{comment.comment}</div>
         </div>
     );
 };
