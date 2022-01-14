@@ -123,6 +123,8 @@ const ForYouView = ({ post, isLogin }) => {
       });
   };
 
+  console.log('내용!!', post.text)
+
   return (
     <div className={style.container}>
       <div className={style.viewBox}>

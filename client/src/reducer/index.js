@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["foruReducer"]
+    whitelist: ["foruReducer", "loginReducer"]
 };
 
 export default persistReducer(persistConfig, rootReducer);
