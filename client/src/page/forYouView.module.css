@@ -73,17 +73,6 @@
 .icon > svg{
   margin-right: 0.3rem;
 }
-.icon > svg:hover{
-  color:#d62d20;
-}
-.icon:hover{
-  color:#d62d20;
-}
-.icon{
-  font-size:1.1rem;
-  padding-bottom: 0.5rem;
-  margin: 0rem;
-}
 .listContent{
   border-top: 1px solid rgb(167, 167, 167);
   border-bottom: 1px solid rgb(167, 167, 167);
@@ -166,6 +155,18 @@
 .btnOk:hover{
   background-color: black;
   color: white;
+}
+.like{
+  color:#d62d20;
+  font-size:1.1rem;
+  padding-bottom: 0.5rem;
+  margin: 0rem;
+}
+.unlike{
+  color:#cccccc;
+  font-size:1.1rem;
+  padding-bottom: 0.5rem;
+  margin: 0rem;
 }
 
 
