@@ -11,6 +11,7 @@ import writingListReducer from "./writingListReducer";
 import foruReducer from "./foruReducer";
 import contentsModalReducer from './contentsModalReducer';
 import contentsLikeReducer from './contentsLikeReducer'
+import contentsScrollReducer from './contentsScrollReducer'
 
 const rootReducer = combineReducers({
     loginReducer,
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     writingListReducer,
     foruReducer,
     contentsModalReducer,
-    contentsLikeReducer
+    contentsLikeReducer,
+    contentsScrollReducer
 });
 
 const persistConfig = {
