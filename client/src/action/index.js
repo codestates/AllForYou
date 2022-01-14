@@ -19,6 +19,8 @@ export const SET_IMAGE = 'SET_IMAGE';
 export const REVIEWS_DATE =  "REVIEWS_DATE";
 export const LIKES_DATE = "LIKES_DATE";
 
+export const CONTENTS_LIKE = 'CONTENTS_LIKE';
+
 export const login = (isLogin) => {
     return {
         type: LOGIN,
@@ -161,5 +163,14 @@ export const setPost = (post) => {
     return {
         type: SET_POST,
         payload: post,
+    };
+};
+
+export const contentsLike = (boolean) => {
+    return {
+        type: CONTENTS_LIKE,
+        payload: {
+            likeOnOff: boolean
+        }
     };
 };
