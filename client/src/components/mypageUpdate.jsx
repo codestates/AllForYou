@@ -1,28 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import style from "./mypageUpdate.module.css";
+import { useSelector, useDispatch } from 'react-redux';
+import { setUpdateInfo } from '../action';
 import axios from 'axios';
 
 function MyPgaeUpdate() {
-    const [updateOpenModal, setUpdateOpenModal] = useState(false);
+    const dispatch = useDispatch();
+    const { emailData } = useSelector((state) => state.loginReducer);
 
+    const [errorMessage, setErrorMessage] = useState("");
+    const [signupInfo, setSignUpInfo] = useState({
+        nickname: "",
+        password: "",
+        repassword: "",
+    });
+
+    const handleInputValue = (key) => (e) => {
+        setSignUpInfo({ ...signupInfo, [key]: e.target.value });
+    };
+
+    const handleUpdate = () => {
+        const { nickname, password, repassword } = signupInfo;
+        if (!nickname || !password || !repassword) {
+            setErrorMessage("nickname, 비밀번호 모두 다 입력해야합니다.");
+            setTimeout(function() { setErrorMessage("") }, 3000);
+        } else if (password.length < 8 || repassword.length < 8) {
+            setErrorMessage("비밀번호는 8글자 이상이어야합니다.");
+            setTimeout(function() { setErrorMessage("") }, 3000);
+        } else if (repassword !== password) {
+            setErrorMessage("비밀번호가 일치하지 않습니다.");
+            setTimeout(function() { setErrorMessage("") }, 3000);
+        } else {
+        axios
+            .patch(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, signupInfo)
+            .then((res) => {
+                if (res.status === 200) {
+                    dispatch(setUpdateInfo(false))
+                    window.location.reload('/mypage')
+                }
+            })
+            .catch((err) => {
+                if (err.message === "이메일 중복입니다.") {
+                    setErrorMessage("이미 사용하고 있는 이메일입니다");
+                    setTimeout(function() { setErrorMessage("") }, 3000);
+                } else if (
+                    err.message === "닉네임 중복입니다."
+                ) {
+                    setErrorMessage("이미 사용하고 있는 닉네임입니다");
+                    setTimeout(function() { setErrorMessage("") }, 3000);
+                }
+            });
+        }
+    };
+    
     const handleUpdateModal = () => {
-        updateOpenModal === false
-        ? setUpdateOpenModal(true)
-        : setUpdateOpenModal(false)
+        dispatch(setUpdateInfo(false));
+    }
+
+    const modalOutSide = (e) => {
+        if (e.target === e.currentTarget) {
+            dispatch(setUpdateInfo(false))
+        }
     }
 
     return (
-        <div className={style.body}>
-        {/* <div className={style.container}>
+        <div className={style.body} onClick={modalOutSide}>
+        <div className={style.container}>
             <img className={style.logo} src="logo(background-white).png" alt="" />
-            <input
-                className={style.myInfo}
-                type="text"
-                placeholder="이메일"
-                required
-                onChange={handleInputValue("email")}
-            />
-            <div className={style.itemText}>아이디</div>
+            <div>{emailData}</div>
             <input
                 className={style.myInfo}
                 type="text"
@@ -47,18 +92,14 @@ function MyPgaeUpdate() {
                 onChange={handleInputValue("repassword")}
             />
             <div className={style.itemText}>비밀번호 확인</div>
-            <button
-                className={style.membership}
-                onClick={handleSignUp}
-            >
-                회원가입
+            <button className={style.update} onClick={handleUpdate}>
+                수정하기
             </button>
             <span className={style.message}>{errorMessage}</span>
-            <span className={style.login_text}>이미 All For You 회원이신가요 ?</span>
-            <button className={style.login_bnt} onClick={handleModal}>
-                로그인
+            <button className={style.update_bnt} onClick={handleUpdateModal}>
+                취소하기
             </button>
-        </div> */}
+        </div>
     </div>
     );
 };

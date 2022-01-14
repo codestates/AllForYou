@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import style from "./mypageProfilebox.module.css";
-import MyPgaeUpdate from "./mypageUpdate"
-import { useSelector } from 'react-redux';
-import { setNickname } from '../action';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUpdateInfo, setWithdrawModal } from '../action';
 
 function ProfileBox() {
-const { nickname } = useSelector((state) => state.loginReducer);
-const { accessToken } = useSelector((state) => state.loginReducer);
+    const dispatch = useDispatch();
+    const { nickname } = useSelector((state) => state.loginReducer);
 
-const [isWithdrawModal, setIsWithdrawModal] = useState(false);
-const [isOpenModal, setIsOpenModal] = useState(false);
-const [userinfo, setUserinfo] = useState(null);
-
-const handleMypageModal = () => {
-    setIsOpenModal(!isOpenModal);
-};
-
-const withModalHandler = () => {
-    setIsWithdrawModal(!isWithdrawModal);
-};
+    const withModalHandler = () => {
+        dispatch(setWithdrawModal(true));
+    };
+    const handleUpdateModal = () => {
+        dispatch(setUpdateInfo(true));
+    }
 
     return (
         <div className={style.container}>
@@ -27,8 +21,7 @@ const withModalHandler = () => {
                 <p className={style.nickname}>
                     {nickname}
                 </p>
-                {isOpenModal === true ? <MyPgaeUpdate /> : null}
-                <button className={style.update} onClick={handleMypageModal}>
+                <button className={style.update} onClick={handleUpdateModal}>
                     회원정보 수정
                 </button>
                 <button className={style.withdraw} onClick={withModalHandler}>

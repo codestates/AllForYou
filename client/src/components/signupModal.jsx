@@ -33,9 +33,7 @@ const SignupModal = () => {
         setTimeout(function() { setErrorMessage("") }, 3000);
       } else {
         axios
-          .post(`${process.env.REACT_APP_SERVER_URL}/users/signup`, signupInfo, {
-            withCredentials: true,
-          })
+          .post(`${process.env.REACT_APP_SERVER_URL}/users/signup`, signupInfo)
           .then((res) => {
             if (res.status === 201) {
               handleModal();
@@ -86,7 +84,7 @@ const SignupModal = () => {
           required
           onChange={handleInputValue("email")}
         />
-        <div className={style.itemText}>아이디</div>
+        <div className={style.itemText}>이메일</div>
         <input
           className={style.myInfo}
           type="text"

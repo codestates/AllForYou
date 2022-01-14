@@ -19,6 +19,8 @@ export const SET_IMAGE = 'SET_IMAGE';
 export const REVIEWS_DATE = "REVIEWS_DATE";
 export const LIKES_DATE = "LIKES_DATE";
 export const SCROLL_TOP = "SCROLL_TOP";
+export const SET_UPDATE = "SET_UPDATE";
+export const SET_WITHDRAW = "SET_WITHDRAW";
 
 export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
@@ -27,6 +29,24 @@ export const login = (isLogin) => {
         type: LOGIN,
         payload: {
             isLogin
+        },
+    };
+};
+
+export const setUpdateInfo = (updateInfo) => {
+    return {
+        type: SET_UPDATE,
+        payload: {
+            updateInfo
+        },
+    };
+};
+
+export const setWithdrawModal = (withdrawModal) => {
+    return {
+        type: SET_WITHDRAW,
+        payload: {
+            withdrawModal
         },
     };
 };

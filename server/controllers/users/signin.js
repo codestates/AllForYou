@@ -16,13 +16,14 @@ module.exports = async (req, res) => {
     
     const userData = {
         id: userInfo.dataValues.id,
+        email: userInfo.dataValues.email,
         nickname: userInfo.dataValues.nickname,
         user_picture: userInfo.dataValues.user_picture
     }
     
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });
   
-    return res.status(200).cookie("jwt", token, {
+    return res.status(201).cookie("jwt", token, {
       sameSite: "None",
       httpOnly: true,
       secure: true
