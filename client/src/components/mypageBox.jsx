@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import style from "./mypageBox.module.css";
 import MyReviewsDetail from "../page/myReviewsDetail";
 import MyLikesDetail from "../page/myLikesDetail";
@@ -8,13 +9,13 @@ function MyPageBox({ reviews, likes }) {
     return (
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
-        <button className={style.more_button} >more
-            <p className={style.more_icon}>
-                <i className="fas fa-angle-right" >
-                    <MyReviewsDetail />
-                </i>
-            </p>
-        </button>
+        <Link to="/reviewsdetail">
+            <button className={style.more_button} >more
+                <p className={style.more_icon}>
+                    <i className="fas fa-angle-right" />
+                </p>
+            </button>
+        </Link>
         <div className={style.box}>
             {reviews ? (
                 <>
@@ -84,13 +85,13 @@ function MyPageBox({ reviews, likes }) {
                 )}
                 </div>
                 <span className={style.likes_title}>좋아요 표시한 콘텐츠</span>
-                <button className={style.more_button}>more
-                    <p className={style.more_icon}>
-                        <i className="fas fa-angle-right" >
-                            <MyLikesDetail />
-                        </i>
-                    </p>
-                </button>
+                <Link to="/likesdetail">
+                    <button className={style.more_button}>more
+                        <p className={style.more_icon}>
+                            <i className="fas fa-angle-right" />
+                        </p>
+                    </button>
+                </Link>
                 <div className={style.box}>
                     {likes ? (
                         <>

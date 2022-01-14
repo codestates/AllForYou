@@ -24,7 +24,6 @@ const Nav = () => {
         console.log(err)
       })
   };
-  console.log(isLogin)
 
   const handleLoginModal = () => {
     dispatch(loginModal(true))

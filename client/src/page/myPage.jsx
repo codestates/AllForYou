@@ -4,10 +4,14 @@ import { useSelector } from 'react-redux';
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
+import MyPgaeUpdate from "../components/mypageUpdate";
+import ModalWithdraw from "../components/ModalWithdraw";
 import Footer from "../components/footer";
 
 const MyPage = () => {
   const { isLogin } = useSelector((state) => state.loginReducer); 
+  const { updateInfo } = useSelector((state) => state.loginReducer);
+  const { withdrawModal } = useSelector((state) => state.loginReducer);
 
   const [errMessage, setErrMessage] = useState("");
   const [isWithdrawModal, setIsWithdrawModal] = useState(false);
@@ -40,6 +44,8 @@ const MyPage = () => {
     <>
     {isLogin === true ? (
       <div className={style.mypage_container}>
+        {updateInfo === true ? (<MyPgaeUpdate />) : null}
+        {withdrawModal === true ? (<ModalWithdraw />) : null}
         <ProfileBox />
         <MyPageBox 
         reviews={reviews}

@@ -1,6 +1,6 @@
 const sequelize = require("sequelize");
 const Op = sequelize.Op;
-const { contents, likes } = require("../../models");
+const { contents, likes, users } = require("../../models");
 
 module.exports = async(req, res) => {
     const categoryFilter = req.query.c;
@@ -54,16 +54,16 @@ module.exports = async(req, res) => {
             contentsList = contentsList.sort((a, b) => b.year - a.year)
         }
 
-        const likesData = await likes.findAll({
+        const likesData = await users.findOne({
             whehe : {
-                user_id: contentsId
+                id: contentsId
             },
-            attributes: [
-                "content_id"
+            include: [
+                { model: likes, attributes: ["content_id"] }
             ]
         })
 
-        let likesList = likesData.map((el) => {
+        const likesList = likesData.dataValues.likes.map((el) => {
             return {
                 "content_id": el.content_id
             }
