@@ -117,7 +117,6 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         setComment(res.data.data);
         console.log(res.data.data);
-        // console.log('댓글글글글'+res.data.data);
       })
       .catch((err) => {
         if (err) throw err;
