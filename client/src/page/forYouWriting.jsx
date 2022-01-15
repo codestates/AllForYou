@@ -13,14 +13,13 @@ const ForYouWriting = () => {
     const state = useSelector(state => state.writingListReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const inputRef = useRef();
     const fileInput = useRef(null);
     const [files, setFiles] = useState([]);
     const [category, setCategory] = useState('ALL');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [search, setSearch] = useState('');
-    // const [resultSearch, setResultSearch] = useState([]); //검색 axios에서 사용
+    const [resultSearch, setResultSearch] = useState([]);
 
     const handleText = (value) => {
         setContent(value)
@@ -35,39 +34,26 @@ const ForYouWriting = () => {
         dispatch(removeFromList(id))
     }
 
-    //더미코드
-    const handleSearch = () => {
-        const value = inputRef.current.value
-        setSearch(value)
+    //검색 결과, axios 적용 코드
+    const handleSearchText = e => {
+        setSearch(e.target.value)
     }
+
     const onKeyPress = (e) => {
         if (e.key === 'Enter') {
-            handleSearch();
+            searchHandler();
         }
     }
-
-    //검색 결과, axios 적용 코드
-    // const handleSearchText = e => {
-    //     setSearch(e.target.value)
-    // }
-
-    // const onKeyPress = (e) => {
-    //     if (e.key === 'Enter') {
-    //         searchHandler();
-    //     }
-    // }
-    // const searchHandler = () => {
-    //     axios
-    //         .get(`${process.env.REACT_APP_API_URL}/contents/:search?keyword=${searchText}`, {
-    //             headers: { 'Content-Type': 'application/json' },
-    //         })
-    //         .then(res => {
-    //             setResultSearch(res.data.searchResult); //서버 코드 확인 필요
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // };
+    const searchHandler = () => {
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${search}`)
+            .then(res => {
+                setResultSearch(res.data.data.contentsList);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
     const uploadImage = (e) => {
         e.preventDefault();
@@ -183,13 +169,11 @@ const ForYouWriting = () => {
                                     type="search"
                                     placeholder='Search...'
                                     onKeyPress={onKeyPress}
-                                    ref={inputRef} //더미 적용 코드
-                                // onChange={handleSearchText} //axios 적용 코드
+                                    onChange={handleSearchText}
                                 />
                                 <button
                                     className={style.btnSearch}
-                                    // onClick={() => searchHandler()} //axios 적용 코드
-                                    onClick={() => handleSearch()} //더미 적용 코드
+                                    onClick={() => searchHandler()}
                                 >검색</button>
                             </div>
                             <div className={style.addListBox_left}>
@@ -198,8 +182,7 @@ const ForYouWriting = () => {
                                     <span className={style.list_part}>구분</span>
                                 </div>
                                 <SearchList
-                                    search={search}
-                                    checkedList={false}
+                                    resultSearch={resultSearch}
                                 />
                             </div>
                         </div>
