@@ -72,3 +72,20 @@ textarea{
 .gobackBtn{
   color:#AA2B1D;
 }
+
+@media screen and  (max-width:740px) {
+  .box{
+  width:18rem;
+}
+.img{
+  width:1.7rem;
+  height:1.7rem;
+}
+.name{
+  font-size:0.8rem;
+  height:2rem;
+}
+.date{
+  font-size: 0.8rem;
+}
+}
