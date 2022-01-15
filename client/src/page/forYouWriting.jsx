@@ -17,12 +17,16 @@ const ForYouWriting = () => {
     const [files, setFiles] = useState([]);
     const [category, setCategory] = useState('ALL');
     const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const [text, setText] = useState('');
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
 
+    const contents = state.map((el) => {
+        return el.contents.id
+    })
+
     const handleText = (value) => {
-        setContent(value)
+        setText(value)
     }
 
     const fileHandle = (e) => {
@@ -34,7 +38,12 @@ const ForYouWriting = () => {
         dispatch(removeFromList(id))
     }
 
-    //검색 결과, axios 적용 코드
+    const uploadImage = (e) => {
+        e.preventDefault();
+        fileInput.current.click();
+    };
+
+    //search axios
     const handleSearchText = e => {
         setSearch(e.target.value)
     }
@@ -55,50 +64,34 @@ const ForYouWriting = () => {
             });
     };
 
-    const uploadImage = (e) => {
-        e.preventDefault();
-        fileInput.current.click();
-    };
-
     //'등록'버튼 클릭시
     async function submitForm() {
         if (
             title === '' ||
-            content === '' ||
+            text === '' ||
             files.length === 0 ||
             state.length === 0
         ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
-        }
-        else {
-            navigate('/foryou');
-            dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        }
-        // else
-        //     const formData = new FormData();
-        //     formData.append('title', title);
-        //     formData.append('category', category);
-        //     formData.append('content', content);
-        //     formData.append('image', files);
+        } else {
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('category', category);
+            formData.append('text', text); //글 소개
+            formData.append('contents', contents); //컨텐츠 리스트 id 배열
+            formData.append('image', files);
 
-        //     await axios
-        //         .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
-        //             headers: {
-        //                 Authorization: `Bearer ${localStorage.accessToken}`,
-        //                 'Content-Type': 'multipart/form-data',
-        //             },
-        //         })
-        //         .then(() => {
-        //             navigate('/foryou');
-        //             dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        //         })
-        //         .catch((err) => {
-        //             if (err) {
-        //                 console.log(err)
-        //             }
-        //         });
-        // }
+            await axios
+                .post(`${process.env.REACT_APP_SERVER_URL}/reviews`, formData)
+                .then(() => {
+                    navigate('/foryou');
+                    dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+                })
+                .catch((err) => {
+                    console.log(err)
+                });
+        }
     }
 
 
@@ -155,7 +148,7 @@ const ForYouWriting = () => {
                 <div className={style.textBox}>
                     <p className={style.text_p}>소개글 입력</p>
                     <EditorComponent
-                        value={content}
+                        value={text}
                         onChange={handleText}
                     />
                 </div>

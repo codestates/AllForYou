@@ -7,12 +7,33 @@
   margin: 1rem auto;
   background-color:white;
   width:55%;
-  padding-top: 3rem;
+  padding-top: 1rem;
+}
+.editBtn, .cancelBtn{
+  font-size: 0.8rem;
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  float: right;
+  background-color: black;
+  color: white;
+}
+.cancelBtn{
+  margin-right: 1rem;
+}
+.editBtn{
+  margin-right: 0.3rem;
+}
+.editBtn:hover, .cancelBtn:hover{
+  border: 1px solid black;
+  background-color: white;
+  color: black;
 }
 .titleBox{
   text-align: center;
   width: 37rem;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding-top: 2rem;
 }
 .title{
