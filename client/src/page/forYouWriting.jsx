@@ -176,7 +176,7 @@ const ForYouWriting = () => {
                                     onClick={() => searchHandler()}
                                 >검색</button>
                             </div>
-                            <div className={style.addListBox_left}>
+                            <div className={style.addListBox_search}>
                                 <div className={style.listHeader}>
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
@@ -187,7 +187,7 @@ const ForYouWriting = () => {
                             </div>
                         </div>
                         <div className={style.rightBox}>
-                            <div className={style.addListBox_right}>
+                            <div className={style.addListBox_addlist}>
                                 <div className={style.listHeader}>
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
