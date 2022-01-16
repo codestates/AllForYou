@@ -4,18 +4,16 @@ import style from "./forYouView.module.css";
 import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
-import { useDispatch, useSelector } from 'react-redux';
-import { setMessageModal } from '../action/index';
+import { useDispatch } from 'react-redux';
 import { loginModal, setPost } from '../action/index';
-import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { nickname } = useSelector((state) => state.loginReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
+
+  // console.log("post state check", post);
 
   useEffect(() => {
     getPostDetail();
@@ -115,32 +113,9 @@ const ForYouView = ({ post, isLogin }) => {
       });
   };
 
-  const deletePost = () => {
-    axios
-      .delete(`${process.env.REACT_APP_SERVER_URL}/reviews`)
-      .then(() => {
-        navigate('/foryou')
-        dispatch(setMessageModal(true, '게시글을 삭제했습니다.'));
-      })
-      .catch((err) => {
-        console.log(err)
-      });
-  };
-
   return (
     <div className={style.container}>
       <div className={style.viewBox}>
-        {post.nickname === nickname ? (
-          <>
-            <button
-              className={style.cancelBtn}
-              onClick={deletePost}
-            >삭제</button>
-            <button
-              className={style.editBtn}
-            >수정</button>
-          </>
-        ) : null}
         <div className={style.titleBox}>
           <p className={style.title}>{post.title}</p>
           <div className={style.subtitleBox}>
@@ -154,6 +129,7 @@ const ForYouView = ({ post, isLogin }) => {
         </div>
         <div className={style.textBox}>
           <p className={style.textTittle}>소개글</p>
+          {/* 글이 길어질 경우, 무한 스코롤 또는 멜론 처럼 접기 적용 필요 */}
           <div className={style.textContent}>
             {post.text}
           </div>
