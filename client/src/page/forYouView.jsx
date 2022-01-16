@@ -188,15 +188,17 @@ const ForYouView = ({ post, isLogin }) => {
             <button className={style.btnKakao}>카톡 공유하기</button>
           </div>
         </div>
-        <CommentInput
-          getComment={getComment}
-          post={post}
-          isLogin={isLogin}
-        />
-        <Comment
-          comment={comment}
-          getComment={getComment}
-        />
+        <div className={style.commentBox}>
+          <CommentInput
+            getComment={getComment}
+            post={post}
+            isLogin={isLogin}
+          />
+          <Comment
+            comment={comment}
+            getComment={getComment}
+          />
+        </div>
       </div>
     </div>
   );

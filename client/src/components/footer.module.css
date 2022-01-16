@@ -69,23 +69,28 @@ img {
 }
 .name {
   display: flex;
+  height: 3rem;
 }
 .fullname{
   font-weight: bold;
+  width:3rem;
 }
 .role {
+  width: 5rem;
+  height:1.5rem;
   margin-left: 0.3rem;
-  padding: 0 0.3rem;
   background-color: #FAEEE0;
-  border-radius: 0.8rem;
+  border-radius: 0.9rem;
   text-align: center;
   font-size: 0.8rem;
-  padding-top: 0.1rem;
 }
-@media screen and (max-width:1023px) {
+@media screen and (max-width:1024px) {
   .container {
     margin-right: 1rem;
     padding-right: 2rem;
+  }
+  .teamContainer{
+    margin-bottom: 4rem;
   }
   .individual {
   padding: 0 2rem;
@@ -97,21 +102,34 @@ img {
 }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:740px) {
+  .footer {
+  flex-direction: column;
+}
   .container {
-    margin-right: 1rem;
-    padding-right: 2rem;
+    margin-right: 0rem;
+    padding-right: 0rem;
+    border-right: none;
+    border-bottom: 1px solid #FAEEE0;
+    border-top: 1px solid #FAEEE0;
+    padding-top: 2.5rem;
   }
   .teamContainer{
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
-  .individual{
-    margin-bottom: 1.5rem;
-  }
+  .individual {
+  padding: 0.3rem;
+  width: 17rem;
+  margin-bottom: 1.5rem;
+}
+.box{
+  justify-content: left;
+  width: 100%;
+}
 .icon{
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
 }
 .link{
   font-size: 0.9rem;

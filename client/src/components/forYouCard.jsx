@@ -79,7 +79,7 @@ const ForYouCard = ({ review }) => {
                         <p className={style.title}>{review.title}</p>
                         <div className={style.icon}>
                             <i className="fas fa-heart"></i>
-                            <div className={style.iconText}>좋아요 {review.like}개</div>
+                            <div className={style.iconText}>좋아요<br />{review.like}개</div>
                         </div>
                     </div>
                     <p className={style.writer}>by {review.nickname}</p>

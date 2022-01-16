@@ -99,7 +99,7 @@ const ForYou = ({ isLogin }) => {
         <button
           className={style.btn}
           onClick={handleLoginStatus}
-        >리스트 작성하기</button>
+        >작성하기</button>
       </div>
       <div className={style.cardContainer}>
         {filteredCategory.map((review) => (

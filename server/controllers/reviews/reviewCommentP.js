@@ -18,8 +18,8 @@ module.exports = async (req, res) => {
       return res.status(409).send('잘못된 요청입니다.');
     }
     
-    await comments.update({ comment: comment },{ wherer: { id: id, user_id: user_id, review_id: review_id }});
-
+    await comments.update( { comment: comment }, { where: { id: id, user_id: user_id, review_id: review_id } });
+   
     const reviewCommentData = await comments.findAll({ 
       where: { review_id: review_id },
       include: [{ model: users, attributes: ["nickname"] }],
@@ -33,8 +33,7 @@ module.exports = async (req, res) => {
         user_id: el.user_id,
         nickname: el.user.nickname,
         comment: el.comment,
-        createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0],
-        updatedAt: (el.updatedAt).toISOString().split("T")[0] + " " + (el.updatedAt).toISOString().split("T")[1].split(".")[0]
+        createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0]
       }
     })
 
