@@ -5,6 +5,10 @@ module.exports = async (req, res) => {
   const { category, title, text, content_id } = req.body; // 컨텐츠 데이터 id를 받아온다.
 
   try{
+    if( category || title || text || content_id ) {
+      return res.status(409).send('데이터가 비어있습니다.');
+    }
+    
     // 리뷰데이터 생성
     const rewiewData = await reviews.create({
       user_id,
