@@ -7,12 +7,33 @@
   margin: 1rem auto;
   background-color:white;
   width:55%;
-  padding-top: 3rem;
+  padding-top: 1rem;
+}
+.editBtn, .cancelBtn{
+  font-size: 0.8rem;
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  border: none;
+  float: right;
+  background-color: black;
+  color: white;
+}
+.cancelBtn{
+  margin-right: 1rem;
+}
+.editBtn{
+  margin-right: 0.3rem;
+}
+.editBtn:hover, .cancelBtn:hover{
+  border: 1px solid black;
+  background-color: white;
+  color: black;
 }
 .titleBox{
   text-align: center;
   width: 37rem;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding-top: 2rem;
 }
 .title{
@@ -64,6 +85,10 @@
   display: flex;
   align-items: center;
 }
+.textContent{
+  line-height: 1.4rem;
+  margin-bottom:1rem;
+}
 .listTitle{
   font-size: 1.2rem;
   font-weight: bold;
@@ -72,17 +97,6 @@
 }
 .icon > svg{
   margin-right: 0.3rem;
-}
-.icon > svg:hover{
-  color:#d62d20;
-}
-.icon:hover{
-  color:#d62d20;
-}
-.icon{
-  font-size:1.1rem;
-  padding-bottom: 0.5rem;
-  margin: 0rem;
 }
 .listContent{
   border-top: 1px solid rgb(167, 167, 167);
@@ -167,6 +181,18 @@
   background-color: black;
   color: white;
 }
+.like{
+  color:#d62d20;
+  font-size:1.1rem;
+  padding-bottom: 0.5rem;
+  margin: 0rem;
+}
+.unlike{
+  color:#cccccc;
+  font-size:1.1rem;
+  padding-bottom: 0.5rem;
+  margin: 0rem;
+}
 
 
 @media screen and  (max-width:1023px) {
@@ -175,7 +201,7 @@
 }
 }
 
-@media screen and  (max-width:767px) {
+@media screen and  (max-width:740px) {
 .viewBox{
   width:90%;
   padding-top: 1.5rem;
@@ -197,14 +223,14 @@
   font-size: 0.8rem;
 }
 .imgBox{
-  width: 19rem;
+  width: 18rem;
 }
 .img{
   width: 100%;
   height: 12rem;
 }
 .textBox{
-  width: 19rem;
+  width: 18rem;
 }
 .textTittle{
   font-size: 1rem;
@@ -213,7 +239,7 @@
   height: 8rem;
 }
 .listBox{
-  width: 19rem;
+  width: 18rem;
 }
 .listTitle{
   font-size: 1rem;
@@ -223,12 +249,12 @@
   margin-right: 2rem;
 }
 .list_title{
-  width: 7rem;
-  margin-right: 1rem;
+  width: 8rem;
+  margin-right: 0.5rem;
 }
 .list_part{
-  width: 3rem;
-  margin-right: 1rem;
+  width: 2rem;
+  margin-right: 0.5rem;
 }
 .list_like{
   width: 2.5rem;
@@ -241,7 +267,7 @@
 }
 .commentBox{
   margin: 0 auto;
-  width: 19rem;
+  width: 18rem;
   padding-bottom: 5rem;
 }
 .commentText{

@@ -107,10 +107,6 @@ const ForYouWriting = () => {
                     console.log(err)
                 });
         }
-        else {
-            navigate('/foryou');
-            dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-        }
         // else
         //     const formData = new FormData();
         //     formData.append('title', title);

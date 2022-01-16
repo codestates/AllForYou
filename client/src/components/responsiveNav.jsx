@@ -31,35 +31,35 @@ const ResponsiveNav = () => {
           alt="logo"
           onClick={() => navigate('/')}
         />
-        <div className={style.menuBox}>
+        <div className={style.header_menubox}>
           <p className={style.header_menu} onClick={() => navigate('/mypage')}>MY PAGE</p>
           <p className={style.header_menu} onClick={() => navigate('/login')}>LOGIN</p>
         </div>
       </div>
       <div className={style.underbar}>
-        <div className={style.menubox}>
-          <div className={style.icon} onClick={() => navigate('/')}>
+        <div className={style.under_menubox} onClick={() => navigate('/')}>
+          <div className={style.icon}>
             <i className="fas fa-home"></i>
           </div>
-          <p className={style.underbar_menu} onClick={() => navigate('/')}>HOME</p>
+          <p className={style.underbar_menu} >HOME</p>
         </div>
-        <div className={style.menubox}>
-          <div className={style.icon} onClick={() => navigate('/contents')}>
+        <div className={style.under_menubox} onClick={() => navigate('/contents')}>
+          <div className={style.icon}>
             <i className="fas fa-photo-video"></i>
           </div>
-          <p className={style.underbar_menu} onClick={() => navigate('/contents')}>CONTENTS</p>
+          <p className={style.underbar_menu} >CONTENTS</p>
         </div>
-        <div className={style.menubox}>
-          <div className={style.icon} onClick={() => navigate('/foryou')}>
+        <div className={style.under_menubox} onClick={() => navigate('/foryou')}>
+          <div className={style.icon}>
             <i className="fas fa-list"></i>
           </div>
-          <p className={style.underbar_menu} onClick={() => navigate('/foryou')}>FOR U</p>
+          <p className={style.underbar_menu}>FOR U</p>
         </div>
-        <div className={style.menubox}>
-          <div className={style.icon} onClick={() => navigate('/')}>
+        <div className={style.under_menubox} onClick={() => navigate('/')}>
+          <div className={style.icon} >
             <i className="fas fa-search"></i>
           </div>
-          <p className={style.underbar_menu} onClick={() => navigate('/')}>SEARCH</p>
+          <p className={style.underbar_menu}>SEARCH</p>
         </div>
       </div>
     </div>
