@@ -64,10 +64,6 @@
   display: flex;
   align-items: center;
 }
-.textContent{
-  line-height: 1.4rem;
-  margin-bottom:1rem;
-}
 .listTitle{
   font-size: 1.2rem;
   font-weight: bold;
@@ -76,6 +72,17 @@
 }
 .icon > svg{
   margin-right: 0.3rem;
+}
+.icon > svg:hover{
+  color:#d62d20;
+}
+.icon:hover{
+  color:#d62d20;
+}
+.icon{
+  font-size:1.1rem;
+  padding-bottom: 0.5rem;
+  margin: 0rem;
 }
 .listContent{
   border-top: 1px solid rgb(167, 167, 167);
@@ -160,18 +167,6 @@
   background-color: black;
   color: white;
 }
-.like{
-  color:#d62d20;
-  font-size:1.1rem;
-  padding-bottom: 0.5rem;
-  margin: 0rem;
-}
-.unlike{
-  color:#cccccc;
-  font-size:1.1rem;
-  padding-bottom: 0.5rem;
-  margin: 0rem;
-}
 
 
 @media screen and  (max-width:1023px) {
@@ -180,7 +175,7 @@
 }
 }
 
-@media screen and  (max-width:740px) {
+@media screen and  (max-width:767px) {
 .viewBox{
   width:90%;
   padding-top: 1.5rem;
@@ -202,14 +197,14 @@
   font-size: 0.8rem;
 }
 .imgBox{
-  width: 18rem;
+  width: 19rem;
 }
 .img{
   width: 100%;
   height: 12rem;
 }
 .textBox{
-  width: 18rem;
+  width: 19rem;
 }
 .textTittle{
   font-size: 1rem;
@@ -218,7 +213,7 @@
   height: 8rem;
 }
 .listBox{
-  width: 18rem;
+  width: 19rem;
 }
 .listTitle{
   font-size: 1rem;
@@ -228,12 +223,12 @@
   margin-right: 2rem;
 }
 .list_title{
-  width: 8rem;
-  margin-right: 0.5rem;
+  width: 7rem;
+  margin-right: 1rem;
 }
 .list_part{
-  width: 2rem;
-  margin-right: 0.5rem;
+  width: 3rem;
+  margin-right: 1rem;
 }
 .list_like{
   width: 2.5rem;
@@ -246,7 +241,7 @@
 }
 .commentBox{
   margin: 0 auto;
-  width: 18rem;
+  width: 19rem;
   padding-bottom: 5rem;
 }
 .commentText{

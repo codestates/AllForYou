@@ -20,8 +20,10 @@
 .title{
   margin-right: 2.5rem;
   width:13.5rem;
-  height:auto;
   text-align:center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .type{
   margin-right: 4.7rem;
@@ -32,7 +34,7 @@
 
 }
 
-@media screen and  (max-width:740px) {
+@media screen and  (max-width:767px) {
 .container{
   height: 5rem;
   display:flex;
@@ -41,7 +43,7 @@
 }
 .num{
   margin-left:1rem;
-  margin-right:0.5rem;
+  margin-right:1.3rem;
 }
 .img{
   margin-top: 1.2rem;
@@ -55,7 +57,7 @@
   font-size: 0.8rem;
 }
 .type{
-  margin-right: 1.5rem;
+  margin-right: 1.8rem;
   font-size:0.8rem;
 }
 .like{

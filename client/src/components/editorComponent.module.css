@@ -5,7 +5,7 @@
     height: 15rem;
     width: 37rem;
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1023px) {
 .container{
     height: 19rem;
 }
@@ -15,12 +15,12 @@
 }
 }
 
-@media screen and (max-width:740px) {
+@media screen and (max-width:767px) {
 .container{
     height: 22rem;
 }
 .box{
     height: 16rem;
-    width: 18rem;
+    width: 24rem;
 }
 }

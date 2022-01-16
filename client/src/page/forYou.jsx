@@ -95,7 +95,7 @@ const ForYou = ({ accessToken }) => {
             <option value="좋아요순">좋아요순</option>
           </select>
         </div>
-        <button className={style.btn} onClick={() => navigate("/foryouwriting")}>작성하기</button>
+        <button className={style.btn} onClick={() => navigate("/foryouwriting")}>리스트 작성하기</button>
       </div>
       <div className={style.cardContainer}>
         {filteredCategory.map((review) => (

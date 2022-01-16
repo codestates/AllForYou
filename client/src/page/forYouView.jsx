@@ -11,23 +11,29 @@ const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
-  const [likeColor, setLikeColor] = useState(false);
+  const [likeColor, setLikeColor] = useState('#cccccc');
 
-  // console.log("post state check", post);
+  console.log("post state check", post);
 
+  // 바로 첫 로딩 시 진행
   useEffect(() => {
     getPostDetail();
     getContent()
     getComment();
-    if (isLogin) {
-      getLikeInfo();
-    }
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    if (isLogin) {
+      getLikeInfo();
+    }
+  }, []);
+
+  //axios 정보 가져오기
+  //(이미지, 제목, 카테고리, 날짜, 글쓴이, 소개글, 리스트, 좋아요, 댓글)
   function getPostDetail() {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`) //post.reviewData.id
       .then((res) => {
         if (res.status === 200) {
           dispatch(setPost(res.data.data));
@@ -41,7 +47,7 @@ const ForYouView = ({ post, isLogin }) => {
 
   function getContent() {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/content/${post.id}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/content/${post.id}`) //post.reviewData.id
       .then((res) => {
         if (res.status === 200) {
           setContent(res.data.data);
@@ -56,11 +62,9 @@ const ForYouView = ({ post, isLogin }) => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
       .then((res) => {
-        console.log(res.data.data)
-        if (res.data.data) {
-          setLikeColor(true);
-        } else {
-          setLikeColor(false);
+        if (res.data.data) { //추후 서버 확인 필요(true면 색 변경)
+          setLikeColor('#d62d20');
+          console.log('like', res.data.data)
         }
       })
       .catch((err) => {
@@ -68,7 +72,6 @@ const ForYouView = ({ post, isLogin }) => {
       });
   };
 
-  //좋아요를 클릭했을 때, 실행
   const checkLoginStatus = (callback) => {
     if (isLogin) {
       callback();
@@ -79,13 +82,13 @@ const ForYouView = ({ post, isLogin }) => {
     return;
   };
 
-  const likeCheck = () => {
-    if (likeColor === false) {
+  const likePost = () => {
+    if (likeColor === '#cccccc') {
       axios
         .post(
           `${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
         .then(() => {
-          setLikeColor(true);
+          setLikeColor('#d62d20');
         })
         .catch((err) => {
           console.log(err)
@@ -94,7 +97,7 @@ const ForYouView = ({ post, isLogin }) => {
       axios
         .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
         .then(() => {
-          setLikeColor(false);
+          setLikeColor('#cccccc');
         })
         .catch((err) => {
           console.log(err)
@@ -138,10 +141,11 @@ const ForYouView = ({ post, isLogin }) => {
           <div className={style.texthead}>
             <p className={style.listTitle}>추천 리스트</p>
             <div
-              onClick={() => checkLoginStatus(likeCheck)}
-              className={`${likeColor ? style.like : style.unlike}`}
+              className={style.icon}
+              onClick={() => checkLoginStatus(likePost)}
             >
               <i className="fas fa-heart"
+                style={{ color: `${likeColor}` }}
               ></i>
             </div>
           </div>
@@ -164,17 +168,15 @@ const ForYouView = ({ post, isLogin }) => {
             <button className={style.btnKakao}>카톡 공유하기</button>
           </div>
         </div>
-        <div className={style.commentBox}>
-          <CommentInput
-            getComment={getComment}
-            post={post}
-            isLogin={isLogin}
-          />
-          <Comment
-            comment={comment}
-            getComment={getComment}
-          />
-        </div>
+        <CommentInput
+          getComment={getComment}
+          post={post}
+          isLogin={isLogin}
+        />
+        <Comment
+          comment={comment}
+          getComment={getComment}
+        />
       </div>
     </div>
   );
