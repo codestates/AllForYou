@@ -185,7 +185,7 @@ border: 1px solid rgb(167, 167, 167);
   margin-right: 0.5rem;
 }
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1024px) {
 .writingBox{
   width:75%;
 }
@@ -255,7 +255,7 @@ border: 1px solid rgb(167, 167, 167);
 }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:740px) {
 .writingBox{
   width:90%;
 }
@@ -263,35 +263,43 @@ border: 1px solid rgb(167, 167, 167);
   font-size: 1.3rem;
 }
 .imgBox{
-  width: 24rem;
+  width: 18rem;
 }
 .titleBox{
-  width: 24rem;
+  width: 18rem;
+}
+.category{
+  font-size:0.8rem;
+}
+.input{
+  font-size:0.8rem;
+  width: 17rem;
+  height: 1.5rem;
 }
 .textBox{
-  width: 24rem;
+  width: 18rem;
 }
 .listBox{
-  width: 24rem;
+  width: 18rem;
 }
 .leftBox{
-  width: 24rem;
+  width: 18rem;
 }
 .rightBox{
-  width: 24rem;
+  width: 18rem;
 }
 .btnSearch{
   border-radius: 0.3rem;
   width: 3rem;
 }
 .list_title{
-  width: 13rem;
+  width: 10rem;
 }
 .list_part{
   width: 5rem;
 }
 .buttonBox{
-  width: 24rem;
+  width: 18rem;
 }
 .btnCancle, .btnOk{
   width: 3rem;

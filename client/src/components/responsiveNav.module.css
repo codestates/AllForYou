@@ -9,9 +9,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.menuBox{
+.header_menubox{
   display: flex;
   margin-right: 3rem;
+  margin-top: 0rem;
 }
 .logo {
   width: 8rem;
@@ -37,34 +38,34 @@
   align-items: center;
   justify-content:space-evenly;
 }
-.menubox{
-  margin-top: 1rem;
+.under_menubox{
   text-align: center;
 }
-.menubox:hover{
-  color: white;
-}
 .underbar_menu{
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 .icon {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:740px) {
+.header_menubox{
+  margin-right: 0rem;
+}
 .logo {
-  width: 6rem;
-  margin: 1.5rem 2rem;
+  width: 5rem;
+  margin: 1.5rem 1rem;
 }
 .header_menu {
-  margin-left: 3rem;
-  font-size: 0.9rem;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  width:4rem;
 }
 .underbar_menu{
-  font-size:0.9rem;
+  font-size:0.8rem;
 }
 .icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 }
 
