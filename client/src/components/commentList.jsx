@@ -64,7 +64,7 @@ const Comment = ({ comment, getComment }) => {
                             </div>
                             <div className={`${isEdit ? style.hide : null}`}>
                                 <button
-                                    className={style.correctionBtn}
+                                    className={style.editBtn}
                                     onClick={() => setIsEdit(true)}
                                 >수정</button>
                                 <button

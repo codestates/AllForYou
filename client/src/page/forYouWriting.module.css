@@ -106,9 +106,6 @@ border: 1px solid rgb(167, 167, 167);
   font-size: 1rem;
   font-weight: bold;
 }
-.listAddBox{
-  display: flex;
-}
 .searchBox{
   padding-bottom: 0.5rem;
 }
@@ -125,16 +122,20 @@ border: 1px solid rgb(167, 167, 167);
   padding: 0.3rem 0.5rem;
   border-radius: 0.2rem;
 }
-.addListBox_left{
+.addListBox_search{
   border: 1px solid rgb(167, 167, 167);
   height:15rem;
+  width: 37rem;
   margin-bottom: 0.5rem;
+  overflow: scroll;
 }
-.addListBox_right{
+.addListBox_addlist{
   margin-top: 2rem;
   border: 1px solid rgb(167, 167, 167);
   height:15rem;
+  width: 37rem;
   margin-bottom: 0.5rem;
+  overflow: scroll;
 }
 .listHeader{
   padding: 0.3rem;
@@ -143,14 +144,14 @@ border: 1px solid rgb(167, 167, 167);
 }
 .list_title{
   font-size: 0.9rem;
-  width: 9.5rem;
+  width: 25rem;
   display:inline-block;
   text-align:center;
   font-weight: bold;
 }
 .list_part{
   font-size: 0.9rem;
-  width: 4.5rem;
+  width: 5rem;
   display:inline-block;
   text-align:center;
   font-weight: bold;
@@ -229,15 +230,16 @@ border: 1px solid rgb(167, 167, 167);
   width: 30rem;
   padding-bottom: 2rem;
 }
-.listAddBox{
-  flex-direction: column;
-  align-items: center;
-}
 .leftBox{
   width: 30rem;
-  margin-left: 2rem;
 }
 .rightBox{
+  width: 30rem;
+}
+.addListBox_search{
+  width: 30rem;
+}
+.addListBox_addlist{
   width: 30rem;
 }
 .btnSearch{
@@ -287,6 +289,12 @@ border: 1px solid rgb(167, 167, 167);
 }
 .rightBox{
   width: 18rem;
+}
+.addListBox_search{
+  width: 24rem;
+}
+.addListBox_addlist{
+  width: 24rem;
 }
 .btnSearch{
   border-radius: 0.3rem;
