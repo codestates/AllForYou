@@ -17,8 +17,7 @@ module.exports = async (req, res) => {
         user_id: el.user_id,
         nickname: el.user.nickname,
         comment: el.comment,
-        createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0],
-        updatedAt: (el.updatedAt).toISOString().split("T")[0] + " " + (el.updatedAt).toISOString().split("T")[1].split(".")[0]
+        createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0]
       }
     })
 

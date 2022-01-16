@@ -3,13 +3,16 @@ const { reviews, reviews_contents } = require("../../models");
 module.exports = async (req, res) => {
   const review_id = req.params.postId;
   const { category, title, text, content_id } = req.body; // 컨텐츠 데이터 id를 받아온다.
-  const image = req.file.location;
 
   try{
     const rewiewData = await reviews.update(
       { category: category, title: title, text: text, image: image, updateAt: new Date() },
       { where: { id: review_id } }
     );
+
+    if(req.file) {
+      await reviews.update({ image: req.file.location }, { where: { id: review_id } })
+    }
 
     // reviews_contents 테이블 클리어
     content_id.map(async (el) => {

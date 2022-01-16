@@ -33,9 +33,9 @@ router.get("/reviews/get/userlike", auth.accessToken, reviewRouter.reviewUserLik
 router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기(완료)
 router.get("/reviews/content/:postId", reviewRouter.reviewContent); // 리뷰 컨텐츠 불러오기(완료)
 
-router.post("/reviews", auth.accessToken, reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기
+router.post("/reviews", auth.accessToken, reviewRouter.img, reviewRouter.reviewWrite); // 리뷰 작성하기(완료)
 router.delete("/reviews/:postId", auth.accessToken, reviewRouter.reviewDelete); // 리뷰 삭제
-router.patch("reviews/:postId", auth.accessToken, reviewRouter.img, reviewRouter.modifyRewiew)
+router.patch("reviews/:postId", auth.accessToken, reviewRouter.img, reviewRouter.modifyRewiew) // 리뷰 수정하기
 
 router.post("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeC) // 리뷰에 좋아요(완료)
 router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentC) // 리뷰에 댓글 작성 (시간값 오류)
@@ -43,7 +43,7 @@ router.post("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCom
 router.delete("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeD); // 리뷰 좋아요 지우기(완료)
 router.delete("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentD); // 리뷰 댓글 지우기(완료)
 
-router.patch("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentP); // 리뷰 댓글 수정
+router.patch("/reviews/comment/:postId", auth.accessToken, reviewRouter.reviewCommentP); // 리뷰 댓글 수정(완료)
 
 //contents
 router.get("/contents", contentRouter.listAll); // 컨텐츠 전체 불러오기(완료)
