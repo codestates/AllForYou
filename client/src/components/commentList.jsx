@@ -28,13 +28,15 @@ const Comment = ({ comment, getComment }) => {
 
     const deleteComment = () => {
         axios
-            .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`,
-                {
-                    id: comment.id
-                },
+            .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`, {
+                data: {
+                    postId: comment.id
+                }
+            }
             )
             .then(() => {
                 getComment();
+                console.log('삭제 성공')
             })
             .catch((err) => {
                 console.log(err)

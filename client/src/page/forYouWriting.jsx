@@ -65,12 +65,13 @@ const ForYouWriting = () => {
     };
 
     //'등록'버튼 클릭시
-    async function submitForm() {
+    const submitForm = () => {
         if (
             title === '' ||
             text === '' ||
             files.length === 0 ||
-            state.length === 0
+            state.length === 0 ||
+            contents.length === 0
         ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
@@ -79,11 +80,15 @@ const ForYouWriting = () => {
             formData.append('title', title);
             formData.append('category', category);
             formData.append('text', text); //글 소개
-            formData.append('contents', contents); //컨텐츠 리스트 id 배열
-            formData.append('image', files);
-
-            await axios
-                .post(`${process.env.REACT_APP_SERVER_URL}/reviews`, formData)
+            formData.append('content_id', contents); //컨텐츠 리스트 id 배열
+            formData.append('img', files);
+            console.log(contents)
+            axios
+                .post(`${process.env.REACT_APP_SERVER_URL}/reviews`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
                 .then(() => {
                     navigate('/foryou');
                     dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
@@ -160,7 +165,7 @@ const ForYouWriting = () => {
                                 <input
                                     className={style.search}
                                     type="search"
-                                    placeholder='Search...'
+                                    placeholder='카테고리 또는 이름'
                                     onKeyPress={onKeyPress}
                                     onChange={handleSearchText}
                                 />
