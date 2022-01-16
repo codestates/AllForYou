@@ -29,10 +29,10 @@
   color: white;
 }
 
-@media screen and  (max-width:740px) {
+@media screen and  (max-width:767px) {
 .commentBox{
   margin: 0 auto;
-  width: 18rem;
+  width: 19rem;
   padding-bottom: 5rem;
 }
 .commentText{
