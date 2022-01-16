@@ -3,12 +3,9 @@ import axios from 'axios';
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
 import { useNavigate } from "react-router-dom";
-import { loginModal } from '../action/index';
-import { useDispatch } from 'react-redux';
 
-const ForYou = ({ isLogin }) => {
+const ForYou = ({ accessToken }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selected, setSelected] = useState("최신순");
   const [review, setReview] = useState([]);
@@ -24,7 +21,12 @@ const ForYou = ({ isLogin }) => {
 
   function getreviews() {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews`, {
+        headers: {
+          cookies: `jwt ${accessToken}`,
+        },
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
@@ -38,7 +40,12 @@ const ForYou = ({ isLogin }) => {
 
   function getLikereviews() {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=like`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=like`, {
+        headers: {
+          cookies: `jwt ${accessToken}`,
+        },
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
@@ -48,14 +55,6 @@ const ForYou = ({ isLogin }) => {
       .catch((err) => {
         console.log(err)
       });
-  }
-
-  const handleLoginStatus = () => {
-    if (!isLogin) {
-      dispatch(loginModal(true));
-      return;
-    }
-    navigate("/foryouwriting")
   }
 
 
@@ -96,10 +95,7 @@ const ForYou = ({ isLogin }) => {
             <option value="좋아요순">좋아요순</option>
           </select>
         </div>
-        <button
-          className={style.btn}
-          onClick={handleLoginStatus}
-        >작성하기</button>
+        <button className={style.btn} onClick={() => navigate("/foryouwriting")}>리스트 작성하기</button>
       </div>
       <div className={style.cardContainer}>
         {filteredCategory.map((review) => (

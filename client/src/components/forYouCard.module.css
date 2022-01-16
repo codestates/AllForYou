@@ -78,41 +78,16 @@
   color: #f9e000;
 }
 
-@media screen and  (max-width:1024px) {
+@media screen and  (max-width:1023px) {
   .container{
   margin-right: 2rem;
-  width: 22rem;
+  width: 21rem;
 }
 }
 
-@media screen and  (max-width:740px) {
+@media screen and  (max-width:767px) {
 .container{
-  width: 17rem;
-}
-.title{
-  font-size:1rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 13rem;
-}
-.icon{
-  margin-right: 2rem;
-  font-size: 1rem;
-  text-align: center;
-}
-.iconText{
-  font-size:0.6rem;
-  margin-top: 0.4rem;
-}
-.writer{
-  margin: 0;
-  font-size:0.9rem;
-}
-.category{
-  width:15rem;
-  border-radius: 0.3rem;
+  margin-right: 4rem;
+  width: 25rem;
 }
 }
