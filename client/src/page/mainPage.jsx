@@ -10,6 +10,7 @@ const MainPage = () => {
   return (
     <div>
       <h1>메인페이지</h1>
+      <h2>메인페이지 2</h2>
       <button onClick={handleClick}>콘텐츠로 가즈아</button>
     </div>
   );
