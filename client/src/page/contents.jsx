@@ -27,9 +27,9 @@ const Contents = () => {
     (state) => state.contentsScrollReducer.contentsScroll.buttonOnOff
   );
 
-  console.log("buttonOnOff", buttonOnOff);
+  // console.log("buttonOnOff", buttonOnOff);
 
-  console.log("window", window.pageYOffset);
+  // console.log("window", window.pageYOffset);
   // console.log("scrollTop", scrollTop);
 
   const [select_1, setSelect_1] = useState("ALL");
@@ -47,6 +47,7 @@ const Contents = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
       .then((data) => {
+        console.log(data);
         const contentsData = data.data.data.contentsList;
         setContentsList(contentsData);
       });
@@ -86,7 +87,7 @@ const Contents = () => {
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
   };
-  console.log("searchText", searchText);
+  // console.log("searchText", searchText);
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       setShowText(searchText);
@@ -127,7 +128,7 @@ const Contents = () => {
     setSelect_3(select.target.value);
   };
 
-  console.log("select_3", select_3);
+  // console.log("select_3", select_3);
 
   const handleFollow = () => {
     dispatch(scrollTop(false, window.pageYOffset));
