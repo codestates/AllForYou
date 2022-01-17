@@ -10,20 +10,19 @@ module.exports = async (req, res) => {
       { where: { id: review_id } }
     );
 
+    const contents = content_id.split(',');
+
     if(req.file) {
       await reviews.update({ image: req.file.location }, { where: { id: review_id } })
     }
 
     // reviews_contents 테이블 클리어
-    content_id.map(async (el) => {
-      await reviews_contents.destroy({ 
-        review_id: rewiewData.id,
-        content_id: el
-      })
+    await reviews_contents.destroy({ 
+      review_id: rewiewData.id
     })
 
     // 받아온 id값을 이용하여 테이블 재생성
-    content_id.map(async (el) => {
+    contents.map(async (el) => {
       await reviews_contents.create({ 
         review_id: rewiewData.id,
         content_id: el
