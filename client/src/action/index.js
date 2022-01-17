@@ -22,6 +22,7 @@ export const SCROLL_TOP = "SCROLL_TOP";
 export const SET_UPDATE = "SET_UPDATE";
 export const SET_WITHDRAW = "SET_WITHDRAW";
 export const SET_PASSWORD = "SET_PASSWORD";
+export const SET_LIST = 'SET_LIST';
 
 export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
@@ -213,5 +214,12 @@ export const scrollTop = (boolean, number) => {
             buttonOnOff: boolean,
             scrollLength: number
         }
+    };
+};
+
+export const setList = (list) => {
+    return {
+        type: SET_LIST,
+        payload: list,
     };
 };

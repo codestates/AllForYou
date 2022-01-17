@@ -6,7 +6,7 @@ import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch, useSelector } from 'react-redux';
 import { setMessageModal } from '../action/index';
-import { loginModal, setPost } from '../action/index';
+import { loginModal, setPost, setList } from '../action/index';
 import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
@@ -16,7 +16,7 @@ const ForYouView = ({ post, isLogin }) => {
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
-  console.log(post)
+  // console.log(post)
 
   useEffect(() => {
     getPostDetail();
@@ -52,6 +52,7 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setContent(res.data.data);
+          dispatch(setList(res.data.data));
         }
       })
       .catch((err) => {

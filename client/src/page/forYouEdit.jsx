@@ -10,38 +10,36 @@ import CartList from "../components/cartList";
 // require("dotenv").config();
 
 const ForYouEdit = ({ post }) => {
+    console.log(post)
+    const {title, category, text, image} = post
+    const { list } = useSelector(state => state.foruReducer);
     const state = useSelector(state => state.writingListReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const fileInput = useRef(null);
     const [files, setFiles] = useState([]); //이미지 화면 띄우기
-    const [image, setImage] = useState([]); //이미지 파일 server 보내기
-    const [category, setCategory] = useState('도전');
-    const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
+    const [imageEdit, setImageEdit] = useState(image); //이미지 파일 server 보내기
+    const [categoryEdit, setCategoryEdit] = useState(category);
+    const [titleEdit, setTitleEdit] = useState(title);
+    const [textEdit, setTextEdit] = useState(text);
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
-    const [content, setContent] = useState([]);
-    // console.log('content',content)
-    console.log(state)
-    // console.log(state[0].contents)
 
-    // const handleStatusList = (content) => {
-    //     dispatch(addToList(content))
-    // }
+    const stateList = state.map((el)=>{
+        return el.contents
+    })
+    const renderList = [...list,...stateList]
 
-    const content_id = state.map((el) => {
-        return el.contents.id
+    const content_id = renderList.map((el) => {
+        return el.id
     })
 
     const handleText = (value) => {
-        setText(value)
+        setTextEdit(value)
     }
 
-    console.log('text', text)
-
     const fileHandle = (e) => {
-        setImage(e.target.files[0]);
+        setImageEdit(e.target.files[0]);
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
 
@@ -68,7 +66,7 @@ const ForYouEdit = ({ post }) => {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${search}`)
             .then(res => {
-                setResultSearch(res.data.data.contentsList);
+                setResultSearch(res.data.data);
             })
             .catch(err => {
                 console.log(err);
@@ -79,23 +77,22 @@ const ForYouEdit = ({ post }) => {
     function submitForm(e) {
         e.preventDefault();
         if (
-            title === '' ||
-            text === '' ||
-            image.length === 0 ||
+            titleEdit === '' ||
+            textEdit === '' ||
             content_id.length === 0
-        ) {
+            ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
         } else {
             const formData = new FormData();
-            formData.append('title', title);
-            formData.append('category', category);
-            formData.append('text', text); //글 소개
+            formData.append('title', titleEdit);
+            formData.append('category', categoryEdit);
+            formData.append('text', textEdit); //글 소개
             formData.append('content_id', content_id); //컨텐츠 리스트 id 배열
-            formData.append('img', image);
+            formData.append('img', imageEdit);
 
-            axios
-                .post(`${process.env.REACT_APP_SERVER_URL}/reviews`, formData,
+            axios //router.patch("reviews/:postId",
+                .patch(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`, formData,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'
@@ -104,32 +101,13 @@ const ForYouEdit = ({ post }) => {
                 )
                 .then(() => {
                     navigate('/foryou');
-                    dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+                    dispatch(setMessageModal(true, '게시글 수정이 완료되었습니다.'));
                 })
                 .catch((err) => {
                     console.log(err)
                 });
         }
     }
-
-    function getContent() {
-    axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/reviews/content/${post.id}`)
-        .then((res) => {
-        if (res.status === 200) {
-            dispatch(addToList(res.data.data))
-            // setContent(res.data.data);
-        }
-        })
-        .catch((err) => {
-            console.log(err)
-        });
-    }
-
-    useEffect(() => {
-        getContent()
-        // handleStatusList()
-    }, [])
 
     return (
         <div className={style.container}>
@@ -138,7 +116,7 @@ const ForYouEdit = ({ post }) => {
                 <div className={style.imgBox}>
                     <img
                         className={style.img}
-                        src={post.image}
+                        src={files}
                     />
                     <input
                         className={style.imgFile}
@@ -158,8 +136,8 @@ const ForYouEdit = ({ post }) => {
                         <select
                             className={style.category}
                             name="category"
-                            value={post.category}
-                            onChange={(e) => setCategory(e.target.value)}
+                            value={categoryEdit}
+                            onChange={(e) => setCategoryEdit(e.target.value)}
                         >
                             <option value="동기부여">동기부여를 받고 싶다면 ?</option>
                             <option value="도전">도전하고 싶은 나에게</option>
@@ -176,15 +154,15 @@ const ForYouEdit = ({ post }) => {
                             className={style.input}
                             type="text"
                             placeholder="제목을 입력해주세요"
-                            value={post.title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            value={titleEdit}
+                            onChange={(e) => setTitleEdit(e.target.value)}
                         />
                     </div>
                 </div>
                 <div className={style.textBox}>
                     <p className={style.text_p}>소개글 입력</p>
                     <EditorComponent
-                        value={post.text}
+                        value={textEdit}
                         onChange={handleText}
                     />
                 </div>
@@ -221,18 +199,11 @@ const ForYouEdit = ({ post }) => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {/* {content.map((content, idx) => {
+                                {renderList.map((content, idx) => {
                                     return <CartList
                                         key={idx}
                                         handleDelete={handleDelete}
                                         content={content}
-                                    />
-                                })} */}
-                                {state.map((el, idx) => {
-                                    return <CartList
-                                        key={idx}
-                                        handleDelete={handleDelete}
-                                        content={el.contents}
                                     />
                                 })}
                             </div>
@@ -243,7 +214,7 @@ const ForYouEdit = ({ post }) => {
                     <button
                         className={style.btnOk}
                         onClick={submitForm}
-                    >등록</button>
+                    >수정</button>
                     <button
                         className={style.btnCancle}
                         onClick={() => navigate('/foryou')}
