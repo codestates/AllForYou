@@ -1,7 +1,6 @@
 const { contents, likes, users } = require("../../models");
 
 module.exports = async (req, res) => {
-    const contentsId = req.cookies.id;
     try {
         const contentsData = await contents.findAll({
             attributes: [
@@ -45,27 +44,8 @@ module.exports = async (req, res) => {
             }
         })
 
-        const likesData = await users.findOne({
-            whehe : {
-                id: contentsId
-            },
-            include: [
-                { model: likes, attributes: ["content_id"] }
-            ]
-        })
-
-        let likesList = likesData.dataValues.likes.map((el) => {
-            return {
-                "content_id": el.content_id
-            }
-        })
-
-        const contentsDataSend = {
-            contentsList: contentsList,
-            likesList: likesList
-        }
         // console.log(contentsList)
-        return res.status(200).json({ data: contentsDataSend, message: "successfully contents show all" })
+        return res.status(200).json({ data: contentsList, message: "successfully contents show all" })
     }
     catch (err) {
         return res.status(500).json({ data: null, message: "server error" })

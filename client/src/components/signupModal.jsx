@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import style from "./signupModal.module.css";
-import dummy from "../dummy/dummy";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { signupModal, loginModal } from '../action';
@@ -9,13 +8,14 @@ const SignupModal = () => {
     const dispatch = useDispatch();
     const { isModal } = useSelector((state) => state.loginModalReducer);
     const { isState } = useSelector((state) => state.signupModalReducer);
+    const [errorMessage, setErrorMessage] = useState("");
     const [signupInfo, setSignUpInfo] = useState({
       email: "",
       nickname: "",
       password: "",
       repassword: "",
     });
-    const [errorMessage, setErrorMessage] = useState("");
+    
     const handleInputValue = (key) => (e) => {
       setSignUpInfo({ ...signupInfo, [key]: e.target.value });
     };
@@ -73,10 +73,11 @@ const SignupModal = () => {
         dispatch(signupModal(false))
       }
     }
+    
   return (
     <div className={style.body} onClick={modalOutSide}>
       <div className={style.container}>
-        <img className={style.logo} src="logo(background-white).png" alt="" />
+        <img className={style.img} src="logo(background-white).png" alt="" />
         <input
           className={style.myInfo}
           type="text"
