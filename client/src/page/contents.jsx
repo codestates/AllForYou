@@ -43,19 +43,19 @@ const Contents = () => {
   const [showText, setShowText] = useState("");
 
   // contents 모두 불러오기
-  const contentstList = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
-      .then((data) => {
-        // console.log(data);
-        const contentsData = data.data.data.contentsList;
-        setContentsList(contentsData);
-      });
+  const getContentstList = () => {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/contents`).then((data) => {
+      console.log(data);
+      const contentsData = data.data.data;
+      setContentsList(contentsData);
+    });
   };
 
   useEffect(() => {
-    contentstList();
+    getContentstList();
   }, []);
+
+  // console.log("contentsList", contentsList);
 
   const select_1_category = contentsList.filter((el) => {
     let category = el.category;
@@ -73,7 +73,7 @@ const Contents = () => {
         `${process.env.REACT_APP_SERVER_URL}/filter?c=${select_1}&t=${select_2}&s=${select_3}`
       )
       .then((data) => {
-        const sort = data.data.data.contentsList;
+        const sort = data.data.data;
         setDataLikeSort(sort);
       });
   };
