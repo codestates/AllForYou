@@ -16,6 +16,7 @@ const ForYouView = ({ post, isLogin }) => {
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
+  console.log(post)
 
   useEffect(() => {
     getPostDetail();
@@ -117,7 +118,7 @@ const ForYouView = ({ post, isLogin }) => {
 
   const deletePost = () => {
     axios
-      .delete(`${process.env.REACT_APP_SERVER_URL}/reviews`)
+      .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`)
       .then(() => {
         navigate('/foryou')
         dispatch(setMessageModal(true, '게시글을 삭제했습니다.'));
@@ -138,6 +139,7 @@ const ForYouView = ({ post, isLogin }) => {
             >삭제</button>
             <button
               className={style.editBtn}
+              onClick={() => navigate('/foryouedit')}
             >수정</button>
           </>
         ) : null}
@@ -154,8 +156,9 @@ const ForYouView = ({ post, isLogin }) => {
         </div>
         <div className={style.textBox}>
           <p className={style.textTittle}>소개글</p>
-          <div className={style.textContent}>
-            {post.text}
+          <div className={style.textContent}
+            dangerouslySetInnerHTML={{ __html: post.text }}
+          >
           </div>
         </div>
         <div className={style.listBox}>

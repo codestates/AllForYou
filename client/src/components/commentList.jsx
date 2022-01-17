@@ -28,9 +28,11 @@ const Comment = ({ comment, getComment }) => {
 
     const deleteComment = () => {
         axios
-            .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`, {
-                data: {id: comment.id}
-            })
+            .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`,
+                {
+                    id: comment.id
+                }
+            )
             .then(() => {
                 getComment();
                 console.log('삭제 성공')
@@ -63,7 +65,7 @@ const Comment = ({ comment, getComment }) => {
                             </div>
                             <div className={`${isEdit ? style.hide : null}`}>
                                 <button
-                                    className={style.correctionBtn}
+                                    className={style.editBtn}
                                     onClick={() => setIsEdit(true)}
                                 >수정</button>
                                 <button

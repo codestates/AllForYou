@@ -13,11 +13,15 @@ module.exports = async (req, res) => {
       }],
       order: [['createdAt', 'DESC']]
     })
-
+    
     const myLikesData = myLikes.map((el) => {
-      return el.content
+      return {
+        "content": el.content, 
+        "createdAt": el.createdAt
+      }
     })
     
+    console.log(myLikesData)
     return res.status(200).json({ data: myLikesData, message: "내 좋아요리스트 전달 완료." });
   }
   catch(err) {
