@@ -178,6 +178,20 @@ module.exports = {
         content_id: 8,
         createdAt: new Date()
       },
+      {
+        id: 26,
+        user_id : 1,
+        review_id: 2,
+        content_id: null,
+        createdAt: new Date()
+      },
+      {
+        id: 27,
+        user_id : 1,
+        review_id: 3,
+        content_id: null,
+        createdAt: new Date()
+      },
     ]);
   },
 
