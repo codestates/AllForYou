@@ -62,7 +62,7 @@ const Login = () => {
           setEmail("");
           setPassword("");
           handleLoginModal();
-          // window.location.reload('/');
+          window.location.reload('/');
         })
         .catch((err) => {
           if (
