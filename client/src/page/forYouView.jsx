@@ -28,6 +28,10 @@ const ForYouView = ({ post, isLogin }) => {
     window.scrollTo(0, 0);
   }, []);
 
+    useEffect(() => {
+    getComment();
+    }, [comment]);
+
   function getPostDetail() {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`)
