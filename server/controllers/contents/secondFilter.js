@@ -6,7 +6,6 @@ module.exports = async(req, res) => {
     const categoryFilter = req.query.c;
     const typeFilter = req.query.t;
     const type = req.query.s;
-    const contentsId = req.cookies.id;
     try {
         const categoryData = await contents.findAll({
             where:{

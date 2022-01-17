@@ -4,7 +4,6 @@ const { contents, likes, users } = require("../../models");
 
 module.exports = async(req, res) => {
     const searchWord = req.query.query;
-    const contentsId = req.cookies.id;
     try {
         const contentData = await contents.findAll({
             where:{

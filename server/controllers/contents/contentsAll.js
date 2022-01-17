@@ -1,7 +1,6 @@
 const { contents, likes, users } = require("../../models");
 
 module.exports = async (req, res) => {
-    const contentsId = req.cookies.id;
     try {
         const contentsData = await contents.findAll({
             attributes: [

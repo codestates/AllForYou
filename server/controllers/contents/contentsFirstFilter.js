@@ -2,7 +2,6 @@ const { contents, likes, users } = require("../../models");
 
 module.exports = async(req, res) => {
     const filter = req.params.categoryName;
-    const contentsId = req.cookies.id;
     try {
         const contentsFirstFilter = await contents.findAll({
             where: {
