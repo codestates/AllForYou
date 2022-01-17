@@ -4,7 +4,8 @@ import {
   SET_EMAIL,
   SET_IMAGE,
   SET_UPDATE,
-  SET_WITHDRAW
+  SET_WITHDRAW,
+  SET_PASSWORD
 } from '../action/index';
 
 export const initialState = {
@@ -30,6 +31,11 @@ const loginReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       emaildata: action.payload.emaildata,
     });
+
+    case SET_PASSWORD:
+      return Object.assign({}, state, {
+        password: action.payload.password,
+      });
 
     case SET_IMAGE:
     return Object.assign({}, state, {

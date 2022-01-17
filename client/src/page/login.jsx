@@ -2,13 +2,13 @@ import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  login,
-  loginModal,
-  setNickname,
-  setEmailData,
+import { 
+  login, 
+  loginModal, 
+  setNickname, 
+  setEmailData, 
   signupModal,
-  setProfileImage,
+  setProfileImage, 
 } from '../action/index';
 
 const Login = () => {
