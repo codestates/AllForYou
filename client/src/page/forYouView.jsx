@@ -154,8 +154,9 @@ const ForYouView = ({ post, isLogin }) => {
         </div>
         <div className={style.textBox}>
           <p className={style.textTittle}>소개글</p>
-          <div className={style.textContent}>
-            {post.text}
+          <div className={style.textContent}
+            dangerouslySetInnerHTML={{ __html: post.text }}
+          >
           </div>
         </div>
         <div className={style.listBox}>

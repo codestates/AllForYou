@@ -166,10 +166,6 @@ const ForYouWriting = () => {
                         value={text}
                         onChange={handleText}
                     />
-                    {/* <textarea
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                    ></textarea> */}
                 </div>
                 <div className={style.listBox}>
                     <p className={style.list_p}>리스트 만들기</p>
