@@ -19,6 +19,7 @@ import ResponsiveNav from "./components/responsiveNav";
 import ForYouWriting from "./page/forYouWriting";
 import ForYouView from "./page/forYouView";
 import axios from "axios";
+import ForYouEdit from "./page/forYouEdit";
 
 axios.defaults.withCredentials = true;
 
@@ -26,8 +27,6 @@ function App() {
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
-
   const foru = useSelector((state) => state.foruReducer);
   const { messageModal, post } = foru
 
@@ -52,7 +51,8 @@ function App() {
         <Route path="/foryou" element={<ForYou isLogin={isLogin} />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
-        <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} accessToken={accessToken} />} />
+        <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} />} />
+        <Route path="/foryouedit" element={<ForYouEdit post={post} />} />
         <Route path="/reviewsdetail" element={<MyReviewsDetail />} />
         <Route path="/likesdetail" element={<MyLikesDetail />} />
       </Routes>
