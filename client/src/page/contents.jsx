@@ -55,7 +55,7 @@ const Contents = () => {
     getContentstList();
   }, []);
 
-  // console.log("contentsList", contentsList);
+  console.log("contentsList", contentsList);
 
   const select_1_category = contentsList.filter((el) => {
     let category = el.category;
