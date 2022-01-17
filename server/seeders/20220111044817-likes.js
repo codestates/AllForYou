@@ -181,14 +181,14 @@ module.exports = {
       {
         id: 26,
         user_id : 1,
-        review_id: 2,
+        review_id: null,
         content_id: null,
         createdAt: new Date()
       },
       {
         id: 27,
         user_id : 1,
-        review_id: 3,
+        review_id: null,
         content_id: null,
         createdAt: new Date()
       },
