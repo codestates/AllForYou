@@ -72,7 +72,7 @@ const Contents = () => {
         `${process.env.REACT_APP_SERVER_URL}/filter?c=${select_1}&t=${select_2}&s=${select_3}`
       )
       .then((data) => {
-        const sort = data.data.data;
+        const sort = data.data.data.contentsList;
         setDataLikeSort(sort);
       });
   };
@@ -106,7 +106,8 @@ const Contents = () => {
         withCredentials: true,
       })
       .then((res) => {
-        const searchData = res.data.data;
+        console.log(res);
+        const searchData = res.data.data.contentsList;
         setContentsSearch(searchData);
       })
       .catch((err) => {
