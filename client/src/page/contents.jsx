@@ -47,7 +47,7 @@ const Contents = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const contentsData = data.data.data.contentsList;
         setContentsList(contentsData);
       });
@@ -89,15 +89,17 @@ const Contents = () => {
   };
   // console.log("searchText", searchText);
   const onKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchText.length !== 0) {
       setShowText(searchText);
       searchHandler();
     }
   };
 
   const searchClick = () => {
-    setShowText(searchText);
-    searchHandler();
+    if (searchText.length !== 0) {
+      setShowText(searchText);
+      searchHandler();
+    }
   };
 
   const searchHandler = () => {
