@@ -7,11 +7,11 @@ module.exports = async (req, res) => {
   try{
     const userLike = await likes.findAll({
       where: { user_id: id, review_id: { [Op.not]: null } },
-      attributes: [ "id" ],
+      attributes: [ "id", "review_id" ],
     })
 
     const likeList = userLike.map((el) => {
-      return el.id;
+      return el.review_id;
     })
     
     return res.status(200).json({ data: likeList, message: "좋아요 리스트 전달." });
