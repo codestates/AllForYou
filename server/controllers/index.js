@@ -47,6 +47,10 @@ router.get("/contents", contentRouter.listAll); // 컨텐츠 전체 불러오기
 router.get("/contents/category/:categoryName", contentRouter.firstfilter); // 컨텐츠 카테고리 필터링(완료)
 router.get("/filter", contentRouter.secondfilter); // 컨텐츠 카테고리&타입 최신순, 좋아요 순 필터링(완료)
 router.get("/contents/:contentId", contentRouter.detail); // 컨텐츠 하나 선택(완료)
-router.get("/search", contentRouter.search); // 컨텐츠 검색(완료)
+router.get("/search", contentRouter.search); // 컨텐츠 검색(완료)contentsLikeC
+router.get("/contents/like/:contentsId", auth.accessToken, contentRouter.contentsLikeG); // 사용자가 좋아요 했는지 여부
+router.get("/contents/get/userlike", auth.accessToken, contentRouter.contentsUserLike); // 사용자가 좋아요 한 콘텐츠리스트
+router.post("/contents/like/:contentsId", auth.accessToken, contentRouter.contentsLikeC) // 콘텐츠에 좋아요
+router.delete("/contents/like/:contentsId", auth.accessToken, contentRouter.contentsLikeD); // 콘텐츠 좋아요 지우기
 
 module.exports = router;

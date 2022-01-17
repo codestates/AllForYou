@@ -21,7 +21,7 @@
 }
 
 .logo {
-  margin-left: 5.5em;
+  margin: 2em 0 0 5em;
   width: 21em; 
   height: 15em;
 }
@@ -118,7 +118,7 @@ button:hover {
 }
 
 .membership {
-  margin: 5.5em 0 0 3.5em;
+  margin: 5.5em 0 0 4em;
   display: block;
   align-items: flex-end;
   float: left;
@@ -127,7 +127,7 @@ button:hover {
 }
 
 .membership_btn {
-  margin: 3.1em 3.5em 0 0;
+  margin: 3.1em 3em 0 0;
   padding: 0;
   display: block;
   width: 3.5em;

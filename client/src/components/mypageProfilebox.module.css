@@ -12,8 +12,8 @@
 }
 
 .info {
-    margin: 1em auto 0 5em;
-    width: 31vw;
+    margin: 1em auto 0 7em;
+    width: 28vw;
     height: 50em;
     background-color: white;
     border-radius: 0.5em;
@@ -24,7 +24,7 @@
     margin: 5em 0 0 7.5em;
     border-radius: 20em;
     padding: 1em;
-    width: 20vw;
+    width: 17vw;
     height: 25em;
 }
 
@@ -34,13 +34,13 @@
     text-align: center;
     font-size: xx-large;
     font-weight: bold;
-    width: 31vw;
+    width: 28vw;
 }
 
 .update {
-    margin: 3em 0 0 4.5em;
+    margin: 3em 0 0 6.2em;
     display: block;
-    width: 10vw;
+    width: 8vw;
     height: 4em;
     border: none;
     float: left;
@@ -55,7 +55,7 @@
 .withdraw {
     margin: 3em 0 0 4em;
     display: block;
-    width: 10vw;
+    width: 8vw;
     height: 4em;
     border: none;
     float: left;

@@ -2,7 +2,14 @@ import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
-import { loginModal, setNickname, setProfileImage, login, signupModal } from '../action/index';
+import { 
+  login, 
+  loginModal, 
+  setNickname, 
+  setEmailData, 
+  signupModal,
+  setProfileImage, 
+} from '../action/index';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -48,8 +55,8 @@ const Login = () => {
         .then((res) => {
           console.log(res.data)
           const nickname = res.data.data.nickname;
-          const email = res.data.data.email;
-          dispatch(setEmail())
+          const userEmail = res.data.data.email;
+          dispatch(setEmailData(userEmail));
           dispatch(setNickname(nickname));
           dispatch(login(true));
           setEmail("");

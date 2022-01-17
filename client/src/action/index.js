@@ -21,6 +21,7 @@ export const LIKES_DATE = "LIKES_DATE";
 export const SCROLL_TOP = "SCROLL_TOP";
 export const SET_UPDATE = "SET_UPDATE";
 export const SET_WITHDRAW = "SET_WITHDRAW";
+export const SET_PASSWORD = "SET_PASSWORD";
 
 export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
@@ -74,6 +75,15 @@ export const setNickname = (nickname) => {
         type: SET_NICKNAME,
         payload: {
             nickname
+        },
+    };
+};
+
+export const setPassword = (password) => {
+    return {
+        type: SET_PASSWORD,
+        payload: {
+            password
         },
     };
 };

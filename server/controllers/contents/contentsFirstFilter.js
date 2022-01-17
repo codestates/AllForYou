@@ -32,28 +32,8 @@ module.exports = async(req, res) => {
                 "view": el.view,
             }
         })
-
-        const likesData = await users.findOne({
-            whehe : {
-                id: contentsId
-            },
-            include: [
-                { model: likes, attributes: ["content_id"] }
-            ]
-        })
-
-        const likesList = likesData.dataValues.likes.map((el) => {
-            return {
-                "content_id": el.content_id
-            }
-        })
-
-        const contentsDataSend = {
-            contentsList: contentsList,
-            likesList: likesList
-        }
         
-        return res.status(200).json({data: contentsDataSend, message: "successfully viewed the category individual page"})
+        return res.status(200).json({data: contentsList, message: "successfully viewed the category individual page"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })
