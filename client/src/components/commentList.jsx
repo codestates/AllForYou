@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import style from "./commentList.module.css";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setMessageModal } from '../action/index';
 
 const Comment = ({ comment, getComment }) => {
     const { nickname } = useSelector((state) => state.loginReducer);
+    const dispatch = useDispatch();
     const [isEdit, setIsEdit] = useState(false);
     const [commentValue, setCommentValue] = useState(comment.comment);
 
@@ -19,6 +21,7 @@ const Comment = ({ comment, getComment }) => {
             )
             .then(() => {
                 setIsEdit(false);
+                dispatch(setMessageModal(true, '댓글이 수정되었습니다.'));
                 getComment();
             })
             .catch((err) => {
@@ -29,13 +32,17 @@ const Comment = ({ comment, getComment }) => {
     const deleteComment = () => {
         axios
             .delete(`${process.env.REACT_APP_SERVER_URL}/reviews/comment/${comment.id}`,
-                {
+                {data:
+                    {
                     id: comment.id
                 }
+            }
             )
-            .then(() => {
-                getComment();
-                console.log('삭제 성공')
+            .then((res) => {
+                if (res.status === 201) {
+                    dispatch(setMessageModal(true, '댓글이 삭제되었습니다.'));
+                    getComment();
+                }
             })
             .catch((err) => {
                 console.log(err)
