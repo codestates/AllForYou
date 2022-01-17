@@ -22,7 +22,23 @@ const ForYou = ({ isLogin }) => {
     }
   });
 
-  function getreviews() {
+  // const categoryChange = filteredCategory.map((el) => {
+  //   if(el.category === '도전'){
+  //     return el.category = '도전하고 싶은 나에게'
+  //   } else if(el.category === '동기부여'){
+  //     return el.category = '동기부여를 받고 싶다면?'
+  //   } else if(el.category === '멘토'){
+  //     return el.category = '현재 나의 상황에 멘토를 원하시나요?'
+  //   } else if(el.category === '편안함'){
+  //     return el.category = '마음속 편안함을 찾는다면?'
+  //   } else if(el.category === '웃음'){
+  //     return el.category = '생각없이 웃고 싶다면?'
+  //   } else if(el.category === '눈물'){
+  //     return el.category = '오늘 한 없이 눈물을 쏟고 싶다면?'
+  //   } 
+  // })
+
+  const getreviews = ()=> {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
       .then((res) => {
@@ -36,13 +52,26 @@ const ForYou = ({ isLogin }) => {
       });
   }
 
-  function getLikereviews() {
+  const getLikereviews = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=like`)
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
           console.log(res.data.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
+
+  const getUserLikes = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlike`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data)
         }
       })
       .catch((err) => {
@@ -58,9 +87,9 @@ const ForYou = ({ isLogin }) => {
     navigate("/foryouwriting")
   }
 
-
   useEffect(() => {
     getreviews()
+    getUserLikes()
   }, []);
 
   useEffect(() => {

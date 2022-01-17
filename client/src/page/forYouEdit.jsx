@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from 'axios';
-import style from "./forYouWriting.module.css";
+import style from "./forYouEdit.module.css";
 import { useDispatch, useSelector } from 'react-redux'
-import { removeFromList, setMessageModal } from '../action/index';
+import { removeFromList, setMessageModal, addToList } from '../action/index';
 import { useNavigate } from "react-router-dom";
 import EditorComponent from "../components/editorComponent.jsx";
 import SearchList from "../components/searchList";
 import CartList from "../components/cartList";
 // require("dotenv").config();
 
-const ForYouWriting = () => {
+const ForYouEdit = ({ post }) => {
     const state = useSelector(state => state.writingListReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -21,6 +21,14 @@ const ForYouWriting = () => {
     const [text, setText] = useState('');
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
+    const [content, setContent] = useState([]);
+    // console.log('content',content)
+    console.log(state)
+    // console.log(state[0].contents)
+
+    // const handleStatusList = (content) => {
+    //     dispatch(addToList(content))
+    // }
 
     const content_id = state.map((el) => {
         return el.contents.id
@@ -94,11 +102,6 @@ const ForYouWriting = () => {
                         }
                     }
                 )
-                .then((res) => {
-                    if (res.status === 409) {
-                        console.log('!!!!')
-                    }
-                })
                 .then(() => {
                     navigate('/foryou');
                     dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
@@ -109,6 +112,24 @@ const ForYouWriting = () => {
         }
     }
 
+    function getContent() {
+    axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/reviews/content/${post.id}`)
+        .then((res) => {
+        if (res.status === 200) {
+            dispatch(addToList(res.data.data))
+            // setContent(res.data.data);
+        }
+        })
+        .catch((err) => {
+            console.log(err)
+        });
+    }
+
+    useEffect(() => {
+        getContent()
+        // handleStatusList()
+    }, [])
 
     return (
         <div className={style.container}>
@@ -117,7 +138,7 @@ const ForYouWriting = () => {
                 <div className={style.imgBox}>
                     <img
                         className={style.img}
-                        src={files}
+                        src={post.image}
                     />
                     <input
                         className={style.imgFile}
@@ -137,7 +158,7 @@ const ForYouWriting = () => {
                         <select
                             className={style.category}
                             name="category"
-                            value={category}
+                            value={post.category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
                             <option value="동기부여">동기부여를 받고 싶다면 ?</option>
@@ -155,7 +176,7 @@ const ForYouWriting = () => {
                             className={style.input}
                             type="text"
                             placeholder="제목을 입력해주세요"
-                            value={title}
+                            value={post.title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
                     </div>
@@ -163,7 +184,7 @@ const ForYouWriting = () => {
                 <div className={style.textBox}>
                     <p className={style.text_p}>소개글 입력</p>
                     <EditorComponent
-                        value={text}
+                        value={post.text}
                         onChange={handleText}
                     />
                 </div>
@@ -200,6 +221,13 @@ const ForYouWriting = () => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
+                                {/* {content.map((content, idx) => {
+                                    return <CartList
+                                        key={idx}
+                                        handleDelete={handleDelete}
+                                        content={content}
+                                    />
+                                })} */}
                                 {state.map((el, idx) => {
                                     return <CartList
                                         key={idx}
@@ -226,4 +254,4 @@ const ForYouWriting = () => {
     );
 };
 
-export default ForYouWriting;
+export default ForYouEdit;

@@ -7,16 +7,6 @@ import { setPost } from "../action";
 const ForYouCard = ({ review }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const handleClickShowmore = () => {
-    //     history.push({
-    //         pathname: `/planpage/${id}`,
-    //         state: {
-    //             title,
-    //             desc,
-    //             representAddr,
-    //         },
-    //     });
-    // };
 
     // const handleShareKakao = () => {
     //     if (!window.Kakao.isInitialized()) {
@@ -63,14 +53,8 @@ const ForYouCard = ({ review }) => {
 
     return (
         <div className={style.container} onClick={handlePostInfo}>
-            <div
-                className={style.contentbox}
-            // onClick={handleClickShowmore}
-            >
+            <div className={style.contentbox}>
                 <img className={style.img}
-                    // src={`https://source.unsplash.com/random?${Math.floor(
-                    //     Math.random() * 100,
-                    // )}/1600x900?blue,water`}
                     src={review.image}
                     alt=""
                 />

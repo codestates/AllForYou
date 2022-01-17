@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import AddList from "./addList";
 import { addToList } from '../action/index';
 import { useSelector, useDispatch } from 'react-redux';
-import dummy2 from '../dummy/dummy2';
 
 const SearchList = ({ resultSearch }) => {
     const dispatch = useDispatch();

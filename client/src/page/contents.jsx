@@ -27,9 +27,9 @@ const Contents = () => {
     (state) => state.contentsScrollReducer.contentsScroll.buttonOnOff
   );
 
-  console.log("buttonOnOff", buttonOnOff);
+  // console.log("buttonOnOff", buttonOnOff);
 
-  console.log("window", window.pageYOffset);
+  // console.log("window", window.pageYOffset);
   // console.log("scrollTop", scrollTop);
 
   const [select_1, setSelect_1] = useState("ALL");
@@ -43,18 +43,19 @@ const Contents = () => {
   const [showText, setShowText] = useState("");
 
   // contents 모두 불러오기
-  const contentstList = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/contents`, {})
-      .then((data) => {
-        const contentsData = data.data.data.contentsList;
-        setContentsList(contentsData);
-      });
+  const getContentstList = () => {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/contents`).then((data) => {
+      console.log(data);
+      const contentsData = data.data.data;
+      setContentsList(contentsData);
+    });
   };
 
   useEffect(() => {
-    contentstList();
+    getContentstList();
   }, []);
+
+  // console.log("contentsList", contentsList);
 
   const select_1_category = contentsList.filter((el) => {
     let category = el.category;
@@ -72,7 +73,7 @@ const Contents = () => {
         `${process.env.REACT_APP_SERVER_URL}/filter?c=${select_1}&t=${select_2}&s=${select_3}`
       )
       .then((data) => {
-        const sort = data.data.data.contentsList;
+        const sort = data.data.data;
         setDataLikeSort(sort);
       });
   };
@@ -86,17 +87,19 @@ const Contents = () => {
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
   };
-  console.log("searchText", searchText);
+  // console.log("searchText", searchText);
   const onKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchText.length !== 0) {
       setShowText(searchText);
       searchHandler();
     }
   };
 
   const searchClick = () => {
-    setShowText(searchText);
-    searchHandler();
+    if (searchText.length !== 0) {
+      setShowText(searchText);
+      searchHandler();
+    }
   };
 
   const searchHandler = () => {
@@ -127,7 +130,7 @@ const Contents = () => {
     setSelect_3(select.target.value);
   };
 
-  console.log("select_3", select_3);
+  // console.log("select_3", select_3);
 
   const handleFollow = () => {
     dispatch(scrollTop(false, window.pageYOffset));
