@@ -3,8 +3,7 @@ const { likes } = require("../../models");
 module.exports = async (req, res) => {
     const content_id = req.params.contentsId;
     const id = req.cookies.id;
-    console.log('req', req)
-    console.log('id', id)
+
     try {
         await likes.create({
             user_id: id,
