@@ -48,7 +48,7 @@ const Login = () => {
     const userData = { email, password };
     if (!email || !password) {
       setFailMessage(true);
-      setTimeout(function() { setFailMessage(false) }, 3000);
+      setTimeout(function () { setFailMessage(false) }, 3000);
     } else {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
@@ -69,12 +69,12 @@ const Login = () => {
             err.message === "존재하지 않는 계정입니다." || "비밀번호가 일치하지 않습니다."
           ) {
             setFailMessage(true);
-            setTimeout(function() { setFailMessage(false) }, 3000);
+            setTimeout(function () { setFailMessage(false) }, 3000);
           }
         });
     }
   };
-  
+
 
   const modalOutSide = (e) => {
     if (e.target === e.currentTarget) {
@@ -85,14 +85,14 @@ const Login = () => {
   const handleClick = useCallback(() => {
     if (email === "") {
       setErrorMessage("이메일을 입력해주세요.");
-      setTimeout(function() { setErrorMessage("") }, 3000);
+      setTimeout(function () { setErrorMessage("") }, 3000);
     } else if (!checkEmail(email)) {
       setErrorMessage("올바른 메일 양식으로 입력해주세요.");
-      setTimeout(function() { setErrorMessage("") }, 3000);
+      setTimeout(function () { setErrorMessage("") }, 3000);
       return;
     } else if (password === "") {
       setErrorMessage("비밀번호를 입력해주세요.");
-      setTimeout(function() { setErrorMessage("") }, 3000);
+      setTimeout(function () { setErrorMessage("") }, 3000);
     } else {
       handleLogin();
       setErrorMessage("");
@@ -106,44 +106,44 @@ const Login = () => {
     console.log(isModal)
     console.log(isState)
   };
-  
+
 
   return (
     <>
-        <div className={style.body} onClick={modalOutSide}>
-          <div className={style.container}>
-            <img className={style.logo} src="logo(background-white).png" />
-            <input
-              className={style.myInfo}
-              type="text"
-              placeholder="이메일"
-              // value={email}
-              onChange={onChangeEmail}
-            />
-            <input
-              className={style.myInfo}
-              type="password"
-              placeholder="비밀번호"
-              // value={password}
-              onChange={onChangePassword}
-            />
-            <button className={style.loginButton} onClick={() => handleClick()}>
-              로그인
-            </button>
-            <span className={style.message}>{errorMessage}</span>
-            <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
-            <button className={style.google}>
-              <img className={style.google_icon} src="google_icon.png" />
-            </button>
-            <button className={style.kakao}> 
-              <img className={style.kakao_icon} src="kakao_icon.png" />
-            </button>
-            <span className={style.membership}>아직 All for you의 회원이 아니신가요?</span>
-            <button className={style.membership_btn} onClick={handleSignup}>
-              회원가입
-            </button>
-          </div>
+      <div className={style.body} onClick={modalOutSide}>
+        <div className={style.container}>
+          <img className={style.logo} src="logo(background-white).png" />
+          <input
+            className={style.myInfo}
+            type="text"
+            placeholder="이메일"
+            // value={email}
+            onChange={onChangeEmail}
+          />
+          <input
+            className={style.myInfo}
+            type="password"
+            placeholder="비밀번호"
+            // value={password}
+            onChange={onChangePassword}
+          />
+          <button className={style.loginButton} onClick={() => handleClick()}>
+            로그인
+          </button>
+          <span className={style.message}>{errorMessage}</span>
+          <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
+          <button className={style.google}>
+            <img className={style.google_icon} src="google_icon.png" />
+          </button>
+          <button className={style.kakao}>
+            <img className={style.kakao_icon} src="kakao_icon.png" />
+          </button>
+          <span className={style.membership}>아직 All for you의 회원이 아니신가요?</span>
+          <button className={style.membership_btn} onClick={handleSignup}>
+            회원가입
+          </button>
         </div>
+      </div>
     </>
   );
 };

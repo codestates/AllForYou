@@ -57,7 +57,6 @@ const MyLikesDetail = () => {
                     {/* </> */}
                 {/* ) : (
                 <p className={style.empty_likesbox}>좋아요를 표시한 콘텐츠가 없습니다.</p> */}
-            )}
             </div>
         </div>
     )

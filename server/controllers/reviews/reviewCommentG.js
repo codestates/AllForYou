@@ -6,7 +6,8 @@ module.exports = async (req, res) => {
   try{
     const reviewCommentData = await comments.findAll({ 
       where: { review_id: review_id },
-      include: [{ model: users, attributes: ["nickname"] }]
+      include: [{ model: users, attributes: ["nickname"] }],
+      order: [['createdAt', 'DESC']]
     })
 
     const reviewComments = reviewCommentData.map((el) => {
@@ -16,12 +17,11 @@ module.exports = async (req, res) => {
         user_id: el.user_id,
         nickname: el.user.nickname,
         comment: el.comment,
-        createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0],
-        updatedAt: (el.updatedAt).toISOString().split("T")[0] + " " + (el.updatedAt).toISOString().split("T")[1].split(".")[0]
+        createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0]
       }
     })
 
-    return res.status(200).json({data: reviewComments, message: "리뷰정보 전달 완료."})
+    return res.status(200).json({ data: reviewComments, message: "리뷰정보 전달 완료." })
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." })

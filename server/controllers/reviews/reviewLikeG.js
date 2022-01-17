@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 
   try{
     const likeData = await likes.findOne({ 
-      where: { id: id, review_id: review_id },
+      where: { user_id: id, review_id: review_id },
       attributes: [ "id", "review_id"],
     })
 
