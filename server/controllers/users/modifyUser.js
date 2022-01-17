@@ -18,13 +18,12 @@ module.exports = async (req, res) => {
       where: { id: id }
     })
 
-    // if(bcrypt.compareSync(password, userInfo.dataValues.password)){
-    //   return res.status(409).json({ data: null, message: "이전과 같은 비밀번호입니다." })
-    // }
+    if(!bcrypt.compareSync(password, userInfo.dataValues.password)){
+      const newPassword = await bcrypt.hash(password, 10);
+      await users.update({ password: newPassword }, { where: { id: id } })
+    }
 
-    const newPassword = await bcrypt.hash(userInfo.dataValues.password, 10);
-
-    await users.update({ nickname: nickname, password: newPassword, updateAt: new Date() }, { where: { id: id } })
+    await users.update({ nickname: nickname, updateAt: new Date() }, { where: { id: id } })
     
     if (req.file) {
       await users.update({ user_picture: req.file.location }, { where: { id: id } })
@@ -35,7 +34,6 @@ module.exports = async (req, res) => {
       nickname: userInfo.dataValues.nickname,
       user_picture: userInfo.dataValues.user_picture
     }
-    console.log(userData)
 
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });
     return res.status(200).cookie("jwt", token, {
