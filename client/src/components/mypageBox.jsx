@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import style from "./mypageBox.module.css";
-import MyReviewsDetail from "../page/myReviewsDetail";
-import MyLikesDetail from "../page/myLikesDetail";
 
 function MyPageBox({ reviews, likes }) {
-
+    
     return (
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
