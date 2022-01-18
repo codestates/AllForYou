@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import style from "./myLikesDetail.module.css"
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 const MyLikesDetail = () => {
+    const navigate = useNavigate();
     const { nickname } = useSelector((state) => state.loginReducer);
     
     const [filterData, setFilterData] = useState(null)
@@ -12,22 +14,16 @@ const MyLikesDetail = () => {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/users/mypage/myLike`)
             .then((res) => {
-                console.log(res.data)
+                console.log(res.data.data)
                 const likesData = res.data.data
-                const filterContentData = likesData.map(e => e.content)
-                const filterDateData = likesData.map(e => e.createdAt)
-                setFilterData({
-                    filterContentData: filterContentData,
-                    filterDateData: filterDateData
-                })
-                // setContentData(filterContentData)
-                // setDateData(filterDateData)
+                setFilterData(likesData)
         })
     }
-
-    // console.log(contentData)
-    // console.log(dateData)
-    console.log(filterData)
+        
+    useEffect(() => {
+        handleLikesDetail();
+        navigate(`/foryouview/:${filterData.id}`)
+    }, []);
 
     return(
             <div className={style.container}>
@@ -37,27 +33,33 @@ const MyLikesDetail = () => {
                     {nickname}
                 </p>
             </div>
-            <span className={style.likes_title}>좋아요 표시한 콘텐츠</span>
+            <span className={style.likes_title}>
+                좋아요 표시한 콘텐츠
             <div className={style.box}>
-            <button onClick={handleLikesDetail}>눌러봐</button>
-                {/* {filterData ? (
-                    <> */}
-                        {filterData.map((filter) => (
+                {filterData ? (
                             <>
-                                <span className={style.mydata}>
-                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${filter.filterContentData.id}`}>{filter.filterContentData.title}</a>
-                                </span>
-                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${filter.filterContentData.id}`}>
-                                    <span className={style.mydata_date}>
-                                        <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${filter.filterContentData.id}`}>{filter.filterDateData.split('T')[0]}</a>
-                                    </span>
-                                </a>
+                            {filterData.map((content) => (
+                            <>
+                                <div className={style.likeBox}>
+                                    <button className={style.myLikeData} key={content} onClick={handleLikesDetail}>
+                                    {navigate(`/foryouview/:${filterData.id}`)}
+                                        <span>{content.content.title}</span>
+                                    </button>
+                                    <button className={style.mydata_likeDate} onClick={handleLikesDetail}>
+                                    {navigate(`/foryouview/:${filterData.id}`)}
+                                        <span>
+                                            {content.createdAt.split('T')[0]}
+                                        </span>
+                                    </button>
+                                </div>
                             </>
-                        ))}
-                    {/* </> */}
-                {/* ) : (
-                <p className={style.empty_likesbox}>좋아요를 표시한 콘텐츠가 없습니다.</p> */}
+                            ))}
+                        </>
+                    ) : (
+                    <p className={style.empty_likesbox}>좋아요를 표시한 콘텐츠가 없습니다.</p>
+                )}
             </div>
+            </span>
         </div>
     )
 }

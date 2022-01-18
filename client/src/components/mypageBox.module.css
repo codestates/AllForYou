@@ -21,7 +21,7 @@
 
 .more_button {
     display: flex;
-    margin-left: 55vw;
+    margin-left: 50vw;
     width: 5vw;
     font-size: 1.7em;
     font-weight: bold;
@@ -39,27 +39,58 @@
     border: solid black;
     border-width: 3px;
     padding-left: 3em;
-    width: 60vw;
+    width: 55vw;
     height: 25em;
     border-radius: 1em;
     box-shadow: 0 4px 12px -4px black;
 }
 
-.mydata {
+.myReviewData {
     display: block;
+    border: none;
     text-align: left;
-    margin: 1.8em 0 0 0.5em;
+    margin: 1.5em 0 0 0.5em;
     font-size: x-large;
     position: absolute;
+    background-color: #B09171;
 }
 
-.mydata_date {
+.mydata_reviewDate {
     display: block;
     margin: 1.8em 2em 0 0;
     text-align: right;
     font-size: x-large;
+    border-bottom: 2px solid black;
+}
+
+.likeBox {
+    display: flex;
+    margin: 0.3em 3em 0 0;
+    width: 50.5vw;
+    font-size: x-large;
+    border-bottom: 2px solid black;
+}
+
+.myLikeData {
+    display: block;
+    border: none;
+    text-align: left;
+    width: 35em;
+    margin: 1.2em 4em 0.2em 0.5em;
+    font-size: x-large;
+    background-color: #B09171;
+}
+
+.mydata_likeDate {
+    display: block;
+    margin: 1.3em 0 0 1em;
+    width: 13em;
+    text-align: end;
+    font-size: x-large;
     border-bottom: solid black;
     border-width: 2px;
+    border: none;
+    background-color: #B09171;
 }
 
 .empty_reviewbox {
@@ -83,6 +114,7 @@
 .empty_likesbox {
     display: block;
     padding-top: 6.5em;
+    width: 20em;
     height: 20em;
     font-size: x-large;
     font-weight: bold;

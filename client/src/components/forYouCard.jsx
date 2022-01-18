@@ -77,7 +77,7 @@ const ForYouCard = ({ review, like }) => {
 
     const handlePostInfo = () => {
         dispatch(setPost(review));
-        navigate("/foryouview")
+        navigate(`/foryouview/:${review.id}`)
     }
 
     return (
