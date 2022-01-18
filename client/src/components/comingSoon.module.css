@@ -13,3 +13,11 @@ body {
   font-size: 2em;
   text-align: center;
 }
+
+@media screen and (max-width: 365px) {
+  .text {
+    padding: 5em 0;
+    font-size: 2em;
+    text-align: center;
+  }
+}
