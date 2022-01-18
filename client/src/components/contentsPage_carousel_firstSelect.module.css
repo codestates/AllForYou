@@ -38,6 +38,10 @@
   overflow: hidden;
 }
 
+.like {
+  font-size: 0.8em;
+}
+
 @media screen and (max-width: 1720px) {
   .container {
     margin: 0 1em;
@@ -54,10 +58,14 @@
     width: 45em;
     height: 16em;
   }
+  .contents_part {
+    width: 30em;
+  }
 }
 
 @media screen and (max-width: 1000px) {
   .container {
+    margin: 0;
     width: 18em;
     height: 14em;
   }
