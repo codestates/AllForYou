@@ -60,7 +60,7 @@ const ForYouWriting = () => {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${search}`)
             .then(res => {
-                setResultSearch(res.data.data.contentsList);
+                setResultSearch(res.data.data);
             })
             .catch(err => {
                 console.log(err);

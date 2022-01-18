@@ -1,0 +1,53 @@
+.body {
+  width: 100%; 
+  margin: 0;
+}
+
+section {
+  width: 100%; 
+  height: 800px;
+  background-position: center center; 
+  background-size: 80% auto;
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  @media (min-width: 700px) {
+    background-size: auto 80%;
+  }
+}
+  
+.a1 {
+  background-color: #FBFEAB;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: monaco;
+}
+
+.a2 {
+  background-color: #B8E2DF;
+}
+
+.a3 {
+  background-color: #28FDBE;
+}
+
+.a4 {
+  background-color: #FB955D;
+}
+
+.a5 {
+  background-color: #D5E4DF;
+}
+
+.a6 {
+  background-color: #FC3C40;
+}
+
+.a7 {
+  background-color: #1E1CAC;
+}
+
+.a8 {
+  background-color: #73FFDF;
+}
+
+

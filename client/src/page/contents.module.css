@@ -288,8 +288,17 @@
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 365px) {
   /* 모바일 */
+  .container {
+    margin-top: 4em;
+    width: 30em;
+  }
+
+  .contents_part {
+    /* height: 25em; */
+  }
+
   #firstSelect {
     font-size: 1em;
   }
@@ -313,6 +322,6 @@
     font-size: 1.1em;
   }
   .select_1_All_container {
-    margin-top: 6em;
+    margin: 5em 0;
   }
 }

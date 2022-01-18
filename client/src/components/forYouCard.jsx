@@ -1,12 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./forYouCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPost } from "../action";
+import { setPost, setList } from "../action";
 
-const ForYouCard = ({ review }) => {
+const ForYouCard = ({ review, like }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    // const [like, setLike] = useState(false);
+    // console.log(review)
+    // console.log('!!',like)
+    // console.log('!!id',review.id)
+
+    // const id = review.id
+
+    // let likeColor = []
+
+    // for(let i=0; i<like.length; i++){
+    //     if(id === like[i]){
+    //         likeColor.push(true)
+    //     }
+    // }
+
+    // const color = like.filter((el)={
+    //     if(id === el){
+    //         return true
+    //     }
+    // })
+
+    // const likeFilterd = like.map((el)=>{
+    //     if(review.id === el){
+    //         setLikeColor(true)
+    //         console.log(el)
+    //     }
+    //     return setLikeColor(false)
+    // })
+
 
     // const handleShareKakao = () => {
     //     if (!window.Kakao.isInitialized()) {
@@ -48,8 +77,7 @@ const ForYouCard = ({ review }) => {
 
     const handlePostInfo = () => {
         dispatch(setPost(review));
-        // navigate(`/foryouview/:${review.id}`)
-        window.location.reload(`/foryouview/:${review.id}`)
+        navigate(`/foryouview/:${review.id}`)
     }
 
     return (
@@ -63,6 +91,7 @@ const ForYouCard = ({ review }) => {
                     <div className={style.titleBox}>
                         <p className={style.title}>{review.title}</p>
                         <div className={style.icon}>
+                        {/* <div className={`${likeColor ? style.like : style.unlike}`}> */}
                             <i className="fas fa-heart"></i>
                             <div className={style.iconText}>좋아요<br />{review.like}개</div>
                         </div>
