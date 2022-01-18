@@ -22,6 +22,7 @@ export const SCROLL_TOP = "SCROLL_TOP";
 export const SET_UPDATE = "SET_UPDATE";
 export const SET_WITHDRAW = "SET_WITHDRAW";
 export const SET_PASSWORD = "SET_PASSWORD";
+export const HANDLE_MYPAGE = "HANDLE_MYPAGE";
 
 export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
@@ -39,6 +40,15 @@ export const setUpdateInfo = (updateInfo) => {
         type: SET_UPDATE,
         payload: {
             updateInfo
+        },
+    };
+};
+
+export const setHandleMypage = (handlemypage) => {
+    return {
+        type: HANDLE_MYPAGE,
+        payload: {
+            handlemypage
         },
     };
 };
@@ -96,7 +106,6 @@ export const setEmailData = (emaildata) => {
         },
     };
 };
-
 
 export const setProfileImage = (profileImage) => {
     return {

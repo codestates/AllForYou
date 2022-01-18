@@ -48,7 +48,8 @@ const ForYouCard = ({ review }) => {
 
     const handlePostInfo = () => {
         dispatch(setPost(review));
-        navigate("/foryouview")
+        // navigate(`/foryouview/:${review.id}`)
+        window.location.reload(`/foryouview/:${review.id}`)
     }
 
     return (

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import style from "./myDetail.module.css"
+import style from "./myLikesDetail.module.css"
 import axios from "axios";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 const MyLikesDetail = () => {
+    const navigate = useNavigate();
     const { nickname } = useSelector((state) => state.loginReducer);
     
     const [filterData, setFilterData] = useState(null)
@@ -20,6 +22,7 @@ const MyLikesDetail = () => {
         
     useEffect(() => {
         handleLikesDetail();
+        navigate(`/foryouview/:${filterData.id}`)
     }, []);
 
     return(
@@ -34,21 +37,25 @@ const MyLikesDetail = () => {
                 좋아요 표시한 콘텐츠
             <div className={style.box}>
                 {filterData ? (
-                    <>
-                        {filterData.map((filter, index) => (
                             <>
-                                <span className={style.mydata} key={index}>
-                                    <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${filter.content.id}`}>{filter.content.title}</a>
-                                </span>
-                                <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${filter.content.id}`}>
-                                    <span className={style.mydata_date}>
-                                        <a href={`${process.env.REACT_APP_SERVER_URL}/contents/${filter.content.id}`}>{filter.createdAt.split('T')[0]}</a>
-                                    </span>
-                                </a>
+                            {filterData.map((content) => (
+                            <>
+                                <div className={style.likeBox}>
+                                    <button className={style.myLikeData} key={content} onClick={handleLikesDetail}>
+                                    {navigate(`/foryouview/:${filterData.id}`)}
+                                        <span>{content.content.title}</span>
+                                    </button>
+                                    <button className={style.mydata_likeDate} onClick={handleLikesDetail}>
+                                    {navigate(`/foryouview/:${filterData.id}`)}
+                                        <span>
+                                            {content.createdAt.split('T')[0]}
+                                        </span>
+                                    </button>
+                                </div>
                             </>
-                        ))}
-                    </>
-                ) : (
+                            ))}
+                        </>
+                    ) : (
                     <p className={style.empty_likesbox}>좋아요를 표시한 콘텐츠가 없습니다.</p>
                 )}
             </div>

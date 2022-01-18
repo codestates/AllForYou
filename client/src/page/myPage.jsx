@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./myPage.module.css";
 import { useSelector } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
@@ -9,6 +10,7 @@ import ModalWithdraw from "../components/ModalWithdraw";
 import Footer from "../components/footer";
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const { isLogin } = useSelector((state) => state.loginReducer); 
   const { updateInfo } = useSelector((state) => state.loginReducer);
   const { withdrawModal } = useSelector((state) => state.loginReducer);

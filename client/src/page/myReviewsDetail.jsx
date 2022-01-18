@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import style from "./myDetail.module.css"
+import style from "./myReviewsDetail.module.css"
 import axios from "axios";
 import { useSelector } from 'react-redux';
 
-
 const MyReviewsDetail = () => {
     const { nickname } = useSelector((state) => state.loginReducer);
+    const { post } = useSelector((state) => state.foruReducer);
     
     const [filterData, setFilterData] = useState(null)
 
@@ -37,14 +37,14 @@ const MyReviewsDetail = () => {
             <div className={style.box}>
             {filterData ? (
                     <>
-                        {filterData.map((filter, index) => (
+                        {filterData.map((filter) => (
                             <>
-                                <span className={style.mydata} key={index}>
-                                    <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${filter.id}`}>{filter.title}</a>
+                                <span className={style.mydata} key={filter}>
+                                    <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.title}</a>
                                 </span>
-                                <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${filter.id}`}>
+                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>
                                     <span className={style.mydata_date}>
-                                        <a href={`${process.env.REACT_APP_SERVER_URL}/reviews/${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
+                                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
                                     </span>
                                 </a>
                             </>

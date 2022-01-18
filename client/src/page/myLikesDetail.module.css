@@ -12,8 +12,8 @@
 }
 
 .info {
-    margin: 3em 5em 0 7em;
-    width: 28vw;
+    margin: 3em 5em 0 7.5vw;
+    width: 26vw;
     height: 50em;
     background-color: white;
     border-radius: 0.5em;
@@ -21,10 +21,10 @@
 }
 
 .img {
-    margin: 5em 0 0 7.5em;
+    margin: 5em 0 0 4vw;
     border-radius: 20em;
     padding: 1em;
-    width: 17vw;
+    width: 18.5vw;
     height: 25em;
 }
 
@@ -34,11 +34,12 @@
     text-align: center;
     font-size: xx-large;
     font-weight: bold;
-    width: 28vw;
+    width: 26vw;
 }
 
 .likes_title {
     display: block;
+    margin-right: 50vw;
     width: 20vw;
     float: left;
     font-size: 2em;
@@ -46,31 +47,44 @@
 }
 
 .box {
-    margin: 0.5em 3em 2em 0 ;
+    margin: 0.5em 3vw 2em 0;
     border: solid black;
     border-width: 3px;
-    padding-left: 3em;
-    width: 60vw;
+    padding-left: 2em;
+    width: 56vw;
     height: 24em;
     border-radius: 1em;
     box-shadow: 0 4px 12px -4px black;
 }
 
-.mydata {
-    display: block;
-    text-align: left;
-    margin-top: 1.8em;
+.likeBox {
+    display: flex;
+    margin: 0.3em 3em 0 0;
+    width: 50.5vw;
     font-size: x-large;
-    position: absolute;
+    border-bottom: 2px solid black;
 }
 
-.mydata_date {
+.myLikeData {
     display: block;
-    margin: 1.8em 3em 0 0;
-    text-align: right;
+    border: none;
+    text-align: left;
+    width: 35em;
+    margin: 1.2em 4em 0.2em 0.5em;
+    font-size: x-large;
+    background-color: #B09171;
+}
+
+.mydata_likeDate {
+    display: block;
+    margin: 1.3em 0 0 1em;
+    width: 13em;
+    text-align: end;
     font-size: x-large;
     border-bottom: solid black;
     border-width: 2px;
+    border: none;
+    background-color: #B09171;
 }
 
 .empty_likesbox {
