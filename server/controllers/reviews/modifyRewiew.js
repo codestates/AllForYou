@@ -17,6 +17,7 @@ module.exports = async (req, res) => {
     const contents = content_id.split(',');
     
     if(req.file) {
+      // 이미지를 지운 뒤 새로운 이미지를 넣자
       await reviews.update({ image: req.file.location }, { where: { id: review_id } })
     }
     
