@@ -18,7 +18,7 @@ const storage = multerS3({
   },
   key: function (req, file, cb) {
   const id = req.cookies.id;
-  cb(null, `userReviewImage/${id}/${Date.now()}_${file.originalname}`);
+  cb(null, `userReviewImage/${id}/${Date.now()}_reviewImage`);
   },
 });
 
