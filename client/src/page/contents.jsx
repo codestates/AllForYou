@@ -110,7 +110,7 @@ const Contents = () => {
       })
       .then((res) => {
         console.log(res);
-        const searchData = res.data.data.contentsList;
+        const searchData = res.data.data;
         setContentsSearch(searchData);
       })
       .catch((err) => {
