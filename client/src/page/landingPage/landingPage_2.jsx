@@ -6,9 +6,7 @@ import "aos/dist/aos.css";
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { scrollTop } from "../../action";
 
 const LandingPage_2 = () => {
@@ -33,7 +31,7 @@ const LandingPage_2 = () => {
     };
   });
 
-  console.log("selectLength", selectLength);
+  // console.log("selectLength", selectLength);
 
   const handleClick = () => {
     window.scrollTo({
@@ -54,8 +52,8 @@ const LandingPage_2 = () => {
         {/* selectLength */}
         <div
           className={`${selectLength > 1500 ? style.main_container_off : null}`}
-          data-aos="zoom-in-right"
-          data-aos-duration="1500"
+          // data-aos="zoom-in-right"
+          // data-aos-duration="1500"
         >
           <img
             className={style.img_main}
@@ -65,9 +63,9 @@ const LandingPage_2 = () => {
         </div>
         <div
           className={style.main_text}
-          data-aos="fade-up-right"
-          data-aos-duration="2000"
-          data-aos-delay="100"
+          // data-aos="fade-up-right"
+          // data-aos-duration="2000"
+          // data-aos-delay="100"
         >
           <div
             className={`${selectLength > 1500 ? style.main_text_off : null}`}
@@ -86,9 +84,9 @@ const LandingPage_2 = () => {
         </div>
         <div
           className={style.text_1}
-          data-aos="fade-up"
-          data-aos-duration="2000"
-          data-aos-delay="200"
+          // data-aos="fade-up"
+          // data-aos-duration="2000"
+          // data-aos-delay="200"
         >
           <div
             className={`${selectLength > 1500 ? style.main_text_off : null}`}
@@ -105,9 +103,9 @@ const LandingPage_2 = () => {
           <button
             className={style.contentsPageBtn}
             onClick={handleClick}
-            data-aos="fade-up"
-            data-aos-duration="2000"
-            data-aos-delay="200"
+            // data-aos="fade-up"
+            // data-aos-duration="2000"
+            // data-aos-delay="200"
           >
             <div
               className={`${selectLength > 1500 ? style.main_text_off : null}`}
@@ -118,11 +116,11 @@ const LandingPage_2 = () => {
         </div>
       </div>
       <div
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-duration="500"
-        data-aos-delay="50"
-        data-aos-easing="ease-in-sine"
+        // data-aos="fade-right"
+        // data-aos-offset="300"
+        // data-aos-duration="500"
+        // data-aos-delay="50"
+        // data-aos-easing="ease-in-sine"
         className={style.img_1_container}
       >
         <img
@@ -132,17 +130,17 @@ const LandingPage_2 = () => {
         />
         <div
           className={style.img_1_text}
-          data-aos="flip-up"
-          data-aos-duration="1000"
-          data-aos-delay="100"
+          // data-aos="flip-up"
+          // data-aos-duration="1000"
+          // data-aos-delay="100"
         >
           도전과 동기부여를 당신에게
         </div>
       </div>
       <div
-        data-aos="fade-up"
-        data-aos-duration="500"
-        data-aos-delay="800"
+        // data-aos="fade-up"
+        // data-aos-duration="500"
+        // data-aos-delay="800"
         className={style.img_2_container}
       >
         <img
@@ -152,17 +150,17 @@ const LandingPage_2 = () => {
         />
         <div
           className={style.img_2_text}
-          data-aos="fade-up"
-          data-aos-duration="500"
-          data-aos-delay="100"
+          // data-aos="fade-up"
+          // data-aos-duration="500"
+          // data-aos-delay="100"
         >
           먼저 경험해본 선배에게 조언을
         </div>
       </div>
       <div
-        data-aos="fade-left"
-        data-aos-duration="500"
-        data-aos-delay="800"
+        // data-aos="fade-left"
+        // data-aos-duration="500"
+        // data-aos-delay="800"
         className={style.img_3_container}
       >
         <img
@@ -172,9 +170,9 @@ const LandingPage_2 = () => {
         />
         <div
           className={style.img_3_text}
-          data-aos="fade-left"
-          data-aos-duration="500"
-          data-aos-delay="100"
+          // data-aos="fade-left"
+          // data-aos-duration="500"
+          // data-aos-delay="100"
         >
           도전을 시작하기 앞서 두렵다면
         </div>

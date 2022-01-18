@@ -18,6 +18,64 @@ const Wrap = styled.div`
     transition: all 200ms ease-out;
   } */
   /* display: absolute; */
+
+  /* .carousel.carousel-slider .control-arrow {
+    background: none;
+  } */
+  /* .slick-track {
+    width: 918px
+    margin: 0;
+  } */
+
+  slick-slide{
+    display: none:
+  }
+
+  .slick-prev {
+    width:0
+    position: absolute;
+    left: 0;
+    z-index: 999;
+  }
+  .slick-next {
+    width:0
+    position: absolute;
+    right: 4em;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    /* background-color: black; */
+    font-family: "slick";
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 0.01;
+    opacity: 0.6;
+    /* color: #000000; */
+    color: white;
+    /* font-size: 25px; */
+    /* margin: 0.51em; */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slick-prev:before {
+    content: "‹";
+  }
+  [dir="rtl"] .slick-prev:before {
+    content: "›";
+  }
+
+  [dir="rtl"] .slick-next {
+    left: -10px;
+    top: 70px;
+    right: auto;
+  }
+  .slick-next:before {
+    content: "›";
+  }
+  [dir="rtl"] .slick-next:before {
+    content: "‹";
+  }
+
   .slick-dots {
     display: absolute;
     bottom: 3em;
@@ -41,7 +99,7 @@ const LandingPage_1 = () => {
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
-    autoplay: true, // 자동 스크롤 사용 여부
+    autoplay: false, // 자동 스크롤 사용 여부
     autoplaySpeed: 3000, // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
     pauseOnHover: true,
     dots: true,

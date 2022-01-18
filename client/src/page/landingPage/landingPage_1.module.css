@@ -3,7 +3,9 @@
 }
 
 .container {
-  background-color: black;
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
 
 .text_1 {
@@ -29,6 +31,5 @@
 .img_1 {
   width: 100%;
   height: 100vh;
-  /* opacity: 80%; */
   filter: brightness(55%);
 }
