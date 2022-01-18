@@ -2,14 +2,16 @@ import {
     MYPAGE_REVIEWS, 
     MYPAGE_LIKES, 
     REVIEWS_DATE, 
-    LIKES_DATE
+    LIKES_DATE,
+    HANDLE_MYPAGE
 } from '../action/index';
 
 const mypageInit = {
     mypageLikes: [],
     mypageReviews: [],
     reviewsDate: '',
-    likesDate: ''
+    likesDate: '',
+    handlemypage: null
 };
 
 const mypageReducer = (state = mypageInit, action) => {
@@ -32,6 +34,11 @@ const mypageReducer = (state = mypageInit, action) => {
         case LIKES_DATE:
             return Object.assign({}, state, {
                 likesDate: action.payload.likesDate,
+            });
+
+        case HANDLE_MYPAGE:
+            return Object.assign({}, state, {
+                handlemypage: action.payload.handlemypage,
             });
 
     default:

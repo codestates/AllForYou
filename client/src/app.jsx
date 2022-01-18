@@ -51,7 +51,7 @@ function App() {
         <Route path="/foryou" element={<ForYou isLogin={isLogin} />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
-        <Route path="/foryouview" element={<ForYouView post={post} isLogin={isLogin} />} />
+        <Route path="/foryouview/:id" element={<ForYouView post={post} isLogin={isLogin} />} />
         <Route path="/foryouedit" element={<ForYouEdit post={post} />} />
         <Route path="/reviewsdetail" element={<MyReviewsDetail />} />
         <Route path="/likesdetail" element={<MyLikesDetail />} />
