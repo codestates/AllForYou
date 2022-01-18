@@ -5,8 +5,7 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch, useSelector } from 'react-redux';
-import { setMessageModal } from '../action/index';
-import { loginModal, setPost, setList } from '../action/index';
+import { setMessageModal,loginModal, setPost, setList, contentsModal } from "../action";
 import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
@@ -16,7 +15,10 @@ const ForYouView = ({ post, isLogin }) => {
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
-  // console.log(post)
+
+    // const handleContentsInfo = (info) => {
+    //     dispatch(contentsModal(true, info));
+    // };
 
   useEffect(() => {
     getPostDetail();
@@ -30,7 +32,7 @@ const ForYouView = ({ post, isLogin }) => {
 
     useEffect(() => {
     getComment();
-    }, [comment]);
+    }, [setComment]);
 
   function getPostDetail() {
     axios
@@ -188,6 +190,7 @@ const ForYouView = ({ post, isLogin }) => {
               <Recommend
                 content={content}
                 key={content.content_id}
+                // onClick={() => handleContentsInfo(content)}
               />
             ))}
           </div>

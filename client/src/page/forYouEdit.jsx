@@ -25,14 +25,23 @@ const ForYouEdit = ({ post }) => {
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
 
+    //원래 리스트와 추가 리스트를 결합
     const stateList = state.map((el)=>{
         return el.contents
     })
     const renderList = [...list,...stateList]
 
-    const content_id = renderList.map((el) => {
+    //원래 리스트 data와 추가 data의 형태 차이로 각각 취합
+    const list_id = list.map((el) => {
+        return el.content_id
+    })
+
+    const state_id = stateList.map((el) => {
         return el.id
     })
+    const content_id = [...list_id,...state_id]
+
+
 
     const handleText = (value) => {
         setTextEdit(value)
@@ -79,7 +88,8 @@ const ForYouEdit = ({ post }) => {
         if (
             titleEdit === '' ||
             textEdit === '' ||
-            content_id.length === 0
+            content_id.length === 0 ||
+            imageEdit.length === 0
             ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
@@ -90,7 +100,7 @@ const ForYouEdit = ({ post }) => {
             formData.append('text', textEdit); //글 소개
             formData.append('content_id', content_id); //컨텐츠 리스트 id 배열
             formData.append('img', imageEdit);
-
+            console.log(content_id)
             axios //router.patch("reviews/:postId",
                 .patch(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`, formData,
                     {
@@ -114,10 +124,14 @@ const ForYouEdit = ({ post }) => {
             <div className={style.writingBox}>
                 <p className={style.menu_p}>리스트 작성</p>
                 <div className={style.imgBox}>
+                    {files.length === 0 ?(
                     <img
                         className={style.img}
+                        src={image}
+                    />):(<img
+                        className={style.img}
                         src={files}
-                    />
+                    />)}
                     <input
                         className={style.imgFile}
                         type="file"
