@@ -19,12 +19,21 @@ module.exports = async (req, res) => {
       ]
     })
 
+    let categoryFix = '';
+
     let reviewList = reviewData.map((el) => {
+      if(el.category === '도전') categoryFix = '도전하고 싶은 나에게';
+      if(el.category === '동기부여') categoryFix = '동기부여를 받고 싶다면?';
+      if(el.category === '멘토') categoryFix = '현재 나의 상황에 멘토를 원하시나요?';
+      if(el.category === '편안함') categoryFix = '마음속 편안함을 찾는다면?';
+      if(el.category === '웃음') categoryFix = '생각없이 웃고 싶다면?';
+      if(el.category === '눈물') categoryFix = '오늘 한 없이 눈물을 쏟고 싶다면?';
+
       return {
         "id": el.id,
         "nickname": el.user.nickname,
         "title": el.title,
-        "category": el.category,
+        "category": categoryFix,
         "like": el.likes.length,
         "image": el.image,
         "createdAt": el.createdAt,

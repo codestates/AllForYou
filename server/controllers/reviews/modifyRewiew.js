@@ -9,31 +9,31 @@ module.exports = async (req, res) => {
       return res.status(409).send('데이터가 비어있습니다.');
     }
     
-    const rewiewData = await reviews.update(
-      { category: category, title: title, text: text, image: image, updateAt: new Date() },
+    await reviews.update(
+      { category: category, title: title, text: text, updateAt: new Date() },
       { where: { id: review_id } }
     );
-
+    
     const contents = content_id.split(',');
-
+    
     if(req.file) {
       await reviews.update({ image: req.file.location }, { where: { id: review_id } })
     }
-
+    
     // reviews_contents 테이블 클리어
     await reviews_contents.destroy({ 
-      review_id: rewiewData.id
+      where: { review_id: review_id }
     })
 
     // 받아온 id값을 이용하여 테이블 재생성
     contents.map(async (el) => {
       await reviews_contents.create({ 
-        review_id: rewiewData.id,
+        review_id: review_id,
         content_id: el
       })
     })
 
-    return res.status(201).json({ data: rewiewData.id, message: "리뷰 수정완료." });
+    return res.status(201).json({ data: review_id, message: "리뷰 수정완료." });
   }
   catch(err) {
     return res.status(500).json({ data: err, message: "서버 오류." });
