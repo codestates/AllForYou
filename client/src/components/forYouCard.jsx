@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import style from "./forYouCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPost, setList } from "../action";
+import { setPost, setList, setMessageModal } from "../action";
 
 const ForYouCard = ({ review, like }) => {
+    const {title, category, image} = review
+    console.log('ddd',review)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     // const [like, setLike] = useState(false);
@@ -36,44 +38,75 @@ const ForYouCard = ({ review, like }) => {
     //     return setLikeColor(false)
     // })
 
+    // useEffect(() => {
+    //     handleShareKakao()
+    // }, []);
 
-    // const handleShareKakao = () => {
-    //     if (!window.Kakao.isInitialized()) {
-    //         window.Kakao.init(process.env.REACT_APP_KAKAO_MAP_JS_KEY);
+    // useEffect(() => {
+    //     const script = document.createElement('script')
+    //     script.src = 'https://developers.kakao.com/sdk/js/kakao.js'
+    //     script.async = true
+
+    //     document.body.appendChild(script)
+
+    //     return () => {
+    //     document.body.removeChild(script)
     //     }
-    //     window.Kakao.Link.sendDefault({
-    //         objectType: "feed",
-    //         content: {
-    //             title,
-    //             description: desc || `${nickname}님이 일정을 공유했어요!`,
-    //             imageUrl: "http://photo.scraplan.com/asdf%40asdf.asdf%2F2.png",
-    //             link: {
-    //                 mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/planpage/${id}`,
-    //                 androidExecParams: "test",
-    //             },
-    //         },
-    //         buttons: [
-    //             {
-    //                 title: "scraplan에서 보기",
-    //                 link: {
-    //                     mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/planpage/${id}`,
-    //                 },
-    //             },
-    //         ],
-    //     });
-    // };
+    // }, [])
 
-    // const handleShareUrl = () => {
-    //     let dummy = document.createElement("input");
-    //     let text = process.env.REACT_APP_SERVER_URL + `/planpage/${id}`;
 
-    //     document.body.appendChild(dummy);
-    //     dummy.value = text;
-    //     dummy.select();
-    //     document.execCommand("copy");
-    //     document.body.removeChild(dummy);
-    //     dispatch(notify(`클립보드 복사 완료 🙌🏻`));
-    // };
+    // useEffect(() => {
+    //     initKakao(); //
+    // }, []);
+
+    const initKakao = () => {
+        if (window.Kakao) {
+            const kakao = window.Kakao;
+            if (!kakao.isInitialized()) {
+                kakao.init(process.env.REACT_APP_KAKAO_KEY);
+            }
+        }
+    };
+
+    const handleShareKakao = () => {
+        // if (!window.Kakao.isInitialized()) {
+        //     window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+        // }
+        window.Kakao.Link.sendDefault({
+            objectType: "feed",
+            content: {
+                title,
+                // description: desc || `${nickname}님이 일정을 공유했어요!`,
+                description: `${category}(때)의 추천 리스트를 공유했습니다!`,
+                // imageUrl: "http://photo.scraplan.com/asdf%40asdf.asdf%2F2.png",
+                imageUrl: image,
+                link: {
+                    mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${review.id}`,
+                    androidExecParams: "test",
+                },
+            },
+            buttons: [
+                {
+                    title: "추천 리스트 보기",
+                    link: {
+                        mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${review.id}`,
+                    },
+                },
+            ],
+        });
+    };
+
+    const handleShareUrl = () => {
+        let dummy = document.createElement("input");
+        let text = process.env.REACT_APP_SERVER_URL + `/reviews/${review.id}`;
+
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        dispatch(setMessageModal(true, `클립보드 복사 완료 🙌🏻`));
+    };
 
     const handlePostInfo = () => {
         dispatch(setPost(review));
@@ -81,8 +114,8 @@ const ForYouCard = ({ review, like }) => {
     }
 
     return (
-        <div className={style.container} onClick={handlePostInfo}>
-            <div className={style.contentbox}>
+        <div className={style.container} >
+            <div className={style.contentbox} onClick={handlePostInfo}>
                 <img className={style.img}
                     src={review.image}
                     alt=""
@@ -100,14 +133,14 @@ const ForYouCard = ({ review, like }) => {
                     <div className={style.category}>{review.category}</div>
                 </div>
             </div>
-            <div className={style.sharebox}>
+            <div className={style.sharebox} >
                 <button
                     className={style.btnUrl}
-                // onClick={handleShareUrl}
+                    onClick={handleShareUrl}
                 >URL로 공유</button>
                 <button
                     className={style.btnKakao}
-                // onClick={handleShareKakao}
+                    onClick={handleShareKakao}
                 >
                     카톡으로 공유
                 </button>

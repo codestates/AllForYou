@@ -24,21 +24,22 @@ const ForYou = ({ isLogin }) => {
     }
   });
 
-  // const id = filteredCategory.map((el)=>{
-  //   return el.id
-  // })
+  console.log([...filteredCategory])
 
-  // const likeColor = Array(id.length).fill(false)
+  const id = filteredCategory.map((el)=>{
+    return el.id
+  })
+
+  const likeColor = Array(id.length).fill(false)
   
-  // for(let i=0; i<id.length; i++){
-  //   for(let j=0; j<like.length; j++){
-  //     if(id[i] === like[j]){
-  //       likeColor[i] = true
-  //     } 
-  //   }
-  // }
-  // filteredCategory.push(likeColor)
-  // console.log('!!',filteredCategory)
+  for(let i=0; i<id.length; i++){
+    for(let j=0; j<like.length; j++){
+      if(id[i] === like[j]){
+        likeColor[i] = true
+      } 
+    }
+  }
+  console.log('!!',likeColor)
 
   const getreviews = ()=> {
     axios
@@ -46,7 +47,7 @@ const ForYou = ({ isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
-          console.log(res.data.data)
+          // console.log(res.data.data)
         }
       })
       .catch((err) => {
@@ -91,7 +92,7 @@ const ForYou = ({ isLogin }) => {
 
   useEffect(() => {
     getreviews()
-    // getUserLikes()
+    getUserLikes()
   }, []);
 
   useEffect(() => {
@@ -134,12 +135,11 @@ const ForYou = ({ isLogin }) => {
       </div>
       <div className={style.cardContainer}>
         {filteredCategory.map((review) => (
-          <ForYouCard
+            <ForYouCard
             key={review.id}
             review={review}
-            // likeColor={likeColor}
-            like={like}
-          />
+            likeColor={likeColor}
+            />
         ))}
       </div>
     </div>
