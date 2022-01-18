@@ -78,6 +78,19 @@
   color: #f9e000;
 }
 
+/* .like{
+  color:#d62d20;
+    margin-right: 2.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.unlike{
+  color:#cccccc;
+  margin-right: 2.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+} */
+
 @media screen and  (max-width:1024px) {
   .container{
   margin-right: 2rem;

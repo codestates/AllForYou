@@ -12,6 +12,8 @@ const ForYou = ({ isLogin }) => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selected, setSelected] = useState("최신순");
   const [review, setReview] = useState([]);
+  const [like, setLike] = useState([]);
+  // const [likeColor, setLikeColor] = useState([]);
 
   const filteredCategory = review.filter((el) => {
     let category = el.category;
@@ -22,21 +24,21 @@ const ForYou = ({ isLogin }) => {
     }
   });
 
-  // const categoryChange = filteredCategory.map((el) => {
-  //   if(el.category === '도전'){
-  //     return el.category = '도전하고 싶은 나에게'
-  //   } else if(el.category === '동기부여'){
-  //     return el.category = '동기부여를 받고 싶다면?'
-  //   } else if(el.category === '멘토'){
-  //     return el.category = '현재 나의 상황에 멘토를 원하시나요?'
-  //   } else if(el.category === '편안함'){
-  //     return el.category = '마음속 편안함을 찾는다면?'
-  //   } else if(el.category === '웃음'){
-  //     return el.category = '생각없이 웃고 싶다면?'
-  //   } else if(el.category === '눈물'){
-  //     return el.category = '오늘 한 없이 눈물을 쏟고 싶다면?'
-  //   } 
+  // const id = filteredCategory.map((el)=>{
+  //   return el.id
   // })
+
+  // const likeColor = Array(id.length).fill(false)
+  
+  // for(let i=0; i<id.length; i++){
+  //   for(let j=0; j<like.length; j++){
+  //     if(id[i] === like[j]){
+  //       likeColor[i] = true
+  //     } 
+  //   }
+  // }
+  // filteredCategory.push(likeColor)
+  // console.log('!!',filteredCategory)
 
   const getreviews = ()=> {
     axios
@@ -71,7 +73,7 @@ const ForYou = ({ isLogin }) => {
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlike`)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data)
+          setLike(res.data.data)
         }
       })
       .catch((err) => {
@@ -135,6 +137,8 @@ const ForYou = ({ isLogin }) => {
           <ForYouCard
             key={review.id}
             review={review}
+            // likeColor={likeColor}
+            like={like}
           />
         ))}
       </div>
