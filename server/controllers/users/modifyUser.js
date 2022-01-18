@@ -26,6 +26,9 @@ module.exports = async (req, res) => {
     await users.update({ nickname: nickname, updateAt: new Date() }, { where: { id: id } })
     
     if (req.file) {
+      if(!userInfo.user_picture) {
+        // 이미지가 있다면 이미지를 지웁시다
+      }
       await users.update({ user_picture: req.file.location }, { where: { id: id } })
     }
 
