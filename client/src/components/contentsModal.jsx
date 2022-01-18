@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { contentsModal } from "../action";
 import { contentsLike } from "../action";
 import { loginModal } from "../action/index";
+
+import { LikeOutlined, LikeFilled } from "@ant-design/icons";
+
 import axios from "axios";
 
 const ContentsModal = () => {
@@ -20,12 +23,14 @@ const ContentsModal = () => {
   const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   console.log("accessToken", accessToken);
+  console.log("isLogin", isLogin);
+  console.log("like", like);
 
   useEffect(() => {
     if (isLogin) {
       getLikeInfo();
     }
-  }, []);
+  }, [like]);
 
   const getLikeInfo = () => {
     axios
@@ -33,13 +38,10 @@ const ContentsModal = () => {
         `${process.env.REACT_APP_SERVER_URL}/contents/like/${contentsInfo.id}`
       )
       .then((res) => {
-        console.log("좋아요", res);
         if (res.data.data) {
           dispatch(contentsLike(true));
-          // setLikeColor(true);
         } else {
           dispatch(contentsLike(false));
-          // setLikeColor(false);
         }
       })
       .catch((err) => {
@@ -58,13 +60,14 @@ const ContentsModal = () => {
   };
 
   const likeCheck = () => {
-    if (!like) {
+    if (!like && isLogin) {
       axios
         .post(
           `${process.env.REACT_APP_SERVER_URL}/contents/like/${contentsInfo.id}`
         )
-        .then(() => {
-          dispatch(loginModal(true));
+        .then((data) => {
+          console.log("data", data);
+          dispatch(contentsLike(true));
         })
         .catch((err) => {
           console.log(err);
@@ -75,7 +78,7 @@ const ContentsModal = () => {
           `${process.env.REACT_APP_SERVER_URL}/contents/like/${contentsInfo.id}`
         )
         .then(() => {
-          dispatch(loginModal(false));
+          dispatch(contentsLike(false));
         })
         .catch((err) => {
           console.log(err);
@@ -83,19 +86,10 @@ const ContentsModal = () => {
     }
   };
 
-  // console.log("like", like);
-  // console.log(contentsLike());
-  // console.log("modal", modal);
-
   const modalOff = () => {
     dispatch(contentsModal(false, {}));
   };
 
-  // const likeOnOff = () => {
-  //   dispatch(contentsLike(!like));
-  // };
-
-  // console.log("contentsInfo", contentsInfo);
   return (
     <div className={style.main} onClick={modalOff}>
       <div className={style.container} onClick={(e) => e.stopPropagation()}>
@@ -117,11 +111,10 @@ const ContentsModal = () => {
           </a>
         </div>
         <button
-          // className={style.like}
-          className={`${like ? style.like : style.unlike}`}
+          className={style.like}
           onClick={() => checkLoginStatus(likeCheck)}
         >
-          <i className="far fa-thumbs-up"></i>
+          {like ? <LikeFilled /> : <LikeOutlined />}
         </button>
         <div className={style.list}>
           <img className={style.image} src={contentsInfo.image} alt="" />

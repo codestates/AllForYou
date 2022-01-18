@@ -1,15 +1,15 @@
 import React, { useCallback, useState } from "react";
 import style from "./login.module.css";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
-import { 
-  login, 
-  loginModal, 
-  setNickname, 
-  setEmailData, 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  login,
+  loginModal,
+  setNickname,
+  setEmailData,
   signupModal,
-  setProfileImage, 
-} from '../action/index';
+  setProfileImage,
+} from "../action/index";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Login = () => {
   const { isModal } = useSelector((state) => state.loginModalReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
-  const [failMessage, setFailMessage] = useState(false)
+  const [failMessage, setFailMessage] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,7 +31,7 @@ const Login = () => {
 
   const handleLoginModal = () => {
     dispatch(loginModal(false));
-  }
+  };
 
   const checkEmail = (email) => {
     if (
@@ -48,12 +48,14 @@ const Login = () => {
     const userData = { email, password };
     if (!email || !password) {
       setFailMessage(true);
-      setTimeout(function () { setFailMessage(false) }, 3000);
+      setTimeout(function () {
+        setFailMessage(false);
+      }, 3000);
     } else {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
-          console.log(res.data)
+          console.log(res.data);
           const nickname = res.data.data.nickname;
           const userEmail = res.data.data.email;
           dispatch(setEmailData(userEmail));
@@ -66,33 +68,41 @@ const Login = () => {
         })
         .catch((err) => {
           if (
-            err.message === "존재하지 않는 계정입니다." || "비밀번호가 일치하지 않습니다."
+            err.message === "존재하지 않는 계정입니다." ||
+            "비밀번호가 일치하지 않습니다."
           ) {
             setFailMessage(true);
-            setTimeout(function () { setFailMessage(false) }, 3000);
+            setTimeout(function () {
+              setFailMessage(false);
+            }, 3000);
           }
         });
     }
   };
 
-
   const modalOutSide = (e) => {
     if (e.target === e.currentTarget) {
-      dispatch(loginModal(false))
+      dispatch(loginModal(false));
     }
-  }
+  };
 
   const handleClick = useCallback(() => {
     if (email === "") {
       setErrorMessage("이메일을 입력해주세요.");
-      setTimeout(function () { setErrorMessage("") }, 3000);
+      setTimeout(function () {
+        setErrorMessage("");
+      }, 3000);
     } else if (!checkEmail(email)) {
       setErrorMessage("올바른 메일 양식으로 입력해주세요.");
-      setTimeout(function () { setErrorMessage("") }, 3000);
+      setTimeout(function () {
+        setErrorMessage("");
+      }, 3000);
       return;
     } else if (password === "") {
       setErrorMessage("비밀번호를 입력해주세요.");
-      setTimeout(function () { setErrorMessage("") }, 3000);
+      setTimeout(function () {
+        setErrorMessage("");
+      }, 3000);
     } else {
       handleLogin();
       setErrorMessage("");
@@ -101,12 +111,11 @@ const Login = () => {
   }, [email, password, errorMessage]);
 
   const handleSignup = () => {
-    dispatch(signupModal(true))
-    dispatch(loginModal(false))
-    console.log(isModal)
-    console.log(isState)
+    dispatch(signupModal(true));
+    dispatch(loginModal(false));
+    console.log(isModal);
+    console.log(isState);
   };
-
 
   return (
     <>
@@ -131,14 +140,18 @@ const Login = () => {
             로그인
           </button>
           <span className={style.message}>{errorMessage}</span>
-          <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
+          <span className={style.oauth_message}>
+            SNS 계정으로 간편 로그인 / 회원가입
+          </span>
           <button className={style.google}>
             <img className={style.google_icon} src="google_icon.png" />
           </button>
           <button className={style.kakao}>
             <img className={style.kakao_icon} src="kakao_icon.png" />
           </button>
-          <span className={style.membership}>아직 All for you의 회원이 아니신가요?</span>
+          <span className={style.membership}>
+            아직 All for you의 회원이 아니신가요?
+          </span>
           <button className={style.membership_btn} onClick={handleSignup}>
             회원가입
           </button>
@@ -147,6 +160,5 @@ const Login = () => {
     </>
   );
 };
-
 
 export default Login;
