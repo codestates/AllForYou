@@ -1,7 +1,18 @@
 const { reviews, reviews_contents } = require("../../models");
+const AWS = require("aws-sdk");
+const s3 = new AWS.S3({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRTETKEY,
+  region: process.env.S3_REGION,
+});
+
+function deleteFile(data) {
+  return s3.deleteObject({ Bucket: process.env.S3_BUCKET_NAME, Key: data }).promise();
+}  
 
 module.exports = async (req, res) => {
   const review_id = req.params.postId;
+  const id = req.cookies.id;
   const { category, title, text, content_id } = req.body; // 컨텐츠 데이터 id를 받아온다.
 
   try{
@@ -13,11 +24,18 @@ module.exports = async (req, res) => {
       { category: category, title: title, text: text, updateAt: new Date() },
       { where: { id: review_id } }
     );
-    
+
+    const rewiewUpdate = await reviews.findOne({
+      where: { id: review_id }
+    })
+
     const contents = content_id.split(',');
+
+    console.log(id, rewiewUpdate.image.split('/')[6])
     
     if(req.file) {
       // 이미지를 지운 뒤 새로운 이미지를 넣자
+      deleteFile(`userReviewImage/${id}/${rewiewUpdate.image.split('/')[6]}`)
       await reviews.update({ image: req.file.location }, { where: { id: review_id } })
     }
     
