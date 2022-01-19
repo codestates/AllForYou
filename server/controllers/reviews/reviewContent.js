@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
     const contentData = content.map((el) => {
       contentId += 1;
       return {
+        "id": el.content.id,
         "content_id": contentId,
         "title": el.content.title,
         "director": el.content.director,

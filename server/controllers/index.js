@@ -4,6 +4,7 @@ const auth = require("./auth/accessToken");
 const userRouter = require("./users/userRouter");
 const reviewRouter = require("./reviews/reviewRouter");
 const contentRouter = require("./contents/contentRouter");
+const adminRouter = require("./admin/adminRouter");
 
 //users
 router.post("/users/signup", userRouter.signUp); // 회원가입(완료)
@@ -24,12 +25,12 @@ router.delete("/users/mypage", auth.accessToken, userRouter.withdrawal); // 회�
 router.get("/users/mypage/myLike", auth.accessToken, userRouter.myLike); // 내가 좋아요 누른 컨텐츠 more(완료)
 router.get("/users/mypage/myReview", auth.accessToken, userRouter.myReview); // 내가쓴 리뷰글 more(완료)
 
-//reviews(재영 진행중)
+//reviews
 router.get("/reviews", reviewRouter.reviewList); // 리뷰 전체 불러오기(완료)
+router.get("/reviews/get/userlist", auth.accessToken, reviewRouter.reviewUserList); // 사용자가 좋아요 한 리뷰 전체 불러오기(완료)
 router.get("/reviews/:postId", reviewRouter.reviewRead); // 리뷰 하나 불러오기(완료)
 
 router.get("/reviews/like/:postId", auth.accessToken, reviewRouter.reviewLikeG); // 사용자가 좋아요 했는지 여부(완료)
-router.get("/reviews/get/userlike", auth.accessToken, reviewRouter.reviewUserLike); // 사용자가 좋아요 한 리뷰리스트(완료)
 router.get("/reviews/comment/:postId", reviewRouter.reviewCommentG); // 리뷰 댓글 불러오기(완료)
 router.get("/reviews/content/:postId", reviewRouter.reviewContent); // 리뷰 컨텐츠 불러오기(완료)
 
@@ -55,5 +56,11 @@ router.get("/contents/like/:contentsId", auth.accessToken, contentRouter.content
 router.get("/contents/get/userlike", auth.accessToken, contentRouter.contentsUserLike); // 사용자가 좋아요 한 콘텐츠리스트
 router.post("/contents/like/:contentsId", auth.accessToken, contentRouter.contentsLikeC) // 콘텐츠에 좋아요
 router.delete("/contents/like/:contentsId", auth.accessToken, contentRouter.contentsLikeD); // 콘텐츠 좋아요 지우기
+
+//admin
+router.post("/admin/contents", adminRouter.contentC); // 컨텐츠 추가
+router.delete("/admin//contents/:contentsId", adminRouter.contentD); // 컨텐츠 제거
+router.delete("/admin/reviews/:postId", adminRouter.reviewsD); // 리뷰 제거
+router.delete("/admin/comment", adminRouter.commnetD); // 댓글 제거
 
 module.exports = router;
