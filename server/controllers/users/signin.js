@@ -18,7 +18,8 @@ module.exports = async (req, res) => {
         id: userInfo.dataValues.id,
         email: userInfo.dataValues.email,
         nickname: userInfo.dataValues.nickname,
-        user_picture: userInfo.dataValues.user_picture
+        user_picture: userInfo.dataValues.user_picture,
+        admin: userInfo.dataValues.admin
     }
     
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });

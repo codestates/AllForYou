@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.kakao_icon {
+    margin: 1em 1.2em 0 0;
+    width: 4em;
+    box-shadow: 0 4px 8px -4px black;
+    border-radius: 20em;
+    float: right;
+}

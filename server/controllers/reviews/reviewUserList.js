@@ -1,6 +1,9 @@
 const { users, reviews, likes } = require("../../models");
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
 
 module.exports = async (req, res) => {
+  const id = req.cookies.id;
   const type = req.query.sort; //"like or date"
 
   try{
@@ -42,16 +45,26 @@ module.exports = async (req, res) => {
       }
     })
 
-    if(type === "like") {
-      reviewList = reviewList.sort((a, b) => b.like - a.like)
-    } 
-    else {
-      reviewList = reviewList.sort((a, b) => b.createdAt - a.createdAt)
+    const userLike = await likes.findAll({
+      where: { user_id: id, review_id: { [Op.not]: null } },
+      attributes: [ "id", "review_id" ],
+    })
+
+    const likeList = userLike.map((el) => {
+      return el.review_id;
+    })
+
+    for(let i = 0; i < reviewList.length; i++) {
+      for(let j = 0; j < likeList.length; j++) {
+        if(reviewList[i].id === likeList[j]) {
+          reviewList[i].userlike = true;
+        }
+      }
     }
     
-    return res.status(200).json({data: reviewList, message: "리뷰 전체 전달 완료."})
+    return res.status(200).json({ data: reviewList, message: "유저의 리뷰 전체 전달 완료." });
   }
-  catch(err) {
-    return res.status(500).json({ data: err, message: "서버 오류." })
+  catch(err){
+    return res.status(500).json({ data: err, message: "서버 오류." });
   }
 }

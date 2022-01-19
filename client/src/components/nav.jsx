@@ -3,9 +3,15 @@ import style from "./nav.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { setAccessToken, login, loginModal } from "../action";
-axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+import { 
+  setAccessToken, 
+  login, 
+  loginModal, 
+  setKakaoLogin, 
+  setGoogleLogin 
+} from '../action';
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -17,9 +23,11 @@ const Nav = () => {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
-        console.log(res);
-        dispatch(login(false));
-        window.location.reload("/");
+        console.log(res)
+          dispatch(login(false));
+          dispatch(setKakaoLogin(false));
+          dispatch(setGoogleLogin(false));
+          window.location.reload('/');
       })
       .catch((err) => {
         console.log(err);

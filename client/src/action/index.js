@@ -23,6 +23,9 @@ export const SET_UPDATE = "SET_UPDATE";
 export const SET_WITHDRAW = "SET_WITHDRAW";
 export const SET_PASSWORD = "SET_PASSWORD";
 export const HANDLE_MYPAGE = "HANDLE_MYPAGE";
+export const SET_LIST = 'SET_LIST';
+export const SET_GOOGLE_LOGIN = "SET_GOOGLE_LOGIN";
+export const SET_KAKAO_LOGIN = "SET_KAKAO_LOGIN";
 
 export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
@@ -31,6 +34,24 @@ export const login = (isLogin) => {
         type: LOGIN,
         payload: {
             isLogin
+        },
+    };
+};
+
+export const setGoogleLogin = (googleLogin) => {
+    return {
+        type: SET_GOOGLE_LOGIN,
+        payload: {
+            googleLogin
+        },
+    };
+};
+
+export const setKakaoLogin = (kakaoLogin) => {
+    return {
+        type: SET_KAKAO_LOGIN,
+        payload: {
+            kakaoLogin
         },
     };
 };
