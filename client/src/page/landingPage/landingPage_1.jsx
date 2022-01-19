@@ -4,7 +4,7 @@ import style from "./landingPage_1.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,20 +12,6 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const Wrap = styled.div`
-  /* margin: 3em auto;
-  width: 100%; */
-  /* .slick-arrow {
-    transition: all 200ms ease-out;
-  } */
-  /* display: absolute; */
-
-  /* .carousel.carousel-slider .control-arrow {
-    background: none;
-  } */
-  /* .slick-track {
-    width: 918px
-    margin: 0;
-  } */
 
   slick-slide{
     display: none:
@@ -78,7 +64,7 @@ const Wrap = styled.div`
 
   .slick-dots {
     display: absolute;
-    bottom: 3em;
+    bottom: 4em;
     z-index: 950;
   }
   .slick-dots li button:before {
@@ -171,6 +157,12 @@ const LandingPage_1 = () => {
           </Slider>
         </div>
       </Wrap>
+
+      <div className="scroll_down">
+        <div className="chevron"></div>
+        <div className="chevron"></div>
+        <div className="chevron"></div>
+      </div>
     </div>
   );
 };

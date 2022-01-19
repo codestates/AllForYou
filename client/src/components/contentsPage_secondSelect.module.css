@@ -55,7 +55,7 @@
   }
 }
 
-@media screen and (max-width: 365px) {
+@media screen and (max-width: 360px) {
   .container {
     margin: 3em 0;
   }

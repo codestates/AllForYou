@@ -102,13 +102,14 @@ const ContentsModal = () => {
             개봉/출시/등록일: {contentsInfo.year}
           </span>
           <span className={style.runtime}>runtime: {contentsInfo.runtime}</span>
-
-          <a href={contentsInfo.link} target="_blank" className={style.link}>
-            해당 컨텐츠로 바로가기
-            <span className={style.pageMove}>
-              <i className="fas fa-external-link-alt"></i>
-            </span>
-          </a>
+          <div className={style.link_container}>
+            <a href={contentsInfo.link} target="_blank" className={style.link}>
+              해당 컨텐츠로 바로가기
+              <span className={style.pageMove}>
+                <i className="fas fa-external-link-alt"></i>
+              </span>
+            </a>
+          </div>
         </div>
         <button
           className={style.like}
