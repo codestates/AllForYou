@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import style from "./myReviewsDetail.module.css"
 import axios from "axios";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 const MyReviewsDetail = () => {
+    const navigate = useNavigate();
     const { nickname } = useSelector((state) => state.loginReducer);
-    const { post } = useSelector((state) => state.foruReducer);
     
     const [filterData, setFilterData] = useState(null)
 
@@ -26,6 +27,7 @@ const MyReviewsDetail = () => {
     console.log(filterData)
     return(
         <div className={style.container}>
+            {alert("구현 준비중입니다.")}
             <div className={style.info}>
                 <img className={style.img} src="sample_img.jpeg" alt=""  />
                 <p className={style.nickname}>

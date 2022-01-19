@@ -3,7 +3,13 @@ import style from "./nav.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import { setAccessToken, login, loginModal } from '../action';
+import { 
+  setAccessToken, 
+  login, 
+  loginModal, 
+  setKakaoLogin, 
+  setGoogleLogin 
+} from '../action';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
@@ -18,6 +24,8 @@ const Nav = () => {
       .then((res) => {
         console.log(res)
           dispatch(login(false));
+          dispatch(setKakaoLogin(false));
+          dispatch(setGoogleLogin(false));
           window.location.reload('/');
       })
       .catch((err) => {
@@ -27,7 +35,6 @@ const Nav = () => {
 
   const handleLoginModal = () => {
     dispatch(loginModal(true))
-    console.log(isModal)
   }
 
   return (

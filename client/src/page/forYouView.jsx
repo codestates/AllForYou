@@ -12,7 +12,6 @@ const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nickname } = useSelector((state) => state.loginReducer);
-  const { handlemypage } = useSelector((state) => state.mypageReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
@@ -31,10 +30,6 @@ const ForYouView = ({ post, isLogin }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    
-  });
-
     useEffect(() => {
     getComment();
     }, [setComment]);
@@ -45,7 +40,6 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           dispatch(setPost(res.data.data));
-          // console.log(res.data.data)
         }
       })
       .catch((err) => {

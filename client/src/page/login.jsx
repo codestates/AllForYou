@@ -9,6 +9,8 @@ import {
   setEmailData, 
   signupModal,
   setProfileImage, 
+  setGoogleLogin,
+  setKakaoLogin
 } from '../action/index';
 
 const Login = () => {
@@ -62,7 +64,7 @@ const Login = () => {
           setEmail("");
           setPassword("");
           handleLoginModal();
-          window.location.reload('/');
+          // window.location.reload('/');
         })
         .catch((err) => {
           if (
@@ -107,6 +109,21 @@ const Login = () => {
     console.log(isState)
   };
 
+const handlekakaoLogin = async () => {
+  await window.location.assign(`${process.env.REACT_APP_SERVER_URL}/users/kakao`);
+  dispatch(login(true));
+  dispatch(loginModal(false))
+  dispatch(setKakaoLogin(true))
+  // window.location.reload('/')
+};
+
+const handlegoogleLogin= async () => {
+  await window.location.assign(`${process.env.REACT_APP_SERVER_URL}/users/google`);
+  dispatch(login(true));
+  dispatch(loginModal(false))
+  dispatch(setGoogleLogin(true))
+  // window.location.reload('/')
+};
 
   return (
     <>
@@ -132,11 +149,11 @@ const Login = () => {
           </button>
           <span className={style.message}>{errorMessage}</span>
           <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
-          <button className={style.google}>
+          <button className={style.google} onClick={handlegoogleLogin}>
             <img className={style.google_icon} src="google_icon.png" />
           </button>
-          <button className={style.kakao}>
-            <img className={style.kakao_icon} src="kakao_icon.png" />
+          <button className={style.kakao} onClick={handlekakaoLogin}>
+          <img className={style.kakao_icon} src="kakao_icon.png" />
           </button>
           <span className={style.membership}>아직 All for you의 회원이 아니신가요?</span>
           <button className={style.membership_btn} onClick={handleSignup}>
