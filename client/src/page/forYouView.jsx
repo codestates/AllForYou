@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { nickname } = useSelector((state) => state.loginReducer);
+  const { nickname, emaildata } = useSelector((state) => state.loginReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);

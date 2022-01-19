@@ -38,11 +38,11 @@
   white-space: nowrap;
   width: 17rem;
 }
-.icon{
+/* .icon{
   margin-right: 2.5rem;
   font-size: 1.2rem;
   text-align: center;
-}
+} */
 .iconText{
   font-size:0.7rem;
   margin-top: 0.4rem;
@@ -78,7 +78,7 @@
   color: #f9e000;
 }
 
-/* .like{
+.like{
   color:#d62d20;
     margin-right: 2.5rem;
   font-size: 1.2rem;
@@ -89,7 +89,7 @@
   margin-right: 2.5rem;
   font-size: 1.2rem;
   text-align: center;
-} */
+}
 
 @media screen and  (max-width:1024px) {
   .container{
