@@ -113,7 +113,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
               <span className={style.director}> {contentsInfo.director}</span>
             </div>
 
-            <span className={style.summary}>{contentsInfo.summary}</span>
+            <div className={style.summary}>{contentsInfo.summary}</div>
           </div>
         </div>
       </div>
