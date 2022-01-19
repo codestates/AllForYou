@@ -17,6 +17,8 @@ const LandingPage_2_1 = () => {
             하고싶은 일을 생각만 하고 행동하지 않는다면 ,
             <br />
             해야할 일을 뒤로 미루고 있다면 ,
+            <br />
+            추천 컨텐츠로 동기부여를 얻어 보세요
           </div>
         </div>
         <div className={style.img_container}>
@@ -30,6 +32,8 @@ const LandingPage_2_1 = () => {
             무언가 도전하고 싶은데,
             <br />
             망설여지거나 용기가 나질 않나요 ?
+            <br />
+            도전에 대한 컨텐츠로 용기를 가져보세요
           </div>
         </div>
         <div className={style.img_container}>
@@ -46,6 +50,7 @@ const LandingPage_2_1 = () => {
             <br />
             선배들의 조언이 필요하다면 ,
             <br />
+            다양한 컨텐츠로 많은 멘토분들에게 조언을 얻어 보세요
           </div>
         </div>
       </div>
@@ -61,7 +66,9 @@ const LandingPage_2_1 = () => {
           <div className={style.img_text}>
             아무 생각없이 웃고 싶나요 ?
             <br />
-            스트래스로 현재 상황을 잠시 잊고 싶나요 ?
+            스트래스로 현재 상황을 잠시 잊고 싶다면 ,
+            <br />
+            all for you에서 준비한 컨텐츠로 현재를 잠시 잊어 보세요
           </div>
         </div>
         <div className={style.img_container}>

@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./landingPage_1.module.css";
 
+// import { css, keyframes } from "@emotion/react";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,27 +22,28 @@ const Wrap = styled.div`
   .slick-prev {
     width:0
     position: absolute;
-    left: 0;
+    left: 40px;
     z-index: 999;
   }
   .slick-next {
     width:0
     position: absolute;
-    right: 4em;
+    right: 40px;
   }
   .slick-prev:before,
   .slick-next:before {
-    /* background-color: black; */
     font-family: "slick";
     font-size: 90px;
     font-weight: 700;
     line-height: 0.01;
     opacity: 0.6;
-    /* color: #000000; */
     color: white;
-    /* font-size: 25px; */
-    /* margin: 0.51em; */
     -webkit-font-smoothing: antialiased;
+  }
+
+  .slick-prev:hover,
+  .slick-next:hover {
+    opacity: 0.3;
   }
 
   .slick-prev:before {
@@ -73,6 +76,33 @@ const Wrap = styled.div`
   .slick-list {
     background-color: black;
   }
+`;
+
+const boxFade = keyframes`
+  from, 20%, 53%, 80%, to {
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -25px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+  80% {
+    transform: translate3d(0, -9px, 0);
+  }
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+`;
+const Box = styled.div`
+  animation: ${boxFade} 1.5s ease infinite;
 `;
 
 const LandingPage_1 = () => {
@@ -157,12 +187,11 @@ const LandingPage_1 = () => {
           </Slider>
         </div>
       </Wrap>
-
-      <div className="scroll_down">
-        <div className="chevron"></div>
-        <div className="chevron"></div>
-        <div className="chevron"></div>
-      </div>
+      <Box>
+        <div className={style.scroll}>
+          <i className="fas fa-chevron-down"></i>
+        </div>
+      </Box>
     </div>
   );
 };

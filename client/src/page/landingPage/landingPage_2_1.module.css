@@ -12,9 +12,8 @@
 }
 
 .imgCard_container_1 {
-  width: 40em;
-  height: 30em;
   display: flex;
+  justify-content: space-between;
 }
 
 .img_container {
@@ -32,7 +31,7 @@
 .img_main_text {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   color: aliceblue;
   opacity: 0;
   font-size: 1.5em;
@@ -45,20 +44,24 @@
 
 .img_container:hover .img_main_text {
   opacity: 1;
-  cursor: none;
+  cursor: default;
+}
+
+.img_container:hover .img_1 {
+  filter: brightness(50%);
+}
+
+.img_main_text {
+  transition: all 500ms ease-in;
 }
 
 .img_text {
-  /* font-size: 3em; */
-  /* text-align: center; */
   color: aliceblue;
   line-height: 2em;
   font-size: 1.25em;
 }
 
 .imgCard_container_2 {
-  margin-top: 10em;
-  width: 40em;
-  height: 30em;
   display: flex;
+  justify-content: space-between;
 }
