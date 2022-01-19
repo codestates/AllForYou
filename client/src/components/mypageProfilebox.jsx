@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import style from "./mypageProfilebox.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { setUpdateInfo, setWithdrawModal } from '../action';
+import { useNavigate } from "react-router-dom";
 
 function ProfileBox() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { nickname } = useSelector((state) => state.loginReducer);
 

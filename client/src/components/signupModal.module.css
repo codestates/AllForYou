@@ -60,6 +60,7 @@
   width: 18em;
   height: 2.5em;
   border: none;
+  outline: none;
   font-size: 1.4em;
   font-weight: 900;
   border-radius: 0.5em;
@@ -95,6 +96,7 @@ button:hover {
   width: 7em;
   height: 2em;
   border: none;
+  outline: none;
   border-radius: 0.5em;
   color: rgb(5, 5, 5);
   background-color: #B09171;

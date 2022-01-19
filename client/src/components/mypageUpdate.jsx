@@ -41,6 +41,7 @@ function MyPgaeUpdate() {
                 dispatch(setProfileImage(picture));
                 dispatch(setNickname(nickname));
                 dispatch(setUpdateInfo(false))
+                window.location.reload('/');
             })
             .catch((err) => {
                 if (err.response.data.message === "중복된 닉네임입니다.") {
