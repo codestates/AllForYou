@@ -28,7 +28,7 @@ const ForYouEdit = ({ post }) => {
     console.log('category', category)
 
     const content_id = list.map((el) => {
-        return el.id //서버 수정 후 추가 수정 필요
+        return el.id
     })
     console.log('list', content_id)
     const handleText = (value) => {
@@ -47,11 +47,11 @@ const ForYouEdit = ({ post }) => {
     }
 
     const handleAddList = (content) => {
-        if (!list.map((el) => el.content_id).includes(content.id)) {
+        if (!list.map((el) => el.id).includes(content.id)) {
             setList([...list, content])
         }
         else {
-            console.log('이미 추가된 상품입니다')
+            dispatch(setMessageModal(true, '이미 추가된 리스트입니다.'));
         }
     }
 
