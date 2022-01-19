@@ -21,6 +21,7 @@ const ForYouWriting = () => {
     const [text, setText] = useState('');
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
+    console.log(state)
 
     const content_id = state.map((el) => {
         return el.contents.id
@@ -29,8 +30,6 @@ const ForYouWriting = () => {
     const handleText = (value) => {
         setText(value)
     }
-
-    console.log('text', text)
 
     const fileHandle = (e) => {
         setImage(e.target.files[0]);
@@ -73,6 +72,7 @@ const ForYouWriting = () => {
         if (
             title === '' ||
             text === '' ||
+            category === '' ||
             image.length === 0 ||
             content_id.length === 0
         ) {

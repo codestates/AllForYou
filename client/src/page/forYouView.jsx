@@ -49,7 +49,6 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setContent(res.data.data);
-          dispatch(setList(res.data.data));
         }
       })
       .catch((err) => {
@@ -130,6 +129,18 @@ const ForYouView = ({ post, isLogin }) => {
       });
   };
 
+      const handleShareUrl = () => {
+        let dummy = document.createElement("input");
+        let text = process.env.REACT_APP_SERVER_URL + `/reviews/${post.id}`;
+
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        dispatch(setMessageModal(true, `클립보드 복사 완료 🙌🏻`));
+    };
+
   return (
     <div className={style.container}>
       <div className={style.viewBox}>
@@ -189,7 +200,7 @@ const ForYouView = ({ post, isLogin }) => {
             ))}
           </div>
           <div className={style.shareBox}>
-            <button className={style.btnUrl}>URL 공유하기</button>
+            <button className={style.btnUrl} onClick={handleShareUrl}>URL 공유하기</button>
             <button className={style.btnKakao}>카톡 공유하기</button>
           </div>
         </div>

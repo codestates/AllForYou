@@ -1,9 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./forYouContentModal.module.css";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { contentsLike } from "../action";
+import { loginModal } from "../action/index";
+
+import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 
 const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
-  console.log(contentsInfo)
+
+  const dispatch = useDispatch();
+
+  const { isLogin } = useSelector((state) => state.loginReducer);
+  const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
+
+  useEffect(() => {
+    if (isLogin) {
+      getLikeInfo();
+    }
+  }, [like]);
+
+  const getLikeInfo = () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/contents/like/${contentsInfo.id}`
+      )
+      .then((res) => {
+        if (res.data.data) {
+          dispatch(contentsLike(true));
+        } else {
+          dispatch(contentsLike(false));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const checkLoginStatus = (callback) => {
+    if (isLogin) {
+      callback();
+    } else {
+      dispatch(loginModal(true));
+      return;
+    }
+    return;
+  };
+
+  const likeCheck = () => {
+    if (!like && isLogin) {
+      axios
+        .post(
+          `${process.env.REACT_APP_SERVER_URL}/contents/like/${contentsInfo.id}`
+        )
+        .then((data) => {
+          console.log("data", data);
+          dispatch(contentsLike(true));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .delete(
+          `${process.env.REACT_APP_SERVER_URL}/contents/like/${contentsInfo.id}`
+        )
+        .then(() => {
+          dispatch(contentsLike(false));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+  
   return (
     <div className={style.main} onClick={handleContentInfo}>
       <div className={style.container} onClick={(e) => e.stopPropagation()}>
@@ -24,13 +94,13 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
             </span>
           </a>
         </div>
-        {/* <button
+        <button
           className={style.like}
           className={`${like ? style.like : style.unlike}`}
           onClick={() => checkLoginStatus(likeCheck)}
         >
           <i className="far fa-thumbs-up"></i>
-        </button> */}
+        </button>
         <div className={style.list}>
           <img className={style.image} src={contentsInfo.image} alt="" />
           <div className={style.list_container}>
