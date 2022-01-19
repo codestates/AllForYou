@@ -25,19 +25,19 @@ module.exports = async (req, res) => {
       limit: 5
     })
 
-    const userInfo = await users.findOne({
+    const userinfomation = await users.findOne({
       where: { id: id }
     })
 
-    const userData = {
-      id: userInfo.dataValues.id,
-      email: userInfo.dataValues.email,
-      nickname: userInfo.dataValues.nickname,
-      user_picture: userInfo.dataValues.user_picture,
-      admin: userInfo.dataValues.admin
+    const userInfo = {
+      id: userinfomation.dataValues.id,
+      email: userinfomation.dataValues.email,
+      nickname: userinfomation.dataValues.nickname,
+      user_picture: userinfomation.dataValues.user_picture,
+      admin: userinfomation.dataValues.admin
   }
     
-    const userData = { userInfo: userData, userReviews: userReviews, userLikes: userLikes }
+    const userData = { userInfo: userInfo, userReviews: userReviews, userLikes: userLikes }
     return res.status(200).json({ data: userData, message: "정보 전달 완료." });
   }
   catch(err) {
