@@ -107,12 +107,12 @@ const ForYou = ({ isLogin }) => {
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
             <option value="ALL">ALL</option>
-            <option value="동기부여">동기부여를 받고 싶다면?</option>
-            <option value="도전">도전하고 싶은 나에게</option>
-            <option value="멘토">현재 나의 상황에 멘토를 원하시나요?</option>
-            <option value="편안함">마음속 편안함을 찾는다면?</option>
-            <option value="웃음">생각없이 웃고 싶다면?</option>
-            <option value="눈물">오늘 한 없이 눈물을 쏟고 싶다면?</option>
+            <option value="동기부여를 받고 싶다면?">동기부여를 받고 싶다면?</option>
+            <option value="도전하고 싶은 나에게">도전하고 싶은 나에게</option>
+            <option value="현재 나의 상황에 멘토를 원하시나요?">현재 나의 상황에 멘토를 원하시나요?</option>
+            <option value="마음속 편안함을 찾는다면?">마음속 편안함을 찾는다면?</option>
+            <option value="생각없이 웃고 싶다면?">생각없이 웃고 싶다면?</option>
+            <option value="오늘 한 없이 눈물을 쏟고 싶다면?">오늘 한 없이 눈물을 쏟고 싶다면?</option>
             <option value="백색소리">백색소리</option>
           </select>
           <select
