@@ -13,12 +13,20 @@ function deleteFile(data) {
 module.exports = async (req, res) => {
   const review_id = req.params.postId;
   const id = req.cookies.id;
-  const { category, title, text, content_id } = req.body; // 컨텐츠 데이터 id를 받아온다.
+  const { title, text, content_id } = req.body; // 컨텐츠 데이터 id를 받아온다.
+  let category = req.body.category;
 
   try{
     if( !category || !title || !text || !content_id ) {
       return res.status(409).send('데이터가 비어있습니다.');
     }
+
+    if(category === '도전하고 싶은 나에게') category = '도전';
+    if(category === '동기부여를 받고 싶다면?') category = '동기부여';
+    if(category === '현재 나의 상황에 멘토를 원하시나요?') category = '멘토';
+    if(category === '마음속 편안함을 찾는다면?') category = '편안함';
+    if(category === '생각없이 웃고 싶다면?') category = '웃음';
+    if(category === '오늘 한 없이 눈물을 쏟고 싶다면?') category = '눈물';
     
     await reviews.update(
       { category: category, title: title, text: text, updateAt: new Date() },
