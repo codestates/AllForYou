@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import style from "./forYouCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPost, setList, setMessageModal } from "../action";
+import { setPost, setMessageModal } from "../action";
 
 const ForYouCard = ({ review }) => {
     const {userlike, like, title, category, image} = review
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const likeColor = userlike
-    console.log('like', review.like)
-    console.log('review', review.id)
 
     const handleShareKakao = () => {
         if (!window.Kakao.isInitialized()) {

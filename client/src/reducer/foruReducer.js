@@ -5,8 +5,7 @@ const initialState = {
         isModalOpen: false,
         content: '',
     },
-    post: null,
-    list: null
+    post: null
 }
 
 const foruReducer = (state = initialState, action) => { //첫번째 인자는 기본값, 두번째 인자는 액션

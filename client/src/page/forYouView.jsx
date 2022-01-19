@@ -5,7 +5,7 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch, useSelector } from 'react-redux';
-import { setMessageModal,loginModal, setPost, setList, contentsModal } from "../action";
+import { setMessageModal,loginModal, setPost, contentsModal } from "../action";
 import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
