@@ -24,15 +24,14 @@ module.exports = async(req, res ) => {
             },
             defaults: {
                 email: userInfo.data.email,
-                nickname: userInfo.data.name,
+                nickname: userInfo.data.email.split("@")[0]+"==@google!",
                 password: '',
                 socialtype: 'google',
                 user_picture: userInfo.data.picture,
             },
         });
 
-        console.log("userInfo================", user)
-
+        console.log("userInfoGoogle================", user)
         const payload = {
             id: user.dataValues.id,
             email: user.dataValues.email,
@@ -41,6 +40,8 @@ module.exports = async(req, res ) => {
             user_picture: user.dataValues.user_picture,
         };
         
+        console.log("googlePayload================", payload)
+
         const token = await sign(payload, process.env.ACCESS_SECRET, {expiresIn: "2d"});
         
         res.status(200).cookie("jwt", token, {

@@ -21,7 +21,7 @@ module.exports = async(req, res) => {
             },
             defaults: {
                 email: userInfo.data.kakao_account.email,
-                nickname: userInfo.data.properties.nickname,
+                nickname: userInfo.data.kakao_account.email.split("@")[0]+"==@kakao!",
                 password: '',
                 socialtype: 'kakao',
                 user_picture: userInfo.data.kakao_account.profile.is_default_image
@@ -29,7 +29,7 @@ module.exports = async(req, res) => {
                 : userInfo.data.kakao_account.profile.profile_image_url,
             },
         });
-        console.log("userInfo================", user)
+        console.log("userInfoKakao================", user)
 
         const payload = {
             id: user.dataValues.id,
@@ -38,7 +38,7 @@ module.exports = async(req, res) => {
             socialtype: user.dataValues.socialtype,
             user_picture: user.dataValues.user_picture,
         };
-
+        console.log("kakaoPayload================", payload)
         const token = await sign(payload, process.env.ACCESS_SECRET, {expiresIn: "2d"});
         
         res.status(200).cookie("jwt", token, {
