@@ -23,7 +23,7 @@ const Recommend = ({ content }) => {
                 />
             ) : null}
             <p className={style.type}>{content.type}</p>
-            <p className={style.like}>{content.likes}</p>
+            <p className={style.like}>{content.like}</p>
         </div>
     );
 };
