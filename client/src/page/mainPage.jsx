@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import LandingPage_1 from "../page/landingPage/landingPage_1";
 import LandingPage_2 from "../page/landingPage/landingPage_2";
 import LandingPage_3 from "../page/landingPage/landingPage_3";
+import LandingPage_test from "../page/landingPage/landingPage_test";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const MainPage = () => {
       <LandingPage_1 />
       <LandingPage_2 />
       <LandingPage_3 />
+      {/* <LandingPage_test /> */}
       <h1>메인페이지</h1>
       {/* <h2>메인페이지 2</h2> */}
       <button onClick={handleClick}>콘텐츠로 가즈아</button>
