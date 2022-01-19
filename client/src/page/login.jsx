@@ -57,25 +57,22 @@ const Login = () => {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
-          console.log(res.data);
-          const nickname = res.data.data.nickname;
-          const userEmail = res.data.data.email;
-          dispatch(setEmailData(userEmail));
-          dispatch(setNickname(nickname));
           dispatch(login(true));
           setEmail("");
           setPassword("");
           handleLoginModal();
-          // window.location.reload('/');
+          window.location.reload('/');
         })
         .catch((err) => {
-          if (
-            err.message === "존재하지 않는 계정입니다." ||
-            "비밀번호가 일치하지 않습니다."
-          ) {
-            setFailMessage(true);
+          if (err.response.data.message === "존재하지 않는 계정입니다." ) {
+            setErrorMessage("존재하지 않는 계정입니다.")
             setTimeout(function () {
-              setFailMessage(false);
+              setErrorMessage("");
+            }, 3000);
+          } else if(err.response.data.message === "비밀번호가 일치하지 않습니다.") {
+            setErrorMessage("올바른 비밀번호가 아닙니다.")
+            setTimeout(function () {
+              setErrorMessage("");
             }, 3000);
           }
         });
@@ -124,7 +121,6 @@ const handlekakaoLogin = async () => {
   dispatch(login(true));
   dispatch(loginModal(false))
   dispatch(setKakaoLogin(true))
-  // window.location.reload('/')
 };
 
 const handlegoogleLogin= async () => {
@@ -132,7 +128,6 @@ const handlegoogleLogin= async () => {
   dispatch(login(true));
   dispatch(loginModal(false))
   dispatch(setGoogleLogin(true))
-  // window.location.reload('/')
 };
 
   return (

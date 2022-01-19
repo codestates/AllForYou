@@ -56,6 +56,7 @@
   width: 15em;
   height: 2.5em;
   border: none;
+  outline: none;
   font-size: 1.4em;
   font-weight: 900;
   border-radius: 0.3em;
@@ -81,6 +82,7 @@ button:hover {
   width: 4em;
   height: 1em;
   border: none;
+  outline: none;
   float: left;
   background-color: white;
 }
@@ -98,6 +100,7 @@ button:hover {
   width: 8em;
   height: 1em;
   border: none;
+  outline: none;
   background-color: white;
 }
 
@@ -133,6 +136,7 @@ button:hover {
   width: 3.5em;
   height: 2.5em;
   border: none;
+  outline: none;
   float: right;
   font-size: 1.4em;
   font-weight: 900;

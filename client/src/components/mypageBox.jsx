@@ -14,7 +14,6 @@ function MyPageBox({ reviews, likes }) {
     const modal = useSelector(
         (state) => state.contentsModalReducer.contentsModal.modalOnOff
     );
-    // console.log(reviews)
 
     const handleContent = () => {
         {alert("구현 준비중입니다.")}
@@ -22,16 +21,10 @@ function MyPageBox({ reviews, likes }) {
     //     // dispatch(setHandleMypage(reviews.id))
     }
     // dispatch(setHandleMypage(info))
-    
-    // useEffect(() => {
-    //     handlemypage()
-    // });
-
     // console.log(handlemypage)
     
     return (
     <div className={style.container}>
-        
         <span className={style.reviews_title}>내가 쓴 글</span>
         <Link to="/reviewsdetail">
             <button className={style.more_button} >more

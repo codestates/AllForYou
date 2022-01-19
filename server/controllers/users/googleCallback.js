@@ -49,7 +49,7 @@ module.exports = async(req, res ) => {
             httpOnly: true,
             secure: true,
             expires: new Date(Date.parse(new Date()) + 1000 * 3600 * 24 * 3),
-        }).redirect(`${process.env.CLIENT_URL}/mypage`);
+        }).redirect(`${process.env.CLIENT_URL}/`);
     } catch(err) {
         res.status(500).json({ message: 'server error' })
     }
