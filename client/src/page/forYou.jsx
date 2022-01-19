@@ -12,8 +12,6 @@ const ForYou = ({ isLogin }) => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selected, setSelected] = useState("최신순");
   const [review, setReview] = useState([]);
-  const [like, setLike] = useState([]);
-  // const [likeColor, setLikeColor] = useState([]);
 
   const filteredCategory = review.filter((el) => {
     let category = el.category;
@@ -24,39 +22,37 @@ const ForYou = ({ isLogin }) => {
     }
   });
 
-  console.log([...filteredCategory])
-
-  const id = filteredCategory.map((el)=>{
-    return el.id
-  })
-
-  const likeColor = Array(id.length).fill(false)
-  
-  for(let i=0; i<id.length; i++){
-    for(let j=0; j<like.length; j++){
-      if(id[i] === like[j]){
-        likeColor[i] = true
-      } 
-    }
-  }
-  console.log('!!',likeColor)
-
   const getreviews = ()=> {
-    axios
+    if(!isLogin){
+      axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
-          // console.log(res.data.data)
+          console.log('data',res.data.data)
         }
       })
       .catch((err) => {
         console.log(err)
       });
-  }
+    } else{
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlist`)
+        .then((res) => {
+          if (res.status === 200) {
+            setReview(res.data.data)
+            console.log('data',res.data.data)
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+      }
+    }
 
-  const getLikereviews = () => {
-    axios
+  const getLikereviews = ()=> {
+    if(!isLogin){
+      axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=like`)
       .then((res) => {
         if (res.status === 200) {
@@ -67,19 +63,19 @@ const ForYou = ({ isLogin }) => {
       .catch((err) => {
         console.log(err)
       });
-  }
-
-  const getUserLikes = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlike`)
+    } else{
+      axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlist?sort=like`)
       .then((res) => {
         if (res.status === 200) {
-          setLike(res.data.data)
+          setReview(res.data.data)
+          console.log(res.data.data)
         }
       })
       .catch((err) => {
         console.log(err)
       });
+    }
   }
 
   const handleLoginStatus = () => {
@@ -92,7 +88,6 @@ const ForYou = ({ isLogin }) => {
 
   useEffect(() => {
     getreviews()
-    getUserLikes()
   }, []);
 
   useEffect(() => {
@@ -138,7 +133,6 @@ const ForYou = ({ isLogin }) => {
             <ForYouCard
             key={review.id}
             review={review}
-            likeColor={likeColor}
             />
         ))}
       </div>
