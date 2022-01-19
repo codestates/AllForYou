@@ -12,6 +12,8 @@ function deleteFile(data) {
 
 module.exports = async (req, res) => {
   const review_id = req.params.postId;
+  const id = req.cookies.id;
+  
   try {
     const rewiewUpdate = await reviews.findOne({
       where: { id: review_id }
