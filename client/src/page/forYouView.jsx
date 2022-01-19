@@ -12,7 +12,6 @@ const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nickname } = useSelector((state) => state.loginReducer);
-  const { handlemypage } = useSelector((state) => state.mypageReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);

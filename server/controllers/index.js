@@ -13,9 +13,9 @@ router.post("/users/signout", auth.accessToken, userRouter.signOut); // 로그�
 
 //oauth
 router.get("/users/kakao", userRouter.kakao); //  kakao 로그인(완료)
-// router.get("/users/kakaoCallback", userRouter.kakaoCallback); 
+router.get("/users/kakaoCallback", userRouter.kakaoCallback); 
 router.get("/users/google", userRouter.google); // google 로그인(완료)
-// router.get("/users/googleCallback", userRouter.googleCallback);
+router.get("/users/googleCallback", userRouter.googleCallback);
 
 //mypage
 router.get("/users/mypage", auth.accessToken, userRouter.userInfo); // 유저정보 확인, 좋아요 누른 컨텐츠 5개, 내가쓴 리뷰글 5개(완료)

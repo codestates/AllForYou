@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from "./forYouCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -78,7 +78,9 @@ const ForYouCard = ({ review, like }) => {
     const handlePostInfo = () => {
         dispatch(setPost(review));
         navigate(`/foryouview/:${review.id}`)
+        // window.location.replace(`/foryouview/:${review.id}`)
     }
+    console.log(review)
 
     return (
         <div className={style.container} onClick={handlePostInfo}>

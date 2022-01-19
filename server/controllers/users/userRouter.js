@@ -9,6 +9,8 @@ module.exports = {
   myReview: require("./myReview"),
   kakao: require("./kakao"),
   google: require("./google"),
+  kakaoCallback: require("./kakaoCallback"),
+  googleCallback: require("./googleCallback"),
 
   img: require("./img")
 };

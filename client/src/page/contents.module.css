@@ -293,9 +293,9 @@ input::-webkit-search-results-decoration {
     width: 30em;
   }
 
-  .contents_part {
+  /* .contents_part { */
     /* height: 25em; */
-  }
+  /* } */
 
   #firstSelect {
     font-size: 1em;
