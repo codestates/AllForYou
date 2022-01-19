@@ -8,5 +8,4 @@ module.exports = async (req, res) => {
   } catch {
     return res.status(500).json({ message: "서버 오류." });
   }
-
 }

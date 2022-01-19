@@ -10,7 +10,6 @@ module.exports = async (req, res) => {
       include: [ 
         { 
           model: contents,
-          attributes: [ "title", "image", "type" ],
           include: { model: likes, attributes: [ "id" ] }
         } 
       ]
@@ -24,9 +23,20 @@ module.exports = async (req, res) => {
       return {
         "content_id": contentId,
         "title": el.content.title,
+        "director": el.content.director,
+        "year": el.content.year,
+        "rating": el.content.rating,
+        "runtime": el.content.runtime,
+        "summary": el.content.summary,
+        "genres": el.content.genres,
         "image": el.content.image,
+        "category": el.content.category,
         "type": el.content.type,
-        "likes": el.content.likes.length
+        "like": el.content.likes.length,
+        "detail": el.content.detail,
+        "link": el.content.link,
+        "type": el.content.type,
+        "view": el.content.view,
       }
     })
 

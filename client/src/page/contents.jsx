@@ -27,10 +27,7 @@ const Contents = () => {
     (state) => state.contentsScrollReducer.contentsScroll.buttonOnOff
   );
 
-  // console.log("buttonOnOff", buttonOnOff);
-
-  // console.log("window", window.pageYOffset);
-  // console.log("scrollTop", scrollTop);
+  const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
 
   const [select_1, setSelect_1] = useState("ALL");
   const [select_2, setSelect_2] = useState("ALL");
@@ -45,7 +42,6 @@ const Contents = () => {
   // contents 모두 불러오기
   const getContentstList = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/contents`).then((data) => {
-      console.log(data);
       const contentsData = data.data.data;
       setContentsList(contentsData);
     });
@@ -53,9 +49,8 @@ const Contents = () => {
 
   useEffect(() => {
     getContentstList();
-  }, []);
-
-  // console.log("contentsList", contentsList);
+    dataLike();
+  }, [like, contentsSearch]);
 
   const select_1_category = contentsList.filter((el) => {
     let category = el.category;
@@ -87,7 +82,6 @@ const Contents = () => {
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
   };
-  // console.log("searchText", searchText);
   const onKeyPress = (e) => {
     if (e.key === "Enter" && searchText.length !== 0) {
       setShowText(searchText);
@@ -101,6 +95,10 @@ const Contents = () => {
       searchHandler();
     }
   };
+
+  useEffect(() => {
+    if (searchText.length !== 0) searchHandler();
+  }, [like]);
 
   const searchHandler = () => {
     axios
@@ -130,8 +128,6 @@ const Contents = () => {
     setSelect_3(select.target.value);
   };
 
-  // console.log("select_3", select_3);
-
   const handleFollow = () => {
     dispatch(scrollTop(false, window.pageYOffset));
     if (selectLength > 800) {
@@ -143,8 +139,8 @@ const Contents = () => {
     }
   };
 
+  // 클릭하면 스크롤이 위로 올라가는 함수
   const handleTop = () => {
-    // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -169,7 +165,6 @@ const Contents = () => {
         id={style.firstSelect}
         onChange={handleSelect_1}
         className={`${contentsSearch.length !== 0 ? style.select : ""}`}
-        // `submenu${index === currenTab ? " focused" : ""}`
       >
         <option value="ALL">ALL</option>
         <option value="동기부여">동기부여를 받고 싶다면 ?</option>
@@ -217,7 +212,6 @@ const Contents = () => {
       <div className={style.topBtnContainer}>
         <button
           className={`${buttonOnOff ? style.topbutton : style.deleteBtn}`} // 버튼 노출 여부
-          // className={style.topbutton}
           onClick={handleTop} // 버튼 클릭시 함수 호출
         >
           <span className={style.triangle}>

@@ -91,7 +91,7 @@ const ForYou = ({ isLogin }) => {
 
   useEffect(() => {
     getreviews()
-    getUserLikes()
+    // getUserLikes()
   }, []);
 
   useEffect(() => {

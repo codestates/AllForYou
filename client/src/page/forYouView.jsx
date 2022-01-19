@@ -16,10 +16,6 @@ const ForYouView = ({ post, isLogin }) => {
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
 
-    // const handleContentsInfo = (info) => {
-    //     dispatch(contentsModal(true, info));
-    // };
-
   useEffect(() => {
     getPostDetail();
     getContent()
@@ -32,7 +28,7 @@ const ForYouView = ({ post, isLogin }) => {
 
     useEffect(() => {
     getComment();
-    }, [setComment]);
+    }, [comment]);
 
   function getPostDetail() {
     axios
@@ -189,7 +185,6 @@ const ForYouView = ({ post, isLogin }) => {
               <Recommend
                 content={content}
                 key={content.content_id}
-                // onClick={() => handleContentsInfo(content)}
               />
             ))}
           </div>

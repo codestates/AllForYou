@@ -5,7 +5,6 @@ import { contentsModal } from "../action";
 
 const ContentsPage_secondSelect = ({ dataLikeSort }) => {
   const dispatch = useDispatch();
-
   const handleContentsInfo = (info) => {
     dispatch(contentsModal(true, info));
   };
