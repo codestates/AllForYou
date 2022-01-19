@@ -4,39 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setPost, setList, setMessageModal } from "../action";
 
-const ForYouCard = ({ review, like }) => {
-    const {title, category, image} = review
-    console.log('ddd',review)
+const ForYouCard = ({ review }) => {
+    const {userlike, like} = review
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const [like, setLike] = useState(false);
-    // console.log(review)
-    // console.log('!!',like)
-    // console.log('!!id',review.id)
-
-    // const id = review.id
-
-    // let likeColor = []
-
-    // for(let i=0; i<like.length; i++){
-    //     if(id === like[i]){
-    //         likeColor.push(true)
-    //     }
-    // }
-
-    // const color = like.filter((el)={
-    //     if(id === el){
-    //         return true
-    //     }
-    // })
-
-    // const likeFilterd = like.map((el)=>{
-    //     if(review.id === el){
-    //         setLikeColor(true)
-    //         console.log(el)
-    //     }
-    //     return setLikeColor(false)
-    // })
+    const likeColor = userlike
+    console.log('like', review.like)
+    console.log('review', review.id)
 
     // useEffect(() => {
     //     handleShareKakao()
@@ -59,42 +33,42 @@ const ForYouCard = ({ review, like }) => {
     //     initKakao(); //
     // }, []);
 
-    const initKakao = () => {
-        if (window.Kakao) {
-            const kakao = window.Kakao;
-            if (!kakao.isInitialized()) {
-                kakao.init(process.env.REACT_APP_KAKAO_KEY);
-            }
-        }
-    };
+    // const initKakao = () => {
+    //     if (window.Kakao) {
+    //         const kakao = window.Kakao;
+    //         if (!kakao.isInitialized()) {
+    //             kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    //         }
+    //     }
+    // };
 
-    const handleShareKakao = () => {
-        // if (!window.Kakao.isInitialized()) {
-        //     window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-        // }
-        window.Kakao.Link.sendDefault({
-            objectType: "feed",
-            content: {
-                title,
-                // description: desc || `${nickname}님이 일정을 공유했어요!`,
-                description: `${category}(때)의 추천 리스트를 공유했습니다!`,
-                // imageUrl: "http://photo.scraplan.com/asdf%40asdf.asdf%2F2.png",
-                imageUrl: image,
-                link: {
-                    mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${review.id}`,
-                    androidExecParams: "test",
-                },
-            },
-            buttons: [
-                {
-                    title: "추천 리스트 보기",
-                    link: {
-                        mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${review.id}`,
-                    },
-                },
-            ],
-        });
-    };
+    // const handleShareKakao = () => {
+    //     // if (!window.Kakao.isInitialized()) {
+    //     //     window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    //     // }
+    //     window.Kakao.Link.sendDefault({
+    //         objectType: "feed",
+    //         content: {
+    //             title,
+    //             // description: desc || `${nickname}님이 일정을 공유했어요!`,
+    //             description: `${category}(때)의 추천 리스트를 공유했습니다!`,
+    //             // imageUrl: "http://photo.scraplan.com/asdf%40asdf.asdf%2F2.png",
+    //             imageUrl: image,
+    //             link: {
+    //                 mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${review.id}`,
+    //                 androidExecParams: "test",
+    //             },
+    //         },
+    //         buttons: [
+    //             {
+    //                 title: "추천 리스트 보기",
+    //                 link: {
+    //                     mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${review.id}`,
+    //                 },
+    //             },
+    //         ],
+    //     });
+    // };
 
     const handleShareUrl = () => {
         let dummy = document.createElement("input");
@@ -125,8 +99,8 @@ const ForYouCard = ({ review, like }) => {
                 <div className={style.textbox}>
                     <div className={style.titleBox}>
                         <p className={style.title}>{review.title}</p>
-                        <div className={style.icon}>
-                        {/* <div className={`${likeColor ? style.like : style.unlike}`}> */}
+                        {/* <div className={style.icon}> */}
+                        <div className={`${likeColor ? style.like : style.unlike}`}>
                             <i className="fas fa-heart"></i>
                             <div className={style.iconText}>좋아요<br />{review.like}개</div>
                         </div>
@@ -142,7 +116,7 @@ const ForYouCard = ({ review, like }) => {
                 >URL로 공유</button>
                 <button
                     className={style.btnKakao}
-                    onClick={handleShareKakao}
+                    // onClick={handleShareKakao}
                 >
                     카톡으로 공유
                 </button>
