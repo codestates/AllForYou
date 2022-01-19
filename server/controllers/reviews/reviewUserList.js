@@ -62,6 +62,13 @@ module.exports = async (req, res) => {
       }
     }
     
+    if(type === "like") {
+      reviewList = reviewList.sort((a, b) => b.like - a.like)
+    } 
+    else {
+      reviewList = reviewList.sort((a, b) => b.createdAt - a.createdAt)
+    }
+    
     return res.status(200).json({ data: reviewList, message: "유저의 리뷰 전체 전달 완료." });
   }
   catch(err){
