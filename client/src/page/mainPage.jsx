@@ -16,17 +16,10 @@ const MainPage = () => {
   };
   return (
     <div>
-      {/* <LandingPage_1_1 /> */}
       <LandingPage_1 />
-      <LandingPage_2 />
+      <LandingPage_2_1 />
       <LandingPage_3 />
       <LandingPage_4 />
-      <LandingPage_2_1 />
-      {/* <LandingPage_2 /> */}
-      {/* <LandingPage_3 />  */}
-      <h1>메인페이지</h1>
-      {/* <h2>메인페이지 2</h2> */}
-      <button onClick={handleClick}>콘텐츠로 가즈아</button>
     </div>
   );
 };
