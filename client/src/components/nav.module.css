@@ -1,4 +1,4 @@
-.navContainer{
+.navContainer {
   z-index: 1;
   position: fixed;
   width: 100%;
@@ -7,7 +7,8 @@
   top: 0px;
   display: flex;
   justify-content: space-between;
-  background-color: #B09171;
+  background-color: #b09171;
+  z-index: 951;
 }
 
 .logo {
@@ -28,16 +29,9 @@
   margin: 1rem;
 }
 
-.logoutBtn {
-  border: none;
-  background-color: #B09171;
-  font-size: 1.1rem;
-  padding-left: 1.5rem;
-}
-
 .btn {
   border: none;
-  background-color: #B09171;
+  background-color: #b09171;
   font-size: 1.1rem;
   padding-left: 1.5rem;
 }
@@ -45,7 +39,7 @@
   color: white;
   text-decoration: underline;
 }
-@media screen and (max-width: 1023px){
+@media screen and (max-width: 1023px) {
   .navContainer {
     display: none;
   }

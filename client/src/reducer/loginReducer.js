@@ -1,41 +1,56 @@
-import { LOGIN, PROFILE_IMG, LOGOUT } from '../action/index';
+import { 
+  LOGIN, 
+  SET_NICKNAME, 
+  SET_EMAIL,
+  SET_IMAGE,
+  SET_UPDATE,
+  SET_WITHDRAW,
+  SET_PASSWORD
+} from '../action/index';
 
-const loginReducer = (
-  state = {
-    isLogin: false,
-    isAdmin: false,
-    id: null,
-    nickname: null,
-    email: null,
-    oauth: false,
-  },
-  action
-) => {
+export const initialState = {
+  isLogin: false,
+  nickname: '',
+  email: '',
+  profileImage: '',
+};
+
+const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         isLogin: action.payload.isLogin,
-        isAdmin: action.payload.isAdmin,
-        id: action.payload.id,
+      });
+
+    case SET_NICKNAME:
+      return Object.assign({}, state, {
         nickname: action.payload.nickname,
-        email: action.payload.email,
-        oauth: action.payload.oauth,
-      };
-    case PROFILE_IMG:
-      return { ...state, 
-        profileimg: action.payload.profileimg 
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        isLogin: false,
-        isAdmin: false,
-        id: null,
-        nickname: null,
-        email: null,
-        oauth: false,
-      };
+      });
+
+    case SET_EMAIL:
+    return Object.assign({}, state, {
+      emaildata: action.payload.emaildata,
+    });
+
+    case SET_PASSWORD:
+      return Object.assign({}, state, {
+        password: action.payload.password,
+      });
+
+    case SET_IMAGE:
+    return Object.assign({}, state, {
+      profileImage: action.payload.profileImage,
+    });
+
+    case SET_UPDATE:
+    return Object.assign({}, state, {
+      updateInfo: action.payload.updateInfo,
+    });
+
+    case SET_WITHDRAW:
+    return Object.assign({}, state, {
+      withdrawModal: action.payload.withdrawModal,
+    });
 
     default:
       return state;

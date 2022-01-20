@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+  height: 280vh;
+  background-color: black;
+}
+
+.contentsPageBtn {
+  position: absolute;
+  top: 195%;
+  left: 38.5%;
+  font-size: 1.8em;
+  font-weight: 700;
+  width: 15em;
+  height: 2.5em;
+  border-radius: 0.5em;
+  z-index: 949;
+}
+
+.contentsPageBtn:hover {
+  background-color: black;
+  color: aliceblue;
+  border: 0.1em solid aliceblue;
+  transition: all 500ms ease-in;
+}
+
+.words_us {
+  padding-top: 5em;
+  font-size: 2em;
+  line-height: 2em;
+  color: aliceblue;
+  text-align: center;
+  font-family: Merriweather-BlackItalic;
+}
+
+.words_kr {
+  font-size: 2em;
+  line-height: 2em;
+  color: aliceblue;
+  text-align: center;
+}
+
+.main_text {
+  padding: 1.3em 0 2em 0;
+  color: aliceblue;
+  text-align: center;
+  font-size: 10em;
+  font-family: Merriweather-BlackItalic;
+}
+
+.imgCard_container_1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.img_container {
+  margin: 3em;
+  position: relative;
+}
+
+.img_1 {
+  width: 30em;
+  height: 25em;
+  filter: brightness(80%);
+  border-radius: 1em;
+}
+
+.img_main_text {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  color: aliceblue;
+  opacity: 0;
+  font-size: 1.5em;
+  transform: translate(-50%, -50%);
+}
+
+.img_1:hover {
+  filter: brightness(50%);
+}
+
+.img_container:hover .img_main_text {
+  opacity: 1;
+  cursor: default;
+}
+
+.img_container:hover .img_1 {
+  filter: brightness(50%);
+}
+
+.img_main_text {
+  transition: all 500ms ease-in;
+}
+
+.img_text {
+  color: aliceblue;
+  line-height: 2em;
+  font-size: 1.25em;
+}
+
+.imgCard_container_2 {
+  display: flex;
+  justify-content: space-between;
+}

@@ -4,9 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-
-// import "./slick.css";
-// import "./slick-theme.css";
+import { useDispatch, useSelector } from "react-redux";
+import { contentsModal } from "../action";
 
 const Wrap = styled.div`
   margin: 5% auto;
@@ -22,7 +21,8 @@ const Wrap = styled.div`
     font-weight: 700;
     line-height: 0.01;
     opacity: 0.6;
-    color: #000000;
+    /* color: #000000; */
+    color: white;
     /* font-size: 25px; */
     /* margin: 0.51em; */
     -webkit-font-smoothing: antialiased;
@@ -50,8 +50,13 @@ const Wrap = styled.div`
     content: "‹";
   }
 `;
-const ContentsPage_carousel = ({ select_1_category, handleContentsInfo }) => {
-  // console.log("select_1_category", select_1_category);
+
+const ContentsPage_carousel = ({ select_1_category }) => {
+  const dispatch = useDispatch();
+
+  const handleContentsInfo = (info) => {
+    dispatch(contentsModal(true, info));
+  };
 
   const settings = {
     className: "center",
@@ -78,7 +83,7 @@ const ContentsPage_carousel = ({ select_1_category, handleContentsInfo }) => {
       <Wrap>
         <Slider {...settings} className={style.slick_list}>
           {select_1_category.map((el) => (
-            <div className={style.contents_container}>
+            <div className={style.contents_container} key={el.id}>
               <img
                 className={style.img_card}
                 src={el.image}
@@ -86,6 +91,7 @@ const ContentsPage_carousel = ({ select_1_category, handleContentsInfo }) => {
                 onClick={() => handleContentsInfo(el)}
               />
               <span className={style.title}>{el.title}</span>
+              <span className={style.like}>좋아요 {el.like}</span>
             </div>
           ))}
         </Slider>

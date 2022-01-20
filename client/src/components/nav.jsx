@@ -1,32 +1,35 @@
 import React from "react";
 import style from "./nav.module.css";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { setAccessToken, login, loginModal, logout } from '../action';
+import { setAccessToken, login, loginModal } from "../action";
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
 const Nav = () => {
   const dispatch = useDispatch();
   const { isModal } = useSelector((state) => state.loginModalReducer);
-  const state = useSelector((state) => state.loginReducer);
-  const { isLogin } = state;
-  // const { accessToken } = useSelector((state) => state.loginReducer);
+  const { isLogin } = useSelector((state) => state.loginReducer);
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   const handleLogout = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/user/signout`)
+      .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
-          dispatch(setAccessToken(null));
-          dispatch(logout());
-          window.location.reload('/');
+        console.log(res);
+        dispatch(login(false));
+        window.location.reload("/");
       })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  console.log(isLogin)
 
   const handleLoginModal = () => {
-    dispatch(loginModal(true))
-    console.log(isModal)
-  }
+    dispatch(loginModal(true));
+    console.log(isModal);
+  };
 
   return (
     <div className={style.navContainer}>
@@ -50,15 +53,17 @@ const Nav = () => {
           </Link>
         </li>
         {isLogin === false ? (
-        <li className={style.login}>
-          <button className={style.btn} onClick={handleLoginModal}>LOGIN</button>
-          {/* <button className={style.btn} >LOGIN</button> */}
-        </li>
+          <li className={style.login}>
+            <button className={style.btn} onClick={handleLoginModal}>
+              LOGIN
+            </button>
+          </li>
         ) : (
-        <li className={style.logout}>
-          <button className={style.logoutBtn} onClick={handleLogout}>LOGOUT</button>
-        {/* <button className={style.btn} >LOGIN</button> */}
-        </li>
+          <li className={style.logout}>
+            <button className={style.btn} onClick={handleLogout}>
+              LOGOUT
+            </button>
+          </li>
         )}
       </ul>
     </div>

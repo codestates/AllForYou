@@ -18,13 +18,19 @@ module.exports = async (req, res) => {
       where: { id: id }
     })
 
-    if(bcrypt.compareSync(password, userInfo.dataValues.password)){
-      return res.status(409).json({ data: null, message: "이전과 같은 비밀번호입니다." })
+    if(!bcrypt.compareSync(password, userInfo.dataValues.password)){
+      const newPassword = await bcrypt.hash(password, 10);
+      await users.update({ password: newPassword }, { where: { id: id } })
     }
 
-    const newPassword = await bcrypt.hash(password, 10);
-
-    await users.update({ nickname: nickname, password: newPassword }, { where: { id: id } })
+    await users.update({ nickname: nickname, updateAt: new Date() }, { where: { id: id } })
+    
+    if (req.file) {
+      if(!userInfo.user_picture) {
+        // 이미지가 있다면 이미지를 지웁시다
+      }
+      await users.update({ user_picture: req.file.location }, { where: { id: id } })
+    }
 
     const userData = {
       id: userInfo.dataValues.id,

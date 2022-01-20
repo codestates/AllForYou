@@ -1,23 +1,24 @@
 .container {
-  margin: 2em 2em;
+  margin: 2em 0 2em 0;
   margin-bottom: 5em;
   padding: 0px 1em 1em 1em;
   width: 85em;
-  height: 10em;
+  height: 12em;
 }
 
 .contents_container {
   text-align: center;
+  background-color: #2e2d2d;
 }
 
 .img_card {
-  object-fit: scale-down;
+  object-fit: cover;
   /* background: #5f9ea0; */
   margin: auto;
   margin-bottom: 0.5em;
   padding: 0.5em;
-  width: 14em;
-  height: 10em;
+  width: 15em;
+  height: 12em;
   position: relative;
   text-align: center;
   transition: all 200ms ease-in;
@@ -37,24 +38,46 @@
   overflow: hidden;
 }
 
+.like {
+  font-size: 0.8em;
+}
+
 @media screen and (max-width: 1720px) {
   .container {
     margin: 0 1em;
     width: 70em;
-    height: 10em;
+    height: 17em;
+  }
+  .contents_container {
+    /* width: 70em; */
   }
 }
 
-@media screen and (max-width: 1430px) {
+@media screen and (max-width: 1480px) {
   .container {
     width: 45em;
-    height: 10em;
+    height: 16em;
+  }
+  .contents_part {
+    width: 30em;
   }
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1000px) {
   .container {
+    margin: 0;
     width: 18em;
-    height: 10em;
+    height: 14em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    margin: auto 0.5em;
+    padding: auto;
+    height: 17em;
+  }
+  .img_card {
+    padding: 0;
   }
 }
