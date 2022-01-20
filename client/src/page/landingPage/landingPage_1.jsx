@@ -142,11 +142,7 @@ const LandingPage_1 = () => {
         data-aos-duration="1500"
       ></div>
       <Wrap>
-        <div
-          data-aos="zoom-in"
-          // data-aos-easing="ease-out-cubic"
-          data-aos-duration="1000"
-        >
+        <div data-aos="zoom-in" data-aos-duration="1000">
           <Slider {...settings}>
             <div className={style.carousel_container}>
               <img
