@@ -13,13 +13,13 @@
 
 .reviews_title {
     display: block;
-    width: 10vw;
+    width: 35vw;
     float: left;
     font-size: 2em;
     font-weight: bold;
 }
 
-.more_button {
+.reviewsMore_button {
     display: flex;
     margin-left: 50vw;
     width: 5vw;
@@ -34,7 +34,28 @@
     margin: -0.1em 0 0 0.3em;
 }
 
-.box {
+.reviewsBox {
+    margin: 0em 3em 2em 0 ;
+    border: solid black;
+    border-width: 3px;
+    padding-left: 3em;
+    width: 55vw;
+    height: 25em;
+    border-radius: 1em;
+    box-shadow: 0 4px 12px -4px black;
+}
+
+.likesMore_button {
+    display: flex;
+    margin-left: 50vw;
+    width: 5vw;
+    font-size: 1.7em;
+    font-weight: bold;
+    border: solid #B09171;
+    background-color: #B09171;
+}
+
+.likesBox {
     margin: 0em 3em 2em 0 ;
     border: solid black;
     border-width: 3px;
@@ -104,7 +125,7 @@
 
 .likes_title {
     display: block;
-    width: 20vw;
+    width: 35vw;
     height: auto;
     float: left;
     font-size: 2em;
@@ -118,4 +139,122 @@
     font-size: x-large;
     font-weight: bold;
     text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        margin-top: -20vh;
+        padding: 0;
+    }
+
+    .reviews_title {
+        margin: 61vh 0 0 -15vw;
+        width: 50vw;
+        font-size: 5vw;
+    }
+
+    .reviewsMore_button {
+        margin-top: 60vh;
+        padding-left: 13vw;
+        font-size: 5vw;
+    }
+    
+    .reviewsBox {
+        margin: 0 0 0 -18vw;
+        height: 40vh;
+        border-radius: 0;
+        width: 100vw;
+    }
+
+    .likes_title {
+        margin: 3vh 0 0 -15vw;
+        width: 50vw;
+        font-size: 5vw;
+    }
+
+    .likesMore_button {
+        margin-top: 2.25vh;
+        padding-left: 13vw;
+        font-size: 5vw;
+    }
+
+    .likesBox {
+        margin: 0 0 0 -18vw;
+        height: 40vh;
+        border-radius: 0;
+        width: 100vw;
+    }
+
+    .empty_reviewbox {
+        padding: 13vh 15vw 0 0;
+        width: 100vw;
+        text-align: center;
+        font-size: 6vw;
+    }
+
+    .empty_likesbox {
+        padding: 15vh 20vw 0 0;
+        width: 110vw;
+        text-align: center;
+        font-size: 4.8vw;
+    }
+}
+
+@media screen and (max-width: 711px) {
+    .container {
+        margin-top: -20vh;
+        padding: 0;
+    }
+
+    .reviews_title {
+        margin: 61vh 0 0 -15vw;
+        width: 50vw;
+        font-size: 5vw;
+    }
+
+    .reviewsMore_button {
+        margin-top: 60vh;
+        padding-left: 13vw;
+        font-size: 5vw;
+    }
+    
+    .reviewsBox {
+        margin: 0 0 0 -18vw;
+        height: 40vh;
+        border-radius: 0;
+        width: 100vw;
+    }
+
+    .likes_title {
+        margin: 3vh 0 0 -15vw;
+        width: 50vw;
+        font-size: 5vw;
+    }
+
+    .likesMore_button {
+        margin-top: 2.25vh;
+        padding-left: 13vw;
+        font-size: 5vw;
+    }
+
+    .likesBox {
+        margin: 0 0 0 -18vw;
+        height: 40vh;
+        border-radius: 0;
+        width: 100vw;
+    }
+
+    .empty_reviewbox {
+        padding-right: 30vw;
+        width: 100vw;
+        text-align: center;
+        font-size: 6vw;
+    }
+
+    .empty_likesbox {
+        padding-right: 40vw;
+        width: 110vw;
+        text-align: center;
+        font-size: 4.8vw;
+    }
 }

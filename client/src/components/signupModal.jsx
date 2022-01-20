@@ -58,8 +58,6 @@ const SignupModal = () => {
     const handleModal = () => {
       dispatch(signupModal(false))
       dispatch(loginModal(true))
-      console.log(isState)
-      console.log(isModal)
     };
     
     const EnterSignup = (e) => {
@@ -73,10 +71,17 @@ const SignupModal = () => {
         dispatch(signupModal(false))
       }
     }
+
+    const handleCancleBtn = () => {
+      dispatch(signupModal(false))
+    }
     
   return (
     <div className={style.body} onClick={modalOutSide}>
       <div className={style.container}>
+        <button className={style.cancleBox} >
+          <img className={style.cancleBtn} src="/image/x_icon.png" onClick={handleCancleBtn} />
+        </button>
         <img className={style.img} src="/image/logo(background-white).png" alt="" />
         <input
           className={style.myInfo}

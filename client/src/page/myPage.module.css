@@ -34,3 +34,11 @@
   font-weight: bold;
   border-width: 15px;
 }
+
+@media screen and (max-width: 711px) {
+  .error_message {
+    height: 50vh;
+    padding-top: 20vh;
+    font-size: 6vw;
+  }
+}
