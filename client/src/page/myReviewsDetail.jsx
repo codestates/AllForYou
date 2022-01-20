@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const MyReviewsDetail = () => {
     const navigate = useNavigate();
     const { nickname } = useSelector((state) => state.loginReducer);
+    const { profileImage } = useSelector((state) => state.loginReducer);
     
     const [filterData, setFilterData] = useState(null)
 
@@ -29,7 +30,7 @@ const MyReviewsDetail = () => {
         <div className={style.container}>
             {alert("구현 준비중입니다.")}
             <div className={style.info}>
-                <img className={style.img} src="sample_img.jpeg" alt=""  />
+                <img className={style.img} src={profileImage} alt=""  />
                 <p className={style.nickname}>
                     {nickname}
                 </p>
