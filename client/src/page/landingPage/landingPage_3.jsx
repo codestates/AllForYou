@@ -1,72 +1,40 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import style from "./landingPage_3.module.css";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import { scrollTop } from "../../action";
+import Carousel from '../../components/carousel';
+import useScrollCount from '../../components/useScrollCount'
 
 const LandingPage_3 = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+	const countUserNumber = useScrollCount({ end: 1853, start: 540, duration: 80 });
+	const countContentsNumber = useScrollCount({ end: 1000, start: 55, duration: 50 });
 
-  const targets = document.querySelectorAll('[data-observer]')
-const images = document.querySelectorAll('[data-img]')
+	const onScroll = () => {
+		setScrollPosition(window.pageYOffset);
+	};
 
-const options = {
-  rootMargin: '0px',
-  threshold: 1.0
-}
-
-const addClass = (el) => {
-  if (!el.classList.contains('is-visible')) {
-    el.classList.add('is-visible')
-  }
-}
-
-const removeClass = (el) => {
-  if (el.classList.contains('is-visible')) {
-    el.classList.remove('is-visible')
-  }
-}
-
-const doThings = (entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      addClass(entry.target)
-    } else {
-      removeClass(entry.target)
-    }
-  })
-}
-
-const observer = new IntersectionObserver(doThings, options)
-
-const observer2 = new IntersectionObserver(doThings, { ...options, threshold: 0.4 })
-
-targets.forEach(target => {
-  observer.observe(target)
-})
-
-images.forEach(target => {
-  observer2.observe(target)
-})
-  
+	useEffect(() => {
+		window.addEventListener('scroll', onScroll);
+		// 컴포넌트가 언마운트 되기 직전에 이벤트를 끝낸다. 메모리 누수 방지
+		return () => window.removeEventListener('scroll', onScroll);
+	}, []);
 
   return (
-    <div className={style.body}>
-    <section className={style.a1}></section>
-    <section className={style.a2}></section>
-    <section className={style.a3}></section>
-    <section className={style.a4}></section>
-    <section className={style.a5}></section>
-    <section className={style.a6}></section>
-    <section className={style.a7}></section>
-    <section className={style.a8}></section>
-    </div>
+    <div className={style.container}>
+			<div className={style.content}>
+				<div className={style.countMessage}>
+            <div className={style.countBox}>
+              <div className={style.contentsCounter} {...countContentsNumber} />
+              <div className={style.contentsText}>개 이상의 컨텐츠를</div>
+              <div className={style.userCounter} {...countUserNumber} />
+              <div className={style.userText}>명의 유저들의</div>
+            </div>
+					<div className={style.text}>경험을 담아 추천하는 리스트를 확인해보세요!</div>
+				</div>
+        </div>
+			<div>
+				<Carousel />
+			</div>
+		</div>
   );
 };
 
