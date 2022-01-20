@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
         review_id: el.review_id,
         user_id: el.user_id,
         nickname: el.user.nickname,
+        user_picture: el.user.user_picture,
         comment: el.comment,
         createdAt: (el.createdAt).toISOString().split("T")[0] + " " + (el.createdAt).toISOString().split("T")[1].split(".")[0]
       }
