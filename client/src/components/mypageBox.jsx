@@ -38,15 +38,16 @@ function MyPageBox({ reviews, likes }) {
                 <>
                     {reviews.map((myReviews) => (
                     <>
-                        <span className={style.myReviewData} key={myReviews}>
-                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
-                        </span>
-                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
-                            <span className={style.mydata_reviewDate}>
-                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
+                        <div className={style.reviewBox}>
+                            <span className={style.myReviewData} key={myReviews}>
+                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
                             </span>
-                        </a>
-                        
+                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
+                                <span className={style.mydata_reviewDate}>
+                                    <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
+                                </span>
+                            </a>
+                        </div>
                     </>
                     ))}
                 </>
