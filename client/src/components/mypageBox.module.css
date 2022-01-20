@@ -313,14 +313,14 @@
     }
 
     .empty_reviewbox {
-        padding-right: 30vw;
+        padding-right: 8vw;
         width: 100vw;
         text-align: center;
         font-size: 6vw;
     }
 
     .empty_likesbox {
-        padding-right: 40vw;
+        padding-right: 20vw;
         width: 110vw;
         text-align: center;
         font-size: 4.8vw;
