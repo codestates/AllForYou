@@ -1,8 +1,6 @@
 import React from "react";
 import style from "./landingPage_1.module.css";
 
-// import { css, keyframes } from "@emotion/react";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -105,6 +103,16 @@ const Box = styled.div`
   animation: ${boxFade} 1.5s ease infinite;
 `;
 
+// const Text = styled.span`
+//   /* position: absolute; */
+//   right: 2em;
+//   bottom: 6em;
+//   color: aliceblue;
+//   font-size: 3em;
+//   font-family: NotoSerifKR-Regular;
+//   z-index: 999;
+// `;
+
 const LandingPage_1 = () => {
   const settings = {
     className: "center",
@@ -115,7 +123,7 @@ const LandingPage_1 = () => {
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
-    autoplay: false, // 자동 스크롤 사용 여부
+    autoplay: true, // 자동 스크롤 사용 여부
     autoplaySpeed: 3000, // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
     pauseOnHover: true,
     dots: true,
@@ -127,26 +135,12 @@ const LandingPage_1 = () => {
   return (
     <div className={style.container}>
       <div
-        className={style.text_1}
-        data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1500"
-      >
-        자존감이 많이 떨어지셨나요 ?
-        <br />
-        무기력함이 자신을 지배하고 있나요 ?
-        <br />
-        우리 인생 선배들에게 조언과 위로를 받아보세요
-      </div>
-      <div
         className={style.text_2}
         data-aos="fade-left"
         data-aos-anchor="#example-anchor"
         data-aos-offset="500"
         data-aos-duration="1500"
-      >
-        All For You는 모두와 함께 하길 원합니다
-      </div>
+      ></div>
       <Wrap>
         <div
           data-aos="zoom-in"
@@ -154,36 +148,57 @@ const LandingPage_1 = () => {
           data-aos-duration="1000"
         >
           <Slider {...settings}>
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/함께.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/고뇌.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/용기.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/슬픔.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/멘토1.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/웃음.jpg"
-              alt=""
-            />
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/함께.jpg"
+                alt=""
+              />
+
+              <span className={style.text_3}>
+                All For You와 함께 극복할 수 있습니다
+              </span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/고뇌.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>인생이 힘들고 외로울때 ,</span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/용기.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>힘을 내고 싶을 때 , </span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/슬픔.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>한 없이 울고 싶을 때 , </span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/멘토1.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>내 삶에 조언이 필요할 때 ,</span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/웃음.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>아무 생각없이 웃고 싶을 때 ,</span>
+            </div>
           </Slider>
         </div>
       </Wrap>

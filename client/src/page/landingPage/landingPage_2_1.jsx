@@ -1,12 +1,54 @@
 import React from "react";
 import style from "./landingPage_2_1.module.css";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const LandingPage_2_1 = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/contents");
+  };
+
+  useEffect(() => {
+    AOS.init();
+  });
+
   return (
     <div className={style.container}>
-      <div className={style.main_text}>contents for you</div>
+      <div className={style.words_us} data-aos="fade-up">
+        The world is full of suffering but it is also full of people overcoming
+        it.
+      </div>
+      <div className={style.words_kr} data-aos="fade-up">
+        세상은 고통으로 가득하지만, 그것을 극복하는 사람들로도 가득하다
+        <br />– 헨렌켈러 –
+      </div>
+      <div
+        className={style.main_text}
+        data-aos="zoom-in"
+        data-aos-duration="1500"
+      >
+        contents for you
+      </div>
+      <button
+        data-aos="flip-left"
+        data-aos-duration="1500"
+        className={style.contentsPageBtn}
+        onClick={handleClick}
+      >
+        <div>콘텐츠 페이지로 바로가기</div>
+      </button>
       <div className={style.imgCard_container_1}>
-        <div className={style.img_container}>
+        <div
+          className={style.img_container}
+          data-aos="zoom-out-left"
+          data-aos-duration="500"
+          data-aos-delay="50"
+        >
           <img
             className={style.img_1}
             src="landingPage_image/landingPage_2/동기부여3.jpg"
@@ -21,7 +63,12 @@ const LandingPage_2_1 = () => {
             추천 컨텐츠로 동기부여를 얻어 보세요
           </div>
         </div>
-        <div className={style.img_container}>
+        <div
+          className={style.img_container}
+          data-aos="zoom-out-left"
+          data-aos-duration="500"
+          data-aos-delay="300"
+        >
           <img
             className={style.img_1}
             src="landingPage_image/landingPage_2/도전.jpg"
@@ -36,7 +83,12 @@ const LandingPage_2_1 = () => {
             도전에 대한 컨텐츠로 용기를 가져보세요
           </div>
         </div>
-        <div className={style.img_container}>
+        <div
+          className={style.img_container}
+          data-aos="zoom-out-left"
+          data-aos-duration="500"
+          data-aos-delay="600"
+        >
           <img
             className={style.img_1}
             src="landingPage_image/landingPage_2/멘토.jpg"
@@ -56,7 +108,12 @@ const LandingPage_2_1 = () => {
       </div>
 
       <div className={style.imgCard_container_2}>
-        <div className={style.img_container}>
+        <div
+          className={style.img_container}
+          data-aos="zoom-out-left"
+          data-aos-duration="500"
+          data-aos-delay="50"
+        >
           <img
             className={style.img_1}
             src="landingPage_image/landingPage_2/웃음_1.jpg"
@@ -71,7 +128,12 @@ const LandingPage_2_1 = () => {
             all for you에서 준비한 컨텐츠로 현재를 잠시 잊어 보세요
           </div>
         </div>
-        <div className={style.img_container}>
+        <div
+          className={style.img_container}
+          data-aos="zoom-out-left"
+          data-aos-duration="500"
+          data-aos-delay="300"
+        >
           <img
             className={style.img_1}
             src="landingPage_image/landingPage_2/슬픔.jpg"
@@ -86,7 +148,12 @@ const LandingPage_2_1 = () => {
             영화, 음악, 책 등을 추천받아 보세요
           </div>
         </div>
-        <div className={style.img_container}>
+        <div
+          className={style.img_container}
+          data-aos="zoom-out-left"
+          data-aos-duration="500"
+          data-aos-delay="600"
+        >
           <img
             className={style.img_1}
             src="landingPage_image/landingPage_2/백색소리.jpg"
