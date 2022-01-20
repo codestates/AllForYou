@@ -34,19 +34,21 @@ const LandingPage_2_1 = () => {
       >
         contents for you
       </div>
-      <button
-        data-aos="flip-left"
-        data-aos-duration="1500"
-        className={style.contentsPageBtn}
-        onClick={handleClick}
-      >
-        <div>콘텐츠 페이지로 바로가기</div>
-      </button>
+      <div className={style.button_sort}>
+        <button
+          data-aos="flip-left"
+          data-aos-duration="1500"
+          className={style.contentsPageBtn}
+          onClick={handleClick}
+        >
+          <div>콘텐츠 페이지로 바로가기</div>
+        </button>
+      </div>
       <div className={style.imgCard_container_1}>
         <div
           className={style.img_container}
-          data-aos="zoom-out-left"
-          data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="600"
           data-aos-delay="50"
         >
           <img
@@ -65,8 +67,8 @@ const LandingPage_2_1 = () => {
         </div>
         <div
           className={style.img_container}
-          data-aos="zoom-out-left"
-          data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="600"
           data-aos-delay="300"
         >
           <img
@@ -85,8 +87,8 @@ const LandingPage_2_1 = () => {
         </div>
         <div
           className={style.img_container}
-          data-aos="zoom-out-left"
-          data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="600"
           data-aos-delay="600"
         >
           <img
@@ -110,8 +112,8 @@ const LandingPage_2_1 = () => {
       <div className={style.imgCard_container_2}>
         <div
           className={style.img_container}
-          data-aos="zoom-out-left"
-          data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="600"
           data-aos-delay="50"
         >
           <img
@@ -130,8 +132,8 @@ const LandingPage_2_1 = () => {
         </div>
         <div
           className={style.img_container}
-          data-aos="zoom-out-left"
-          data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="600"
           data-aos-delay="300"
         >
           <img
@@ -150,8 +152,8 @@ const LandingPage_2_1 = () => {
         </div>
         <div
           className={style.img_container}
-          data-aos="zoom-out-left"
-          data-aos-duration="500"
+          data-aos="zoom-out"
+          data-aos-duration="600"
           data-aos-delay="600"
         >
           <img

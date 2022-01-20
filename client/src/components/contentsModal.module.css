@@ -23,7 +23,7 @@
   flex-direction: column;
   position: fixed;
   top: 20%;
-  left: 20%;
+  left: 30%;
   vertical-align: middle;
   background-color: rgb(250, 238, 223);
   z-index: 999;
@@ -158,6 +158,12 @@
   line-height: 1.7em;
   letter-spacing: 0.1em;
   word-spacing: 0.1em;
+}
+
+@media screen and (max-width: 2000px) {
+  .container{
+    left: 20%;
+  }
 }
 
 @media screen and (max-width: 1420px) {

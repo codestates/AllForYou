@@ -1,6 +1,6 @@
 .container{
   width: 35.9rem;
-  height: 1.7rem;
+  height: auto;
   border-bottom: 1px solid rgb(196, 196, 196);
   padding-left: 0.3rem;
   padding-top: 0.2rem;
@@ -12,9 +12,6 @@
   font-size: 0.8rem;
   width: 25rem;
   text-align:center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .list_part{
   padding-top: 0.1rem;
@@ -52,12 +49,16 @@
 }
 @media screen and (max-width:767px) {
   .container{
-  width: 24rem;
+  width: 16.9rem;
 }
 .list_title{
-  width: 12.5rem;
+  width: 10rem;
 }
 .list_part{
-  width: 5.5rem;
+  width: 2.5rem;
+}
+.list_btn{
+  width:2rem;
+  font-size: 0.6rem;
 }
 }

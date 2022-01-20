@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import style from "./carousel.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import { setPost } from "../action";
 
 export const CarouselWrapper = styled.div`
@@ -31,63 +30,6 @@ export const CarouselItem = styled.div`
 	padding: 1.5vw;
 	border-radius: 5px;
 `;
-export const ArrowBack = styled(IoIosArrowBack)`
-	position: relative;
-	bottom: 5vw;
-	transition: 0.3s;
-	width: 3vw;
-	font-size: 4vw;
-	color: #B09171;
-	&:hover {
-		color: white;
-	}
-`;
-export const ArrowForward = styled(IoIosArrowForward)`
-	position: relative;
-	bottom: 5vw;
-	transition: 0.3s;
-	width: 3vw;
-	font-size: 4vw;
-	color: #B09171;
-	&:hover {
-		color: white;
-	}
-`;
-
-const NextArrow = (props) => {
-	const { className, style, onClick } = props;
-
-	return (
-		<div
-			className={className}
-			style={{
-				...style,
-				zIndex: 1,
-				width: '3vw',
-			}}
-			onClick={onClick}
-		>
-			<ArrowForward />
-		</div>
-	);
-};
-
-const PrevArrow = (props) => {
-	const { className, style, onClick } = props;
-	return (
-		<div
-			className={className}
-			style={{
-				...style,
-				zIndex: 1,
-				width: '3vw',
-			}}
-			onClick={onClick}
-		>
-			<ArrowBack />
-		</div>
-	);
-};
 
 const Carousel = () => {
     const dispatch = useDispatch();
@@ -111,26 +53,18 @@ const Carousel = () => {
 	const Settings = {
 		className: 'center',
 		centerMode: true,
-		arrows: true,
 		focusOnSelect: true,
 		infinite: true,
 		draggable: false,
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		speed: 500,
-		nextArrow: <NextArrow />,
-		prevArrow: <PrevArrow />,
 		beforeChange: (current, next) => setCenterCard(next),
 	};
 
     useEffect(() =>{
         getPost()
     }, [])
-
-    const handlePostInfo = () => {
-        dispatch(setPost(review));
-        navigate(`/foryouview/:${review.id}`)
-    }
 
     return (
         <CarouselWrapper>
@@ -145,7 +79,7 @@ const Carousel = () => {
 								boxShadow: 'rgb(24 70 23 / 15%) 0px 5px 1vw',
 							}}
                         >
-                            <div className={style.contentbox} onClick={handlePostInfo}>
+                            <div className={style.contentbox}>
                                 <img className={style.img}
                                     src={review.image}
                                     alt="image"

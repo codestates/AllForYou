@@ -74,7 +74,10 @@ textarea{
 }
 
 @media screen and  (max-width:740px) {
-  .box{
+.infoBox{
+    flex-direction: column;
+  }
+.box{
   width:18rem;
 }
 .img{
@@ -87,5 +90,8 @@ textarea{
 }
 .date{
   font-size: 0.8rem;
+}
+.comment{
+  margin-top:2rem;
 }
 }

@@ -14,6 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
+  justify-content:center;
 }
 
 .contents_container {
