@@ -21,6 +21,9 @@
 .header_menu {
   margin-left: 3rem;
   font-size: 1.1rem;
+  outline: none;
+  border: none;
+  background-color: #B09171;
 }
 .header_menu:hover {
   color: white;

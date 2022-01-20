@@ -2,9 +2,9 @@ import React from "react";
 import style from "./nav.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { 
-  setAccessToken, 
   login, 
   loginModal, 
   setKakaoLogin, 
@@ -15,9 +15,9 @@ axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
 const Nav = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isModal } = useSelector((state) => state.loginModalReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
 
   const handleLogout = () => {
     axios
@@ -27,7 +27,7 @@ const Nav = () => {
           dispatch(login(false));
           dispatch(setKakaoLogin(false));
           dispatch(setGoogleLogin(false));
-          window.location.reload('/');
+          navigate('/')
       })
       .catch((err) => {
         console.log(err);
