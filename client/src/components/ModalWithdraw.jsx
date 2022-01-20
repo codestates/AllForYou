@@ -1,11 +1,17 @@
 import React from 'react';
 import style from "./ModalWithdraw.module.css";
 import axios from "axios";
-import { setWithdrawModal } from '../action';
+import { 
+    setWithdrawModal, 
+    login,  
+    setKakaoLogin, 
+    setGoogleLogin 
+} from '../action';
 import { useDispatch } from 'react-redux';
 
 function ModalWithdraw() {
     const dispatch = useDispatch();
+
 
     const handleDeleteUser = () => {
         let result = window.confirm("정말 탈퇴하시겠습니까?");
@@ -15,7 +21,11 @@ function ModalWithdraw() {
             .then((res) => {
                 if (res.status === 204) {
                     alert("회원탈퇴 처리가 완료되었습니다.");
-                    window.location.replace('/')
+                    dispatch(login(false));
+                    dispatch(setKakaoLogin(false));
+                    dispatch(setGoogleLogin(false));
+                    dispatch(setWithdrawModal(false));
+                    window.location.replace('/');
                 }
             })
         } else {
