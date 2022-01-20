@@ -24,9 +24,6 @@
 	font-size:1.1rem;
 	font-weight: bold;
 	margin: 0.5rem 0;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	width: 17vw;
 }
 .iconText{
@@ -52,6 +49,105 @@
 	text-align: center;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:1070px) {
+.title{
+	font-size:0.9rem;
+	font-weight: bold;
+	margin: 0.5rem 0;
+	width: 17vw;
+}
+.iconText{
+	font-size:0.7vw;
+	margin-top: 0.4rem;
+}
+.writer{
+	margin: 0.5rem 0;
+	font-size: 0.9rem;
+}
+.category{
+	width:18vw;
+	height:1.5rem;
+	margin: 1rem 0;
+	font-size: 0.7rem;
+}
+.unlike{
+	margin-right: 1rem;
+	font-size: 1rem;
+}
+}
 
+@media screen and (max-width:740px) {
+.img {
+	width:90%;
+	height:13vw;
+}
+.textbox{
+	text-align: left;
+	margin-left: 0rem;
+	width: 100%;
+}
+.titleBox{
+	display: flex;
+	align-items: center;
+	justify-content:flex-start;
+	margin-top: 1rem;
+}
+.title{
+	font-size:1.1rem;
+	font-weight: bold;
+	margin: 0.5rem 0;
+	width: 25vw;
+}
+.iconText{
+	font-size:0.7vw;
+	margin-top: 0.4rem;
+}
+.writer{
+	margin: 0;
+}
+.category{
+	background-color:#B09171;
+	width:16vw;
+	height:1.7rem;
+	padding: 0.3rem 1rem;
+	margin: 2rem 0;
+	font-size: 0.9vw;
+	color: white;
+}
+.unlike{
+	color:#cccccc;
+	margin-right: 2.5rem;
+	font-size: 1.2rem;
+	text-align: center;
+}
+}
+@media screen and (max-width:450px) {
+.container{
+	width: 12rem;
+}
+.contentbox{
+	width: 100%;
+}
+.img {
+	width:100%;
+	height:30vw;
+}
+.textbox{
+	text-align: left;
+	margin-left: 0rem;
+	width: 100%;
+}
+.title{
+	font-size:1rem;
+	width: 40vw;
+}
+.category{
+	width:48vw;
+	height:1.4rem;
+	margin: 1.5rem 0;
+	font-size: 0.7rem;
+}
+.unlike{
+	margin-right: 0.5rem;
+}
 }

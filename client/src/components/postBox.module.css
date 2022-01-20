@@ -2,11 +2,8 @@
   width: 23rem;
   padding: 1.5rem 0.5rem;
   text-align: center;
-  /* background-color: rgb(255, 255, 255); */
-  /* background-color: #b0907146; */
   display: flex;
   flex-direction: column;
-  /* box-shadow: 0 0 16px 8px #93939329; */
   border-radius: 0.5rem;
 }
 .image{
@@ -15,14 +12,11 @@
   margin: 0 auto;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
-  /* border: 1px solid #b0907162; */
+  box-shadow: 0 0 15px 4px #a2a2a258;
 }
 .textBox{
-  /* background-color: rgba(255, 255, 255, 0.666);
-  box-shadow: 0 0 15px 4px #b0907129; */
   width: 100%;
   margin: 0 auto;
-  /* border-radius: 1rem; */
 }
 .postTitle{
   color: black;
@@ -30,6 +24,7 @@
   font-size: 1.7rem;
   font-weight: bold;
   margin-top:2rem;
+  font-family: Merriweather-BlackItalic;
 }
 .postDescription{
   margin-bottom: 2rem;

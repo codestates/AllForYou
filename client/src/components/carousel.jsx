@@ -60,6 +60,21 @@ const Carousel = () => {
 		slidesToScroll: 1,
 		speed: 500,
 		beforeChange: (current, next) => setCenterCard(next),
+        responsive:[
+            {
+                breakpoint : 740,
+                settings:{
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {breakpoint : 450,
+                settings:{
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
 	};
 
     useEffect(() =>{
