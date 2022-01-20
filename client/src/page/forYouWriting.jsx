@@ -7,33 +7,26 @@ import { useNavigate } from "react-router-dom";
 import EditorComponent from "../components/editorComponent.jsx";
 import SearchList from "../components/searchList";
 import CartList from "../components/cartList";
-// require("dotenv").config();
 
 const ForYouWriting = () => {
     const state = useSelector(state => state.writingListReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const inputRef = useRef();
     const fileInput = useRef(null);
-    const [files, setFiles] = useState([]); //이미지 화면 띄우기
-    const [image, setImage] = useState([]); //이미지 파일 server 보내기
-    const [category, setCategory] = useState('도전');
+    const [files, setFiles] = useState([]);
+    const [category, setCategory] = useState('ALL');
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
+    const [content, setContent] = useState('');
     const [search, setSearch] = useState('');
-    const [resultSearch, setResultSearch] = useState([]);
-
-    const content_id = state.map((el) => {
-        return el.contents.id
-    })
+    // const [resultSearch, setResultSearch] = useState([]); //검색 axios에서 사용
 
     const handleText = (value) => {
-        setText(value)
+        setContent(value)
     }
 
-    console.log('text', text)
-
     const fileHandle = (e) => {
-        setImage(e.target.files[0]);
+        // setFiles(e.target.files);
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
 
@@ -41,72 +34,107 @@ const ForYouWriting = () => {
         dispatch(removeFromList(id))
     }
 
-    const uploadImage = (e) => {
-        e.preventDefault();
-        fileInput.current.click();
-    };
-
-    //search axios
-    const handleSearchText = e => {
-        setSearch(e.target.value)
+    //더미코드
+    const handleSearch = () => {
+        const value = inputRef.current.value
+        setSearch(value)
     }
-
     const onKeyPress = (e) => {
         if (e.key === 'Enter') {
-            searchHandler();
+            handleSearch();
         }
     }
-    const searchHandler = () => {
-        axios
-            .get(`${process.env.REACT_APP_SERVER_URL}/search?query=${search}`)
-            .then(res => {
-                setResultSearch(res.data.data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+
+    //검색 결과, axios 적용 코드
+    // const handleSearchText = e => {
+    //     setSearch(e.target.value)
+    // }
+
+    // const onKeyPress = (e) => {
+    //     if (e.key === 'Enter') {
+    //         searchHandler();
+    //     }
+    // }
+    // const searchHandler = () => {
+    //     axios
+    //         .get(`${process.env.REACT_APP_API_URL}/search?keyword=${searchText}`, {
+    //             headers: { 'Content-Type': 'application/json' },
+    //         })
+    //         .then(res => {
+    //             setResultSearch(res.data.searchResult); //서버 코드 확인 필요
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // };
+
+    const upoadImage = (e) => {
+        e.preventDefault();
+        fileInput.current.click();
+
+        // const formData = new FormData();
+        // formData.append("image", Content);
+        // console.log(formData);
+
+        //     axios
+        //         .post(`${process.env.REACT_APP_SERVER_URL}/uploads3`, formData, {
+        //             header: {
+        //                 "content-type": "multipart/form-data",
+        //                 Authorization: `Bearer ${accessToken}`
+        //             },
+        //             withCredentials: true
+        //         })
+        //         .then(res => {
+        //             console.log(res.data);
+        //             setFilePath(res.data.fileName);
+        //         })
+        //         .catch(error => {
+        //             console.error(error);
+        //         });
     };
 
+    // 이미지 파일 삭제 
+    // const deleteFileImage = () => {
+    //     URL.revokeObjectURL(fileImage); setFileImage("");
+    // };
+
     //'등록'버튼 클릭시
-    function submitForm(e) {
-        e.preventDefault();
+    async function submitForm() {
         if (
             title === '' ||
-            text === '' ||
-            image.length === 0 ||
-            content_id.length === 0
+            content === '' ||
+            files.length === 0 ||
+            state.length === 0
         ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
-        } else {
-            const formData = new FormData();
-            formData.append('title', title);
-            formData.append('category', category);
-            formData.append('text', text); //글 소개
-            formData.append('content_id', content_id); //컨텐츠 리스트 id 배열
-            formData.append('img', image);
-
-            axios
-                .post(`${process.env.REACT_APP_SERVER_URL}/reviews`, formData,
-                    {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    }
-                )
-                .then((res) => {
-                    if (res.status === 409) {
-                        console.log('!!!!')
-                    }
-                })
-                .then(() => {
-                    navigate('/foryou');
-                    dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-                })
-                .catch((err) => {
-                    console.log(err)
-                });
         }
+        else {
+            navigate('/foryou');
+            dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        }
+        // else {
+        //     const formData = new FormData();
+        //     formData.append('title', title);
+        //     formData.append('category', category);
+        //     formData.append('content', content);
+        //     formData.append('image', files);
+
+        //         await axios
+        //             .post(`${process.env.REACT_APP_SERVER_URL}/review/writing`, formData, {
+        //                 headers: {
+        //                     Authorization: `Bearer ${localStorage.accessToken}`,
+        //                     'Content-Type': 'multipart/form-data',
+        //                 },
+        //             })
+        //             .then(() => {
+        //                 navigate('/foryou');
+        //                 dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
+        //             })
+        //             .catch((err) => {
+        //                 if (err) throw err;
+        //             });
+        // }
     }
 
 
@@ -128,7 +156,7 @@ const ForYouWriting = () => {
                     />
                     <button
                         className={style.btnImg}
-                        onClick={uploadImage}
+                        onClick={upoadImage}
                     >사진 업로드</button>
                 </div>
                 <div className={style.titleBox}>
@@ -163,7 +191,7 @@ const ForYouWriting = () => {
                 <div className={style.textBox}>
                     <p className={style.text_p}>소개글 입력</p>
                     <EditorComponent
-                        value={text}
+                        value={content}
                         onChange={handleText}
                     />
                 </div>
@@ -177,25 +205,28 @@ const ForYouWriting = () => {
                                     type="search"
                                     placeholder='Search...'
                                     onKeyPress={onKeyPress}
-                                    onChange={handleSearchText}
+                                    ref={inputRef} //더미 적용 코드
+                                // onChange={handleSearchText} //axios 적용 코드
                                 />
                                 <button
                                     className={style.btnSearch}
-                                    onClick={() => searchHandler()}
+                                    // onClick={() => searchHandler()} //axios 적용 코드
+                                    onClick={() => handleSearch()} //더미 적용 코드
                                 >검색</button>
                             </div>
-                            <div className={style.addListBox_search}>
+                            <div className={style.addListBox_left}>
                                 <div className={style.listHeader}>
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
                                 <SearchList
-                                    resultSearch={resultSearch}
+                                    search={search}
+                                    checkedList={false}
                                 />
                             </div>
                         </div>
                         <div className={style.rightBox}>
-                            <div className={style.addListBox_addlist}>
+                            <div className={style.addListBox_right}>
                                 <div className={style.listHeader}>
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>

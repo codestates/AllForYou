@@ -3,7 +3,7 @@
 }
 
 .body {
-  z-index: 1000;
+  z-index: 1;
   margin: 5em 0 0 0;
   padding: 20px;
   width: 100%;
@@ -20,8 +20,8 @@
   background-color: white
 }
 
-.img {
-  margin: 2em 0 0 5em;
+.logo {
+  margin-left: 5.5em;
   width: 21em; 
   height: 15em;
 }
@@ -35,11 +35,6 @@
   color: #B09171;
   background-color: white
 }
-
-.myInfo:focus {
-  outline: none;
-}
-
 
 .myInfo {
   margin: 0 3em 0.7em 0.7em;
@@ -56,7 +51,8 @@
 .membership {
   display: block;
   margin: 0.7em auto;
-  margin-top: 12em;
+  margin-top: 13em;
+  display: block;
   width: 18em;
   height: 2.5em;
   border: none;

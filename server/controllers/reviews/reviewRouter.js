@@ -3,16 +3,8 @@ module.exports = {
   reviewRead: require("./reviewRead"),
   reviewWrite: require("./reviewWrite"),
   reviewDelete: require("./reviewDelete"),
-  modifyRewiew: require("./modifyRewiew"),
-  reviewLikeG: require("./reviewLikeG"),
-  reviewLikeC: require("./reviewLikeC"),
+  reviewLike: require("./reviewLike"),
+  reviewComment: require("./reviewComment"),
   reviewLikeD: require("./reviewLikeD"),
-  reviewCommentG: require("./reviewCommentG"),
-  reviewCommentC: require("./reviewCommentC"),
-  reviewCommentD: require("./reviewCommentD"),
-  reviewCommentP: require("./reviewCommentP"),
-  reviewContent: require("./reviewContent"),
-  reviewUserLike: require("./reviewUserLike"),
-
-  img: require("./img")
+  reviewCommentD: require("./reviewCommentD")
 };

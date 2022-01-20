@@ -9,6 +9,33 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      // user_id: { 
+      //   allowNull: false, 
+      //   type: Sequelize.INTEGER, 
+      //   onDelete: "CASCADE", 
+      //   references: { 
+      //     model: "users", 
+      //     key: "id"
+      //   }, 
+      // },
+      // review_id: { 
+      //   allowNull: false, 
+      //   type: Sequelize.INTEGER, 
+      //   onDelete: "CASCADE", 
+      //   references: { 
+      //     model: "reviews", 
+      //     key: "id"
+      //   }, 
+      // },
+      // content_id: { 
+      //   allowNull: false, 
+      //   type: Sequelize.INTEGER, 
+      //   onDelete: "CASCADE", 
+      //   references: { 
+      //     model: "contents", 
+      //     key: "id"
+      //   }, 
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

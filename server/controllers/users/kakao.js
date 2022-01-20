@@ -33,7 +33,7 @@ module.exports = async(req, res ) => {
             res.status(400).json({message: 'Bad Request'})
         } else {
             const access_token = sign(user[0].dataValues, process.env.ACCESS_SECRET, { expiresIn: "2d" });
-            res.cookie('jwt', access_token, {
+            res.cookie('accesToken', access_token, {
                 // domain: domain,
                 sameSite: 'Strict',
                 secure: true,

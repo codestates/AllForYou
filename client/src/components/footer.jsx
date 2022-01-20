@@ -39,11 +39,11 @@ const Footer = () => {
             <div className={style.teamContainer}>
                 <div className={style.box}>
                     <div className={style.individual}>
-                        <div className={style.name}>
+                        <span className={style.name}>
                             <p className={style.fullname}>이재영</p>
                             <p className={style.role}>Back-end</p>
                             <p className={style.role}>팀장</p>
-                        </div>
+                        </span>
                         <a className={style.link} href="https://github.com/solheee" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -68,10 +68,10 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className={style.individual}>
-                        <div className={style.name}>
+                        <span className={style.name}>
                             <p className={style.fullname}>홍세환</p>
                             <p className={style.role}>Full-stack</p>
-                        </div>
+                        </span>
                         <a className={style.link} href="https://github.com/hihello1123" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -98,10 +98,10 @@ const Footer = () => {
                 </div>
                 <div className={style.box}>
                     <div className={style.individual}>
-                        <div className={style.name}>
+                        <span className={style.name}>
                             <p className={style.fullname}>남태식</p>
                             <p className={style.role}>Front-end</p>
-                        </div>
+                        </span>
                         <a className={style.link} href="https://github.com/chanyang721" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -126,10 +126,10 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className={style.individual}>
-                        <div className={style.name}>
+                        <span className={style.name}>
                             <p className={style.fullname}>강사름</p>
                             <p className={style.role}>Front-end</p>
-                        </div>
+                        </span>
                         <a className={style.link} href="https://github.com/sareum-k" target="_blank">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
