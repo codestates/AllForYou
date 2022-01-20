@@ -107,3 +107,36 @@
   display: flex;
   justify-content: space-around;
 }
+
+@media screen and (max-width: 1700px) {
+  .container {
+    height: 400vh;
+  }
+  .imgCard_container_1,
+  .imgCard_container_2 {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1166px) {
+  .container {
+    height: 560vh;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    width: 30em;
+    height: 600vh;
+  }
+  .words_us {
+    padding-top: 10em;
+  }
+  .main_text {
+    font-size: 6em;
+  }
+  .img_1 {
+    width: 25em;
+    height: 20em;
+  }
+}

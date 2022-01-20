@@ -69,7 +69,7 @@ const LandingPage_2_1 = () => {
           className={style.img_container}
           data-aos="zoom-out"
           data-aos-duration="600"
-          data-aos-delay="300"
+          data-aos-delay="150"
         >
           <img
             className={style.img_1}
@@ -89,7 +89,7 @@ const LandingPage_2_1 = () => {
           className={style.img_container}
           data-aos="zoom-out"
           data-aos-duration="600"
-          data-aos-delay="600"
+          data-aos-delay="250"
         >
           <img
             className={style.img_1}
@@ -134,7 +134,7 @@ const LandingPage_2_1 = () => {
           className={style.img_container}
           data-aos="zoom-out"
           data-aos-duration="600"
-          data-aos-delay="300"
+          data-aos-delay="150"
         >
           <img
             className={style.img_1}
@@ -154,7 +154,7 @@ const LandingPage_2_1 = () => {
           className={style.img_container}
           data-aos="zoom-out"
           data-aos-duration="600"
-          data-aos-delay="600"
+          data-aos-delay="250"
         >
           <img
             className={style.img_1}

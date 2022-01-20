@@ -103,16 +103,6 @@ const Box = styled.div`
   animation: ${boxFade} 1.5s ease infinite;
 `;
 
-// const Text = styled.span`
-//   /* position: absolute; */
-//   right: 2em;
-//   bottom: 6em;
-//   color: aliceblue;
-//   font-size: 3em;
-//   font-family: NotoSerifKR-Regular;
-//   z-index: 999;
-// `;
-
 const LandingPage_1 = () => {
   const settings = {
     className: "center",
@@ -123,7 +113,7 @@ const LandingPage_1 = () => {
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
-    autoplay: true, // 자동 스크롤 사용 여부
+    autoplay: false, // 자동 스크롤 사용 여부
     autoplaySpeed: 3000, // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
     pauseOnHover: true,
     dots: true,
