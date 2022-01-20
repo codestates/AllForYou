@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./landingPage_1_1.module.css";
-import { Carousel } from "react-responsive-carousel";
 
 const LandingPage_1_1 = () => {
   return (
