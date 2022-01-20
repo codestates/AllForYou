@@ -58,9 +58,9 @@ router.post("/contents/like/:contentsId", auth.accessToken, contentRouter.conten
 router.delete("/contents/like/:contentsId", auth.accessToken, contentRouter.contentsLikeD); // 콘텐츠 좋아요 지우기
 
 //admin
-router.post("/admin/contents", adminRouter.contentC); // 컨텐츠 추가
-router.delete("/admin//contents/:contentsId", adminRouter.contentD); // 컨텐츠 제거
-router.delete("/admin/reviews/:postId", adminRouter.reviewsD); // 리뷰 제거
-router.delete("/admin/comment", adminRouter.commnetD); // 댓글 제거
+router.post("/admin/contents", auth.accessToken, adminRouter.contentC); // 컨텐츠 추가
+router.delete("/admin//contents/:contentsId", auth.accessToken, adminRouter.contentD); // 컨텐츠 제거
+router.delete("/admin/reviews/:postId", auth.accessToken, adminRouter.reviewsD); // 리뷰 제거
+router.delete("/admin/comment", auth.accessToken, adminRouter.commnetD); // 댓글 제거
 
 module.exports = router;

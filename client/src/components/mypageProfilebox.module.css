@@ -43,6 +43,7 @@
     width: 8vw;
     height: 4em;
     border: none;
+    outline: none;
     float: left;
     border-radius: 1em;
     font-weight: bold;
@@ -58,6 +59,7 @@
     width: 8vw;
     height: 4em;
     border: none;
+    outline: none;
     float: left;
     border-radius: 1em;
     font-weight: bold;

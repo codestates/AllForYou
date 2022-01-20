@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./myPage.module.css";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
@@ -8,9 +8,15 @@ import MyPageBox from "../components/mypageBox";
 import MyPgaeUpdate from "../components/mypageUpdate";
 import ModalWithdraw from "../components/ModalWithdraw";
 import Footer from "../components/footer";
+import {
+  setProfileImage,
+  setEmailData,
+  setNickname,
+} from "../action"
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { isLogin } = useSelector((state) => state.loginReducer); 
   const { updateInfo } = useSelector((state) => state.loginReducer);
   const { withdrawModal } = useSelector((state) => state.loginReducer);
@@ -25,11 +31,17 @@ const MyPage = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
     .then((res) => {
         if(res) {
-            console.log(res.data)
+            const email = res.data.data.userInfo.email;
+            const nickname = res.data.data.userInfo.nickname;
+            const picture = res.data.data.userInfo.user_picture;
             const reviewlist = res.data.data.userReviews;
             const likeslist = res.data.data.userLikes;
+            dispatch(setEmailData(email));
+            dispatch(setNickname(nickname));
+            dispatch(setProfileImage(picture));
             setReviews(reviewlist);
             setLikes(likeslist);
+            // window.location.reload('/');
         }
     })
     .catch((err) => {
@@ -45,7 +57,7 @@ const MyPage = () => {
   return (
     <>
     {isLogin === true ? (
-      <div className={style.mypage_container}>
+      <div className={style.mypage_container} >
         {updateInfo === true ? (<MyPgaeUpdate />) : null}
         {withdrawModal === true ? (<ModalWithdraw />) : null}
         <ProfileBox />

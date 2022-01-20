@@ -182,14 +182,14 @@ module.exports = {
         id: 26,
         user_id : 1,
         review_id: null,
-        content_id: null,
+        content_id: 25,
         createdAt: new Date()
       },
       {
         id: 27,
         user_id : 1,
         review_id: null,
-        content_id: null,
+        content_id: 33,
         createdAt: new Date()
       },
     ]);
