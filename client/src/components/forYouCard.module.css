@@ -70,12 +70,13 @@
   font-size: 0.9rem;
 }
 .btnUrl:hover{
-  background-color: black;
-  color: white;
+  background-color:#b090714b;
+  color: black;
+  border: 1px solid #b090714b;
 }
 .btnKakao:hover{
-  background-color: black;
-  color: #f9e000;
+  background-color:#b090714b;
+  border: 1px solid #b090714b;
 }
 
 .like{

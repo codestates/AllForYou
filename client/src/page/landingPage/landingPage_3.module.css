@@ -1,53 +1,55 @@
-.body {
-  width: 100%; 
-  margin: 0;
+.container{
+  flex-direction: column;
+	width: 100%;
+	padding: 10vw 0 8vw 0;
+  display: flex;
+  background-color: #b0907146;
 }
-
-section {
-  width: 100%; 
-  height: 800px;
-  background-position: center center; 
-  background-size: 80% auto;
-  background-attachment: fixed; 
-  background-repeat: no-repeat;
-  @media (min-width: 700px) {
-    background-size: auto 80%;
-  }
+.content{
+  flex-direction: row;
+	width: 100%;
+  display: flex;
+  justify-content: center;
 }
-  
-.a1 {
-  background-color: #FBFEAB;
+.countMessage{
+  flex-direction: column;
+	width: 90%;
+	font-family: NanumSquareEB;
+	font-size: 2.5rem;
+	color: #888888;
+  margin-bottom: 5rem;
+}
+.countBox{
+  display: flex;
+  justify-content: center;
   text-align: center;
-  text-transform: uppercase;
-  font-family: monaco;
+  align-items: center;
+  margin-right:4vw;
+  font-weight: bold;
+  margin-bottom:1rem;
 }
-
-.a2 {
-  background-color: #B8E2DF;
+.contentsText{
+  margin-right: 1rem;
 }
-
-.a3 {
-  background-color: #28FDBE;
+.contentsCounter, .userCounter{
+  font-size: 5vw;
+  color: #B09171;
 }
-
-.a4 {
-  background-color: #FB955D;
+.text{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
 }
-
-.a5 {
-  background-color: #D5E4DF;
+.userCounter{
+  margin: 0 8px;
 }
-
-.a6 {
-  background-color: #FC3C40;
+.leftUsers{
+  /* transition: 0.5s; */
+	font-size: 6vw;
+	color: #eee;
 }
-
-.a7 {
-  background-color: #1E1CAC;
+.rightUsers{
+  /* transform: rotateY(-180deg); */
+  font-size: 6vw;
+	color: #eee;
 }
-
-.a8 {
-  background-color: #73FFDF;
-}
-
-

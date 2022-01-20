@@ -93,11 +93,6 @@ const ForYouEdit = ({ post }) => {
                 console.log(err)
             });
     }
-    console.log('title', titleEdit);
-    console.log('category', categoryEdit);
-    console.log('text', textEdit); //글 소개
-    console.log('content_id', content_id); //컨텐츠 리스트 id 배열
-    console.log('img', imageEdit);
 
     //'등록'버튼 클릭시
     function submitForm(e) {
@@ -106,8 +101,7 @@ const ForYouEdit = ({ post }) => {
             titleEdit === '' ||
             textEdit === '' ||
             categoryEdit === '' ||
-            content_id.length === 0 ||
-            imageEdit.length === 0
+            content_id.length === 0
         ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
@@ -146,18 +140,14 @@ const ForYouEdit = ({ post }) => {
             <div className={style.writingBox}>
                 <p className={style.menu_p}>리스트 작성</p>
                 <div className={style.imgBox}>
-                    {/* {files.length === 0 ? (
+                    {files.length === 0 ? (
                         <img
                             className={style.img}
                             src={image}
                         />) : (<img
                             className={style.img}
                             src={files}
-                        />)} */}
-                        <img
-                            className={style.img}
-                            src={files}
-                        />
+                        />)}
                     <input
                         className={style.imgFile}
                         type="file"

@@ -1,0 +1,60 @@
+.container{
+	text-align: center;
+	width: 27vw;
+	background-color:white;
+}
+.container:hover{
+    cursor: pointer;
+}
+.img {
+	width:100%;
+	height:10vw;
+	margin:0;
+	overflow: hidden;
+}
+.textbox{
+	text-align: left;
+	margin-left: 1rem;
+	width: 100%;
+}
+.titleBox{
+	display: flex;
+	align-items: center;
+	justify-content:space-between;
+	margin-top: 1rem;
+}
+.title{
+	font-size:1.1rem;
+	font-weight: bold;
+	margin: 0.5rem 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 17vw;
+}
+.iconText{
+	font-size:0.7vw;
+	margin-top: 0.4rem;
+}
+.writer{
+	margin: 0;
+}
+.category{
+	background-color:#B09171;
+	width:16vw;
+	height:1.7rem;
+	padding: 0.3rem 1rem;
+	margin: 2rem 0;
+	font-size: 0.9vw;
+	color: white;
+}
+.unlike{
+	color:#cccccc;
+	margin-right: 2.5rem;
+	font-size: 1.2rem;
+	text-align: center;
+}
+
+@media screen and (max-width:767px) {
+
+}
