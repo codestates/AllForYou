@@ -34,38 +34,6 @@ function MyPgaeUpdate() {
         setUpdataeInfo({ ...updateInfo, [key]: e.target.value });
     };
 
-    // const handleUpdate = () => {
-    //     const { nickname, password, repassword } = updateInfo;
-    //     if (!nickname || !password || !repassword) {
-    //         setErrorMessage("nickname, 비밀번호 모두 다 입력해야합니다.");
-    //         setTimeout(function() { setErrorMessage("") }, 3000);
-    //     } else if (password.length < 8 || repassword.length < 8) {
-    //         setErrorMessage("비밀번호는 8글자 이상이어야합니다.");
-    //         setTimeout(function() { setErrorMessage("") }, 3000);
-    //     } else if (repassword !== password) {
-    //         setErrorMessage("비밀번호가 일치하지 않습니다.");
-    //         setTimeout(function() { setErrorMessage("") }, 3000);
-    //     } else {
-    //     axios
-    //         .patch(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, updateInfo)
-    //         .then((res) => {
-    //             console.log(res.data)
-    //             const picture = res.data.user_picture;
-    //             const nickname = res.data.nickname;
-    //             dispatch(setProfileImage(picture));
-    //             dispatch(setNickname(nickname));
-    //             dispatch(setUpdateInfo(false))
-    //             window.location.reload('/');
-    //         })
-    //         .catch((err) => {
-    //             if (err.response.data.message === "중복된 닉네임입니다.") {
-    //                 setErrorMessage("이미 사용하고 있는 닉네임입니다");
-    //                 setTimeout(function() { setErrorMessage("") }, 3000);
-    //             }
-    //         });
-    //     }
-    // };
-
     function submitForm(e) {
         e.preventDefault();
         const { nickname, password, repassword } = updateInfo;
