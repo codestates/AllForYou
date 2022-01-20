@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
     if (req.file) {
       if(!userInfo.user_picture) {
         // 이미지가 있다면 이미지를 지웁니다.
-        deleteFile(`userInfoImage/${id}/${userInfo.user_picture}`);
+        deleteFile(`userInfoImage/${id}/${userInfo.user_picture.split('/')[6]}`);
       }
       await users.update({ user_picture: req.file.location }, { where: { id: id } })
     }
