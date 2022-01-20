@@ -1,10 +1,11 @@
 .container {
   margin: auto;
-  margin-left: 5em;
+  /* margin-left: 5em; */
   padding: 0 0 3em 0;
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
+justify-content:center;
 }
 
 .contents_container {

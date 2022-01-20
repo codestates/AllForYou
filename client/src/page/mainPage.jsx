@@ -16,13 +16,10 @@ const MainPage = () => {
   };
   return (
     <div>
-      {/* <LandingPage_1_1 /> */}
       <LandingPage_1 />
-      <LandingPage_2 />
       <LandingPage_2_1 />
       <LandingPage_3 />
       <LandingPage_4 />
-      {/* <LandingPage_2 /> */}
     </div>
   );
 };

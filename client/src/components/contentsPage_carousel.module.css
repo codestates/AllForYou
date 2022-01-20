@@ -1,7 +1,7 @@
 .container {
   margin: 0 1em;
   /* padding: 0 1em 1em 1em; */
-  width: 38em;
+  width: 55em;
   /* height: 12em; */
   /* background-color: black; */
   z-index: 999;
@@ -41,6 +41,12 @@
 
 .like {
   font-size: 0.7em;
+}
+
+@media screen and (max-width: 2500px) {
+  .container{
+    width: 38em;
+  }
 }
 
 @media screen and (max-width: 920px) {
