@@ -63,12 +63,19 @@ const ContentsPage_carousel = ({ select_1_category }) => {
     centerMode: true,
     infinite: true,
     centerPadding: "0px",
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
     responsive: [
       // 반응형 웹 구현 옵션
+      {
+        breakpoint: 2200, //화면 사이즈 960px일 때
+        settings: {
+          //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+          slidesToShow: 3,
+        },
+      },
       {
         breakpoint: 920, //화면 사이즈 960px일 때
         settings: {

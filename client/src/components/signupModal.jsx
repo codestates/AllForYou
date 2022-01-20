@@ -77,7 +77,7 @@ const SignupModal = () => {
   return (
     <div className={style.body} onClick={modalOutSide}>
       <div className={style.container}>
-        <img className={style.img} src="logo(background-white).png" alt="" />
+        <img className={style.img} src="/image/logo(background-white).png" alt="" />
         <input
           className={style.myInfo}
           type="text"

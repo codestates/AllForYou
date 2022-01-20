@@ -21,7 +21,7 @@ const ForYouWriting = () => {
     const [text, setText] = useState('');
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
-    console.log(state)
+
 
     const content_id = state.map((el) => {
         return el.contents.id

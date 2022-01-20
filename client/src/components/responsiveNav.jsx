@@ -3,24 +3,38 @@ import style from "./responsiveNav.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import { setAccessToken, login, loginModal } from '../action';
+import { 
+  login, 
+  loginModal, 
+  setKakaoLogin, 
+  setGoogleLogin 
+} from '../action';
 import { useNavigate } from "react-router-dom";
 
 const ResponsiveNav = () => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const { isModal } = useSelector((state) => state.loginModalReducer);
-  // const { isLogin } = useSelector((state) => state.loginReducer);
-  // const { accessToken } = useSelector((state) => state.loginReducer);
+  const dispatch = useDispatch();
+  const { isModal } = useSelector((state) => state.loginModalReducer);
+  const { isLogin } = useSelector((state) => state.loginReducer);
 
   const handleLogout = () => {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
-        // dispatch(setAccessToken(null));
-        // dispatch(login(!isLogin));
-        window.location.reload('/');
+        console.log(res)
+          dispatch(login(false));
+          dispatch(setKakaoLogin(false));
+          dispatch(setGoogleLogin(false));
+          navigate('/')
       })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleLoginModal = () => {
+    dispatch(loginModal(true));
+    console.log(isModal);
   };
 
   return (
@@ -32,8 +46,12 @@ const ResponsiveNav = () => {
           onClick={() => navigate('/')}
         />
         <div className={style.header_menubox}>
-          <p className={style.header_menu} onClick={() => navigate('/mypage')}>MY PAGE</p>
-          <p className={style.header_menu} onClick={() => navigate('/login')}>LOGIN</p>
+          <button className={style.header_menu} onClick={() => navigate('/mypage')}>MY PAGE</button>
+          {isLogin === false ? (
+            <button className={style.header_menu} onClick={handleLoginModal}>LOGIN</button>
+          ) : ( 
+            <button className={style.header_menu} onClick={handleLogout}>LOGOUT</button>
+          )}
         </div>
       </div>
       <div className={style.underbar}>
