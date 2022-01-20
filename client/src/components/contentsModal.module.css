@@ -94,11 +94,19 @@
   font-weight: 600;
 }
 
-.link {
-  margin-right: 0.4em;
+.link_container {
+  position: absolute;
+  top: 6em;
+  right: 2em;
   font-weight: 600;
   text-align: center;
 }
+
+/* .link {
+  margin-right: 0.4em;
+  font-weight: 600;
+  text-align: center;
+} */
 
 .link:hover {
   color: rgb(101, 86, 86);
@@ -209,8 +217,56 @@
     left: 15em;
     padding: 20px 10px;
   }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    margin-left: 0.5em;
+  }
+  .year {
+    margin-left: 0.5em;
+  }
+  .runtime {
+    margin-left: 0.5em;
+  }
+
+  .link_container {
+    position: absolute;
+    top: 6.5em;
+    right: 1em;
+  }
 
   .like {
     font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    width: 29em;
+    left: 0;
+  }
+  .title {
+    margin-left: 0.5em;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .year {
+    margin-left: 0.5em;
+  }
+  .runtime {
+    margin-left: 0.5em;
+  }
+  .link_container {
+    position: absolute;
+    top: 6.5em;
+    right: 1em;
+  }
+  .link {
+    width: 10em;
   }
 }

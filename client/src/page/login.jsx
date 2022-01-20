@@ -134,7 +134,7 @@ const handlegoogleLogin= async () => {
     <>
       <div className={style.body} onClick={modalOutSide}>
         <div className={style.container}>
-          <img className={style.logo} src="logo(background-white).png" />
+          <img className={style.logo} src="/image/logo(background-white).png" />
           <input
             className={style.myInfo}
             type="text"
@@ -155,10 +155,10 @@ const handlegoogleLogin= async () => {
           <span className={style.message}>{errorMessage}</span>
           <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
           <button className={style.google} onClick={handlegoogleLogin}>
-            <img className={style.google_icon} src="google_icon.png" />
+            <img className={style.google_icon} src="/image/google_icon.png" />
           </button>
           <button className={style.kakao} onClick={handlekakaoLogin}>
-            <img className={style.kakao_icon} src="kakao_icon.png" />
+            <img className={style.kakao_icon} src="/image/kakao_icon.png" />
           </button>
           <span className={style.membership}>
             아직 All for you의 회원이 아니신가요?

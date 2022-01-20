@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import style from "./mypageProfilebox.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { setUpdateInfo, setWithdrawModal } from '../action';
@@ -8,6 +8,7 @@ function ProfileBox() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { nickname } = useSelector((state) => state.loginReducer);
+    const { profileImage } = useSelector((state) => state.loginReducer);
 
     const withModalHandler = () => {
         dispatch(setWithdrawModal(true));
@@ -19,7 +20,7 @@ function ProfileBox() {
     return (
         <div className={style.container}>
             <div className={style.info}>
-                <img className={style.img} src="sample_img.jpeg" alt=""  />
+                <img className={style.img} src={profileImage} alt="" />
                 <p className={style.nickname}>
                     {nickname}
                 </p>
