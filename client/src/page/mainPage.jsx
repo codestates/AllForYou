@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 import LandingPage_1 from "../page/landingPage/landingPage_1";
@@ -14,6 +14,11 @@ const MainPage = () => {
   const handleClick = () => {
     navigate("/contents");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <LandingPage_1 />

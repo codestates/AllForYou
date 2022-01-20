@@ -25,7 +25,7 @@ const Comment = ({ comment, getComment }) => {
                 getComment();
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
             });
     };
 
@@ -45,7 +45,7 @@ const Comment = ({ comment, getComment }) => {
                 }
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
             });
     };
 

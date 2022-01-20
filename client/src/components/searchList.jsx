@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AddList from "./addList";
 import { addToList } from '../action/index';
 import { useSelector, useDispatch } from 'react-redux';
+import { setMessageModal } from '../action/index';
 
 const SearchList = ({ resultSearch }) => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const SearchList = ({ resultSearch }) => {
             dispatch(addToList(content))
         }
         else {
-            console.log('이미 추가된 상품입니다')
+            dispatch(setMessageModal(true, '이미 추가된 리스트입니다.'));
         }
     }
 

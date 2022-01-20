@@ -8,9 +8,7 @@ import { loginModal } from "../action/index";
 import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 
 const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
-
   const dispatch = useDispatch();
-
   const { isLogin } = useSelector((state) => state.loginReducer);
   const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
 
@@ -33,7 +31,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert(err)
       });
   };
 
@@ -58,7 +56,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
           dispatch(contentsLike(true));
         })
         .catch((err) => {
-          console.log(err);
+          alert(err)
         });
     } else {
       axios
@@ -69,7 +67,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
           dispatch(contentsLike(false));
         })
         .catch((err) => {
-          console.log(err);
+          alert(err)
         });
     }
   };

@@ -164,7 +164,6 @@
   font-size: 0.9rem;
   border: none;
   border-radius: 1rem;
-  /* background-color: rgb(233, 233, 233); */
   border: 1px solid black;
 }
 .btnOk{
@@ -207,7 +206,8 @@
   padding-top: 1.5rem;
 }
 .titleBox{
-  width: 20rem;
+  width: 95%;
+  margin: 2rem 0 0 0;
 }
 .title{
   font-size: 1.1rem;

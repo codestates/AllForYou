@@ -32,7 +32,7 @@ const CommentInput = ({ getComment, post, isLogin }) => {
                 }
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
             });
     }
 

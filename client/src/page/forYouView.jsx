@@ -17,20 +17,6 @@ const ForYouView = ({ post, isLogin }) => {
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
 
-  useEffect(() => {
-    getPostDetail();
-    getContent()
-    getComment();
-    if (isLogin) {
-      getLikeInfo();
-    }
-    window.scrollTo(0, 0);
-  }, []);
-
-    useEffect(() => {
-    getComment();
-    }, [comment]);
-
   function getPostDetail() {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`)
@@ -40,7 +26,7 @@ const ForYouView = ({ post, isLogin }) => {
         }
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
   }
 
@@ -53,7 +39,7 @@ const ForYouView = ({ post, isLogin }) => {
         }
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
   }
 
@@ -69,7 +55,7 @@ const ForYouView = ({ post, isLogin }) => {
         }
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
   };
 
@@ -93,7 +79,7 @@ const ForYouView = ({ post, isLogin }) => {
           setLikeColor(true);
         })
         .catch((err) => {
-          console.log(err)
+          alert(err)
         });
     } else {
       axios
@@ -102,7 +88,7 @@ const ForYouView = ({ post, isLogin }) => {
           setLikeColor(false);
         })
         .catch((err) => {
-          console.log(err)
+          alert(err)
         });
     }
   };
@@ -114,7 +100,7 @@ const ForYouView = ({ post, isLogin }) => {
         setComment(res.data.data);
       })
       .catch((err) => {
-        if (err) throw err;
+        alert(err)
       });
   };
 
@@ -126,7 +112,7 @@ const ForYouView = ({ post, isLogin }) => {
         dispatch(setMessageModal(true, '게시글을 삭제했습니다.'));
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
   };
 
@@ -167,6 +153,20 @@ const ForYouView = ({ post, isLogin }) => {
             ],
         });
     };
+
+  useEffect(() => {
+    getPostDetail();
+    getContent()
+    getComment();
+    if (isLogin) {
+      getLikeInfo();
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    getComment();
+  }, [comment]);
 
   return (
     <div className={style.container}>
