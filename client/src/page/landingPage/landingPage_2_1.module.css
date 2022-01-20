@@ -5,9 +5,10 @@
 }
 
 .contentsPageBtn {
-  position: absolute;
+  /* position: absolute;
   top: 195%;
-  left: 38.5%;
+  left: 38.5%; */
+  margin-bottom: 4em;
   font-size: 1.8em;
   font-weight: 700;
   width: 15em;
@@ -22,6 +23,10 @@
   color: aliceblue;
   border: 0.1em solid aliceblue;
   transition: all 500ms ease-in;
+}
+
+.button_sort {
+  text-align: center;
 }
 
 .words_us {
@@ -41,7 +46,7 @@
 }
 
 .main_text {
-  padding: 1.3em 0 2em 0;
+  padding: 1.3em 0 1em 0;
   color: aliceblue;
   text-align: center;
   font-size: 10em;
@@ -89,7 +94,7 @@
 }
 
 .img_main_text {
-  transition: all 500ms ease-in;
+  transition: all 300ms ease-in;
 }
 
 .img_text {
