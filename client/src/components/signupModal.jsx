@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import style from "./signupModal.module.css";
+import dummy from "../dummy/dummy";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { signupModal, loginModal } from '../action';
+// require("dotenv").config();
 
 const SignupModal = () => {
     const dispatch = useDispatch();
     const { isModal } = useSelector((state) => state.loginModalReducer);
     const { isState } = useSelector((state) => state.signupModalReducer);
-    const [errorMessage, setErrorMessage] = useState("");
     const [signupInfo, setSignUpInfo] = useState({
       email: "",
       nickname: "",
       password: "",
       repassword: "",
     });
-    
+    const [errorMessage, setErrorMessage] = useState("");
     const handleInputValue = (key) => (e) => {
       setSignUpInfo({ ...signupInfo, [key]: e.target.value });
     };
   
-    const handleSignUp = () => {
+    const handleSignUp = async() => {
       const { email, nickname, password, repassword } = signupInfo;
       if (!email || !nickname || !password || !repassword) {
         setErrorMessage("이메일, nickname, 비밀번호 모두 다 입력해야합니다.");
@@ -32,8 +33,10 @@ const SignupModal = () => {
         setErrorMessage("비밀번호가 일치하지 않습니다.");
         setTimeout(function() { setErrorMessage("") }, 3000);
       } else {
-        axios
-          .post(`${process.env.REACT_APP_SERVER_URL}/users/signup`, signupInfo)
+        await axios
+          .post(`${process.env.REACT_APP_SERVER_URL}/users/signup`, signupInfo, {
+            withCredentials: true,
+          })
           .then((res) => {
             if (res.status === 201) {
               handleModal();
@@ -42,11 +45,12 @@ const SignupModal = () => {
             }
           })
           .catch((err) => {
-            if (err.message === "이메일 중복입니다.") {
+            console.log("회원가입에러", err.response.data);
+            if (err.response.data.message === "email already exists") {
               setErrorMessage("이미 사용하고 있는 이메일입니다");
               setTimeout(function() { setErrorMessage("") }, 3000);
             } else if (
-              err.message === "닉네임 중복입니다."
+              err.response.data.message === "nickname already exists"
             ) {
               setErrorMessage("이미 사용하고 있는 닉네임입니다");
               setTimeout(function() { setErrorMessage("") }, 3000);
@@ -73,19 +77,18 @@ const SignupModal = () => {
         dispatch(signupModal(false))
       }
     }
-    
   return (
     <div className={style.body} onClick={modalOutSide}>
       <div className={style.container}>
-        <img className={style.img} src="logo(background-white).png" alt="" />
+        <img className={style.logo} src="logo(background-white).png" alt="" />
         <input
           className={style.myInfo}
           type="text"
-          placeholder="이메일"
+          placeholder="아이디"
           required
           onChange={handleInputValue("email")}
         />
-        <div className={style.itemText}>이메일</div>
+        <div className={style.itemText}>아이디</div>
         <input
           className={style.myInfo}
           type="text"
@@ -119,6 +122,7 @@ const SignupModal = () => {
         <span className={style.message}>{errorMessage}</span>
         <span className={style.login_text}>이미 All For You 회원이신가요 ?</span>
         <button className={style.login_bnt} onClick={handleModal}>
+        {/* <button className={style.login_bnt}> */}
           로그인
         </button>
       </div>

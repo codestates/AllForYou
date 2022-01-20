@@ -11,111 +11,27 @@ export const REMOVE_FROM_LIST = "REMOVE_FROM_LIST";
 export const MYPAGE_REVIEWS = "MYPAGE_REVIEWS";
 export const MYPAGE_LIKES = "MYPAGE_LIKES";
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
-export const CONTENTS_MODAL = "CONTENTS_MODAL"
-export const SET_POST = 'SET_POST';
-export const SET_NICKNAME = 'SET_NICKNAME';
-export const SET_EMAIL = 'SET_EMAIL';
-export const SET_IMAGE = 'SET_IMAGE';
-export const REVIEWS_DATE = "REVIEWS_DATE";
-export const LIKES_DATE = "LIKES_DATE";
-export const SCROLL_TOP = "SCROLL_TOP";
-export const SET_UPDATE = "SET_UPDATE";
-export const SET_WITHDRAW = "SET_WITHDRAW";
-export const SET_PASSWORD = "SET_PASSWORD";
-export const HANDLE_MYPAGE = "HANDLE_MYPAGE";
-export const SET_LIST = 'SET_LIST';
 
-export const CONTENTS_LIKE = 'CONTENTS_LIKE';
-
-export const login = (isLogin) => {
+export const login = (state) => {
     return {
         type: LOGIN,
         payload: {
-            isLogin
+            isLogin: state.isLogin,
+            isAdmin: state.isAdmin,
+            isOauth: state.isOauth,
+            id: state.id,
+            nickname: state.nickname,
+            email: state.email,
         },
     };
 };
 
-export const setUpdateInfo = (updateInfo) => {
+export const profileimg = (srcImg) => {
     return {
-        type: SET_UPDATE,
-        payload: {
-            updateInfo
-        },
+        type: PROFILE_IMG,
+        payload: { profileimg: srcImg }
     };
-};
-
-export const setHandleMypage = (handlemypage) => {
-    return {
-        type: HANDLE_MYPAGE,
-        payload: {
-            handlemypage
-        },
-    };
-};
-
-export const setWithdrawModal = (withdrawModal) => {
-    return {
-        type: SET_WITHDRAW,
-        payload: {
-            withdrawModal
-        },
-    };
-};
-
-export const setReviewsDate = (reviewsDate) => {
-    return {
-        type: REVIEWS_DATE,
-        payload: {
-            reviewsDate
-        },
-    };
-};
-
-export const setLikesDate = (likesDate) => {
-    return {
-        type: LIKES_DATE,
-        payload: {
-            likesDate
-        },
-    };
-};
-
-export const setNickname = (nickname) => {
-    return {
-        type: SET_NICKNAME,
-        payload: {
-            nickname
-        },
-    };
-};
-
-export const setPassword = (password) => {
-    return {
-        type: SET_PASSWORD,
-        payload: {
-            password
-        },
-    };
-};
-
-export const setEmailData = (emaildata) => {
-    return {
-        type: SET_EMAIL,
-        payload: {
-            emaildata
-        },
-    };
-};
-
-export const setProfileImage = (profileImage) => {
-    return {
-        type: SET_IMAGE,
-        payload: {
-            profileImage
-        },
-    };
-};
+}
 
 export const loginModal = (state) => {
     return {
@@ -123,6 +39,13 @@ export const loginModal = (state) => {
         payload: { isModal: state }
     };
 };
+
+// export const signupState = (state) => {
+//     return {
+//         type: SIGNUP_STATE,
+//         payload: { isState: state }
+//     };
+// }
 
 export const signupModal = (state) => {
     return {
@@ -138,21 +61,17 @@ export const setAccessToken = (state) => {
     };
 }
 
-export const setMypageReviews = (mypageReviews) => {
+export const setMypageReviews = (state) => {
     return {
         type: MYPAGE_REVIEWS,
-        payload: {
-            mypageReviews
-        },
+        payload: { mypageReviews: state }
     };
 }
 
-export const setMypageLikes = (mypageLikes) => {
+export const setMypageLikes = (state) => {
     return {
         type: MYPAGE_LIKES,
-        payload: {
-            mypageLikes
-        },
+        payload: { mypageLikes: state }
     };
 }
 
@@ -187,48 +106,5 @@ export const setMessageModal = (boolean, content) => {
             isModalOpen: boolean,
             content,
         },
-    };
-};
-
-export const contentsModal = (boolean, info) => {
-    return {
-        type: CONTENTS_MODAL,
-        payload: {
-            modalOnOff: boolean,
-            info,
-        }
-    };
-};
-
-export const setPost = (post) => {
-    return {
-        type: SET_POST,
-        payload: post,
-    };
-};
-
-export const contentsLike = (boolean) => {
-    return {
-        type: CONTENTS_LIKE,
-        payload: {
-            likeOnOff: boolean
-        }
-    };
-};
-
-export const scrollTop = (boolean, number) => {
-    return {
-        type: SCROLL_TOP,
-        payload: {
-            buttonOnOff: boolean,
-            scrollLength: number
-        }
-    };
-};
-
-export const setList = (list) => {
-    return {
-        type: SET_LIST,
-        payload: list,
     };
 };

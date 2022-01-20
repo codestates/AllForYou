@@ -1,41 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./forYouCard.module.css";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setPost, setList } from "../action";
 
-const ForYouCard = ({ review, like }) => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    // const [like, setLike] = useState(false);
-    // console.log(review)
-    // console.log('!!',like)
-    // console.log('!!id',review.id)
-
-    // const id = review.id
-
-    // let likeColor = []
-
-    // for(let i=0; i<like.length; i++){
-    //     if(id === like[i]){
-    //         likeColor.push(true)
-    //     }
-    // }
-
-    // const color = like.filter((el)={
-    //     if(id === el){
-    //         return true
-    //     }
-    // })
-
-    // const likeFilterd = like.map((el)=>{
-    //     if(review.id === el){
-    //         setLikeColor(true)
-    //         console.log(el)
-    //     }
-    //     return setLikeColor(false)
-    // })
-
+const ForYouCard = ({ review, onClick }) => {
+    // const handleClickShowmore = () => {
+    //     history.push({
+    //         pathname: `/planpage/${id}`,
+    //         state: {
+    //             title,
+    //             desc,
+    //             representAddr,
+    //         },
+    //     });
+    // };
 
     // const handleShareKakao = () => {
     //     if (!window.Kakao.isInitialized()) {
@@ -75,15 +51,16 @@ const ForYouCard = ({ review, like }) => {
     //     dispatch(notify(`클립보드 복사 완료 🙌🏻`));
     // };
 
-    const handlePostInfo = () => {
-        dispatch(setPost(review));
-        navigate(`/foryouview/:${review.id}`)
-    }
-
     return (
-        <div className={style.container} onClick={handlePostInfo}>
-            <div className={style.contentbox}>
+        <div className={style.container} onClick={onClick}>
+            <div
+                className={style.contentbox}
+            // onClick={handleClickShowmore}
+            >
                 <img className={style.img}
+                    // src={`https://source.unsplash.com/random?${Math.floor(
+                    //     Math.random() * 100,
+                    // )}/1600x900?blue,water`}
                     src={review.image}
                     alt=""
                 />
@@ -91,12 +68,11 @@ const ForYouCard = ({ review, like }) => {
                     <div className={style.titleBox}>
                         <p className={style.title}>{review.title}</p>
                         <div className={style.icon}>
-                        {/* <div className={`${likeColor ? style.like : style.unlike}`}> */}
-                            <i className="fas fa-heart"></i>
-                            <div className={style.iconText}>좋아요<br />{review.like}개</div>
+                            <i className="far fa-heart"></i>
+                            <div className={style.iconText}>좋아요 10개</div>
                         </div>
                     </div>
-                    <p className={style.writer}>by {review.nickname}</p>
+                    <p className={style.writer}>by {review.user_id}</p>
                     <div className={style.category}>{review.category}</div>
                 </div>
             </div>

@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import style from "./forYou.module.css";
 import ForYouCard from "../components/forYouCard";
 import { useNavigate } from "react-router-dom";
-import { loginModal } from '../action/index';
-import { useDispatch } from 'react-redux';
+import dummy3 from '../dummy/dummy3';
 
-const ForYou = ({ isLogin }) => {
+const ForYou = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("ALL");
-  const [selected, setSelected] = useState("최신순");
-  const [review, setReview] = useState([]);
-  const [like, setLike] = useState([]);
-  // const [likeColor, setLikeColor] = useState([]);
+  const [selectedLike, setSelectedLike] = useState("최신순");
+  // const [review, setReview] = useState([]);
 
-  const filteredCategory = review.filter((el) => {
+  const filteredCategory = dummy3.filter((el) => {
     let category = el.category;
     if (selectedCategory === "ALL") {
       return category;
@@ -24,83 +19,28 @@ const ForYou = ({ isLogin }) => {
     }
   });
 
-  // const id = filteredCategory.map((el)=>{
-  //   return el.id
-  // })
-
-  // const likeColor = Array(id.length).fill(false)
-  
-  // for(let i=0; i<id.length; i++){
-  //   for(let j=0; j<like.length; j++){
-  //     if(id[i] === like[j]){
-  //       likeColor[i] = true
-  //     } 
-  //   }
+  //axios review 정보 가져오기
+  // async function getreviews() {
+  //   await axios
+  //     .get(`${process.env.REACT_APP_SERVER_URL}/review`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //       },
+  //       withCredentials: true,
+  //     }
+  //     )
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         setReview(res.data)
+  //         console.log(res.data)
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     });
   // }
-  // filteredCategory.push(likeColor)
-  // console.log('!!',filteredCategory)
 
-  const getreviews = ()=> {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
-      .then((res) => {
-        if (res.status === 200) {
-          setReview(res.data.data)
-          console.log(res.data.data)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      });
-  }
-
-  const getLikereviews = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=like`)
-      .then((res) => {
-        if (res.status === 200) {
-          setReview(res.data.data)
-          console.log(res.data.data)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      });
-  }
-
-  const getUserLikes = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlike`)
-      .then((res) => {
-        if (res.status === 200) {
-          setLike(res.data.data)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      });
-  }
-
-  const handleLoginStatus = () => {
-    if (!isLogin) {
-      dispatch(loginModal(true));
-      return;
-    }
-    navigate("/foryouwriting")
-  }
-
-  useEffect(() => {
-    getreviews()
-    getUserLikes()
-  }, []);
-
-  useEffect(() => {
-    if (selected === '좋아요순') {
-      getLikereviews()
-    } else {
-      getreviews()
-    }
-  }, [selected]);
+  // useEffect(() => getreviews(), []);
 
   return (
     <div className={style.container}>
@@ -111,36 +51,32 @@ const ForYou = ({ isLogin }) => {
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
             <option value="ALL">ALL</option>
-            <option value="동기부여">동기부여를 받고 싶다면?</option>
-            <option value="도전">도전하고 싶은 나에게</option>
-            <option value="멘토">현재 나의 상황에 멘토를 원하시나요?</option>
-            <option value="편안함">마음속 편안함을 찾는다면?</option>
-            <option value="웃음">생각없이 웃고 싶다면?</option>
-            <option value="눈물">오늘 한 없이 눈물을 쏟고 싶다면?</option>
+            <option value="동기부여를 받고 싶다면?">동기부여를 받고 싶다면?</option>
+            <option value="도전하고 싶은 나에게">도전하고 싶은 나에게</option>
+            <option value="현재 나의 상황에 멘토를 원하시나요?">현재 나의 상황에 멘토를 원하시나요?</option>
+            <option value="마음속 편안함을 찾는다면?">마음속 편안함을 찾는다면?</option>
+            <option value="생각없이 웃고 싶다면?">생각없이 웃고 싶다면?</option>
+            <option value="오늘 한 없이 눈물을 쏟고 싶다면?">오늘 한 없이 눈물을 쏟고 싶다면?</option>
             <option value="백색소리">백색소리</option>
           </select>
           <select
             className={style.sort}
-            onChange={(e) => setSelected(e.target.value)}
+            onChange={(e) => setSelectedLike(e.target.value)}
           >
             <option value="최신순">최신순</option>
-            <option value="좋아요순">좋아요순</option>
+            <option value="좋아요 순">좋아요순</option>
           </select>
         </div>
-        <button
-          className={style.btn}
-          onClick={handleLoginStatus}
-        >작성하기</button>
+        <button className={style.btn} onClick={() => navigate("/foryouwriting")}>리스트 작성하기</button>
       </div>
       <div className={style.cardContainer}>
-        {filteredCategory.map((review) => (
-          <ForYouCard
+        {filteredCategory.map((review) => {
+          return <ForYouCard
             key={review.id}
             review={review}
-            // likeColor={likeColor}
-            like={like}
+            onClick={() => navigate("/foryouview")}
           />
-        ))}
+        })}
       </div>
     </div>
   );

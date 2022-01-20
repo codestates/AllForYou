@@ -1,38 +1,22 @@
-const { contents, likes, users } = require("../../models");
+const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
-    const filter = req.params.categoryName;
+    const filter = req.body.category;
     try {
         const contentsFirstFilter = await contents.findAll({
             where: {
                 category: filter
-            },
-            include: [
-                { model: likes, attributes: [ "id" ] }
-            ]
-        })
-
-        let contentsList = contentsFirstFilter.map((el) => {
-            return {
-                "id": el.id,
-                "title": el.title,
-                "director": el.director,
-                "year": el.year,
-                "rating": el.rating,
-                "runtime": el.runtime,
-                "summary": el.summary,
-                "genres": el.genres,
-                "image": el.image,
-                "category": el.category,
-                "like": el.likes.length,
-                "detail": el.detail,
-                "link": el.link,
-                "type": el.type,
-                "view": el.view,
             }
         })
-        
-        return res.status(200).json({data: contentsList, message: "successfully viewed the category individual page"})
+        const contentId = await contentsFirstFilter.data.map((el) => { return el.id; });
+        const contentLike = await contentId.data.map(async (el) => {
+            return await likes.count({ where: { content_id: el } })
+        });
+        const contentFirstData = {
+            contentsList: contentsList,
+            contentLike: contentLike
+        }
+        return res.status(200).json({data: contentFirstData, message: "successfully viewed the category individual page"})
     }
     catch(err) {
         return res.status(500).json({ data: null, message: "server error" })

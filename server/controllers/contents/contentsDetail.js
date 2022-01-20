@@ -1,38 +1,24 @@
-const { contents, likes, users } = require("../../models");
+const { contents, likes } = require("../../models");
 
 module.exports = async(req, res) => {
-    const contents_id = req.params.contentId;
     try {
-        const contentData = await contents.findOne({
+        const contentsDetailList = await contents.findOne({
             where: {
-                id: contents_id
-            },
-            include: [
-                { model: likes, attributes: [ "id" ] }
-            ]
+                id: req.params.id
+            }
         })
-
-        const contentsDetail = { 
-            "id": contentData.id,
-            "title": contentData.title,
-            "director": contentData.director,
-            "year": contentData.year,
-            "rating": contentData.rating,
-            "runtime": contentData.runtime,
-            "summary": contentData.summary,
-            "genres": contentData.genres,
-            "image": contentData.image,
-            "category": contentData.category,
-            "like": contentData.likes.length,
-            "detail": contentData.detail,
-            "link": contentData.link,
-            "type": contentData.type,
-            "view": contentData.view,
+        const contentLike = await likes.count({ 
+            where: { 
+                content_id: contentsDetailList.data.id 
+            } 
+        })
+        const contentDetailData = {
+            contentsDetailList: contentsDetailList,
+            contentLike: contentLike
         }
-
-        return res.status(200).json({data: contentsDetail, message: "successfully viewed the details page"})
+        return res.status(200).json({data: contentDetailData, message: "successfully viewed the details page"})
     }
     catch(err) {
-        return res.status(500).json({ data: err, message: "server error" })
+        return res.status(500).json({ data: null, message: "server error" })
     }
 }

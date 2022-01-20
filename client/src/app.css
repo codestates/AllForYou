@@ -32,17 +32,91 @@
   color: #61dafb;
 }
 
-@font-face {
-  font-family: "BreeSerif-Regular";
-  src: url("./font/BreeSerif-Regular.ttf");
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-@font-face {
-  font-family: "Merriweather-BlackItalic";
-  src: url("./font/Merriweather-BlackItalic.ttf");
+/* @media (min-width: 300px) and (max-width: 757px) {
+  footer {
+    display: none;
+  }
 }
 
-@font-face {
-  font-family: "NotoSerifKR-Regular";
-  src: url("./font/NotoSerifKR-Regular.otf");
+@media (min-width: 1024px) {
+  .footer-logo-img {
+    height: 70px;
+    margin: 5px 10px 5px 5px;
+  }
 }
+
+@media (min-width: 300px) and (max-width: 757px) {
+  .sidebar-container {
+    width: 120px;
+  }
+  .sidebar-menu-container {
+    font-size: 12px;
+  }
+  .sidebar-icon {
+    font-size: 20px;
+  }
+  .sidebar-logo {
+    width: 50px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 758px) and (max-width: 1023px) {
+  .sidebar-container {
+    width: 160px;
+  }
+  .sidebar-menu-container {
+    font-size: 16px;
+  }
+  .sidebar-icon {
+    font-size: 25px;
+  }
+  .sidebar-logo {
+    width: 80px;
+    height: 60px;
+  }
+}
+@media (min-width: 300px) and (max-width: 757px) {
+  .header-container {
+    display: none;
+  }
+}
+@media (min-width: 758px) and (max-width: 1023px) {
+  .underbar-container {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .underbar-container {
+    display: none;
+  }
+}
+@media (min-width: 758px) and (max-width: 1023px) {
+  .animation-container {
+    margin-top: 200px;
+  }
+  .notfound-catchphrase {
+    margin-top: 50px;
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .animation-container {
+    margin-top: 250px;
+  }
+  .notfound-catchphrase {
+    margin-top: 80px;
+    font-size: 50px;
+  }
+} */

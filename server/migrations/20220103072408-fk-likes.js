@@ -25,7 +25,7 @@ module.exports = {
 
     await queryInterface.addConstraint("likes", {
       fields: ["review_id"],
-      allowNull: true,
+      allowNull: false,
       onDelete: "CASCADE",
       type: "foreign key",
       references: {
@@ -36,7 +36,7 @@ module.exports = {
 
     await queryInterface.addConstraint("likes", {
       fields: ["content_id"],
-      allowNull: true,
+      allowNull: false,
       onDelete: "CASCADE",
       type: "foreign key",
       references: {

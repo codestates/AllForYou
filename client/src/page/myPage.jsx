@@ -1,65 +1,95 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import style from "./myPage.module.css";
-import { useSelector } from 'react-redux';
-import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import dummy from "../dummy/dummy";
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
-import MyPgaeUpdate from "../components/mypageUpdate";
-import ModalWithdraw from "../components/ModalWithdraw";
+import { 
+  login, 
+  profileimg, 
+  setAccessToken, 
+  setMypageReviews, 
+  setMypageLikes 
+} from '../action/index';
 import Footer from "../components/footer";
+// require("dotenv").config();
 
 const MyPage = () => {
-  const navigate = useNavigate();
-  const { isLogin } = useSelector((state) => state.loginReducer); 
-  const { updateInfo } = useSelector((state) => state.loginReducer);
-  const { withdrawModal } = useSelector((state) => state.loginReducer);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.loginReducer); 
+  const { 
+    isLogin,
+    email,
+    nickname,
+    profileimg } = state
+  const { accessToken } = useSelector((state) => state.accessTokenReducer);
+  const { mypageReviews, mypageLikes } = useSelector((state) => state.mypageReducer);
 
-  const [errMessage, setErrMessage] = useState("");
-  const [isWithdrawModal, setIsWithdrawModal] = useState(false);
-  const [isEditModal, setIsEditModal] = useState(false);
-  const [reviews, setReviews] = useState(null);
-  const [likes, setLikes] = useState(null);
+const [ isEmptyOrPosted, setIsEmptyOrPosted ] = useState(null)
+const [isWithdrawModal, setIsWithdrawModal] = useState(false);
+const [isEditModal, setIsEditModal] = useState(false);
+const [errMessage, setErrMessage] = useState("");
+
+const withModalHandler = () => {
+  setIsWithdrawModal(!isWithdrawModal);
+};
+
+const userinfoEditHandler = () => {
+  setIsEditModal(!isEditModal);
+};
 
   const isAuthenticated = () => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/user/mypage`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+        },
+        withCredentials: true,
+    })
     .then((res) => {
         if(res) {
-            console.log(res.data)
-            const reviewlist = res.data.data.userReviews;
-            const likeslist = res.data.data.userLikes;
-            setReviews(reviewlist);
-            setLikes(likeslist);
+            // console.log(res.data.data.userInfo)
+            const nickname = res.data.data.nickname;
+            const email = res.data.data.email;
+            const profileimg = res.data.data.profileimg;
+            const reviewlist = res.data.data.reviewlist;
+            const likes = res.data.data.likes;
+            dispatch(login({nickname: nickname}));
+            dispatch(login({email: email}));
+            dispatch(profileimg({profileimg: profileimg}));
+            dispatch(setMypageReviews(reviewlist));
+            dispatch(setMypageLikes(likes));
+        } else {
+
         }
     })
     .catch((err) => {
+        dispatch(login({isLogin: false}));
         setErrMessage("잘못된 요청입니다.");
         console.log(isLogin)
     });
-  };
+};
+console.log(mypageReviews)
 
-  useEffect(() => {
+useEffect(() => {
     isAuthenticated();
-  }, []);
+}, []);
+
 
   return (
     <>
-    {isLogin === true ? (
+    {/* {isLogin === true ? ( */}
       <div className={style.mypage_container}>
-        {updateInfo === true ? (<MyPgaeUpdate />) : null}
-        {withdrawModal === true ? (<ModalWithdraw />) : null}
         <ProfileBox />
-        <MyPageBox 
-        reviews={reviews}
-        likes={likes}
-        />
+        <MyPageBox />
       </div>
       
-    ) : (
+    {/* ) : (
       <div className={style.message_box}>
         <div className={style.error_message}>로그인 후 이용 가능 합니다.</div>
       </div>
-    )}
+    )} */}
     </>
   );
 };
