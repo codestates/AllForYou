@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   try{
     const reviewCommentData = await comments.findAll({ 
       where: { review_id: review_id },
-      include: [{ model: users, attributes: ["nickname"] }],
+      include: [{ model: users, attributes: ["nickname", "user_picture"] }],
       order: [['createdAt', 'DESC']]
     })
 
