@@ -90,13 +90,18 @@ input::-webkit-search-results-decoration {
 }
 
 .select_1_All_container {
-  text-align: center;
   /* margin: 1.5em 1.5em 0 1.5em; */
   padding-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
-  justify-content:center;
+  justify-content: center;
 }
+
+/* .contents_sort_cotainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
 
 .contents {
   width: 100%;
@@ -105,6 +110,7 @@ input::-webkit-search-results-decoration {
   background-color: #2e2d2d;
   border-radius: 0.3em;
   justify-content: space-around;
+  /* justify-content: center; */
 }
 
 .contents_part {
@@ -138,8 +144,8 @@ input::-webkit-search-results-decoration {
 
 .topbutton {
   position: fixed;
-  top: 60em;
-  right: 4em;
+  top: 90%;
+  right: 2.5%;
   width: 5em;
   height: 5em;
   background-color: #dbd9d6;
@@ -156,8 +162,8 @@ input::-webkit-search-results-decoration {
 
 .triangle {
   position: fixed;
-  top: 17.1em;
-  right: 1.35em;
+  top: 89.5%;
+  right: 3%;
   font-size: 3.5em;
   z-index: 997;
 }
