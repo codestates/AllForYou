@@ -286,11 +286,15 @@ input::-webkit-search-results-decoration {
   }
 }
 
-@media screen and (max-width: 365px) {
+@media screen and (max-width: 360px) {
   /* 모바일 */
   .container {
     margin-top: 4em;
-    width: 30em;
+    width: 29em;
+  }
+
+  .contents {
+    width: 29em;
   }
 
   /* .contents_part { */

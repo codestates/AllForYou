@@ -71,9 +71,9 @@
   }
 }
 
-@media screen and (max-width: 365px) {
+@media screen and (max-width: 360px) {
   .container {
-    margin: auto;
+    margin: auto 0.5em;
     padding: auto;
     height: 17em;
   }

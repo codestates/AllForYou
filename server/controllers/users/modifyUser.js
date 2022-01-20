@@ -16,6 +16,9 @@ module.exports = async (req, res) => {
   const id = req.cookies.id;
   const { nickname, password } = req.body;
   try{
+    if(!nickname) {
+      return res.status(409).json({ data: null, message: "닉네임 입력은 필수입니다." })
+    }
     const checkNickname = await users.findOne({ 
       where: { nickname : nickname }
     })
