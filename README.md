@@ -42,3 +42,5 @@
 * Role : Team Member
 * Position : Full-Stack
 * Github : [![](https://img.shields.io/badge/github-HongSehwan-yellow?style=flat-square)](https://github.com/HongSehwan)
+
+# 📚 [Wiki](https://github.com/codestates/AllForYou/wiki)
