@@ -5,7 +5,9 @@ import {
   SET_IMAGE,
   SET_UPDATE,
   SET_WITHDRAW,
-  SET_PASSWORD
+  SET_PASSWORD,
+  SET_GOOGLE_LOGIN,
+  SET_KAKAO_LOGIN
 } from '../action/index';
 
 export const initialState = {
@@ -50,6 +52,16 @@ const loginReducer = (state = initialState, action) => {
     case SET_WITHDRAW:
     return Object.assign({}, state, {
       withdrawModal: action.payload.withdrawModal,
+    });
+
+    case SET_KAKAO_LOGIN:
+    return Object.assign({}, state, {
+      kakaoLogin: action.payload.kakaoLogin,
+    });
+
+    case SET_GOOGLE_LOGIN:
+    return Object.assign({}, state, {
+      googleLogin: action.payload.googleLogin,
     });
 
     default:

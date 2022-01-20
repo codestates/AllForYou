@@ -1,23 +1,27 @@
 import { Link } from "react-router-dom";
 import style from "./mypageBox.module.css";
+import ForYouView from "../page/forYouView"
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { setHandleMypage } from "../action"
+import { useCallback, useEffect, useState } from "react";
 
 function MyPageBox({ reviews, likes }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [info, setInfo] = useState(null);
     const { handlemypage } = useSelector((state) => state.mypageReducer);
     const modal = useSelector(
         (state) => state.contentsModalReducer.contentsModal.modalOnOff
     );
-    console.log(likes)
 
     const handleContent = () => {
-        dispatch(setHandleMypage(reviews.id))
+        {alert("구현 준비중입니다.")}
+    //     // window.location.reload(`/foryouview/:${info}`)
+    //     // dispatch(setHandleMypage(reviews.id))
     }
-    
-    console.log(handlemypage)
+    // dispatch(setHandleMypage(info))
+    // console.log(handlemypage)
     
     return (
     <div className={style.container}>
@@ -32,16 +36,17 @@ function MyPageBox({ reviews, likes }) {
         <div className={style.box}>
             {reviews ? (
                 <>
-                    {reviews.map((post) => (
+                    {reviews.map((myReviews) => (
                     <>
-                        <span className={style.myReviewData} key={post}>
-                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`} onClick={handleContent}>{post.title}</a>
+                        <span className={style.myReviewData} key={myReviews}>
+                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
                         </span>
-                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`} onClick={handleContent}>
+                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
                             <span className={style.mydata_reviewDate}>
-                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`} onClick={handleContent}>{post.createdAt.split('T')[0]}</a>
+                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
                             </span>
                         </a>
+                        
                     </>
                     ))}
                 </>
@@ -60,15 +65,15 @@ function MyPageBox({ reviews, likes }) {
                 <div className={style.box}>
                     {likes ? (
                         <>
-                        {likes.map((data) => (
+                        {likes.map((myLikes) => (
                         <>
                             <div className={style.likeBox}>
-                                <button className={style.myLikeData} key={data}>
-                                    <span>{data.content.title}</span>
+                                <button className={style.myLikeData} key={myLikes}>
+                                    <span>{myLikes.content.title}</span>
                                 </button>
                                 <button className={style.mydata_likeDate}>
                                     <span>
-                                        {data.createdAt.split('T')[0]}
+                                        {myLikes.createdAt.split('T')[0]}
                                     </span>
                                 </button>
                             </div>

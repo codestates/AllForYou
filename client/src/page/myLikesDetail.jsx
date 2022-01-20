@@ -22,11 +22,11 @@ const MyLikesDetail = () => {
         
     useEffect(() => {
         handleLikesDetail();
-        navigate(`/foryouview/:${filterData.id}`)
     }, []);
 
     return(
             <div className={style.container}>
+                {alert("구현 준비중입니다.")}
             <div className={style.info}>
                 <img className={style.img} src="sample_img.jpeg" alt=""  />
                 <p className={style.nickname}>
@@ -42,11 +42,9 @@ const MyLikesDetail = () => {
                             <>
                                 <div className={style.likeBox}>
                                     <button className={style.myLikeData} key={content} onClick={handleLikesDetail}>
-                                    {navigate(`/foryouview/:${filterData.id}`)}
                                         <span>{content.content.title}</span>
                                     </button>
                                     <button className={style.mydata_likeDate} onClick={handleLikesDetail}>
-                                    {navigate(`/foryouview/:${filterData.id}`)}
                                         <span>
                                             {content.createdAt.split('T')[0]}
                                         </span>

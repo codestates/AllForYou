@@ -11,7 +11,7 @@ const writingListReducer = (state = [], action) => { //첫번째 인자는 기�
 
         case REMOVE_FROM_LIST:
             const currentList = state.filter((el) =>
-                el.contents.id !== action.payload.id)
+            el.contents.id !== action.payload.id)
             return [...currentList]
 
         default:

@@ -12,7 +12,7 @@ module.exports = {
   reviewCommentD: require("./reviewCommentD"),
   reviewCommentP: require("./reviewCommentP"),
   reviewContent: require("./reviewContent"),
-  reviewUserLike: require("./reviewUserLike"),
+  reviewUserList: require("./reviewUserList"),
 
   img: require("./img")
 };

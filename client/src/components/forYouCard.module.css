@@ -38,11 +38,11 @@
   white-space: nowrap;
   width: 17rem;
 }
-.icon{
+/* .icon{
   margin-right: 2.5rem;
   font-size: 1.2rem;
   text-align: center;
-}
+} */
 .iconText{
   font-size:0.7rem;
   margin-top: 0.4rem;
@@ -70,15 +70,16 @@
   font-size: 0.9rem;
 }
 .btnUrl:hover{
-  background-color: black;
-  color: white;
+  background-color:#b090714b;
+  color: black;
+  border: 1px solid #b090714b;
 }
 .btnKakao:hover{
-  background-color: black;
-  color: #f9e000;
+  background-color:#b090714b;
+  border: 1px solid #b090714b;
 }
 
-/* .like{
+.like{
   color:#d62d20;
     margin-right: 2.5rem;
   font-size: 1.2rem;
@@ -89,7 +90,7 @@
   margin-right: 2.5rem;
   font-size: 1.2rem;
   text-align: center;
-} */
+}
 
 @media screen and  (max-width:1024px) {
   .container{

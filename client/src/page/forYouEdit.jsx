@@ -2,47 +2,35 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from 'axios';
 import style from "./forYouEdit.module.css";
 import { useDispatch, useSelector } from 'react-redux'
-import { removeFromList, setMessageModal, addToList } from '../action/index';
+import { setMessageModal } from '../action/index';
 import { useNavigate } from "react-router-dom";
 import EditorComponent from "../components/editorComponent.jsx";
-import SearchList from "../components/searchList";
-import CartList from "../components/cartList";
+import ReSearchList from "../components/reSearchList";
+import ReCartList from "../components/reCartList";
 // require("dotenv").config();
 
 const ForYouEdit = ({ post }) => {
     console.log(post)
-    const {title, category, text, image} = post
-    const { list } = useSelector(state => state.foruReducer);
-    const state = useSelector(state => state.writingListReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const state = useSelector(state => state.writingListReducer);
+    const { title, category, text, image } = post
     const fileInput = useRef(null);
     const [files, setFiles] = useState([]); //이미지 화면 띄우기
-    const [imageEdit, setImageEdit] = useState(image); //이미지 파일 server 보내기
+    const [imageEdit, setImageEdit] = useState([]); //이미지 파일 server 보내기
     const [categoryEdit, setCategoryEdit] = useState(category);
     const [titleEdit, setTitleEdit] = useState(title);
     const [textEdit, setTextEdit] = useState(text);
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
+    const [list, setList] = useState([]);
+    console.log('list', list)
+    console.log('category', category)
 
-    //원래 리스트와 추가 리스트를 결합
-    const stateList = state.map((el)=>{
-        return el.contents
-    })
-    const renderList = [...list,...stateList]
-
-    //원래 리스트 data와 추가 data의 형태 차이로 각각 취합
-    const list_id = list.map((el) => {
-        return el.content_id
-    })
-
-    const state_id = stateList.map((el) => {
+    const content_id = list.map((el) => {
         return el.id
     })
-    const content_id = [...list_id,...state_id]
-
-
-
+    console.log('list', content_id)
     const handleText = (value) => {
         setTextEdit(value)
     }
@@ -52,8 +40,19 @@ const ForYouEdit = ({ post }) => {
         setFiles(URL.createObjectURL(e.target.files[0]))
     };
 
-    const handleDelete = (id) => {
-        dispatch(removeFromList(id))
+    const handleDeleteList = (title) => {
+        const currentList = list.filter((el) =>
+            el.title !== title)
+        setList([...currentList])
+    }
+
+    const handleAddList = (content) => {
+        if (!list.map((el) => el.id).includes(content.id)) {
+            setList([...list, content])
+        }
+        else {
+            dispatch(setMessageModal(true, '이미 추가된 리스트입니다.'));
+        }
     }
 
     const uploadImage = (e) => {
@@ -82,15 +81,28 @@ const ForYouEdit = ({ post }) => {
             });
     };
 
+    const getContent = () => {
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/reviews/content/${post.id}`)
+            .then((res) => {
+                if (res.status === 200) {
+                    setList(res.data.data);
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
+
     //'등록'버튼 클릭시
     function submitForm(e) {
         e.preventDefault();
         if (
             titleEdit === '' ||
             textEdit === '' ||
-            content_id.length === 0 ||
-            imageEdit.length === 0
-            ) {
+            categoryEdit === '' ||
+            content_id.length === 0
+        ) {
             dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
             return;
         } else {
@@ -100,8 +112,8 @@ const ForYouEdit = ({ post }) => {
             formData.append('text', textEdit); //글 소개
             formData.append('content_id', content_id); //컨텐츠 리스트 id 배열
             formData.append('img', imageEdit);
-            console.log(content_id)
-            axios //router.patch("reviews/:postId",
+
+            axios
                 .patch(`${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`, formData,
                     {
                         headers: {
@@ -119,19 +131,23 @@ const ForYouEdit = ({ post }) => {
         }
     }
 
+    useEffect(() => {
+        getContent()
+    }, [])
+
     return (
         <div className={style.container}>
             <div className={style.writingBox}>
                 <p className={style.menu_p}>리스트 작성</p>
                 <div className={style.imgBox}>
-                    {files.length === 0 ?(
-                    <img
-                        className={style.img}
-                        src={image}
-                    />):(<img
-                        className={style.img}
-                        src={files}
-                    />)}
+                    {files.length === 0 ? (
+                        <img
+                            className={style.img}
+                            src={image}
+                        />) : (<img
+                            className={style.img}
+                            src={files}
+                        />)}
                     <input
                         className={style.imgFile}
                         type="file"
@@ -153,12 +169,12 @@ const ForYouEdit = ({ post }) => {
                             value={categoryEdit}
                             onChange={(e) => setCategoryEdit(e.target.value)}
                         >
-                            <option value="동기부여">동기부여를 받고 싶다면 ?</option>
-                            <option value="도전">도전하고 싶은 나에게</option>
-                            <option value="멘토">현재 나의 상황에 멘토를 원하시나요 ?</option>
-                            <option value="편안함">마음속 편안함을 찾는다면 ?</option>
-                            <option value="웃음">생각없이 웃고 싶다면 ?</option>
-                            <option value="눈물">오늘 한 없이 눈물을 쏟고 싶다면 ?</option>
+                            <option value="동기부여를 받고 싶다면?">동기부여를 받고 싶다면 ?</option>
+                            <option value="도전하고 싶은 나에게">도전하고 싶은 나에게</option>
+                            <option value="현재 나의 상황에 멘토를 원하시나요?">현재 나의 상황에 멘토를 원하시나요 ?</option>
+                            <option value="마음속 편안함을 찾는다면?">마음속 편안함을 찾는다면 ?</option>
+                            <option value="생각없이 웃고 싶다면?">생각없이 웃고 싶다면 ?</option>
+                            <option value="오늘 한 없이 눈물을 쏟고 싶다면?">오늘 한 없이 눈물을 쏟고 싶다면 ?</option>
                             <option value="백색소리">백색소리</option>
                         </select>
                     </div>
@@ -202,8 +218,9 @@ const ForYouEdit = ({ post }) => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                <SearchList
+                                <ReSearchList
                                     resultSearch={resultSearch}
+                                    handleAddList={handleAddList}
                                 />
                             </div>
                         </div>
@@ -213,10 +230,10 @@ const ForYouEdit = ({ post }) => {
                                     <span className={style.list_title}>타이틀</span>
                                     <span className={style.list_part}>구분</span>
                                 </div>
-                                {renderList.map((content, idx) => {
-                                    return <CartList
+                                {list.map((content, idx) => {
+                                    return <ReCartList
                                         key={idx}
-                                        handleDelete={handleDelete}
+                                        handleDeleteList={handleDeleteList}
                                         content={content}
                                     />
                                 })}

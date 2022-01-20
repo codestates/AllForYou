@@ -42,11 +42,11 @@ const SignupModal = () => {
             }
           })
           .catch((err) => {
-            if (err.message === "이메일 중복입니다.") {
+            if (err.response.data === "이메일 중복입니다.") {
               setErrorMessage("이미 사용하고 있는 이메일입니다");
               setTimeout(function() { setErrorMessage("") }, 3000);
             } else if (
-              err.message === "닉네임 중복입니다."
+              err.response.data === "닉네임 중복입니다."
             ) {
               setErrorMessage("이미 사용하고 있는 닉네임입니다");
               setTimeout(function() { setErrorMessage("") }, 3000);

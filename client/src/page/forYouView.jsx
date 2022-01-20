@@ -5,21 +5,17 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch, useSelector } from 'react-redux';
-import { setMessageModal,loginModal, setPost, setList, contentsModal } from "../action";
+import { setMessageModal,loginModal, setPost, contentsModal } from "../action";
 import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
+  const {title, category, image} = post
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { nickname } = useSelector((state) => state.loginReducer);
-  const { handlemypage } = useSelector((state) => state.mypageReducer);
+  const { nickname, emaildata } = useSelector((state) => state.loginReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
-
-    // const handleContentsInfo = (info) => {
-    //     dispatch(contentsModal(true, info));
-    // };
 
   useEffect(() => {
     getPostDetail();
@@ -31,13 +27,9 @@ const ForYouView = ({ post, isLogin }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    
-  });
-
     useEffect(() => {
     getComment();
-    }, [setComment]);
+    }, [comment]);
 
   function getPostDetail() {
     axios
@@ -45,7 +37,6 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           dispatch(setPost(res.data.data));
-          // console.log(res.data.data)
         }
       })
       .catch((err) => {
@@ -59,7 +50,6 @@ const ForYouView = ({ post, isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setContent(res.data.data);
-          dispatch(setList(res.data.data));
         }
       })
       .catch((err) => {
@@ -140,10 +130,48 @@ const ForYouView = ({ post, isLogin }) => {
       });
   };
 
+      const handleShareUrl = () => {
+        let dummy = document.createElement("input");
+        let text = process.env.REACT_APP_SERVER_URL + `/reviews/${post.id}`;
+
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        dispatch(setMessageModal(true, `클립보드 복사 완료 🙌🏻`));
+    };
+
+        const handleShareKakao = () => {
+        if (!window.Kakao.isInitialized()) {
+            window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+        }
+        window.Kakao.Link.sendDefault({
+            objectType: "feed",
+            content: {
+                title,
+                description: `${category}(때)의 추천 리스트를 공유했습니다!`,
+                imageUrl: image,
+                link: {
+                    mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`,
+                    androidExecParams: "test",
+                },
+            },
+            buttons: [
+                {
+                    title: "추천 리스트 공유해서 보기",
+                    link: {
+                        mobileWebUrl: `${process.env.REACT_APP_SERVER_URL}/reviews/${post.id}`,
+                    },
+                },
+            ],
+        });
+    };
+
   return (
     <div className={style.container}>
       <div className={style.viewBox}>
-        {post.nickname === nickname ? (
+        {isLogin && post.nickname === nickname ? (
           <>
             <button
               className={style.cancelBtn}
@@ -195,13 +223,12 @@ const ForYouView = ({ post, isLogin }) => {
               <Recommend
                 content={content}
                 key={content.content_id}
-                // onClick={() => handleContentsInfo(content)}
               />
             ))}
           </div>
           <div className={style.shareBox}>
-            <button className={style.btnUrl}>URL 공유하기</button>
-            <button className={style.btnKakao}>카톡 공유하기</button>
+            <button className={style.btnUrl} onClick={handleShareUrl}>URL 공유하기</button>
+            <button className={style.btnKakao} onClick={handleShareKakao}>카톡 공유하기</button>
           </div>
         </div>
         <div className={style.commentBox}>

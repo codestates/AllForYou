@@ -8,8 +8,10 @@ import {
   setNickname,
   setEmailData,
   signupModal,
-  setProfileImage,
-} from "../action/index";
+  setProfileImage, 
+  setGoogleLogin,
+  setKakaoLogin
+} from '../action/index';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -55,11 +57,6 @@ const Login = () => {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/users/signin`, userData)
         .then((res) => {
-          console.log(res.data);
-          const nickname = res.data.data.nickname;
-          const userEmail = res.data.data.email;
-          dispatch(setEmailData(userEmail));
-          dispatch(setNickname(nickname));
           dispatch(login(true));
           setEmail("");
           setPassword("");
@@ -67,13 +64,15 @@ const Login = () => {
           window.location.reload('/');
         })
         .catch((err) => {
-          if (
-            err.message === "존재하지 않는 계정입니다." ||
-            "비밀번호가 일치하지 않습니다."
-          ) {
-            setFailMessage(true);
+          if (err.response.data.message === "존재하지 않는 계정입니다." ) {
+            setErrorMessage("존재하지 않는 계정입니다.")
             setTimeout(function () {
-              setFailMessage(false);
+              setErrorMessage("");
+            }, 3000);
+          } else if(err.response.data.message === "비밀번호가 일치하지 않습니다.") {
+            setErrorMessage("올바른 비밀번호가 아닙니다.")
+            setTimeout(function () {
+              setErrorMessage("");
             }, 3000);
           }
         });
@@ -117,6 +116,20 @@ const Login = () => {
     console.log(isState);
   };
 
+const handlekakaoLogin = async () => {
+  await window.location.assign(`${process.env.REACT_APP_SERVER_URL}/users/kakao`);
+  dispatch(login(true));
+  dispatch(loginModal(false))
+  dispatch(setKakaoLogin(true))
+};
+
+const handlegoogleLogin= async () => {
+  await window.location.assign(`${process.env.REACT_APP_SERVER_URL}/users/google`);
+  dispatch(login(true));
+  dispatch(loginModal(false))
+  dispatch(setGoogleLogin(true))
+};
+
   return (
     <>
       <div className={style.body} onClick={modalOutSide}>
@@ -140,13 +153,11 @@ const Login = () => {
             로그인
           </button>
           <span className={style.message}>{errorMessage}</span>
-          <span className={style.oauth_message}>
-            SNS 계정으로 간편 로그인 / 회원가입
-          </span>
-          <button className={style.google}>
+          <span className={style.oauth_message}>SNS 계정으로 간편 로그인 / 회원가입</span>
+          <button className={style.google} onClick={handlegoogleLogin}>
             <img className={style.google_icon} src="google_icon.png" />
           </button>
-          <button className={style.kakao}>
+          <button className={style.kakao} onClick={handlekakaoLogin}>
             <img className={style.kakao_icon} src="kakao_icon.png" />
           </button>
           <span className={style.membership}>

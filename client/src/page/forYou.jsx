@@ -12,8 +12,6 @@ const ForYou = ({ isLogin }) => {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selected, setSelected] = useState("최신순");
   const [review, setReview] = useState([]);
-  const [like, setLike] = useState([]);
-  // const [likeColor, setLikeColor] = useState([]);
 
   const filteredCategory = review.filter((el) => {
     let category = el.category;
@@ -24,38 +22,37 @@ const ForYou = ({ isLogin }) => {
     }
   });
 
-  // const id = filteredCategory.map((el)=>{
-  //   return el.id
-  // })
-
-  // const likeColor = Array(id.length).fill(false)
-  
-  // for(let i=0; i<id.length; i++){
-  //   for(let j=0; j<like.length; j++){
-  //     if(id[i] === like[j]){
-  //       likeColor[i] = true
-  //     } 
-  //   }
-  // }
-  // filteredCategory.push(likeColor)
-  // console.log('!!',filteredCategory)
-
   const getreviews = ()=> {
-    axios
+    if(!isLogin){
+      axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
-          console.log(res.data.data)
+          console.log('data',res.data.data)
         }
       })
       .catch((err) => {
         console.log(err)
       });
-  }
+    } else{
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlist`)
+        .then((res) => {
+          if (res.status === 200) {
+            setReview(res.data.data)
+            console.log('data',res.data.data)
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+      }
+    }
 
-  const getLikereviews = () => {
-    axios
+  const getLikereviews = ()=> {
+    if(!isLogin){
+      axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews?sort=like`)
       .then((res) => {
         if (res.status === 200) {
@@ -66,19 +63,19 @@ const ForYou = ({ isLogin }) => {
       .catch((err) => {
         console.log(err)
       });
-  }
-
-  const getUserLikes = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlike`)
+    } else{
+      axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/reviews/get/userlist?sort=like`)
       .then((res) => {
         if (res.status === 200) {
-          setLike(res.data.data)
+          setReview(res.data.data)
+          console.log(res.data.data)
         }
       })
       .catch((err) => {
         console.log(err)
       });
+    }
   }
 
   const handleLoginStatus = () => {
@@ -91,7 +88,6 @@ const ForYou = ({ isLogin }) => {
 
   useEffect(() => {
     getreviews()
-    getUserLikes()
   }, []);
 
   useEffect(() => {
@@ -111,12 +107,12 @@ const ForYou = ({ isLogin }) => {
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
             <option value="ALL">ALL</option>
-            <option value="동기부여">동기부여를 받고 싶다면?</option>
-            <option value="도전">도전하고 싶은 나에게</option>
-            <option value="멘토">현재 나의 상황에 멘토를 원하시나요?</option>
-            <option value="편안함">마음속 편안함을 찾는다면?</option>
-            <option value="웃음">생각없이 웃고 싶다면?</option>
-            <option value="눈물">오늘 한 없이 눈물을 쏟고 싶다면?</option>
+            <option value="동기부여를 받고 싶다면?">동기부여를 받고 싶다면?</option>
+            <option value="도전하고 싶은 나에게">도전하고 싶은 나에게</option>
+            <option value="현재 나의 상황에 멘토를 원하시나요?">현재 나의 상황에 멘토를 원하시나요?</option>
+            <option value="마음속 편안함을 찾는다면?">마음속 편안함을 찾는다면?</option>
+            <option value="생각없이 웃고 싶다면?">생각없이 웃고 싶다면?</option>
+            <option value="오늘 한 없이 눈물을 쏟고 싶다면?">오늘 한 없이 눈물을 쏟고 싶다면?</option>
             <option value="백색소리">백색소리</option>
           </select>
           <select
@@ -134,12 +130,10 @@ const ForYou = ({ isLogin }) => {
       </div>
       <div className={style.cardContainer}>
         {filteredCategory.map((review) => (
-          <ForYouCard
+            <ForYouCard
             key={review.id}
             review={review}
-            // likeColor={likeColor}
-            like={like}
-          />
+            />
         ))}
       </div>
     </div>

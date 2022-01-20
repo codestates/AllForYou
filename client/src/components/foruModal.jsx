@@ -9,7 +9,7 @@ const ForuModal = ({ isOpen, content }) => {
         dispatch(setMessageModal(false, ''));
     };
     return (
-        <>
+        <div>
             {isOpen ? (
                 <div className={style.modal}>
                     <div
@@ -25,7 +25,7 @@ const ForuModal = ({ isOpen, content }) => {
                     </div>
                 </div>
             ) : null}
-        </>
+        </div>
     );
 };
 
