@@ -1,26 +1,73 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import style from "./mypageUpdate.module.css";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUpdateInfo, setProfileImage, setNickname, setPassword } from '../action';
+import { setUpdateInfo, setMessageModal, setProfileImage, setNickname, setPassword } from '../action';
 import axios from 'axios';
 
 function MyPgaeUpdate() {
     const dispatch = useDispatch();
+    const fileInput = useRef(null);
     const { emaildata } = useSelector((state) => state.loginReducer);
+    const { nickname } = useSelector((state) => state.loginReducer);
+    const { profileImage } = useSelector((state) => state.loginReducer);
 
     const [errorMessage, setErrorMessage] = useState("");
     const [updateInfo, setUpdataeInfo] = useState({
-        user_picture: "",
         nickname: "",
         password: "",
         repassword: "",
     });
+    const [files, setFiles] = useState(profileImage); //이미지 화면 띄우기
+    const [image, setImage] = useState([]); //이미지 파일 server 보내기
+
+    const fileHandle = (e) => {
+        setImage(e.target.files[0]);
+        setFiles(URL.createObjectURL(e.target.files[0]))
+    };
+
+    const uploadImage = (e) => {
+        e.preventDefault();
+        fileInput.current.click();
+    };
 
     const handleInputValue = (key) => (e) => {
         setUpdataeInfo({ ...updateInfo, [key]: e.target.value });
     };
 
-    const handleUpdate = () => {
+    // const handleUpdate = () => {
+    //     const { nickname, password, repassword } = updateInfo;
+    //     if (!nickname || !password || !repassword) {
+    //         setErrorMessage("nickname, 비밀번호 모두 다 입력해야합니다.");
+    //         setTimeout(function() { setErrorMessage("") }, 3000);
+    //     } else if (password.length < 8 || repassword.length < 8) {
+    //         setErrorMessage("비밀번호는 8글자 이상이어야합니다.");
+    //         setTimeout(function() { setErrorMessage("") }, 3000);
+    //     } else if (repassword !== password) {
+    //         setErrorMessage("비밀번호가 일치하지 않습니다.");
+    //         setTimeout(function() { setErrorMessage("") }, 3000);
+    //     } else {
+    //     axios
+    //         .patch(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, updateInfo)
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             const picture = res.data.user_picture;
+    //             const nickname = res.data.nickname;
+    //             dispatch(setProfileImage(picture));
+    //             dispatch(setNickname(nickname));
+    //             dispatch(setUpdateInfo(false))
+    //             window.location.reload('/');
+    //         })
+    //         .catch((err) => {
+    //             if (err.response.data.message === "중복된 닉네임입니다.") {
+    //                 setErrorMessage("이미 사용하고 있는 닉네임입니다");
+    //                 setTimeout(function() { setErrorMessage("") }, 3000);
+    //             }
+    //         });
+    //     }
+    // };
+
+    function submitForm(e) {
+        e.preventDefault();
         const { nickname, password, repassword } = updateInfo;
         if (!nickname || !password || !repassword) {
             setErrorMessage("nickname, 비밀번호 모두 다 입력해야합니다.");
@@ -32,25 +79,36 @@ function MyPgaeUpdate() {
             setErrorMessage("비밀번호가 일치하지 않습니다.");
             setTimeout(function() { setErrorMessage("") }, 3000);
         } else {
-        axios
-            .patch(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, updateInfo)
-            .then((res) => {
-                console.log(res.data)
-                const picture = res.data.user_picture;
-                const nickname = res.data.nickname;
-                dispatch(setProfileImage(picture));
-                dispatch(setNickname(nickname));
-                dispatch(setUpdateInfo(false))
-                window.location.reload('/');
-            })
-            .catch((err) => {
-                if (err.response.data.message === "중복된 닉네임입니다.") {
-                    setErrorMessage("이미 사용하고 있는 닉네임입니다");
-                    setTimeout(function() { setErrorMessage("") }, 3000);
-                }
-            });
+            const formData = new FormData();
+            formData.append('nickname', nickname);
+            formData.append('password', password);
+            formData.append('img', image);
+
+            axios
+                .patch(`${process.env.REACT_APP_SERVER_URL}/users/mypage`, formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                )
+                .then((res) => {
+                    console.log("check!", res)
+                })
+                .then(() => {
+                    dispatch(setUpdateInfo(false))
+                    dispatch(setMessageModal(true, '회원정보 수정이 완료되었습니다.'));
+                    window.location.reload('/');
+                })
+                .catch((err) => {
+                    console.log(err)
+                    if (err.response.status === 409) {
+                        setErrorMessage("이미 사용하고 있는 닉네임입니다");
+                        setTimeout(function() { setErrorMessage("") }, 3000);
+                    }
+                });
         }
-    };
+    }
     
     const handleUpdateModal = () => {
         dispatch(setUpdateInfo(false));
@@ -65,10 +123,23 @@ function MyPgaeUpdate() {
     return (
         <div className={style.body} onClick={modalOutSide}>
         <div className={style.container}>
-            <img className={style.img} src="sample_img.jpeg" alt="" />
-            <button className={style.imgUpdate}>
-                변경
-            </button>
+            <div className={style.imgBox}>
+                <img
+                    className={style.img}
+                    src={files}
+                />
+                <input
+                    className={style.imgFile}
+                    type="file"
+                    accept='image/*'
+                    onChange={fileHandle}
+                    ref={fileInput}
+                />
+                <button
+                    className={style.imgUpdate}
+                    onClick={uploadImage}
+                >변경</button>
+            </div>
             <div className={style.itemText}>아이디</div>
             <div className={style.emailText}>{emaildata}</div>
             <input
@@ -99,7 +170,7 @@ function MyPgaeUpdate() {
             <button className={style.cancle_bnt} onClick={handleUpdateModal}>
                 취소하기
             </button> 
-            <button className={style.update_bnt} onClick={handleUpdate}>
+            <button className={style.update_bnt} onClick={submitForm}>
                 수정하기
             </button>
         </div>

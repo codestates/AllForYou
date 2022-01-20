@@ -27,6 +27,10 @@
     height: 15em;
 }
 
+.imgFile {
+    display: none;
+}
+
 .imgUpdate {
     display: block;
     margin-left: 10em;

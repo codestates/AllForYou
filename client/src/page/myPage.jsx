@@ -27,6 +27,7 @@ const MyPage = () => {
   const [reviews, setReviews] = useState(null);
   const [likes, setLikes] = useState(null);
 
+
   const isAuthenticated = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
     .then((res) => {
@@ -34,11 +35,15 @@ const MyPage = () => {
             const email = res.data.data.userInfo.email;
             const nickname = res.data.data.userInfo.nickname;
             const picture = res.data.data.userInfo.user_picture;
+            if(!picture) {
+              dispatch(setProfileImage("/image/sample_img.png"));
+            } else {
+              dispatch(setProfileImage(picture));
+            }
             const reviewlist = res.data.data.userReviews;
             const likeslist = res.data.data.userLikes;
             dispatch(setEmailData(email));
             dispatch(setNickname(nickname));
-            dispatch(setProfileImage(picture));
             setReviews(reviewlist);
             setLikes(likeslist);
             // window.location.reload('/');
@@ -62,8 +67,8 @@ const MyPage = () => {
         {withdrawModal === true ? (<ModalWithdraw />) : null}
         <ProfileBox />
         <MyPageBox 
-        reviews={reviews}
-        likes={likes}
+          reviews={reviews}
+          likes={likes}
         />
       </div>
       
