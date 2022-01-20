@@ -4,7 +4,7 @@ import style from "./landingPage_1.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,15 +12,60 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const Wrap = styled.div`
-  /* margin: 3em auto;
-  width: 100%; */
-  /* .slick-arrow {
-    transition: all 200ms ease-out;
-  } */
-  /* display: absolute; */
+
+  slick-slide{
+    display: none:
+  }
+
+  .slick-prev {
+    width:0
+    position: absolute;
+    left: 40px;
+    z-index: 999;
+  }
+  .slick-next {
+    width:0
+    position: absolute;
+    right: 40px;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: "slick";
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 0.01;
+    opacity: 0.6;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slick-prev:hover,
+  .slick-next:hover {
+    opacity: 0.3;
+  }
+
+  .slick-prev:before {
+    content: "‹";
+  }
+  [dir="rtl"] .slick-prev:before {
+    content: "›";
+  }
+
+  [dir="rtl"] .slick-next {
+    left: -10px;
+    top: 70px;
+    right: auto;
+  }
+  .slick-next:before {
+    content: "›";
+  }
+  [dir="rtl"] .slick-next:before {
+    content: "‹";
+  }
+
   .slick-dots {
     display: absolute;
-    bottom: 3em;
+    bottom: 4em;
     z-index: 950;
   }
   .slick-dots li button:before {
@@ -30,6 +75,43 @@ const Wrap = styled.div`
     background-color: black;
   }
 `;
+
+const boxFade = keyframes`
+  from, 20%, 53%, 80%, to {
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -25px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+  80% {
+    transform: translate3d(0, -9px, 0);
+  }
+  90% {
+    transform: translate3d(0,-4px,0);
+  }
+`;
+const Box = styled.div`
+  animation: ${boxFade} 1.5s ease infinite;
+`;
+
+// const Text = styled.span`
+//   /* position: absolute; */
+//   right: 2em;
+//   bottom: 6em;
+//   color: aliceblue;
+//   font-size: 3em;
+//   font-family: NotoSerifKR-Regular;
+//   z-index: 999;
+// `;
 
 const LandingPage_1 = () => {
   const settings = {
@@ -53,66 +135,74 @@ const LandingPage_1 = () => {
   return (
     <div className={style.container}>
       <div
-        className={style.text_1}
-        data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1500"
-      >
-        자존감이 많이 떨어지셨나요 ?
-        <br />
-        무기력함이 자신을 지배하고 있나요 ?
-        <br />
-        우리 인생 선배들에게 조언과 위로를 받아보세요
-      </div>
-      <div
         className={style.text_2}
         data-aos="fade-left"
         data-aos-anchor="#example-anchor"
         data-aos-offset="500"
         data-aos-duration="1500"
-      >
-        All For You는 모두와 함께 하길 원합니다
-      </div>
+      ></div>
       <Wrap>
-        <div
-          data-aos="zoom-in"
-          // data-aos-easing="ease-out-cubic"
-          data-aos-duration="1000"
-        >
+        <div data-aos="zoom-in" data-aos-duration="1000">
           <Slider {...settings}>
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/함께.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/고뇌.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/용기.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/슬픔.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/멘토1.jpg"
-              alt=""
-            />
-            <img
-              className={style.img_1}
-              src="/landingPage_image/landingPage_1/웃음.jpg"
-              alt=""
-            />
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/함께.jpg"
+                alt=""
+              />
+
+              <span className={style.text_3}>
+                All For You와 함께 극복할 수 있습니다
+              </span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/고뇌.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>인생이 힘들고 외로울때 ,</span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/용기.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>힘을 내고 싶을 때 , </span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/슬픔.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>한 없이 울고 싶을 때 , </span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/멘토1.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>내 삶에 조언이 필요할 때 ,</span>
+            </div>
+            <div className={style.carousel_container}>
+              <img
+                className={style.img_1}
+                src="/landingPage_image/landingPage_1/웃음.jpg"
+                alt=""
+              />
+              <span className={style.text_3}>아무 생각없이 웃고 싶을 때 ,</span>
+            </div>
           </Slider>
         </div>
       </Wrap>
+      <Box>
+        <div className={style.scroll}>
+          <i className="fas fa-chevron-down"></i>
+        </div>
+      </Box>
     </div>
   );
 };
