@@ -130,10 +130,17 @@ const handlegoogleLogin= async () => {
   dispatch(setGoogleLogin(true))
 };
 
+const handleCancleBtn = () => {
+  dispatch(loginModal(false))
+}
+
   return (
     <>
       <div className={style.body} onClick={modalOutSide}>
         <div className={style.container}>
+          <button className={style.cancleBox} >
+            <img className={style.cancleBtn} src="/image/x_icon.png" onClick={handleCancleBtn} />
+          </button>
           <img className={style.logo} src="/image/logo(background-white).png" />
           <input
             className={style.myInfo}
@@ -142,6 +149,7 @@ const handlegoogleLogin= async () => {
             // value={email}
             onChange={onChangeEmail}
           />
+          <div className={style.itemText}>이메일</div>
           <input
             className={style.myInfo}
             type="password"
@@ -149,6 +157,7 @@ const handlegoogleLogin= async () => {
             // value={password}
             onChange={onChangePassword}
           />
+          <div className={style.itemText}>비밀번호</div>
           <button className={style.loginButton} onClick={() => handleClick()}>
             로그인
           </button>
@@ -161,7 +170,7 @@ const handlegoogleLogin= async () => {
             <img className={style.kakao_icon} src="/image/kakao_icon.png" />
           </button>
           <span className={style.membership}>
-            아직 All for you의 회원이 아니신가요?
+            All for you의 회원이 아니신가요?
           </span>
           <button className={style.membership_btn} onClick={handleSignup}>
             회원가입

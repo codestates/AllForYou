@@ -27,26 +27,27 @@ function MyPageBox({ reviews, likes }) {
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
         <Link to="/reviewsdetail">
-            <button className={style.more_button} >more
+            <button className={style.reviewsMore_button} >more
                 <p className={style.more_icon}>
                     <i className="fas fa-angle-right" />
                 </p>
             </button>
         </Link>
-        <div className={style.box}>
+        <div className={style.reviewsBox}>
             {reviews ? (
                 <>
                     {reviews.map((myReviews) => (
                     <>
-                        <span className={style.myReviewData} key={myReviews}>
-                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
-                        </span>
-                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
-                            <span className={style.mydata_reviewDate}>
-                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
+                        <div className={style.reviewBox}>
+                            <span className={style.myReviewData} key={myReviews}>
+                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
                             </span>
-                        </a>
-                        
+                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
+                                <span className={style.mydata_reviewDate}>
+                                    <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
+                                </span>
+                            </a>
+                        </div>
                     </>
                     ))}
                 </>
@@ -56,13 +57,13 @@ function MyPageBox({ reviews, likes }) {
                 </div>
                 <span className={style.likes_title}>좋아요 표시한 콘텐츠</span>
                 <Link to="/likesdetail">
-                    <button className={style.more_button}>more
+                    <button className={style.likesMore_button}>more
                         <p className={style.more_icon}>
                             <i className="fas fa-angle-right" />
                         </p>
                     </button>
                 </Link>
-                <div className={style.box}>
+                <div className={style.likesBox}>
                     {likes ? (
                         <>
                         {likes.map((myLikes) => (

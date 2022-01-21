@@ -20,6 +20,10 @@
   background-color: white
 }
 
+.cancleBtn {
+  display: none;
+}
+
 .img {
   margin: 2em 0 0 5em;
   width: 21em; 
@@ -93,8 +97,8 @@ button:hover {
   margin: 1.5em 0 0 1.5em;
   font-size: 1.1em;
   font-weight: 900;
-  width: 7em;
-  height: 2em;
+  width: 7.5em;
+  height: 2.3em;
   border: none;
   outline: none;
   border-radius: 0.5em;
@@ -102,61 +106,158 @@ button:hover {
   background-color: #B09171;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .body {
+    /* width: 100%; */
+    margin: 0;
     width: 100%;
+    padding: 0;
+    padding-top: 1.3em;
     align-items: center;
   }
 
   .container {
-    /* width: 100%;
-    border-radius: 0;
+    /* width: 100%; */
+    /* border-radius: 0;
     height: 63em; */
-    width: 100vw!important;
-    height: 100vh!important;
-    border-radius: 0!important;
+    position: absolute;
+    width: 100vw;
+    height: 120vh;
+    border-radius: 0;
+  }
+  .cancleBox {
+    border: none;
+    float: right;
+    margin-right: 29vw;
+    background-color: white;
   }
 
-  .logo {
-    margin-left: 13.5em;
-    width: 21em; 
-    height: 15em;
+  .cancleBtn {
+    display: block;
+    padding-top: 2em;
+    width: 4vw;
   }
 
-  .item {
-    margin: 0.5em 0.5em 0.5em 2.5em;
-    font-size: 150%;
+  .img {
+    float: left;
+    margin-left: 28vw;
+    width: 35vw; 
+    height: 15vh;
   }
 
-  .info {
-    margin: 0.7em auto;
-    margin-right: 3em;
+  .itemText {
+    display: block;
+    margin: 2vh 0 2vh 12vw;
+    font-size: 130%;
+    width: 18vw;
+  }
+
+  .myInfo {
+    margin: 1vh 34vw 1vh 3vw;
     padding-left: 15px;
-    width: 16em;
-    height: 3.5em;
+    width: 30vw;
+    height: 4.5vh;
   }
-
-  /* .email {
-    
-  }
-  
-  .nickName {
-
-  }
-
-  .password {
-
-  }
-
-  .passwordConfirm {
-
-  } */
 
   .membership {
-    margin-top: 25em;
+    display: inline;
+    margin: 1vh 20vw 0 7.5vw;
+    width: 60vw;
+    height: 7vh;
   }
 
   .login_text {
-    margin-left: 14em;
+    display: block;
+    margin: 3vh 0 0 8vw;
+    font-size: 2.5vw;
+  }
+
+  .message {
+    padding-bottom: 2vh;
+    margin-left: -24vw;
+  }
+
+  .login_bnt {
+    width: 25vw;
+    height: 5.5vh;
+    float: right;
+    margin: -4.5vh 32vw 0 0;
+  }
+}
+
+@media screen and (max-width: 711px) {
+  .body {
+    /* width: 100%; */
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    padding-top: 1.3em;
+    align-items: center;
+  }
+
+  .container {
+    /* width: 100%; */
+    /* border-radius: 0;
+    height: 63em; */
+    position: absolute;
+    width: 105vw;
+    height: 120vh;
+    border-radius: 0;
+  }
+  .cancleBox {
+    border: none;
+    float: right;
+    margin-right: 2em;
+    background-color: white;
+  }
+
+  .cancleBtn {
+    display: block;
+    padding-top: 2em;
+    width: 4vw;
+  }
+
+  .img {
+    float: left;
+    margin-left: 36vw;
+    width: 35vw; 
+    height: 20vh;
+  }
+
+  .itemText {
+    display: block;
+    margin: 3vh 0 3.1vh 10vw;
+    font-size: 130%;
+    width: 30vw;
+  }
+
+  .myInfo {
+    margin: 2vh 15vw 3vh 3vw;
+    padding-left: 15px;
+    width: 35vw;
+    height: 5vh;
+  }
+
+  .membership {
+    display: block;
+    margin: 65vh 1vw 1em 10vw;
+    width: 80vw;
+    height: 8vh;
+  }
+
+  .login_text {
+    margin: 0 0 0 13vw;
+    font-size: 3vw;
+  }
+
+  .message {
+    padding-bottom: 3vh;
+    margin-left: 0;
+  }
+
+  .login_bnt {
+    width: 33vw;
+    height: 5vh;
+    margin: -4vh 12vw 0 5vw;
   }
 }
