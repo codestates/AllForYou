@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .container {
   width: 100%;
   height: 280;
@@ -56,7 +62,6 @@
 }
 
 .imgCard_container_1 {
-  /* width: 120vw; */
   display: flex;
   justify-content: space-around;
 }
@@ -115,18 +120,9 @@
   .main_text {
     font-size: 7em;
   }
-  .container {
-    /* height: 380vh; */
-  }
   .imgCard_container_1,
   .imgCard_container_2 {
     flex-wrap: wrap;
-  }
-}
-
-@media screen and (max-width: 1167px) {
-  .container {
-    /* height: 520vh; */
   }
 }
 
@@ -142,15 +138,43 @@
   }
 }
 
-@media screen and (max-width: 625px) {
+@media screen and (max-width: 690px) {
+  .img_container {
+    margin: 3em 0;
+  }
   .main_text {
-    font-size: 3.5em;
+    font-size: 2em;
+  }
+  .contentsPageBtn {
+    margin-top: 1em;
+    width: 10em;
+  }
+  .contentsPageBtn_text {
+    font-size: 0.7em;
+  }
+  .imgCard_container_1 {
+    width: 100%;
+    height: 100%;
+  }
+  .img_container {
+    /* padding: 2em 0; */
+    padding: 0;
+    /* width: 100%;
+    height: 100%; */
   }
 }
 
 @media screen and (max-width: 576px) {
   .img_container {
-    margin: 3em 0;
+    width: 100%;
+  }
+  .img_1 {
+    width: 100%;
+  }
+
+  .img_text {
+    font-size: 1em;
+    text-align: center;
   }
 }
 
@@ -164,7 +188,7 @@
   }
   .main_text {
     margin-top: 1em;
-    font-size: 3em;
+    font-size: 2em;
   }
   .contentsPageBtn {
     margin-top: 1em;
@@ -183,5 +207,11 @@
   }
   .img_text {
     font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .img_text {
+    font-size: 0.8em;
   }
 }
