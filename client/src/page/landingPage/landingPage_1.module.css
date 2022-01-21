@@ -19,7 +19,6 @@
   line-height: 2.3em;
   text-align: right;
   font-family: NotoSerifKR-Regular;
-  /* text-shadow: -1px 0 #000, 0 2px #000, 2px 0 #000, 0 -1px #000; */
 }
 
 .img_1 {
@@ -57,10 +56,16 @@
 
 @media screen and (max-width: 414px) {
   .text_3 {
-    font-size: 1.3em;
+    font-size: 1em;
   }
   .scroll {
     margin-top: 1em;
     font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .text_3 {
+    font-size: 0.9em;
   }
 }

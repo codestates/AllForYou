@@ -20,12 +20,6 @@ const ContentsModal = () => {
 
   const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
 
-  const { accessToken } = useSelector((state) => state.accessTokenReducer);
-
-  console.log("accessToken", accessToken);
-  console.log("isLogin", isLogin);
-  console.log("like", like);
-
   useEffect(() => {
     if (isLogin) {
       getLikeInfo();
@@ -128,7 +122,6 @@ const ContentsModal = () => {
               <span className={style.director_text}>감독</span>
               <span className={style.director}> {contentsInfo.director}</span>
             </div>
-
             <span className={style.summary}>{contentsInfo.summary}</span>
           </div>
         </div>
