@@ -8,9 +8,7 @@ import { loginModal } from "../action/index";
 import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 
 const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
-
   const dispatch = useDispatch();
-
   const { isLogin } = useSelector((state) => state.loginReducer);
   const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
 
@@ -33,7 +31,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        alert(err)
       });
   };
 
@@ -58,7 +56,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
           dispatch(contentsLike(true));
         })
         .catch((err) => {
-          console.log(err);
+          alert(err)
         });
     } else {
       axios
@@ -69,7 +67,7 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
           dispatch(contentsLike(false));
         })
         .catch((err) => {
-          console.log(err);
+          alert(err)
         });
     }
   };
@@ -77,16 +75,22 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
   return (
     <div className={style.main} onClick={handleContentInfo}>
       <div className={style.container} onClick={(e) => e.stopPropagation()}>
-        <span className={style.close} onClick={handleContentInfo}>
-          &times;
-        </span>
-        <span className={style.title}>{contentsInfo.title}</span>
+        <div className={style.header}>
+          <div className={style.close} onClick={handleContentInfo}>
+            &times;
+          </div>
+          <button
+            className={style.like}
+            className={`${like ? style.like : style.unlike}`}
+            onClick={() => checkLoginStatus(likeCheck)}
+          >
+            <i className="far fa-thumbs-up"></i>
+          </button>
+        </div>
+        <div className={style.title}>{contentsInfo.title}</div>
         <div className={style.info}>
-          <span className={style.year}>
-            개봉/출시/등록일: {contentsInfo.year}
-          </span>
+          <span className={style.year}>개봉/출시/등록일: {contentsInfo.year}</span>
           <span className={style.runtime}>runtime: {contentsInfo.runtime}</span>
-
           <a href={contentsInfo.link} target="_blank" className={style.link}>
             해당 컨텐츠로 바로가기
             <span className={style.pageMove}>
@@ -94,13 +98,6 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
             </span>
           </a>
         </div>
-        <button
-          className={style.like}
-          className={`${like ? style.like : style.unlike}`}
-          onClick={() => checkLoginStatus(likeCheck)}
-        >
-          <i className="far fa-thumbs-up"></i>
-        </button>
         <div className={style.list}>
           <img className={style.image} src={contentsInfo.image} alt="" />
           <div className={style.list_container}>
@@ -112,7 +109,6 @@ const ForYouContentModal = ({contentsInfo, handleContentInfo}) => {
               <span className={style.director_text}>감독</span>
               <span className={style.director}> {contentsInfo.director}</span>
             </div>
-
             <div className={style.summary}>{contentsInfo.summary}</div>
           </div>
         </div>

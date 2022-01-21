@@ -17,7 +17,7 @@ const LandingPage_4 = () => {
 return (
 	<div className={style.container}>
 		<div className={style.wrapper}>
-			<p className={style.title}>직접 For U에서 리스트를 만들고 공유하세요.</p>
+			<p className={style.title}>For U에서 직접 리스트를 만들고 공유, 공감을 나눠보세요.</p>
 			<ul className={style.postWrapper}>
 				<PostBox />
 			</ul>

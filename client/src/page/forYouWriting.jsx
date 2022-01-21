@@ -62,7 +62,7 @@ const ForYouWriting = () => {
                 setResultSearch(res.data.data);
             })
             .catch(err => {
-                console.log(err);
+                alert(err)
             });
     };
 
@@ -104,7 +104,7 @@ const ForYouWriting = () => {
                     dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
                 })
                 .catch((err) => {
-                    console.log(err)
+                    alert(err)
                 });
         }
     }
@@ -175,7 +175,7 @@ const ForYouWriting = () => {
                                 <input
                                     className={style.search}
                                     type="search"
-                                    placeholder='Search...'
+                                    placeholder='키워드 또는 타이틀'
                                     onKeyPress={onKeyPress}
                                     onChange={handleSearchText}
                                 />

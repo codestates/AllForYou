@@ -10,7 +10,6 @@ import ReCartList from "../components/reCartList";
 // require("dotenv").config();
 
 const ForYouEdit = ({ post }) => {
-    console.log(post)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const state = useSelector(state => state.writingListReducer);
@@ -24,13 +23,11 @@ const ForYouEdit = ({ post }) => {
     const [search, setSearch] = useState('');
     const [resultSearch, setResultSearch] = useState([]);
     const [list, setList] = useState([]);
-    console.log('list', list)
-    console.log('category', category)
 
     const content_id = list.map((el) => {
         return el.id
     })
-    console.log('list', content_id)
+
     const handleText = (value) => {
         setTextEdit(value)
     }
@@ -77,7 +74,7 @@ const ForYouEdit = ({ post }) => {
                 setResultSearch(res.data.data);
             })
             .catch(err => {
-                console.log(err);
+                alert(err)
             });
     };
 
@@ -90,7 +87,7 @@ const ForYouEdit = ({ post }) => {
                 }
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
             });
     }
 
@@ -126,7 +123,7 @@ const ForYouEdit = ({ post }) => {
                     dispatch(setMessageModal(true, '게시글 수정이 완료되었습니다.'));
                 })
                 .catch((err) => {
-                    console.log(err)
+                    alert(err)
                 });
         }
     }
@@ -204,7 +201,7 @@ const ForYouEdit = ({ post }) => {
                                 <input
                                     className={style.search}
                                     type="search"
-                                    placeholder='Search...'
+                                    placeholder='키워드 또는 타이틀'
                                     onKeyPress={onKeyPress}
                                     onChange={handleSearchText}
                                 />

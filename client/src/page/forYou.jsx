@@ -29,11 +29,10 @@ const ForYou = ({ isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
-          console.log('data',res.data.data)
         }
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
     } else{
       axios
@@ -41,11 +40,10 @@ const ForYou = ({ isLogin }) => {
         .then((res) => {
           if (res.status === 200) {
             setReview(res.data.data)
-            console.log('data',res.data.data)
           }
         })
         .catch((err) => {
-          console.log(err)
+          alert(err)
         });
       }
     }
@@ -57,11 +55,10 @@ const ForYou = ({ isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
-          console.log(res.data.data)
         }
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
     } else{
       axios
@@ -69,11 +66,10 @@ const ForYou = ({ isLogin }) => {
       .then((res) => {
         if (res.status === 200) {
           setReview(res.data.data)
-          console.log(res.data.data)
         }
       })
       .catch((err) => {
-        console.log(err)
+        alert(err)
       });
     }
   }
@@ -88,6 +84,7 @@ const ForYou = ({ isLogin }) => {
 
   useEffect(() => {
     getreviews()
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -96,6 +93,7 @@ const ForYou = ({ isLogin }) => {
     } else {
       getreviews()
     }
+    window.scrollTo(0, 0);
   }, [selected]);
 
   return (

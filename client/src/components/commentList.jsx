@@ -25,7 +25,7 @@ const Comment = ({ comment, getComment }) => {
                 getComment();
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
             });
     };
 
@@ -45,7 +45,7 @@ const Comment = ({ comment, getComment }) => {
                 }
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
             });
     };
 
@@ -53,7 +53,7 @@ const Comment = ({ comment, getComment }) => {
         <div className={style.box}>
             <div className={style.infoBox}>
                 <div className={style.userBox}>
-                    <img className={style.img} src={comment.nickname} />
+                    <img className={style.img} src={comment.user_picture} />
                     <div className={style.name}>{comment.nickname}</div>
                     {comment.nickname === nickname ? (
                         <>
