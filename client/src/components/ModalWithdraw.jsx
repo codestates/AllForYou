@@ -5,7 +5,8 @@ import {
     setWithdrawModal, 
     login,  
     setKakaoLogin, 
-    setGoogleLogin 
+    setGoogleLogin,
+    setMessageModal
 } from '../action';
 import { useDispatch } from 'react-redux';
 

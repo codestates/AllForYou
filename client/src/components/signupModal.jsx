@@ -38,7 +38,6 @@ const SignupModal = () => {
             if (res.status === 201) {
               handleModal();
               dispatch(signupModal(false))
-              window.location.reload('/')
             }
           })
           .catch((err) => {
