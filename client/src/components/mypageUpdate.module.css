@@ -163,7 +163,7 @@ button:hover {
     }
 
     .img {
-        margin: 1vh 0 0 33vw;
+        margin: 1vh 0 0 31vw;
         width: 40vw; 
         height: 25vh;
     }
@@ -174,34 +174,40 @@ button:hover {
 
     .emailText {
         display: block;
-        margin: 4vh 0 4.5vh 53vw;
-        font-size: x-large;
+        margin: 3vh 0 4vh 46vw;
+        font-size: xx-large;
     }
 
     .itemText {
-        margin: 4vh 0 2vh 23vw;
+        margin: 3.7vh 0 0.2vh 18vw;
+        padding-bottom: 3vh;
+        padding-right: 0;
         font-size: 180%;
-        width: 21vw;
+        width: 25vw;
     }
 
     .myInfo {
-        margin: 3vh 21vw 3.5vh 1.5vw;
+        margin: 2.5vh 15vw 4vh 1.5vw;
         padding-left: 15px;
-        width: 28vw;
+        width: 40vw;
         height: 5vh;
     }
 
     .update_bnt {
         display: inline;
         float: left;
-        margin: 2vh 3vw 0 23vw;
+        margin: 2vh 3vw 0 21vw;
         width: 25vw;
         height: 6vh;
     }
 
     .message {
         padding-bottom: 2vh;
-        margin-left: 32vw;
+        margin-left: -9vw;
+        padding-left: 30vw;
+        text-align: center;
+        font-size: large;
+        width: 90vw;
     }
 
     .cancle_bnt {
@@ -223,9 +229,6 @@ button:hover {
     }
 
     .container {
-        /* width: 100%; */
-        /* border-radius: 0;
-        height: 63em; */
         position: absolute;
         width: 105vw;
         height: 120vh;
@@ -237,6 +240,7 @@ button:hover {
         float: right;
         margin-right: 3em;
         background-color: white;
+        padding-top: 1.5vh;
     }
 
     .xBtn {
@@ -244,8 +248,9 @@ button:hover {
     }
 
     .img {
-        margin-left: 30vw;
-        width: 40vw; 
+        margin-top: 4vh;
+        margin-left: 26vw;
+        width: 50vw; 
         height: 24vh;
     }
 
@@ -255,15 +260,17 @@ button:hover {
     }
 
     .emailText {
-        margin: 3vh 3vw 3vh 0;
-        font-size: large;
+        margin: 3vh 3vw 3vh 5vw;
+        padding: 0 0 0 50vw;
+        font-size: 4vw;
     }
 
     .itemText {
         display: block;
-        margin: 3vh 0 3vh 10vw;
-        font-size: 130%;
-        width: 42vw;
+        margin: 3.7vh 0 1vh 10vw;
+        padding: 0;
+        font-size: 100%;
+        width: 35vw;
     }
 
     .myInfo {
@@ -275,14 +282,22 @@ button:hover {
 
     .cancle_bnt {
         margin-top: 0;
+        width: 30vw;
+        font-size: large;
     }
 
     .message {
+        margin: 0;
         padding-bottom: 2vh;
-        margin-left: 10vw;
+        margin-left: 0.1vw;
+        font-size: 3vw;
+        font-weight: 500;
+        padding-left: 15vw;
     }
 
     .update_bnt {
         margin: 0 0 0 19vw;
+        width: 30vw;
+        font-size: large;
     }
 }
