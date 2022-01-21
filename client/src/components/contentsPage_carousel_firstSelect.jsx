@@ -11,6 +11,9 @@ import { contentsModal } from "../action";
 const Wrap = styled.div`
   margin: 3em auto;
   width: 100%;
+  .slick-list {
+    text-align: center;
+  }
   .slick-arrow {
     transition: all 200ms ease-out;
   }
@@ -73,6 +76,13 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
         settings: {
           //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
           slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1270, //화면 사이즈 960px일 때
+        settings: {
+          //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+          slidesToShow: 2,
         },
       },
       {
