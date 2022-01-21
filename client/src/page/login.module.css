@@ -45,7 +45,7 @@
 .myInfo::placeholder {
   color: #B09171;
   font-size: 1.3em;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .myInfo {
@@ -54,7 +54,7 @@
   display: block;
   width: 25em;
   height: 5em;
-  border: 0.2em solid #B09171;
+  border: 0.1em solid #B09171;
   border-radius: 0.5em;
   float: right;
   font-weight: bold;
@@ -175,12 +175,13 @@ button:hover {
     display: block;
     border: none;
     float: right;
-    margin-right: 25vw;
+    margin-right: 7vw;
     background-color: white;
   }
 
   .message {
-    margin-left: -12em;
+    margin-left: 2em;
+    font-size: large;
   }
 
   .cancleBtn {
@@ -191,56 +192,65 @@ button:hover {
 
   .logo {
     float: left;
-    margin-left: 25vw;
-    width: 35vw; 
-    height: 20vh;
+    margin-left: 33vw;
+    width: 40vw; 
+    height: 25vh;
   }
 
   .itemText {
     display: block;
-    margin: 19vh 0 -16vh 14vw;
-    padding-top: 5vh;
-    font-size: 130%;
+    margin: 23vh 0 -17.5vh 20vw;
+    padding-top: 6.5vh;
+    font-size: 190%;
+    font-weight: bold;
     width: 18vw;
   }
 
   .myInfo {
-    margin: 0 30vw 5vh 3vw;
+    margin: 0 17vw 7vh 3vw;
     padding-left: 15px;
     width: 35vw;
-    height: 5vh;
+    height: 7vh;
   }
 
   .loginButton {
     display: inline;
-    margin: 0 22vw 0 14vw;
-    width: 55vw;
-    height: 6vh;
+    margin: 0 22vw 0 21vw;
+    width: 60vw;
+    height: 7vh;
   }
 
   .oauth_message {
     display: block;
-    text-align: unset;
-    margin-left: 25vw;
+    margin-left: 1vw;
+    font-size: 2vw;
   }
 
   .google {
-    margin-left: 31vw;
+    margin: 1em 6vw 0 39vw;
+  }
+
+  .google_icon {
+    width: 8vw;
+  }
+
+  .kakao_icon {
+    width: 8vw;
   }
 
   .membership {
     display: block;
-    margin: 8vh 0 0 13vw;
+    margin: 14vh 0 0 21vw;
     float: none;
     font-size: 2.5vw;
   }
 
   .membership_btn {
-    width: 17vw;
+    width: 20vw;
     border-radius: 0.5em;
-    height: 4.5vh;
+    height: 5.5vh;
     float: right;
-    margin: -4vh 31vw 0 0;
+    margin: -4.5vh 19vw 0 0;
     background-color: #B09171;
     color: black;
     font-size: 2vw;
@@ -294,6 +304,7 @@ button:hover {
   .myInfo {
     margin: 2.8vh 13vw 2vh 0;
     padding-left: 15px;
+    padding-top: 7px;
     width: 40vw;
     height: 5vh;
   }
@@ -315,6 +326,7 @@ button:hover {
     display: block;
     text-align: center;
     padding-bottom: 2vh;
+    font-size: medium;
     margin: 0;
   }
 
@@ -324,12 +336,17 @@ button:hover {
 
   .google_icon {
     float: right;
+    width: 13vw;
   }
   
   .kakao {
     margin-left: 0;
-    padding-left: -70vw;
+    width: 20vw;
     float: left;
+  }
+
+  .kakao_icon {
+    width: 13vw;
   }
 
   .membership {

@@ -136,9 +136,10 @@ button:hover {
 
   .img {
     float: left;
+    margin-top: 0;
     margin-left: 34vw;
     width: 40vw; 
-    height: 25vh;
+    height: 23vh;
   }
 
   .itemText {
