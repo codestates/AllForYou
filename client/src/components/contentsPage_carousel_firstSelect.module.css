@@ -43,16 +43,16 @@
 }
 
 @media screen and (max-width: 2500px) {
-.container{
-  width: 100em;
-}
+  .container {
+    width: 100em;
+  }
 }
 
 @media screen and (max-width: 2000px) {
-  .container{
+  .container {
     width: 85em;
   }
-  }
+}
 @media screen and (max-width: 1720px) {
   .container {
     margin: 0 1em;
@@ -63,11 +63,17 @@
 
 @media screen and (max-width: 1480px) {
   .container {
-    width: 45em;
+    width: 60em;
     height: 16em;
   }
   .contents_part {
     width: 30em;
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  .container {
+    width: 40em;
   }
 }
 
