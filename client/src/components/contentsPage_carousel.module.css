@@ -1,9 +1,6 @@
 .container {
   margin: 0 1em;
-  /* padding: 0 1em 1em 1em; */
   width: 55em;
-  /* height: 12em; */
-  /* background-color: black; */
 }
 
 .contents_container {
@@ -14,16 +11,13 @@
 
 .img_card {
   object-fit: cover;
-  /* background: #5f9ea0; */
   margin: auto;
-  /* margin: 1em; */
   padding: 0.5em;
   width: 100%;
   height: 100%;
   position: relative;
   text-align: center;
   transition: all 200ms ease-in;
-  /* z-index: 1; */
 }
 
 .img_card:hover {

@@ -31,7 +31,6 @@
   font-weight: 700;
   border-radius: 0.3em;
   background-color: #c4b09a;
-  /* background-color: #1f1e1e; */
   color: #5c5c5c;
   border: none;
 }
@@ -90,7 +89,6 @@ input::-webkit-search-results-decoration {
 }
 
 .select_1_All_container {
-  /* margin: 1.5em 1.5em 0 1.5em; */
   padding-bottom: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -106,6 +104,9 @@ input::-webkit-search-results-decoration {
   justify-content: space-around;
 }
 
+.contents_part_text {
+  margin-left: 1em;
+}
 .contents_part {
   position: relative;
   padding: 0.8em;
@@ -118,10 +119,6 @@ input::-webkit-search-results-decoration {
   color: #dbd9d6;
   display: flex;
   flex-direction: column;
-}
-
-.select_1_text {
-  width: 20%;
 }
 
 .contents_part_2 {
@@ -306,7 +303,6 @@ input::-webkit-search-results-decoration {
 }
 
 @media screen and (max-width: 600px) {
-  /* 모바일 */
   .container {
     width: 100%;
   }
@@ -319,18 +315,24 @@ input::-webkit-search-results-decoration {
   .contents {
     width: 100%;
   }
-  .contents_part {
-  }
 }
 
-@media screen and (max-width: 400px) {
-  .container {
-    width: 25.1em;
-  }
-}
-
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 414px) {
   .contents_part_2 {
-    margin-left: 0;
+    margin: 0 0 1em 0;
+    padding: 0;
+  }
+  .container {
+    width: 100%;
+  }
+
+  .contents_part {
+    padding: 1em 0;
+  }
+  .contents_part_2_text {
+    margin-top: 1em;
+  }
+  .subtitle {
+    font-size: 1.4em;
   }
 }

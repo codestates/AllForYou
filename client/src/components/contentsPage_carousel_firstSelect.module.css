@@ -13,7 +13,6 @@
 
 .img_card {
   object-fit: cover;
-  /* background: #5f9ea0; */
   margin: auto;
   margin-bottom: 0.5em;
   padding: 0.5em;
@@ -82,6 +81,22 @@
     margin: 0;
     width: 18em;
     height: 14em;
+  }
+  .img_card {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 414px) {
+  .img_card {
+    margin: auto;
+    width: 14em;
+    height: 8em;
+  }
+  .title {
+    font-size: 0.5em;
+  }
+  .like {
+    font-size: 0.3em;
   }
 }
 

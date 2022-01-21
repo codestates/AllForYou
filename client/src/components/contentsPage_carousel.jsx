@@ -15,16 +15,12 @@ const Wrap = styled.div`
   }
   .slick-prev:before,
   .slick-next:before {
-    /* background-color: black; */
     font-family: "slick";
     font-size: 90px;
     font-weight: 700;
     line-height: 0.01;
     opacity: 0.6;
-    /* color: #000000; */
     color: white;
-    /* font-size: 25px; */
-    /* margin: 0.51em; */
     -webkit-font-smoothing: antialiased;
   }
   .slick-prev:hover,
@@ -68,18 +64,15 @@ const ContentsPage_carousel = ({ select_1_category }) => {
     speed: 500,
     arrows: true,
     responsive: [
-      // 반응형 웹 구현 옵션
       {
-        breakpoint: 2200, //화면 사이즈 960px일 때
+        breakpoint: 2200,
         settings: {
-          //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
           slidesToShow: 3,
         },
       },
       {
-        breakpoint: 920, //화면 사이즈 960px일 때
+        breakpoint: 920,
         settings: {
-          //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
           slidesToShow: 1,
         },
       },
