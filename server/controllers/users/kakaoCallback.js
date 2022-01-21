@@ -29,7 +29,6 @@ module.exports = async(req, res) => {
                 : userInfo.data.kakao_account.profile.profile_image_url,
             },
         });
-        console.log("userInfoKakao================", user)
 
         const payload = {
             id: user.dataValues.id,
@@ -38,7 +37,7 @@ module.exports = async(req, res) => {
             socialtype: user.dataValues.socialtype,
             user_picture: user.dataValues.user_picture,
         };
-        console.log("kakaoPayload================", payload)
+
         const token = await sign(payload, process.env.ACCESS_SECRET, {expiresIn: "2d"});
         
         res.status(200).cookie("jwt", token, {

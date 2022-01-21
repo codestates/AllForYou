@@ -15,7 +15,6 @@ const MyLikesDetail = () => {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/users/mypage/myLike`)
             .then((res) => {
-                console.log(res.data.data)
                 const likesData = res.data.data
                 setFilterData(likesData)
         })

@@ -3,7 +3,7 @@
 }
 
 .body {
-  z-index: 1000;
+  z-index: 900;
   margin: 5em 0 0 0;
   padding: 20px;
   width: 100%;
