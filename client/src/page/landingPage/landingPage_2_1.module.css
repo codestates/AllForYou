@@ -133,7 +133,7 @@
 
 @media screen and (max-width: 360px) {
   .container {
-    height: 380vh;
+    height: 390vh;
   }
   .words_us {
     padding: 10em 1em 1em 1em;
@@ -150,7 +150,7 @@
     font-size: 2em;
   }
   .img_container {
-    margin: 0 0 2em 0;
+    margin: 0 0 4em 0;
   }
   .img_1 {
     width: 17em;

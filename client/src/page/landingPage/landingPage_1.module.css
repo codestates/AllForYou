@@ -56,6 +56,9 @@
 }
 
 @media screen and (max-width: 360px) {
+  .container {
+    height: 80vh;
+  }
   .img_1 {
     height: 80vh;
   }
