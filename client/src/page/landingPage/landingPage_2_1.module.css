@@ -4,14 +4,12 @@
 
 .container {
   width: 100%;
-  height: 280vh;
+  height: 280;
   background-color: black;
+  padding-bottom: 10em;
 }
 
 .contentsPageBtn {
-  /* position: absolute;
-  top: 195%;
-  left: 38.5%; */
   margin-bottom: 4em;
   font-size: 1.8em;
   font-weight: 700;
@@ -58,12 +56,13 @@
 }
 
 .imgCard_container_1 {
+  /* width: 120vw; */
   display: flex;
   justify-content: space-around;
 }
 
 .img_container {
-  margin: 3em;
+  padding: 3em;
   position: relative;
 }
 
@@ -117,7 +116,7 @@
     font-size: 7em;
   }
   .container {
-    height: 400vh;
+    /* height: 380vh; */
   }
   .imgCard_container_1,
   .imgCard_container_2 {
@@ -125,57 +124,64 @@
   }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1167px) {
   .container {
-    height: 450vh;
+    /* height: 520vh; */
   }
 }
 
-@media screen and (max-width: 1166px) {
-  .container {
-    height: 520vh;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .container {
-    height: 595vh;
-  }
-}
-
-@media screen and (max-width: 835px) {
-  .container {
-    height: 630vh;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .container {
-    height: 390vh;
-  }
+@media screen and (max-width: 1065px) {
   .words_us {
-    padding: 10em 1em 1em 1em;
     font-size: 1em;
   }
   .words_kr {
-    padding: 0.2em 1em 1em 1em;
     font-size: 1em;
   }
-  .contentsPageBtn {
-    width: 11em;
+  .main_text {
+    font-size: 5em;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .main_text {
+    font-size: 3.5em;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .img_container {
+    margin: 3em 0;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .words_us {
+    font-size: 0.5em;
+  }
+  .words_kr {
+    padding: 0.5em;
+    font-size: 0.5em;
   }
   .main_text {
-    font-size: 2em;
+    margin-top: 1em;
+    font-size: 3em;
+  }
+  .contentsPageBtn {
+    margin-top: 1em;
+    width: 10em;
+  }
+  .contentsPageBtn_text {
+    font-size: 0.7em;
   }
   .img_container {
-    margin: 0 0 4em 0;
+    width: 100%;
+    height: 100%;
   }
   .img_1 {
-    width: 17em;
-    height: 17em;
+    width: 100%;
+    height: 100%;
   }
   .img_text {
-    text-align: center;
-    font-size: 0.6em;
+    font-size: 1em;
   }
 }
