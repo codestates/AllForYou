@@ -214,4 +214,11 @@ body {
   .img_text {
     font-size: 0.8em;
   }
+  .contentsPageBtn {
+    margin-top: 1em;
+    width: 8em;
+  }
+  .contentsPageBtn_text {
+    font-size: 0.6em;
+  }
 }
