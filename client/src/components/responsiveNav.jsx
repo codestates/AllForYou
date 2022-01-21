@@ -7,7 +7,8 @@ import {
   login, 
   loginModal, 
   setKakaoLogin, 
-  setGoogleLogin 
+  setGoogleLogin,
+  setMessageModal
 } from '../action';
 import { useNavigate } from "react-router-dom";
 
@@ -21,20 +22,19 @@ const ResponsiveNav = () => {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
-        console.log(res)
           dispatch(login(false));
           dispatch(setKakaoLogin(false));
           dispatch(setGoogleLogin(false));
+          dispatch(setMessageModal(true, "로그아웃 되었습니다."))
           navigate('/')
       })
       .catch((err) => {
-        console.log(err);
+        alert("Server Error!")
       });
   };
 
   const handleLoginModal = () => {
     dispatch(loginModal(true));
-    console.log(isModal);
   };
 
   return (

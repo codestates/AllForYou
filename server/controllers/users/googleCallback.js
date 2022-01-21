@@ -31,7 +31,6 @@ module.exports = async(req, res ) => {
             },
         });
 
-        console.log("userInfoGoogle================", user)
         const payload = {
             id: user.dataValues.id,
             email: user.dataValues.email,
@@ -39,8 +38,6 @@ module.exports = async(req, res ) => {
             socialtype: user.dataValues.socialtype,
             user_picture: user.dataValues.user_picture,
         };
-        
-        console.log("googlePayload================", payload)
 
         const token = await sign(payload, process.env.ACCESS_SECRET, {expiresIn: "2d"});
         

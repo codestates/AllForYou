@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./contentsPage_secondSelect.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { contentsModal } from "../action";
 
 const ContentsPage_secondSelect = ({ dataLikeSort }) => {

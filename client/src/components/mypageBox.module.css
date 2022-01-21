@@ -157,7 +157,7 @@
     }
 
     .reviews_title {
-        margin: 61vh 0 0 -15vw;
+        margin: 60.5vh 0 0 -15vw;
         width: 50vw;
         font-size: 5vw;
     }
@@ -256,7 +256,7 @@
     .reviewsBox {
         margin: 0 0 0 -18vw;
         padding-left: 3.5vw;
-        height: 40vh;
+        height: 45vh;
         border-radius: 0;
         width: 100vw;
     }
@@ -282,6 +282,7 @@
 
     .likesBox {
         padding-left: 3.5vw;
+        height: 45vh;
     }
 
     .likeBox {
@@ -294,6 +295,7 @@
     }
 
     .mydata_likeDate {
+        margin-top: 0;
         width: 90vw;
         font-size: 3vw;
     }
@@ -308,6 +310,7 @@
     }
 
     .mydata_reviewDate {
+        margin-top: 1vh;
         width: 18vw;
         font-size: 3vw;
     }

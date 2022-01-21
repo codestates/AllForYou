@@ -15,7 +15,6 @@ const MyReviewsDetail = () => {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/users/mypage/myReview`)
             .then((res) => {
-                console.log(res)
                 const reviewData = res.data.data
                 setFilterData(reviewData)
         })
@@ -25,7 +24,6 @@ const MyReviewsDetail = () => {
         handleReviewsDetail();
     }, []);
     
-    console.log(filterData)
     return(
         <div className={style.container}>
             {alert("구현 준비중입니다.")}
@@ -35,7 +33,7 @@ const MyReviewsDetail = () => {
                     {nickname}
                 </p>
             </div>
-            <span className={style.likes_title}>
+            <span className={style.reviews_title}>
                 내가 쓴 글
             <div className={style.box}>
             {filterData ? (
@@ -54,7 +52,7 @@ const MyReviewsDetail = () => {
                         ))}
                     </>
                 ) : (
-                    <p className={style.empty_likesbox}>작성한 리뷰가 없습니다.</p>
+                    <p className={style.empty_reviewsbox}>작성한 리뷰가 없습니다.</p>
                 )}
             </div>
             </span>

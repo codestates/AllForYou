@@ -5,10 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   login,
   loginModal,
-  setNickname,
-  setEmailData,
   signupModal,
-  setProfileImage, 
   setGoogleLogin,
   setKakaoLogin
 } from '../action/index';
@@ -112,8 +109,6 @@ const Login = () => {
   const handleSignup = () => {
     dispatch(signupModal(true));
     dispatch(loginModal(false));
-    console.log(isModal);
-    console.log(isState);
   };
 
 const handlekakaoLogin = async () => {

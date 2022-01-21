@@ -21,7 +21,6 @@ function MyPageBox({ reviews, likes }) {
     //     // dispatch(setHandleMypage(reviews.id))
     }
     // dispatch(setHandleMypage(info))
-    // console.log(handlemypage)
     
     return (
     <div className={style.container}>
@@ -40,11 +39,11 @@ function MyPageBox({ reviews, likes }) {
                     <>
                         <div className={style.reviewBox}>
                             <span className={style.myReviewData} key={myReviews}>
-                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
+                                <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
                             </span>
                             <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
                                 <span className={style.mydata_reviewDate}>
-                                    <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
+                                    <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
                                 </span>
                             </a>
                         </div>

@@ -74,6 +74,10 @@ const Wrap = styled.div`
   .slick-list {
     background-color: black;
   }
+  @media screen and (max-width: 360px) {
+    .slick-dots {
+    }
+  }
 `;
 
 const boxFade = keyframes`
@@ -113,8 +117,8 @@ const LandingPage_1 = () => {
     slidesToScroll: 1,
     speed: 500,
     arrows: true,
-    autoplay: true, // 자동 스크롤 사용 여부
-    autoplaySpeed: 3000, // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+    autoplay: true,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     dots: true,
   };

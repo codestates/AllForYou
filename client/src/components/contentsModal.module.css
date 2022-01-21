@@ -17,7 +17,6 @@
 .container {
   width: 70em;
   height: 42em;
-  /* border: 0.2em solid black; */
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -64,11 +63,8 @@
   margin: 0.5em;
   margin-left: 2.5em;
   object-fit: fill;
-  /* width: 25em;
-  height: 30em; */
   width: 350px;
   height: 480px;
-  /* border: solid red 1px; */
 }
 
 .list_container {
@@ -81,7 +77,6 @@
   margin: 3.5em 1.5em 0.5em 2em;
   font-size: 1.3rem;
   font-weight: 700;
-  /* width: 10em; */
 }
 
 .year {
@@ -101,12 +96,6 @@
   font-weight: 600;
   text-align: center;
 }
-
-/* .link {
-  margin-right: 0.4em;
-  font-weight: 600;
-  text-align: center;
-} */
 
 .link:hover {
   color: rgb(101, 86, 86);
@@ -161,7 +150,7 @@
 }
 
 @media screen and (max-width: 2000px) {
-  .container{
+  .container {
     left: 20%;
   }
 }
@@ -190,35 +179,32 @@
 }
 
 @media screen and (max-width: 1130px) {
-  /* 타블렛 */
   .container {
     left: 10%;
   }
 }
 
 @media screen and (max-width: 960px) {
-  /* 모바일 */
   .container {
     width: 34em;
     height: 70%;
   }
   .list {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .list_container {
-    margin-left: 2em;
+    margin-left: 0.7em;
   }
   .image {
     margin: 0.5em;
-    margin-left: 2em;
-    margin-top: 3em;
+    margin-left: 1.5em;
+    margin-top: 1em;
     width: 200px;
     height: 280px;
-    /* border: solid red 1px; */
   }
   .summary {
-    top: 10em;
+    top: 15em;
     bottom: 0;
     left: 15em;
     padding: 20px 10px;
@@ -228,13 +214,13 @@
     flex-direction: column;
   }
   .title {
-    margin-left: 0.5em;
+    margin-left: 1em;
   }
   .year {
-    margin-left: 0.5em;
+    margin-left: 1em;
   }
   .runtime {
-    margin-left: 0.5em;
+    margin-left: 1em;
   }
 
   .link_container {
@@ -248,6 +234,59 @@
   }
 }
 
+@media screen and (max-width: 670px) {
+  .container {
+    width: 100%;
+    left: 0;
+  }
+  .title {
+    margin-left: 0.5em;
+    font-size: 1em;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .year {
+    margin-left: 1em;
+    font-size: 0.7em;
+  }
+  .runtime {
+    margin-left: 1em;
+    font-size: 0.5em;
+  }
+  .link_container {
+    position: absolute;
+    top: 6.5em;
+    right: 1em;
+  }
+  .link {
+    font-size: 0.7em;
+    /* width: 10em; */
+  }
+  .summary {
+    top: 15em;
+    bottom: 0;
+    left: 19em;
+    font-size: 0.8em;
+  }
+  .genres_text {
+    font-size: 1em;
+  }
+
+  .genres {
+    font-size: 0.8em;
+  }
+
+  .director_text {
+    font-size: 1em;
+  }
+  .director {
+    font-size: 0.8em;
+    width: 5em;
+  }
+}
+/* 
 @media screen and (max-width: 360px) {
   .container {
     width: 29em;
@@ -275,4 +314,4 @@
   .link {
     width: 10em;
   }
-}
+} */

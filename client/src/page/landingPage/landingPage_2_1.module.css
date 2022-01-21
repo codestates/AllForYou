@@ -1,13 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .container {
   width: 100%;
-  height: 280vh;
+  height: 280;
   background-color: black;
+  padding-bottom: 10em;
 }
 
 .contentsPageBtn {
-  /* position: absolute;
-  top: 195%;
-  left: 38.5%; */
   margin-bottom: 4em;
   font-size: 1.8em;
   font-weight: 700;
@@ -59,7 +67,7 @@
 }
 
 .img_container {
-  margin: 3em;
+  padding: 3em;
   position: relative;
 }
 
@@ -109,8 +117,8 @@
 }
 
 @media screen and (max-width: 1700px) {
-  .container {
-    height: 400vh;
+  .main_text {
+    font-size: 7em;
   }
   .imgCard_container_1,
   .imgCard_container_2 {
@@ -118,25 +126,99 @@
   }
 }
 
-@media screen and (max-width: 1166px) {
-  .container {
-    height: 560vh;
+@media screen and (max-width: 1065px) {
+  .words_us {
+    font-size: 1em;
+  }
+  .words_kr {
+    font-size: 1em;
+  }
+  .main_text {
+    font-size: 5em;
   }
 }
 
-@media screen and (max-width: 360px) {
-  .container {
-    width: 30em;
-    height: 600vh;
-  }
-  .words_us {
-    padding-top: 10em;
+@media screen and (max-width: 690px) {
+  .img_container {
+    margin: 3em 0;
   }
   .main_text {
-    font-size: 6em;
+    font-size: 2em;
+  }
+  .contentsPageBtn {
+    margin-top: 1em;
+    width: 10em;
+  }
+  .contentsPageBtn_text {
+    font-size: 0.7em;
+  }
+  .imgCard_container_1 {
+    width: 100%;
+    height: 100%;
+  }
+  .img_container {
+    /* padding: 2em 0; */
+    padding: 0;
+    /* width: 100%;
+    height: 100%; */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .img_container {
+    width: 100%;
   }
   .img_1 {
-    width: 25em;
-    height: 20em;
+    width: 100%;
+  }
+
+  .img_text {
+    font-size: 1em;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .words_us {
+    font-size: 0.5em;
+  }
+  .words_kr {
+    padding: 0.5em;
+    font-size: 0.5em;
+  }
+  .main_text {
+    margin-top: 1em;
+    font-size: 2em;
+  }
+  .contentsPageBtn {
+    margin-top: 1em;
+    width: 10em;
+  }
+  .contentsPageBtn_text {
+    font-size: 0.7em;
+  }
+  .img_container {
+    width: 100%;
+    height: 100%;
+  }
+  .img_1 {
+    width: 100%;
+    height: 100%;
+  }
+  .img_text {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .img_text {
+    font-size: 0.8em;
+  }
+  .contentsPageBtn {
+    margin-top: 1em;
+    width: 8em;
+  }
+  .contentsPageBtn_text {
+    font-size: 0.6em;
   }
 }
