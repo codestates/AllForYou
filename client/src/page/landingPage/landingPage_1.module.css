@@ -53,16 +53,13 @@
   .text_3 {
     font-size: 1.5em;
   }
-  .container {
-    width: 30em;
-  }
 }
 
 @media screen and (max-width: 360px) {
   .img_1 {
-    height: 100vh;
+    height: 80vh;
   }
-  .scroll {
-    margin-top: 1.3em;
+  .text_3 {
+    font-size: 1em;
   }
 }

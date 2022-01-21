@@ -444,15 +444,17 @@ const Contents = () => {
         <ComingSoon />
       ) : select_1 === "백색소리" && select_2 === "ALL" ? (
         <div className={style.select_1_All_container}>
-          <div className={style.contents_part}>
+          <div className={style.select_1_text}>
             # 영상
-            <ContentsPage_carousel_firstSelect
-              select_1_category={select_1_category.filter(
-                (el) => el.type === "video" && el.category === "백색소리"
-              )}
-            />
+            <div className={style.contents_part_2}>
+              <ContentsPage_carousel_firstSelect
+                select_1_category={select_1_category.filter(
+                  (el) => el.type === "video" && el.category === "백색소리"
+                )}
+              />
+            </div>
           </div>
-          <div className={style.contents_part}>
+          <div className={style.contents_part_2}>
             # 음악
             <ContentsPage_carousel_firstSelect
               select_1_category={select_1_category.filter(
@@ -463,37 +465,45 @@ const Contents = () => {
         </div>
       ) : select_2 === "ALL" ? (
         <div className={style.select_1_All_container}>
-          <div className={style.contents_part}>
-            # 영상
-            <ContentsPage_carousel_firstSelect
-              select_1_category={select_1_category.filter(
-                (el) => el.type === "video"
-              )}
-            />
+          <div className={style.contents_part_2}>
+            <div>
+              # 영상
+              <ContentsPage_carousel_firstSelect
+                select_1_category={select_1_category.filter(
+                  (el) => el.type === "video"
+                )}
+              />
+            </div>
           </div>
-          <div className={style.contents_part}>
-            # 영화
-            <ContentsPage_carousel_firstSelect
-              select_1_category={select_1_category.filter(
-                (el) => el.type === "movie"
-              )}
-            />
+          <div className={style.contents_part_2}>
+            <div>
+              # 영화
+              <ContentsPage_carousel_firstSelect
+                select_1_category={select_1_category.filter(
+                  (el) => el.type === "movie"
+                )}
+              />
+            </div>
           </div>
-          <div className={style.contents_part}>
-            # 책
-            <ContentsPage_carousel_firstSelect
-              select_1_category={select_1_category.filter(
-                (el) => el.type === "book"
-              )}
-            />
+          <div className={style.contents_part_2}>
+            <div>
+              # 책
+              <ContentsPage_carousel_firstSelect
+                select_1_category={select_1_category.filter(
+                  (el) => el.type === "book"
+                )}
+              />
+            </div>
           </div>
-          <div className={style.contents_part}>
-            # 음악
-            <ContentsPage_carousel_firstSelect
-              select_1_category={select_1_category.filter(
-                (el) => el.type === "music"
-              )}
-            />
+          <div className={style.contents_part_2}>
+            <div>
+              # 음악
+              <ContentsPage_carousel_firstSelect
+                select_1_category={select_1_category.filter(
+                  (el) => el.type === "music"
+                )}
+              />
+            </div>
           </div>
         </div>
       ) : (

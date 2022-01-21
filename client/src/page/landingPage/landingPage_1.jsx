@@ -74,6 +74,10 @@ const Wrap = styled.div`
   .slick-list {
     background-color: black;
   }
+  @media screen and (max-width: 360px) {
+    .slick-dots {
+    }
+  }
 `;
 
 const boxFade = keyframes`
