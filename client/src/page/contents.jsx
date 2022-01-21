@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import style from "./contents.module.css";
 import dummy2 from "../dummy/dummy2";
 import ContentsPage_carousel from "../components/contentsPage_carousel";
@@ -11,6 +10,10 @@ import ContentsSearchList from "../components/contentsSearchList";
 import { useDispatch, useSelector } from "react-redux";
 import { scrollTop } from "../action";
 import axios from "axios";
+
+import { message } from "antd";
+
+console.log("message", message);
 
 const Contents = () => {
   const modal = useSelector(
@@ -158,8 +161,14 @@ const Contents = () => {
     };
   });
 
+  const onChange = async () => {
+    alert("첫번째를 먼저 선택해 주세요");
+    window.location.replace("/contents");
+  };
+
   return (
     <div className={style.container}>
+      {select_1 === "ALL" && select_2 !== "ALL" ? onChange() : null}
       <select
         name="firstSelect"
         id={style.firstSelect}
