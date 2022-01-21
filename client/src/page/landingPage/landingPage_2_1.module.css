@@ -125,9 +125,27 @@
   }
 }
 
+@media screen and (max-width: 1600px) {
+  .container {
+    height: 450vh;
+  }
+}
+
 @media screen and (max-width: 1166px) {
   .container {
     height: 520vh;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+    height: 595vh;
+  }
+}
+
+@media screen and (max-width: 835px) {
+  .container {
+    height: 630vh;
   }
 }
 
