@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import style from "./mypageUpdate.module.css";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUpdateInfo, setMessageModal, setProfileImage, setNickname, setPassword } from '../action';
+import { setUpdateInfo, setMessageModal } from '../action';
 import axios from 'axios';
 
 function MyPgaeUpdate() {
@@ -60,16 +60,12 @@ function MyPgaeUpdate() {
                         }
                     }
                 )
-                .then((res) => {
-                    console.log("check!", res)
-                })
                 .then(() => {
                     dispatch(setUpdateInfo(false))
                     dispatch(setMessageModal(true, '회원정보 수정이 완료되었습니다.'));
                     window.location.reload('/');
                 })
                 .catch((err) => {
-                    console.log(err)
                     if (err.response.status === 409) {
                         setErrorMessage("이미 사용하고 있는 닉네임입니다");
                         setTimeout(function() { setErrorMessage("") }, 3000);
