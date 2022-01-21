@@ -88,9 +88,16 @@ function MyPgaeUpdate() {
         }
     }
 
+    const handleCancleBtn = () => {
+        dispatch(setUpdateInfo(false))
+    }
+
     return (
         <div className={style.body} onClick={modalOutSide}>
         <div className={style.container}>
+            <button className={style.cancleBox} >
+                <img className={style.xBtn} src="/image/x_icon.png" onClick={handleCancleBtn} />
+            </button>
             <div className={style.imgBox}>
                 <img
                     className={style.img}

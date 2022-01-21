@@ -3,7 +3,7 @@
 }
 
 .body {
-    z-index: 1;
+    z-index: 1000;
     margin: 5em 0 0 0;
     padding: 20px;
     width: 100%;
@@ -18,6 +18,16 @@
     height: 45em;
     border-radius: 1.5em;
     background-color: white
+}
+
+.cancleBox {
+    display: none;
+}
+
+.xBtn {
+    display: none;
+    width: 5vw;
+    margin-bottom: 0;
 }
 
 .img {
@@ -121,4 +131,158 @@ button:hover {
     border-width: 1px;
     color: black;
     background-color: white;
+}
+
+@media screen and (max-width: 1024px) {
+    .body {
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        padding-top: 1.3em;
+        align-items: center;
+    }
+
+    .container {
+        position: absolute;
+        width: 100vw;
+        height: 120vh;
+        border-radius: 0;
+    }
+    .cancleBox {
+        display: block;
+        border: none;
+        float: right;
+        padding-top: 2em;
+        margin-right: 12vw;
+        width: 2vw;
+        background-color: white;
+    }
+
+    .xBtn {
+        display: block;
+    }
+
+    .img {
+        margin: 1vh 0 0 33vw;
+        width: 40vw; 
+        height: 25vh;
+    }
+
+    .imgUpdate {
+        margin: 2vh 0 0 45vw;
+    }
+
+    .emailText {
+        display: block;
+        margin: 4vh 0 4.5vh 53vw;
+        font-size: x-large;
+    }
+
+    .itemText {
+        margin: 4vh 0 2vh 23vw;
+        font-size: 180%;
+        width: 21vw;
+    }
+
+    .myInfo {
+        margin: 3vh 21vw 3.5vh 1.5vw;
+        padding-left: 15px;
+        width: 28vw;
+        height: 5vh;
+    }
+
+    .update_bnt {
+        display: inline;
+        float: left;
+        margin: 2vh 3vw 0 23vw;
+        width: 25vw;
+        height: 6vh;
+    }
+
+    .message {
+        padding-bottom: 2vh;
+        margin-left: 32vw;
+    }
+
+    .cancle_bnt {
+        width: 25vw;
+        float: right;
+        height: 6vh;
+        float: right;
+        margin: 2vh 22vw 0 0;
+    }
+}
+
+@media screen and (max-width: 711px) {
+    .body {
+        margin: 0;
+        width: 100%;
+        padding: 0;
+        padding-top: 1.3em;
+        align-items: center;
+    }
+
+    .container {
+        /* width: 100%; */
+        /* border-radius: 0;
+        height: 63em; */
+        position: absolute;
+        width: 105vw;
+        height: 120vh;
+        border-radius: 0;
+    }
+    .cancleBox {
+        display: block;
+        border: none;
+        float: right;
+        margin-right: 3em;
+        background-color: white;
+    }
+
+    .xBtn {
+        display: block;
+    }
+
+    .img {
+        margin-left: 30vw;
+        width: 40vw; 
+        height: 24vh;
+    }
+
+    .imgUpdate {
+        margin: 2vh 0 0 43.5vw;
+        width: 3em;
+    }
+
+    .emailText {
+        margin: 3vh 3vw 3vh 0;
+        font-size: large;
+    }
+
+    .itemText {
+        display: block;
+        margin: 3vh 0 3vh 10vw;
+        font-size: 130%;
+        width: 42vw;
+    }
+
+    .myInfo {
+        margin: 2vh 15vw 3vh 3vw;
+        padding-left: 15px;
+        width: 35vw;
+        height: 5vh;
+    }
+
+    .cancle_bnt {
+        margin-top: 0;
+    }
+
+    .message {
+        padding-bottom: 2vh;
+        margin-left: 10vw;
+    }
+
+    .update_bnt {
+        margin: 0 0 0 19vw;
+    }
 }

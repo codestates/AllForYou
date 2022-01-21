@@ -157,7 +157,6 @@ button:hover {
 
 @media screen and (max-width: 1024px) {
   .body {
-    /* width: 100%; */
     margin: 0;
     width: 100%;
     padding: 0;
@@ -166,9 +165,6 @@ button:hover {
   }
 
   .container {
-    /* width: 100%; */
-    /* border-radius: 0;
-    height: 63em; */
     position: absolute;
     width: 100vw;
     height: 120vh;
@@ -179,12 +175,12 @@ button:hover {
     display: block;
     border: none;
     float: right;
-    margin-right: 33vw;
+    margin-right: 25vw;
     background-color: white;
   }
 
   .message {
-    margin-left: -20em;
+    margin-left: -12em;
   }
 
   .cancleBtn {
@@ -195,29 +191,29 @@ button:hover {
 
   .logo {
     float: left;
-    margin-left: 19vw;
+    margin-left: 25vw;
     width: 35vw; 
     height: 20vh;
   }
 
   .itemText {
     display: block;
-    margin: 19vh 0 -19vh 8vw;
+    margin: 19vh 0 -16vh 14vw;
     padding-top: 5vh;
     font-size: 130%;
     width: 18vw;
   }
 
   .myInfo {
-    margin: 0 38vw 1.5vh 3vw;
+    margin: 0 30vw 5vh 3vw;
     padding-left: 15px;
-    width: 30vw;
+    width: 35vw;
     height: 5vh;
   }
 
   .loginButton {
     display: inline;
-    margin: 0 22vw 0 7vw;
+    margin: 0 22vw 0 14vw;
     width: 55vw;
     height: 6vh;
   }
@@ -225,16 +221,16 @@ button:hover {
   .oauth_message {
     display: block;
     text-align: unset;
-    margin-left: 20vw;
+    margin-left: 25vw;
   }
 
   .google {
-    margin-left: 26vw;
+    margin-left: 31vw;
   }
 
   .membership {
     display: block;
-    margin: 8vh 0 0 8vw;
+    margin: 8vh 0 0 13vw;
     float: none;
     font-size: 2.5vw;
   }
@@ -244,7 +240,7 @@ button:hover {
     border-radius: 0.5em;
     height: 4.5vh;
     float: right;
-    margin: -4vh 38vw 0 0;
+    margin: -4vh 31vw 0 0;
     background-color: #B09171;
     color: black;
     font-size: 2vw;
@@ -253,7 +249,6 @@ button:hover {
 
 @media screen and (max-width: 711px) {
   .body {
-    /* width: 100%; */
     margin: 0;
     width: 100%;
     padding: 0;
@@ -262,9 +257,6 @@ button:hover {
   }
 
   .container {
-    /* width: 100%; */
-    /* border-radius: 0;
-    height: 63em; */
     position: absolute;
     width: 105vw;
     height: 120vh;
@@ -273,7 +265,7 @@ button:hover {
   .cancleBox {
     border: none;
     float: right;
-    margin-right: 10vw;
+    margin-right: 7vw;
     background-color: white;
   }
 
@@ -285,7 +277,7 @@ button:hover {
 
   .logo {
     float: left;
-    margin-left: 30vw;
+    margin-left: 35vw;
     width: 45vw; 
     height: 20vh;
   }
@@ -293,14 +285,14 @@ button:hover {
   .itemText {
     display: block;
     float: left;
-    margin: 3vh 0 1.5vh 13vw;
+    margin: 3vh 0 1.5vh 14vw;
     padding-top: 0;
     font-size: 150%;
     width: 30vw;
   }
 
   .myInfo {
-    margin: 2.8vh 15vw 2vh 0;
+    margin: 2.8vh 13vw 2vh 0;
     padding-left: 15px;
     width: 40vw;
     height: 5vh;
@@ -308,14 +300,14 @@ button:hover {
 
   .loginButton {
     display: block;
-    margin: 47vh 1vw 1.2em 10vw;
+    margin: 47vh 1vw 1.2em 13vw;
     width: 80vw;
     height: 8vh;
   }
   
   .oauth_message {
     margin: 0;
-    margin-left: -9vw;
+    margin-left: -3vw;
     text-align: center;
   }
 
@@ -327,7 +319,7 @@ button:hover {
   }
 
   .google {
-    margin-left: 37vw;
+    margin-left: 34vw;
   }
 
   .google_icon {
@@ -341,17 +333,17 @@ button:hover {
   }
 
   .membership {
-    margin: 13vh 0 -18vw 13.5vw;
+    margin: 14vh 0 -18vw 13.5vw;
     padding: 0 25vw 0 0;
     font-size: 2.5vw;
     float:left;
   }
 
   .membership_btn {
-    width: 25vw;
+    width: 30vw;
     float: none;
     height: 5vh;
-    margin: 14.5vh 0 0 62vw;
+    margin: 15.5vh 0 0 61vw;
     border-radius: 0.5em;
     background-color: #B09171;
     color: black;
