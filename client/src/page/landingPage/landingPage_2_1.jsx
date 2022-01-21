@@ -42,7 +42,9 @@ const LandingPage_2_1 = () => {
           className={style.contentsPageBtn}
           onClick={handleClick}
         >
-          <div>콘텐츠 페이지로 바로가기</div>
+          <div className={style.contentsPageBtn_text}>
+            콘텐츠 페이지로 바로가기
+          </div>
         </button>
       </div>
       <div className={style.imgCard_container_1}>
