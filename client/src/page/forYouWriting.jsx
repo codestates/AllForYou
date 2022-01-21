@@ -104,8 +104,6 @@ const ForYouWriting = () => {
         }
     }
 
-    console.log('s', state)
-
     return (
         <div className={style.container}>
             <div className={style.writingBox}>
