@@ -13,7 +13,7 @@
 - 사용자가 ‘나중에 보기’ 버튼을 누른 컨텐츠를 따로 볼 수 있습니다.(advenced)
 
 # 🎉 Link
-- http://www.allforyou.life
+- https://www.allforyou.life
 
 
 ## 🛠 사용 스택
