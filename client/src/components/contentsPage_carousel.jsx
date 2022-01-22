@@ -45,6 +45,19 @@ const Wrap = styled.div`
   [dir="rtl"] .slick-next:before {
     content: "‹";
   }
+  @media screen and (max-width: 820px) {
+    .slick-prev {
+    width:0
+    position: absolute;
+    left: 0;
+    z-index: 999;
+  }
+  .slick-next {
+    width:0
+    position: absolute;
+    right: 0;
+  }
+  }
 `;
 
 const ContentsPage_carousel = ({ select_1_category }) => {
