@@ -109,7 +109,7 @@ const ContentsModal = () => {
           className={style.like}
           onClick={() => checkLoginStatus(likeCheck)}
         >
-          {like ? <LikeFilled /> : <LikeOutlined />}
+          {like && isLogin ? <LikeFilled /> : <LikeOutlined />}
         </button>
         <div className={style.list}>
           <img className={style.image} src={contentsInfo.image} alt="" />

@@ -361,6 +361,10 @@ button:hover {
     width: 14vw;
   }
 
+  .kakao_icon {
+    width: 13vw;
+  }
+
   .membership {
     margin: 17.5vh 0 -18vw 13.5vw;
     padding: 0 25vw 0 0;
