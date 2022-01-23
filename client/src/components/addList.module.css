@@ -48,8 +48,8 @@
 }
 }
 @media screen and (max-width:767px) {
-.container{
-  width: 17rem;
+  .container{
+  width: 16.9rem;
 }
 .list_title{
   width: 10rem;
@@ -58,7 +58,7 @@
   width: 2.5rem;
 }
 .list_btn{
-  width:2.5rem;
-  font-size: 0.4rem;
+  width:2rem;
+  font-size: 0.6rem;
 }
 }

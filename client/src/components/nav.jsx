@@ -8,8 +8,7 @@ import {
   login, 
   loginModal, 
   setKakaoLogin, 
-  setGoogleLogin,
-  setMessageModal
+  setGoogleLogin 
 } from '../action';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
@@ -24,19 +23,20 @@ const Nav = () => {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/users/signout`)
       .then((res) => {
+        console.log(res)
           dispatch(login(false));
           dispatch(setKakaoLogin(false));
           dispatch(setGoogleLogin(false));
-          dispatch(setMessageModal(true, "로그아웃 되었습니다."))
           navigate('/')
       })
       .catch((err) => {
-        alert("Server Error!")
+        console.log(err);
       });
   };
 
   const handleLoginModal = () => {
     dispatch(loginModal(true));
+    console.log(isModal);
   };
 
   return (
