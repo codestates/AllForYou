@@ -49,6 +49,7 @@ const Contents = () => {
   useEffect(() => {
     getContentstList();
     dataLike();
+    window.scrollTo(0, 0);
   }, [like, contentsSearch]);
 
   const select_1_category = contentsList.filter((el) => {
