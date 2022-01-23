@@ -60,7 +60,7 @@ const Wrap = styled.div`
   .slick-next {
     width:0
     position: absolute;
-    right: -10px;
+    right: -20px;
   }
   }
 `;
