@@ -3,7 +3,7 @@
 }
 
 .body {
-  z-index: 999;
+  z-index: 900;
   margin: 5em 0 0 0;
   padding: 20px;
   width: 100%;
@@ -45,7 +45,7 @@
 .myInfo::placeholder {
   color: #b09171;
   font-size: 1.3em;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .myInfo {
@@ -54,7 +54,7 @@
   display: block;
   width: 25em;
   height: 5em;
-  border: 0.2em solid #b09171;
+  border: 0.1em solid #B09171;
   border-radius: 0.5em;
   float: right;
   font-weight: bold;
@@ -71,7 +71,7 @@
   font-size: 1.4em;
   font-weight: 900;
   border-radius: 0.3em;
-  background-color: #b09171;
+  background-color: #B09171;
   color: black;
 }
 
@@ -157,7 +157,6 @@ button:hover {
 
 @media screen and (max-width: 1024px) {
   .body {
-    /* width: 100%; */
     margin: 0;
     width: 100%;
     padding: 0;
@@ -166,9 +165,6 @@ button:hover {
   }
 
   .container {
-    /* width: 100%; */
-    /* border-radius: 0;
-    height: 63em; */
     position: absolute;
     width: 100vw;
     height: 120vh;
@@ -179,12 +175,13 @@ button:hover {
     display: block;
     border: none;
     float: right;
-    margin-right: 33vw;
+    margin-right: 7vw;
     background-color: white;
   }
 
   .message {
-    margin-left: -20em;
+    margin-left: 2em;
+    font-size: large;
   }
 
   .cancleBtn {
@@ -195,57 +192,74 @@ button:hover {
 
   .logo {
     float: left;
-    margin-left: 19vw;
-    width: 35vw;
-    height: 20vh;
+    margin-left: 33vw;
+    width: 40vw; 
+    height: 25vh;
   }
 
   .itemText {
     display: block;
-    margin: 19vh 0 -19vh 8vw;
-    padding-top: 5vh;
-    font-size: 130%;
+    margin: 8.4em 0 -20vh 20vw;
+    padding-top: 6.5vh;
+    font-size: 190%;
+    font-weight: bold;
     width: 18vw;
   }
 
   .myInfo {
-    margin: 0 38vw 1.5vh 3vw;
+    margin: 0 17vw 5em 3vw;
     padding-left: 15px;
-    width: 30vw;
-    height: 5vh;
+    width: 35vw;
+    height: 6em;
+    position: relative;
   }
 
   .loginButton {
     display: inline;
-    margin: 0 22vw 0 7vw;
-    width: 55vw;
-    height: 6vh;
+    margin: 0 22vw 0 21vw;
+    width: 60vw;
+    height: 7vh;
   }
 
   .oauth_message {
     display: block;
-    text-align: unset;
-    margin-left: 20vw;
+    margin-left: 1vw;
+    font-size: 2vw;
   }
 
   .google {
-    margin-left: 26vw;
+    margin: 1em 6vw 0 39vw;
+  }
+
+  .google_icon {
+    width: 8vw;
+  }
+
+  .kakao_icon {
+    width: 8vw;
+  }
+
+  .kakao {
+    margin-left: 54vw;
+    float: left;
+    position: fixed;
+    width: 11vw;
   }
 
   .membership {
     display: block;
-    margin: 8vh 0 0 8vw;
+    margin: 14vh 0 0 21vw;
     float: none;
     font-size: 2.5vw;
   }
 
   .membership_btn {
-    width: 17vw;
+    width: 20vw;
     border-radius: 0.5em;
-    height: 4.5vh;
+    height: 5.5vh;
     float: right;
-    margin: -4vh 38vw 0 0;
-    background-color: #b09171;
+    margin: -4.5vh 19vw 0 0;
+    background-color: #B09171;
     color: black;
     font-size: 2vw;
   }
@@ -253,7 +267,6 @@ button:hover {
 
 @media screen and (max-width: 711px) {
   .body {
-    /* width: 100%; */
     margin: 0;
     width: 100%;
     padding: 0;
@@ -262,9 +275,6 @@ button:hover {
   }
 
   .container {
-    /* width: 100%; */
-    /* border-radius: 0;
-    height: 63em; */
     position: absolute;
     width: 105vw;
     height: 120vh;
@@ -273,7 +283,7 @@ button:hover {
   .cancleBox {
     border: none;
     float: right;
-    margin-right: 10vw;
+    margin-right: 7vw;
     background-color: white;
   }
 
@@ -285,73 +295,84 @@ button:hover {
 
   .logo {
     float: left;
-    margin-left: 30vw;
-    width: 45vw;
-    height: 20vh;
+    margin-left: 34vw;
+    width: 45vw; 
+    height: 18vh;
   }
 
   .itemText {
     display: block;
     float: left;
-    margin: 3vh 0 1.5vh 13vw;
+    margin: 1.5em 0 0.7em 12.5vw;
     padding-top: 0;
     font-size: 150%;
     width: 30vw;
   }
 
   .myInfo {
-    margin: 2.8vh 15vw 2vh 0;
+    margin: 1.1em 13vw 1em 0;
     padding-left: 15px;
+    padding-top: 7px;
     width: 40vw;
-    height: 5vh;
+    height: 4.5em;
+    position:relative;
   }
 
   .loginButton {
     display: block;
-    margin: 47vh 1vw 1.2em 10vw;
+    margin: 47vh 1vw 1.2em 11.5vw;
     width: 80vw;
-    height: 8vh;
+    height: 7vh;
   }
 
   .oauth_message {
     margin: 0;
-    margin-left: -9vw;
+    margin-left: -3vw;
     text-align: center;
+    font-size: medium;
   }
 
   .message {
     display: block;
     text-align: center;
     padding-bottom: 2vh;
+    font-size: medium;
     margin: 0;
   }
 
   .google {
-    margin-left: 37vw;
+    margin: 1em 6vw 0 32vw;
+    position: fixed;
   }
 
   .google_icon {
-    float: right;
+    float: left;
+    width: 14vw;
   }
 
   .kakao {
-    margin-left: 0;
-    padding-left: -70vw;
+    margin-left: 54vw;
+    width: 20vw;
     float: left;
+    position: fixed;
+  }
+
+  .kakao_icon {
+    width: 14vw;
   }
 
   .membership {
-    margin: 13vh 0 -18vw 13.5vw;
+    margin: 17.5vh 0 -18vw 13.5vw;
     padding: 0 25vw 0 0;
     font-size: 2.5vw;
     float: left;
   }
 
   .membership_btn {
-    width: 25vw;
+    width: 30vw;
     float: none;
     height: 5vh;
-    margin: 14.5vh 0 0 62vw;
+    margin: 15.5vh 0 0 61vw;
     border-radius: 0.5em;
     background-color: #b09171;
     color: black;
