@@ -26,8 +26,8 @@ const SERVICES_POSTS = [
 const PostBox = () => {
     const animatedItem = {
 		0: useScrollFadeIn('up', 0.5, 0),
-		1: useScrollFadeIn('up', 0.5, 0.3),
-		2: useScrollFadeIn('up', 0.5, 0.5),
+		1: useScrollFadeIn('up', 1, 0.3),
+		2: useScrollFadeIn('up', 1, 0.5),
 	};
 
     return (

@@ -1,7 +1,7 @@
 .container{
   flex-direction: column;
 	width: 100%;
-	padding: 12rem 0 8rem 0;
+	padding: 10vw 0 8vw 0;
   display: flex;
   background-color: #b0907146;
 }
@@ -69,7 +69,7 @@
 
 @media screen and (max-width:740px) {
 .container{
-	padding: 10rem 0 20rem 0;
+	padding: 20rem 0 20rem 0;
 }
 .countMessage{
 	width: 90%;

@@ -47,6 +47,7 @@ const ForYouView = ({ post, isLogin }) => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/reviews/like/${post.id}`)
       .then((res) => {
+        console.log(res.data.data)
         if (res.data.data) {
           setLikeColor(true);
         } else {

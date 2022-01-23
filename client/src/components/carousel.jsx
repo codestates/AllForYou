@@ -46,7 +46,7 @@ const Carousel = () => {
                 }
             })
             .catch((err) => {
-                alert(err)
+                console.log(err)
             });
         }
 
@@ -60,23 +60,18 @@ const Carousel = () => {
 		slidesToScroll: 1,
 		speed: 500,
 		beforeChange: (current, next) => setCenterCard(next),
-        // nextArrow: <>,
-        // prevArrow: <> ,
         responsive:[
             {
                 breakpoint : 740,
                 settings:{
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    centerPadding: "10px",
                 }
             },
             {breakpoint : 450,
                 settings:{
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    centerPadding: "60px",
-                    arrows: false,
                 }
             }
         ]

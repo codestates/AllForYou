@@ -3,7 +3,7 @@
 }
 
 .body {
-  z-index: 900;
+  z-index: 1000;
   margin: 5em 0 0 0;
   padding: 20px;
   width: 100%;
@@ -51,7 +51,7 @@
   display: block;
   width: 16em;
   height: 3.5em;
-  border: 0.1em solid #B09171;
+  border: 0.2em solid #B09171;
   border-radius: 0.5em;
   float: right;
   background-color: white
@@ -108,6 +108,7 @@ button:hover {
 
 @media screen and (max-width: 1024px) {
   .body {
+    /* width: 100%; */
     margin: 0;
     width: 100%;
     padding: 0;
@@ -116,6 +117,9 @@ button:hover {
   }
 
   .container {
+    /* width: 100%; */
+    /* border-radius: 0;
+    height: 63em; */
     position: absolute;
     width: 100vw;
     height: 120vh;
@@ -124,7 +128,7 @@ button:hover {
   .cancleBox {
     border: none;
     float: right;
-    margin-right: 7vw;
+    margin-right: 29vw;
     background-color: white;
   }
 
@@ -136,55 +140,54 @@ button:hover {
 
   .img {
     float: left;
-    margin-top: 0;
-    margin-left: 34vw;
-    width: 40vw; 
-    height: 23vh;
+    margin-left: 28vw;
+    width: 35vw; 
+    height: 15vh;
   }
 
   .itemText {
     display: block;
-    margin: 1em 0 1.5em 12vw;
-    font-size: 180%;
-    width: 35vw;
+    margin: 2vh 0 2vh 12vw;
+    font-size: 130%;
+    width: 18vw;
   }
 
   .myInfo {
-    margin: 0.5em 10vw 3.7em 3vw;
+    margin: 1vh 34vw 1vh 3vw;
     padding-left: 15px;
-    width: 40vw;
-    height: 5.1em;
+    width: 30vw;
+    height: 4.5vh;
   }
 
   .membership {
     display: inline;
-    margin: 1vh 10vw 0 10vw;
-    width: 80vw;
+    margin: 1vh 20vw 0 7.5vw;
+    width: 60vw;
     height: 7vh;
   }
 
   .login_text {
     display: block;
-    margin: 3vh 0 0 10vw;
-    font-size: 3.5vw;
+    margin: 3vh 0 0 8vw;
+    font-size: 2.5vw;
   }
 
   .message {
     padding-bottom: 2vh;
-    margin-left: -1vw;
-    font-size: 2.5vw;
+    margin-left: -24vw;
   }
 
   .login_bnt {
-    width: 30vw;
-    height: 6vh;
+    width: 25vw;
+    height: 5.5vh;
     float: right;
-    margin: -4.5vh 10vw 0 0;
+    margin: -4.5vh 32vw 0 0;
   }
 }
 
 @media screen and (max-width: 711px) {
   .body {
+    /* width: 100%; */
     margin: 0;
     width: 100%;
     padding: 0;
@@ -193,6 +196,9 @@ button:hover {
   }
 
   .container {
+    /* width: 100%; */
+    /* border-radius: 0;
+    height: 63em; */
     position: absolute;
     width: 105vw;
     height: 120vh;
@@ -220,17 +226,16 @@ button:hover {
 
   .itemText {
     display: block;
-    margin: 1em 0 3.1vh 11vw;
-    font-size: 120%;
-    width: 40vw;
+    margin: 3vh 0 3.1vh 10vw;
+    font-size: 130%;
+    width: 30vw;
   }
 
   .myInfo {
-    margin: 0.8em 15vw 2em 3vw;
+    margin: 2vh 15vw 3vh 3vw;
     padding-left: 15px;
     width: 35vw;
-    height: 3em;
-    position: relative;
+    height: 5vh;
   }
 
   .membership {
@@ -241,18 +246,18 @@ button:hover {
   }
 
   .login_text {
-    margin: 0 0 0 10vw;
+    margin: 0 0 0 13vw;
     font-size: 3vw;
   }
 
   .message {
     padding-bottom: 3vh;
-    margin-left: -7vw;
+    margin-left: 0;
   }
 
   .login_bnt {
     width: 33vw;
     height: 5vh;
-    margin: -4vh 15vw 0 5vw;
+    margin: -4vh 12vw 0 5vw;
   }
 }
