@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import style from "./contents.module.css";
-import dummy2 from "../dummy/dummy2";
 import ContentsPage_carousel from "../components/contentsPage_carousel";
 import ContentsPage_carousel_firstSelect from "../components/contentsPage_carousel_firstSelect";
 import ContentsPage_secondSelect from "../components/contentsPage_secondSelect";
@@ -49,6 +48,7 @@ const Contents = () => {
   useEffect(() => {
     getContentstList();
     dataLike();
+    window.scrollTo(0, 0);
   }, [like, contentsSearch]);
 
   const select_1_category = contentsList.filter((el) => {
