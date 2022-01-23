@@ -125,7 +125,6 @@ const Contents = () => {
   const handleSelect_3 = (select) => {
     setSelect_3(select.target.value);
   };
-  console.log("selectLength", selectLength);
   const handleFollow = () => {
     if (selectLength > 100) {
       // 100 이상이면 버튼이 보이게
