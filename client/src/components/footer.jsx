@@ -62,11 +62,7 @@ const Footer = () => {
                             </svg>
                             github
                         </a>
-<<<<<<< HEAD
                         <a className={style.link} href="mailto:dlwodud9529@gmail.com">
-=======
-                        <a className={style.link} href="mailto:pdlwodud9529@gmail.com">
->>>>>>> 1c82e3fd0e30c05039b030ee3198c1afdaa20bbd
                             <MailIcon className={style.icon} />
                             dlwodud9529@gmail.com
                         </a>
