@@ -43,6 +43,6 @@ module.exports = async (req, res) => {
         // 모든 게시물을 반환한다.
         return res.status(200).json({ data: { count: myLikes.count, page: offset, row: myLikesData }, message: "내 좋아요리스트 전달 완료." });
     } catch (err) {
-      return res.status(500).json({ data: err, message: "서버 오류." })
+        return res.status(500).json({ data: err, message: "서버 오류." })
     }
 };

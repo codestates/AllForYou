@@ -31,6 +31,6 @@ module.exports = async (req, res) => {
         // 모든 게시물을 반환한다.
         return res.status(200).json({ data: { count: myReview.count, page: offset, row: myReview.rows }, message: "내 리뷰리스트 전달 완료." });
     } catch (err) {
-      return res.status(500).json({ data: err, message: "서버 오류." })
+        return res.status(500).json({ data: err, message: "서버 오류." })
     }
 };

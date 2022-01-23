@@ -20,10 +20,9 @@ const MyPage = () => {
   const { isLogin } = useSelector((state) => state.loginReducer); 
   const { updateInfo } = useSelector((state) => state.loginReducer);
   const { withdrawModal } = useSelector((state) => state.loginReducer);
+  const { profileImage } = useSelector((state) => state.loginReducer);
 
   const [errMessage, setErrMessage] = useState("");
-  const [isWithdrawModal, setIsWithdrawModal] = useState(false);
-  const [isEditModal, setIsEditModal] = useState(false);
   const [reviews, setReviews] = useState(null);
   const [likes, setLikes] = useState(null);
 
@@ -34,11 +33,10 @@ const MyPage = () => {
         if(res) {
             const email = res.data.data.userInfo.email;
             const nickname = res.data.data.userInfo.nickname;
-            const picture = res.data.data.userInfo.user_picture;
-            if(!picture) {
+            if(res.data.data.userInfo.user_picture === "sample_image") {
               dispatch(setProfileImage("/image/sample_img.png"));
             } else {
-              dispatch(setProfileImage(picture));
+              dispatch(setProfileImage(res.data.data.userInfo.user_picture));
             }
             const reviewlist = res.data.data.userReviews;
             const likeslist = res.data.data.userLikes;
