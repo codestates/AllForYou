@@ -61,3 +61,38 @@
     margin-left: 1em;
     border: none;
 }
+
+@media screen and (max-width: 711px) {
+    .modalBox {
+        width: 105vw;
+        height: 75vh;
+        background-color: white;
+        padding: 2em;;
+        margin-bottom: 3.5em;
+        margin-top: 2.5vh;
+        border-radius: 0;
+    }
+
+    .title {
+        margin: 0;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .text {
+        font-size: 4.3vw;
+        margin: 9vh 0 7vw 12vw;
+    }
+
+    .withdrawBtn {
+        width: 30vw;
+        height: 2.5em;
+        margin: 4vh 0 0 6vw;
+    }
+
+    .closeBtn {
+        width: 30vw;
+        height: 2.5em;
+        margin-left: 8vw;
+    }
+}
