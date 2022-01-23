@@ -41,11 +41,11 @@ const MyReviewsDetail = () => {
                         {filterData.map((filter) => (
                             <>
                                 <span className={style.mydata} key={filter}>
-                                    <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.title}</a>
+                                    <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.title}</a>
                                 </span>
-                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>
+                                <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>
                                     <span className={style.mydata_date}>
-                                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
+                                        <a className={style.goReview}href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
                                     </span>
                                 </a>
                             </>

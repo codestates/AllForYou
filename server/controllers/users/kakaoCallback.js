@@ -21,7 +21,7 @@ module.exports = async(req, res) => {
             },
             defaults: {
                 email: userInfo.data.kakao_account.email,
-                nickname: userInfo.data.kakao_account.email.split("@")[0]+"==@kakao!",
+                nickname: userInfo.data.kakao_account.email.split("@")[0]+"=@kakao!",
                 password: '',
                 socialtype: 'kakao',
                 user_picture: userInfo.data.kakao_account.profile.is_default_image
