@@ -49,13 +49,13 @@ const Wrap = styled.div`
     .slick-prev {
     width:0
     position: absolute;
-    left: 0;
+    left: 10px;
     z-index: 999;
   }
   .slick-next {
     width:0
     position: absolute;
-    right: 0;
+    right: -10px;
   }
   }
 `;
