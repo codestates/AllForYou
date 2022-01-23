@@ -21,12 +21,12 @@ const Wrap = styled.div`
     width:0
     position: absolute;
     left: 20px;
-    z-index: 999;
+    z-index: 900;
   }
   .slick-next {
     width:0
     position: absolute;
-    right: 40px;
+    right: -40px;
   }
   .slick-prev:before,
   .slick-next:before {
