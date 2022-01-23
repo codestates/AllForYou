@@ -20,7 +20,7 @@ const Wrap = styled.div`
   .slick-prev {
     width:0
     position: absolute;
-    left: 40px;
+    left: 20px;
     z-index: 999;
   }
   .slick-next {
