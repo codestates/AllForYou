@@ -7,7 +7,8 @@ import {
   loginModal,
   signupModal,
   setGoogleLogin,
-  setKakaoLogin
+  setKakaoLogin,
+  setMessageModal
 } from '../action/index';
 
 const Login = () => {
@@ -58,6 +59,7 @@ const Login = () => {
           setEmail("");
           setPassword("");
           handleLoginModal();
+          dispatch(setMessageModal(true, "정상적으로 로그인 되었습니다."))
           window.location.reload('/');
         })
         .catch((err) => {
@@ -116,6 +118,7 @@ const handlekakaoLogin = async () => {
   dispatch(login(true));
   dispatch(loginModal(false))
   dispatch(setKakaoLogin(true))
+  dispatch(setMessageModal(true, "정상적으로 로그인 되었습니다."))
 };
 
 const handlegoogleLogin= async () => {
@@ -123,6 +126,7 @@ const handlegoogleLogin= async () => {
   dispatch(login(true));
   dispatch(loginModal(false))
   dispatch(setGoogleLogin(true))
+  dispatch(setMessageModal(true, "정상적으로 로그인 되었습니다."))
 };
 
 const handleCancleBtn = () => {

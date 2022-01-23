@@ -24,7 +24,7 @@ module.exports = async(req, res ) => {
             },
             defaults: {
                 email: userInfo.data.email,
-                nickname: userInfo.data.email.split("@")[0]+"==@google!",
+                nickname: userInfo.data.email.split("@")[0]+"=@google!",
                 password: '',
                 socialtype: 'google',
                 user_picture: userInfo.data.picture,
