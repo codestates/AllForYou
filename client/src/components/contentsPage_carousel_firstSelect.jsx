@@ -54,7 +54,7 @@ const Wrap = styled.div`
     .slick-prev {
     width:0
     position: absolute;
-    left: 0;
+    left: 10px;
     z-index: 999;
   }
   .slick-next {

@@ -49,7 +49,7 @@ const Wrap = styled.div`
     .slick-prev {
     width:0
     position: absolute;
-    left: 10px;
+    left: 30px;
     z-index: 999;
   }
   .slick-next {
