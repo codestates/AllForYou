@@ -59,7 +59,7 @@
 
 .likeBox {
     display: flex;
-    margin: 0.3em 0 0 0;
+    margin: 0.2em 0 0 0;
     width: 50vw;
     font-size: x-large;
     border-bottom: 2px solid black;
@@ -94,6 +94,71 @@
     font-size: x-large;
     font-weight: bold;
     text-align: center;
+}
+
+.pageNationWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+    margin: -1vw 0 0 17vw;
+}
+
+.pageNationWrap .arrowBox {
+    margin: 0.5vw;
+}
+.pageNationWrap .arrowBox a.arrow {
+    cursor: pointer;
+    display: inline-block;
+    color: #9d9d9d;
+    height: 24px;
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.pageNationWrap .arrowBox a.arrow img {
+    display: block;
+    width: auto;
+    height: 20px;
+    margin-top: -0.6vh;
+}
+
+.pageNationWrap ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pageNationWrap ul li {
+    margin: 2.5px;
+}
+
+.pageNationWrap ul li a {
+    cursor: pointer;
+    display: inline-block;
+    color: #9d9d9d;
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 8px;
+    border-radius: 3px;
+    background: #ededed;
+}
+.pageNationWrap ul li a:hover {
+    background: #dedede;
+}
+.pageNationWrap ul li a.addClass {
+    color: #fff;
+    background: #a15d19;
+    width: 2em;
+    height: 2em;
 }
 
 @media screen and (max-width: 1024px) {
@@ -149,6 +214,14 @@
     .mydata_likeDate {
         width: 50vw;
     }
+
+    .pageNationWrap {
+        margin-left: 4.3em;
+    }
+
+    .pageNationWrap .arrowBox a.arrow img {
+        margin-top: 0.5vh;
+    }
 }
 
 @media screen and (max-width: 711px) {
@@ -192,5 +265,9 @@
     .mydata_likeDate {
         font-size: 0.5em;
         width: 70vw;
+    }
+
+    .pageNationWrap .arrowBox a.arrow img {
+        margin-top: 2.5px;
     }
 }
