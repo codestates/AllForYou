@@ -50,6 +50,16 @@ const Wrap = styled.div`
   [dir="rtl"] .slick-next:before {
     content: "‹";
   }
+  @media screen and (max-width: 820px) {
+    /* .slick-prev:before,
+    .slick-next:before {
+      display: none;
+    }
+    .slick-prev,
+    .slick-next {
+      display: none;
+    } */
+  }
 `;
 
 const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
@@ -92,6 +102,7 @@ const ContentsPage_carousel_firstSelect = ({ select_1_category }) => {
         breakpoint: 1000,
         settings: {
           slidesToShow: 1,
+          autoplay: true,
         },
       },
     ],

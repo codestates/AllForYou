@@ -62,9 +62,9 @@ const Footer = () => {
                             </svg>
                             github
                         </a>
-                        <a className={style.link} href="mailto:09merus@gmail.com">
+                        <a className={style.link} href="mailto:dlwodud9529@gmail.com">
                             <MailIcon className={style.icon} />
-                            pdlwodud9529@gmail.com
+                            dlwodud9529@gmail.com
                         </a>
                     </div>
                     <div className={style.individual}>

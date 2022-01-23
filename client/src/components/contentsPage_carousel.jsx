@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { contentsModal } from "../action";
 
 const Wrap = styled.div`
@@ -45,6 +45,16 @@ const Wrap = styled.div`
   [dir="rtl"] .slick-next:before {
     content: "‹";
   }
+  @media screen and (max-width: 820px) {
+    /* .slick-prev:before,
+    .slick-next:before {
+      display: none;
+    }
+    .slick-prev,
+    .slick-next {
+      display: none;
+    } */
+  }
 `;
 
 const ContentsPage_carousel = ({ select_1_category }) => {
@@ -74,6 +84,7 @@ const ContentsPage_carousel = ({ select_1_category }) => {
         breakpoint: 920,
         settings: {
           slidesToShow: 1,
+          autoplay: true,
         },
       },
     ],

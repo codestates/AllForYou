@@ -22,6 +22,7 @@ const Comment = ({ comment, getComment }) => {
             .then(() => {
                 setIsEdit(false);
                 dispatch(setMessageModal(true, '댓글이 수정되었습니다.'));
+                getComment();
             })
             .catch((err) => {
                 alert(err)
@@ -40,6 +41,7 @@ const Comment = ({ comment, getComment }) => {
             .then((res) => {
                 if (res.status === 201) {
                     dispatch(setMessageModal(true, '댓글이 삭제되었습니다.'));
+                    getComment();
                 }
             })
             .catch((err) => {

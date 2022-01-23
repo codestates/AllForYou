@@ -128,6 +128,7 @@ const MyReviewsDetail = () => {
         }
     }, [currentPage, postPages]);
     
+    console.log(filterData)
     return(
         <div className={style.container}>
             {/* {alert("구현 준비중입니다.")} */}
@@ -137,7 +138,7 @@ const MyReviewsDetail = () => {
                     {nickname}
                 </p>
             </div>
-            <span className={style.reviews_title}>
+            <span className={style.likes_title}>
                 내가 쓴 글
             <div className={style.box}>
             {postItems ? (
@@ -147,16 +148,16 @@ const MyReviewsDetail = () => {
                                 <span className={style.mydata} key={filter.id}>
                                     <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.title}</a>
                                 </span>
-                                <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>
+                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>
                                     <span className={style.mydata_date}>
-                                        <a className={style.goReview}href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
+                                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
                                     </span>
                                 </a>
                             </>
                         ))}
                     </>
                 ) : (
-                    <p className={style.empty_reviewsbox}>작성한 리뷰가 없습니다.</p>
+                    <p className={style.empty_likesbox}>작성한 리뷰가 없습니다.</p>
                 )}
             </div>
             <>

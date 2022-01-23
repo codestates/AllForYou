@@ -5,8 +5,7 @@ import {
     setWithdrawModal, 
     login,  
     setKakaoLogin, 
-    setGoogleLogin,
-    setMessageModal
+    setGoogleLogin 
 } from '../action';
 import { useDispatch } from 'react-redux';
 
@@ -21,11 +20,11 @@ function ModalWithdraw() {
             .delete(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
             .then((res) => {
                 if (res.status === 204) {
+                    alert("회원탈퇴 처리가 완료되었습니다.");
                     dispatch(login(false));
                     dispatch(setKakaoLogin(false));
                     dispatch(setGoogleLogin(false));
                     dispatch(setWithdrawModal(false));
-                    dispatch(setMessageModal(true, "정상적으로 회원탈퇴 되었습니다."))
                     window.location.replace('/');
                 }
             })
