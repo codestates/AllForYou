@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
                 { model: likes, attributes: ["id"] }
             ]
         })
-
+        // console.log(contentsData)
         let contentsList = contentsData.map((el) => {
             return {
                 "id": el.id,
@@ -44,6 +44,7 @@ module.exports = async (req, res) => {
             }
         })
 
+        // console.log(contentsList)
         return res.status(200).json({ data: contentsList, message: "successfully contents show all" })
     }
     catch (err) {

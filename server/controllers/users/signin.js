@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
     }
     
     const token = sign(userData, process.env.ACCESS_SECRET, { expiresIn: "2d" });
-
+  
     return res.status(201).cookie("jwt", token, {
       sameSite: "None",
       httpOnly: true,

@@ -51,6 +51,7 @@ const MyPage = () => {
     })
     .catch((err) => {
         setErrMessage("잘못된 요청입니다.");
+        console.log(isLogin)
     });
   };
 

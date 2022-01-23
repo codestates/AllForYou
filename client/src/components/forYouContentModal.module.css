@@ -91,7 +91,6 @@
 }
 @media screen and (max-width: 1425px) {
 .container {
-  margin-top:4em;
   left: 3%;
   vertical-align:auto;
 }
@@ -127,7 +126,7 @@
 }
 .title{
   width: 16em;
-  margin: 0.5em 0 1em 2.5em;
+  margin: 0.5em 0 1em 2em;
   font-size: 1.2em;
 }
 .info{
@@ -137,21 +136,17 @@
 }
 .year, .runtime{
   margin-right: 1em;
-  margin-bottom: 0em;
-  font-size: 0.9em;
-}
-.year{
-    margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 .list{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: 3em;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 .image{
-  width: 10em;
+  width: 18em;
   margin-left: 0em;
 }
 .list_container{
@@ -163,7 +158,7 @@
   font-weight: bold;
 }
 .summary{
-  height: 8.5em;
+  height: 20em;
   width: 18em;
 }
 }
