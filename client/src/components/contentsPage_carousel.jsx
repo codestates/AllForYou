@@ -46,17 +46,9 @@ const Wrap = styled.div`
     content: "‹";
   }
   @media screen and (max-width: 820px) {
-    .slick-prev {
-    width:0
-    position: absolute;
-    left: 10px;
-    z-index: 900;
-  }
-  .slick-next {
-    width:0
-    position: absolute;
-    right: -10px;
-  }
+  .slick-prev:before,
+  .slick-next:before  {
+    display: none;
   }
 `;
 
@@ -87,6 +79,7 @@ const ContentsPage_carousel = ({ select_1_category }) => {
         breakpoint: 920,
         settings: {
           slidesToShow: 1,
+          autoplay: true,
         },
       },
     ],
