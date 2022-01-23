@@ -51,14 +51,14 @@ const Wrap = styled.div`
     content: "‹";
   }
   @media screen and (max-width: 820px) {
-    .slick-prev:before,
+    /* .slick-prev:before,
     .slick-next:before {
       display: none;
     }
     .slick-prev,
     .slick-next {
       display: none;
-    }
+    } */
   }
 `;
 
