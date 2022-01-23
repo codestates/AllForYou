@@ -125,12 +125,15 @@ const Contents = () => {
   const handleSelect_3 = (select) => {
     setSelect_3(select.target.value);
   };
-
   const handleFollow = () => {
     if (selectLength > 100) {
       // 100 이상이면 버튼이 보이게
       dispatch(scrollTop(true, window.pageYOffset));
-    } else if (selectLength < 100 || selectLength === 0) {
+    }
+    if (selectLength < 1) {
+      dispatch(scrollTop(false, window.pageYOffset));
+    }
+    if (selectLength < 600 || selectLength === 0) {
       // 100 이하면 버튼이 사라지게
       dispatch(scrollTop(false, window.pageYOffset));
     }
