@@ -79,6 +79,9 @@ const Wrap = styled.div`
   .slick-next:before  {
     display: none;
   }
+  .slick-prev, .slick-next {
+    display: none;
+  }
   }
 `;
 
