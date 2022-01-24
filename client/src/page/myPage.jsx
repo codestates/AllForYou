@@ -7,7 +7,7 @@ import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
 import MyPgaeUpdate from "../components/mypageUpdate";
 import ModalWithdraw from "../components/ModalWithdraw";
-import MyPageReviewBox from "../components/myPageReview";
+import MyReviewsDetail from "../page/myReviewsDetail";
 import Footer from "../components/footer";
 import { setProfileImage, setEmailData, setNickname } from "../action";
 

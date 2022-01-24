@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"; 
-import style from "./mypageBox.module.css"
+import style from "../page/myReviewsDetail.module.css"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setPost } from "../action";
@@ -14,16 +14,16 @@ function MyPageReview({ review }) {
     }
 
     return (
-        <div className={style.reviewBox}>
-            <button className={style.myReviewData}>
-                <a onClick={handlePostInfo}>{review.title}</a>
+        <>
+            <button className={style.mydata}>
+                <a className={style.goReview} onClick={handlePostInfo}>{review.title}</a>
             </button>
-            <a onClick={handlePostInfo}>
-                <button className={style.mydata_reviewDate}>
-                    <a onClick={handlePostInfo}>{review.createdAt.split('T')[0]}</a>
-                </button>
+            <a className={style.goReview} onClick={handlePostInfo} >
+                <span className={style.mydata_date}>
+                    <button className={style.goReview}>{review.updatedAt.split('T')[0]}</button>
+                </span>
             </a>
-        </div>
+        </>
     );
 }
 
