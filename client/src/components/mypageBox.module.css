@@ -38,6 +38,7 @@
 .reviewBox {
     display: flex;
     margin-right: 2vw;
+    height: 7vh;
     border-bottom: 2px solid black;
 }
 
