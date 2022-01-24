@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const Wrap = styled.div`
-  slick-slide {
+  slick-slide{
     display: none;
   }
 
