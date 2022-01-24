@@ -117,7 +117,7 @@ const ForYouView = ({ post, isLogin }) => {
 
   const handleShareUrl = () => {
     let dummy = document.createElement("input");
-    let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/${post.id}`;
+    let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/:${post.id}`;
 
     document.body.appendChild(dummy);
     dummy.value = text;
@@ -138,7 +138,7 @@ const ForYouView = ({ post, isLogin }) => {
         description: `${category}(때)의 추천 리스트를 공유했습니다!`,
         imageUrl: image,
         link: {
-          mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${post.id}`,
+          mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`,
           androidExecParams: "test",
         },
       },
@@ -146,7 +146,7 @@ const ForYouView = ({ post, isLogin }) => {
         {
           title: "추천 리스트 공유해서 보기",
           link: {
-            mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${post.id}`,
+            mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`,
           },
         },
       ],
