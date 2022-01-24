@@ -5,7 +5,7 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch, useSelector } from 'react-redux';
-import { setMessageModal, loginModal, setPost, contentsModal } from "../action";
+import { setMessageModal, loginModal, setPost, contentsModal, setPosts } from "../action";
 import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
@@ -13,9 +13,16 @@ const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nickname } = useSelector((state) => state.loginReducer);
+  const { posts } = useSelector((state) => state.foruReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
+
+  const getPostUrl = () => {
+    if (posts !== null) {
+      dispatch(setPost(posts));
+    }
+  }
 
   function getPostDetail() {
     axios
@@ -117,7 +124,7 @@ const ForYouView = ({ post, isLogin }) => {
 
   const handleShareUrl = () => {
     let dummy = document.createElement("input");
-    let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/${post.id}`;
+    let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/:${post.id}`;
 
     document.body.appendChild(dummy);
     dummy.value = text;
@@ -138,7 +145,7 @@ const ForYouView = ({ post, isLogin }) => {
         description: `${category}(때)의 추천 리스트를 공유했습니다!`,
         imageUrl: image,
         link: {
-          mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${post.id}`,
+          mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`,
           androidExecParams: "test",
         },
       },
@@ -146,17 +153,19 @@ const ForYouView = ({ post, isLogin }) => {
         {
           title: "추천 리스트 공유해서 보기",
           link: {
-            mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${post.id}`,
+            mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/:${post.id}`,
           },
         },
       ],
     });
+    dispatch(setPosts(post));
   };
 
   useEffect(() => {
     getPostDetail();
     getContent()
     getComment();
+    getPostUrl();
     if (isLogin) {
       getLikeInfo();
     }
