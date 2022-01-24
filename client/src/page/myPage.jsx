@@ -27,7 +27,6 @@ const MyPage = () => {
   const [reviews, setReviews] = useState([]);
   const [likes, setLikes] = useState([]);
 
-
   const isAuthenticated = () => {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/users/mypage`)
     .then((res) => {
