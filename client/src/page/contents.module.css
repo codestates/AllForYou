@@ -385,4 +385,7 @@ input::-webkit-search-results-decoration {
     left: 14em;
     width: 0;
   }
+  .contents_part_2 {
+    margin-top: 3em;
+  }
 }
