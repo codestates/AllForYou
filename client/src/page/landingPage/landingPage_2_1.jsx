@@ -160,7 +160,7 @@ const LandingPage_2_1 = () => {
         >
           <img
             className={style.img_1}
-            src="landingPage_image/landingPage_2/백색소리.jpg"
+            src="https://s3.ap-northeast-2.amazonaws.com/www.allforyou.life/landingPage_image/landingPage_2/%EB%B0%B1%EC%83%89%EC%86%8C%EB%A6%AC.jpg"
             alt=""
           />
           <div className={style.img_main_text}>#백색소리 #힐링</div>
