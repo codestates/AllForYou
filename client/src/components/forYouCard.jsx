@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import style from "./forYouCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPost, setMessageModal } from "../action";
+import { setPost, setMessageModal, setPosts } from "../action";
 
 const ForYouCard = ({ review }) => {
-    const { userlike, like, title, category, image } = review
+    const { userlike, title, category, image } = review
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const likeColor = userlike
@@ -21,7 +21,7 @@ const ForYouCard = ({ review }) => {
                 description: `${category}(때)의 추천 리스트를 공유했습니다!`,
                 imageUrl: image,
                 link: {
-                    mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${review.id}`,
+                    mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/:${review.id}`,
                     androidExecParams: "test",
                 },
             },
@@ -29,16 +29,17 @@ const ForYouCard = ({ review }) => {
                 {
                     title: "추천 리스트 공유해서 보기",
                     link: {
-                        mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${review.id}`,
+                        mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/:${review.id}`,
                     },
                 },
             ],
         });
+        dispatch(setPosts(review));
     };
 
     const handleShareUrl = () => {
         let dummy = document.createElement("input");
-        let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/${review.id}`;
+        let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/:${review.id}`;
 
         document.body.appendChild(dummy);
         dummy.value = text;
@@ -46,6 +47,7 @@ const ForYouCard = ({ review }) => {
         document.execCommand("copy");
         document.body.removeChild(dummy);
         dispatch(setMessageModal(true, `클립보드 복사 완료 🙌🏻`));
+        dispatch(setPosts(review));
     };
 
     const handlePostInfo = () => {
