@@ -216,6 +216,9 @@ input::-webkit-search-results-decoration {
     font-size: 1.1em;
     width: 0;
   }
+  .contents_part_2 {
+    margin-top: 3em;
+  }
 }
 
 @media screen and (max-width: 1150px) {
