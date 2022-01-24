@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./modalWithdraw.module.css";
+import style from "./ModalWithdraw.module.css";
 import axios from "axios";
 import {
     setWithdrawModal,
