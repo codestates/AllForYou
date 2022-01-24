@@ -242,6 +242,7 @@ input::-webkit-search-results-decoration {
     left: 18.5em;
     top: 7.9em;
     font-size: 1.1em;
+    width: 0;
   }
   .select_1_All_container {
     margin-top: 6em;
@@ -292,6 +293,7 @@ input::-webkit-search-results-decoration {
     /* left: 18.5em; */
     top: 7.9em;
     font-size: 1.1em;
+    width: 0;
   }
 }
 
@@ -326,6 +328,7 @@ input::-webkit-search-results-decoration {
     /* left: 18.5em; */
     top: 10.15em;
     font-size: 1.1em;
+    width: 0;
   }
   .select_1_All_container {
     margin-top: 6em;
@@ -341,6 +344,7 @@ input::-webkit-search-results-decoration {
   }
   .search_btn {
     left: 17em;
+    width: 0;
   }
   .contents {
     width: 100%;
@@ -378,5 +382,6 @@ input::-webkit-search-results-decoration {
   .search_btn {
     top: 12.5em;
     left: 14em;
+    width: 0;
   }
 }
