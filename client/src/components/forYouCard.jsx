@@ -21,7 +21,7 @@ const ForYouCard = ({ review }) => {
                 description: `${category}(때)의 추천 리스트를 공유했습니다!`,
                 imageUrl: image,
                 link: {
-                    mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/reviews/${review.id}`,
+                    mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${review.id}`,
                     androidExecParams: "test",
                 },
             },
@@ -29,7 +29,7 @@ const ForYouCard = ({ review }) => {
                 {
                     title: "추천 리스트 공유해서 보기",
                     link: {
-                        mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/reviews/${review.id}`,
+                        mobileWebUrl: `${process.env.REACT_APP_CLIENT_URL}/foryouview/${review.id}`,
                     },
                 },
             ],
@@ -38,7 +38,7 @@ const ForYouCard = ({ review }) => {
 
     const handleShareUrl = () => {
         let dummy = document.createElement("input");
-        let text = process.env.REACT_APP_CLIENT_URL + `/reviews/${review.id}`;
+        let text = process.env.REACT_APP_CLIENT_URL + `/foryouview/${review.id}`;
 
         document.body.appendChild(dummy);
         dummy.value = text;
