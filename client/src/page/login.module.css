@@ -3,6 +3,7 @@
 }
 
 .body {
+  z-index: 999;
   margin: 5em 0 0 0;
   padding: 20px;
   width: 100%;
@@ -180,7 +181,7 @@ button:hover {
   }
 
   .message {
-    margin-left: 2em;
+    margin-left: 1em;
     font-size: large;
   }
 
@@ -199,7 +200,7 @@ button:hover {
 
   .itemText {
     display: block;
-    margin: 8.4em 0 -20vh 20vw;
+    margin: 23.5vh 0 -20vh 20vw;
     padding-top: 6.5vh;
     font-size: 190%;
     font-weight: bold;

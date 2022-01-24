@@ -85,6 +85,7 @@ input::-webkit-search-results-decoration {
   background-color: transparent;
   color: #5c5c5c;
   font-size: 1.3em;
+  width: 0;
 }
 
 .subtitle {
@@ -383,5 +384,8 @@ input::-webkit-search-results-decoration {
     top: 12.5em;
     left: 14em;
     width: 0;
+  }
+  .contents_part_2 {
+    margin-top: 3em;
   }
 }

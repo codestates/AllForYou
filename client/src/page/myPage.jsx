@@ -6,7 +6,8 @@ import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
 import MyPgaeUpdate from "../components/mypageUpdate";
-import ModalWithdraw from "../components/ModalWithdraw";
+import ModalWithdraw from "../components/modalWithdraw";
+import MyPageReviewBox from "../components/myPageReview"
 import Footer from "../components/footer";
 import {
   setProfileImage,
@@ -23,8 +24,8 @@ const MyPage = () => {
   const { profileImage } = useSelector((state) => state.loginReducer);
 
   const [errMessage, setErrMessage] = useState("");
-  const [reviews, setReviews] = useState(null);
-  const [likes, setLikes] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [likes, setLikes] = useState([]);
 
 
   const isAuthenticated = () => {
@@ -63,12 +64,12 @@ const MyPage = () => {
         {updateInfo === true ? (<MyPgaeUpdate />) : null}
         {withdrawModal === true ? (<ModalWithdraw />) : null}
         <ProfileBox />
-        <MyPageBox 
-          reviews={reviews}
+        <MyPageBox
           likes={likes}
+          reviews={reviews}
+          isAuthenticated={isAuthenticated}
         />
       </div>
-      
     ) : (
       <div className={style.message_box}>
         <div className={style.error_message}>로그인 후 이용 가능 합니다.</div>
