@@ -34,6 +34,7 @@ const ForYouCard = ({ review }) => {
                 },
             ],
         });
+        dispatch(setPost(review));
     };
 
     const handleShareUrl = () => {
@@ -46,6 +47,7 @@ const ForYouCard = ({ review }) => {
         document.execCommand("copy");
         document.body.removeChild(dummy);
         dispatch(setMessageModal(true, `클립보드 복사 완료 🙌🏻`));
+        dispatch(setPost(review));
     };
 
     const handlePostInfo = () => {
