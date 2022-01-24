@@ -152,6 +152,7 @@ const ForYouView = ({ post, isLogin }) => {
         },
       ],
     });
+    dispatch(setPost(review));
   };
 
   useEffect(() => {
