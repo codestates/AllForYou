@@ -12,12 +12,10 @@ import Footer from "../components/footer";
 import { setProfileImage, setEmailData, setNickname } from "../action";
 
 const MyPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLogin } = useSelector((state) => state.loginReducer);
   const { updateInfo } = useSelector((state) => state.loginReducer);
   const { withdrawModal } = useSelector((state) => state.loginReducer);
-  const { profileImage } = useSelector((state) => state.loginReducer);
 
   const [errMessage, setErrMessage] = useState("");
   const [reviews, setReviews] = useState([]);
@@ -41,7 +39,6 @@ const MyPage = () => {
           dispatch(setNickname(nickname));
           setReviews(reviewlist);
           setLikes(likeslist);
-          // window.location.reload('/');
         }
       })
       .catch((err) => {
