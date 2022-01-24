@@ -9,7 +9,6 @@ function MyPageLikesDetail({ content }) {
     const handleContentInfo = (e) => {
         setContentModal(!contentModal);
     };
-    console.log(contentModal)
 
     return (
         <div>
