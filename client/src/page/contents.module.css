@@ -213,6 +213,7 @@ input::-webkit-search-results-decoration {
     left: 18.5em;
     top: 7.9em;
     font-size: 1.1em;
+    width: 0;
   }
 }
 
