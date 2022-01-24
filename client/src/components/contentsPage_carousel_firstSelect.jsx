@@ -50,15 +50,15 @@ const Wrap = styled.div`
   [dir="rtl"] .slick-next:before {
     content: "‹";
   }
-  @media screen and (max-width: 820px) {
-    /* .slick-prev:before,
+  @media screen and (max-width: 1000px) {
+    .slick-prev:before,
     .slick-next:before {
       display: none;
     }
     .slick-prev,
     .slick-next {
       display: none;
-    } */
+    }
   }
 `;
 
