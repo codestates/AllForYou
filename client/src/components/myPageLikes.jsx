@@ -8,7 +8,7 @@ function MyPageLikes({ info, isAuthenticated }) {
 
     const handleContentInfo = (e) => {
         setContentModal(!contentModal);
-        isAuthenticated()
+        isAuthenticated();
     };
 
     return (
@@ -19,7 +19,6 @@ function MyPageLikes({ info, isAuthenticated }) {
                 <MyLikesContentModal 
                     contentsInfo={info}
                     handleContentInfo={handleContentInfo}
-                    isAuthenticated={isAuthenticated}
                 />
             ) : null}
                     <span>{info.content.title}</span>

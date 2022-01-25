@@ -9,7 +9,7 @@ const MyLikesContentModal = ({ contentsInfo, handleContentInfo }) => {
     const dispatch = useDispatch();
     const like = useSelector((state) => state.contentsLikeReducer.likeOnOff);
     const { isLogin } = useSelector((state) => state.loginReducer);
-
+    
     useEffect(() => {
         if (isLogin) {
             getLikeInfo();
