@@ -1,17 +1,18 @@
-
-   
 import React, { useState, useEffect } from "react";
 import style from "./myReviewsDetail.module.css"
 import PageNationReviewButton from "../components/paginationReviewButton"
+import MyPageReviewDetail from "../components/myPageReviewDetail"
 import axios from "axios";
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+
 
 const MyReviewsDetail = () => {
     const navigate = useNavigate();
     const { nickname } = useSelector((state) => state.loginReducer);
     const { profileImage } = useSelector((state) => state.loginReducer);
     
+    const [review, setReview] = useState([]);
     const [isActive, setActive] = useState([]);
     const [postItems, setPostItems] = useState([]);
     const [postPages, setPostPages] = useState(0);
@@ -21,13 +22,16 @@ const MyReviewsDetail = () => {
         offset: 1,
         limit: 10,
     });
+    const [reviewData, setReviewData] = useState([]);
 
     const hadlePages = () => {
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/users/mypage/myReview`)
             .then((res) => {
                 const { row, count } = res.data.data;
-
+                
+                setReviewData(row)
+                console.log(reviewData)
                 let pageCount = Math.ceil(count / querys.limit);
                 setPostPages(pageCount);
                 const newPostPages = new Array(pageCount).fill(false).map((el, idx) => {
@@ -130,6 +134,30 @@ const MyReviewsDetail = () => {
         }
     }, [currentPage, postPages]);
 
+    const handleMyReviewData = () => {
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
+            .then((res) => {
+                if(res.status === 200) {
+                    setReview(res.data.data)
+                }
+            })
+    }
+
+    const filterData = review.filter((item, i) => {
+        return (
+            reviewData.findIndex((item2, j) => {
+                return item.id === item2.id;
+            }) === i
+        );
+    });
+
+    const sortData = filterData.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+
+    useEffect(() => {
+        handleMyReviewData()
+    }, []);
+
     return(
         <div className={style.container}>
             {/* {alert("구현 준비중입니다.")} */}
@@ -142,19 +170,12 @@ const MyReviewsDetail = () => {
             <span className={style.reviews_title}>
                 내가 쓴 글
             <div className={style.box}>
-            {postItems ? (
+            {sortData ? (
                     <>
-                        {postItems.map((filter) => (
-                            <>
-                                <span className={style.mydata} key={filter.id}>
-                                    <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.title}</a>
-                                </span>
-                                <a className={style.goReview} href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>
-                                    <span className={style.mydata_date}>
-                                        <a className={style.goReview}href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${filter.id}`}>{filter.updatedAt.split('T')[0]}</a>
-                                    </span>
-                                </a>
-                            </>
+                        {sortData.map((reviewData) => (
+                            <MyPageReviewDetail 
+                                review={reviewData}
+                            />
                         ))}
                     </>
                 ) : (

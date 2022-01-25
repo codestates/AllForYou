@@ -1,27 +1,38 @@
 import { Link } from "react-router-dom";
 import style from "./mypageBox.module.css";
-import ForYouView from "../page/forYouView"
 import MyPageLikes from "./myPageLikes"
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import MyPageReview from "./myPageReview"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function MyPageBox({ reviews, likes, isAuthenticated }) {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [contentModal, setContentModal] = useState(false);
-    const { handlemypage } = useSelector((state) => state.mypageReducer);
+    const [review, setReview] = useState([]);
 
-    // const handleContent = () => {
-    //     {alert("구현 준비중입니다.")}
-    //     window.location.reload(`/foryouview/:${likes}`)
-    //     dispatch(setHandleMypage(reviews.id))
-    // }
+    const handleMyReviewData = () => {
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
+            .then((res) => {
+                if(res.status === 200) {
+                    setReview(res.data.data)
+                }
+            })
+    }
 
-    // const handleContentInfo = (e) => {
-    //     setContentModal(!contentModal);
-    // };
-    
+    const filterData = review.filter((item, i) => {
+        return (
+            reviews.findIndex((item2, j) => {
+                return item.id === item2.id;
+            }) === i
+        );
+    });
+
+    const sortData = filterData.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+
+    useEffect(() => {
+        handleMyReviewData()
+    }, []);
+
+
     return (
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
@@ -33,18 +44,13 @@ function MyPageBox({ reviews, likes, isAuthenticated }) {
             </button>
         </Link>
         <div className={style.reviewsBox}>
-            {reviews ? (
+            {sortData ? (
                 <>
-                    <div className={style.reviewBox}>
-                        <span className={style.myReviewData}>
-                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${reviews.id}`}>{reviews.title}</a>
-                        </span>
-                        <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${reviews.id}`}>
-                            <span className={style.mydata_reviewDate}>
-                                {/* <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${reviews.id}`}>{reviews.createdAt.split('T')[0]}</a> */}
-                            </span>
-                        </a>
-                    </div>
+                    {sortData.map((reviewData) => (
+                        <MyPageReview 
+                            review={reviewData}
+                        />
+                    ))}
                 </>
                 ) : (
                     <p className={style.empty_reviewbox}>등록 된 리뷰가 없습니다.</p>
