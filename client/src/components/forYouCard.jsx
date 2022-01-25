@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import style from "./forYouCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPost, setMessageModal, setPosts } from "../action";
+import { setPost, setMessageModal } from "../action";
 
 const ForYouCard = ({ review }) => {
     const { userlike, title, category, image } = review
@@ -34,7 +34,6 @@ const ForYouCard = ({ review }) => {
                 },
             ],
         });
-        dispatch(setPosts(review));
     };
 
     const handleShareUrl = () => {
@@ -47,7 +46,7 @@ const ForYouCard = ({ review }) => {
         document.execCommand("copy");
         document.body.removeChild(dummy);
         dispatch(setMessageModal(true, `클립보드 복사 완료 🙌🏻`));
-        dispatch(setPosts(review));
+        dispatch(setPost(review));
     };
 
     const handlePostInfo = () => {
