@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import style from "./signupModal.module.css";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { signupModal, loginModal, setMessageModal } from '../action';
 
 const SignupModal = () => {
     const dispatch = useDispatch();
-    const { isModal } = useSelector((state) => state.loginModalReducer);
-    const { isState } = useSelector((state) => state.signupModalReducer);
     const [errorMessage, setErrorMessage] = useState("");
     const [signupInfo, setSignUpInfo] = useState({
       email: "",

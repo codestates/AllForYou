@@ -3,12 +3,11 @@ import style from "./mypageBox.module.css"
 import MyLikesContentModal from "./myLikesContentModal"
 import { useState } from "react";
 
-function MyPageLikesDetail({ content, hadlePages }) {
+function MyPageLikesDetail({ content }) {
     const [contentModal, setContentModal] = useState(false);
 
     const handleContentInfo = (e) => {
         setContentModal(!contentModal);
-        hadlePages();
     };
 
     return (

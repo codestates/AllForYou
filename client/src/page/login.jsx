@@ -13,8 +13,6 @@ import {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isState } = useSelector((state) => state.signupModalReducer);
-  const { isModal } = useSelector((state) => state.loginModalReducer);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [failMessage, setFailMessage] = useState(false);

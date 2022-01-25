@@ -5,7 +5,7 @@ import MyPageReview from "./myPageReview"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function MyPageBox({ reviews, likes, isAuthenticated }) {
+function MyPageBox({ reviews, likes }) {
     const [review, setReview] = useState([]);
 
     const handleMyReviewData = () => {
@@ -70,7 +70,6 @@ function MyPageBox({ reviews, likes, isAuthenticated }) {
                         {likes.map((info) => (
                             <MyPageLikes 
                                 info={info}
-                                isAuthenticated={isAuthenticated}
                             />
                         ))}
                     </>
