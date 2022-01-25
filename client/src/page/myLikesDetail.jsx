@@ -148,6 +148,7 @@ const MyLikesDetail = () => {
                             {postItems.map((content) => (
                                 <MyPageLikesDetail 
                                     content={content}
+                                    hadlePages={hadlePages}
                                 />
                             ))}
                         </>
