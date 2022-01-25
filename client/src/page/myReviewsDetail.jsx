@@ -4,11 +4,8 @@ import PageNationReviewButton from "../components/paginationReviewButton"
 import MyPageReviewDetail from "../components/myPageReviewDetail"
 import axios from "axios";
 import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-
 
 const MyReviewsDetail = () => {
-    const navigate = useNavigate();
     const { nickname } = useSelector((state) => state.loginReducer);
     const { profileImage } = useSelector((state) => state.loginReducer);
     

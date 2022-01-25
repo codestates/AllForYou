@@ -3,15 +3,11 @@ import style from "./myLikesDetail.module.css"
 import PageNationLikesButton from "../components/paginationLikesButton"
 import MyPageLikesDetail from "../components/myPageLikesDetail"
 import axios from "axios";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const MyLikesDetail = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
     const { nickname } = useSelector((state) => state.loginReducer);
     const { profileImage } = useSelector((state) => state.loginReducer);
-    const { isLogin } = useSelector((state) => state.loginReducer);
     
     const [isActive, setActive] = useState([]);
     const [postItems, setPostItems] = useState([]);
@@ -133,7 +129,6 @@ const MyLikesDetail = () => {
 
     return(
             <div className={style.container}>
-                {/* {alert("구현 준비중입니다.")} */}
             <div className={style.info}>
                 <img className={style.img} src={profileImage} alt=""  />
                 <p className={style.nickname}>
@@ -148,7 +143,6 @@ const MyLikesDetail = () => {
                             {postItems.map((content) => (
                                 <MyPageLikesDetail 
                                     content={content}
-                                    hadlePages={hadlePages}
                                 />
                             ))}
                         </>

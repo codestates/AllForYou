@@ -1,7 +1,7 @@
 import "./app.css";
 import Nav from "./components/nav";
 import Footer from "./components/footer";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainPage from "./page/mainPage";
@@ -15,7 +15,6 @@ import SignupModal from "./components/signupModal"
 import ContentsModal from "./components/contentsModal";
 import ForuModal from "./components/foruModal";
 import ResponsiveNav from "./components/responsiveNav";
-import MyPageBox from "./components/mypageBox"
 
 import ForYouWriting from "./page/forYouWriting";
 import ForYouView from "./page/forYouView";
