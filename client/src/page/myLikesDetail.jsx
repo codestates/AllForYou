@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import style from "./myLikesDetail.module.css"
 import PageNationLikesButton from "../components/paginationLikesButton"
+import MyPageLikesDetail from "../components/myPageLikesDetail"
 import axios from "axios";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 const MyLikesDetail = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { nickname } = useSelector((state) => state.loginReducer);
     const { profileImage } = useSelector((state) => state.loginReducer);
+    const { isLogin } = useSelector((state) => state.loginReducer);
     
     const [isActive, setActive] = useState([]);
     const [postItems, setPostItems] = useState([]);
@@ -143,18 +146,9 @@ const MyLikesDetail = () => {
                 {postItems ? (
                             <>
                             {postItems.map((content) => (
-                            <>
-                                <div className={style.likeBox}>
-                                    <button className={style.myLikeData} key={content} onClick={hadlePages}>
-                                        <span>{content.content.title}</span>
-                                    </button>
-                                    <button className={style.mydata_likeDate} onClick={hadlePages}>
-                                        <span>
-                                            {content.createdAt.split('T')[0]}
-                                        </span>
-                                    </button>
-                                </div>
-                            </>
+                                <MyPageLikesDetail 
+                                    content={content}
+                                />
                             ))}
                         </>
                     ) : (

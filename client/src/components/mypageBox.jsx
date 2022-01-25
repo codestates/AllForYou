@@ -1,28 +1,38 @@
 import { Link } from "react-router-dom";
 import style from "./mypageBox.module.css";
-import ForYouView from "../page/forYouView"
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { setHandleMypage } from "../action"
-import { useCallback, useEffect, useState } from "react";
+import MyPageLikes from "./myPageLikes"
+import MyPageReview from "./myPageReview"
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function MyPageBox({ reviews, likes }) {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const [info, setInfo] = useState(null);
-    const { handlemypage } = useSelector((state) => state.mypageReducer);
-    const modal = useSelector(
-        (state) => state.contentsModalReducer.contentsModal.modalOnOff
-    );
+function MyPageBox({ reviews, likes, isAuthenticated }) {
+    const [review, setReview] = useState([]);
 
-    const handleContent = () => {
-        {alert("구현 준비중입니다.")}
-    //     // window.location.reload(`/foryouview/:${info}`)
-    //     // dispatch(setHandleMypage(reviews.id))
+    const handleMyReviewData = () => {
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/reviews`)
+            .then((res) => {
+                if(res.status === 200) {
+                    setReview(res.data.data)
+                }
+            })
     }
-    // dispatch(setHandleMypage(info))
-    // console.log(handlemypage)
-    
+
+    const filterData = review.filter((item, i) => {
+        return (
+            reviews.findIndex((item2, j) => {
+                return item.id === item2.id;
+            }) === i
+        );
+    });
+
+    const sortData = filterData.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+
+    useEffect(() => {
+        handleMyReviewData()
+    }, []);
+
+
     return (
     <div className={style.container}>
         <span className={style.reviews_title}>내가 쓴 글</span>
@@ -34,21 +44,12 @@ function MyPageBox({ reviews, likes }) {
             </button>
         </Link>
         <div className={style.reviewsBox}>
-            {reviews ? (
+            {sortData ? (
                 <>
-                    {reviews.map((myReviews) => (
-                    <>
-                        <div className={style.reviewBox}>
-                            <span className={style.myReviewData} key={myReviews}>
-                                <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.title}</a>
-                            </span>
-                            <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>
-                                <span className={style.mydata_reviewDate}>
-                                    <a href={`${process.env.REACT_APP_CLIENT_URL}/foryouview/:${myReviews.id}`}>{myReviews.createdAt.split('T')[0]}</a>
-                                </span>
-                            </a>
-                        </div>
-                    </>
+                    {sortData.map((reviewData) => (
+                        <MyPageReview 
+                            review={reviewData}
+                        />
                     ))}
                 </>
                 ) : (
@@ -64,21 +65,13 @@ function MyPageBox({ reviews, likes }) {
                     </button>
                 </Link>
                 <div className={style.likesBox}>
-                    {likes ? (
-                        <>
-                        {likes.map((myLikes) => (
-                        <>
-                            <div className={style.likeBox}>
-                                <button className={style.myLikeData} key={myLikes}>
-                                    <span>{myLikes.content.title}</span>
-                                </button>
-                                <button className={style.mydata_likeDate}>
-                                    <span>
-                                        {myLikes.createdAt.split('T')[0]}
-                                    </span>
-                                </button>
-                            </div>
-                        </>
+                {likes ? (
+                    <>
+                        {likes.map((info) => (
+                            <MyPageLikes 
+                                info={info}
+                                isAuthenticated={isAuthenticated}
+                            />
                         ))}
                     </>
                 ) : (
