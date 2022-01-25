@@ -30,7 +30,6 @@ const MyPage = () => {
             dispatch(setProfileImage(res.data.data.userInfo.user_picture));
           }
           const reviewlist = res.data.data.userReviews;
-          const likeslist = res.data.data.userLikes;
           dispatch(setEmailData(email));
           dispatch(setNickname(nickname));
           setReviews(reviewlist);
