@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react"; 
 import style from "../page/myReviewsDetail.module.css"
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

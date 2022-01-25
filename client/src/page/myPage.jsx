@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import style from "./myPage.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProfileBox from "../components/mypageProfilebox";
 import MyPageBox from "../components/mypageBox";
 import MyPgaeUpdate from "../components/mypageUpdate";
 import ModalWithdraw from "../components/ModalWithdraw";
-import MyReviewsDetail from "../page/myReviewsDetail";
-import Footer from "../components/footer";
 import { setProfileImage, setEmailData, setNickname } from "../action";
 
 const MyPage = () => {
@@ -60,7 +57,6 @@ const MyPage = () => {
           <MyPageBox
             likes={likes}
             reviews={reviews}
-            isAuthenticated={isAuthenticated}
           />
         </div>
       ) : (
