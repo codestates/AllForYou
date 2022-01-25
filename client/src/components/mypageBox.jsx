@@ -5,8 +5,27 @@ import MyPageReview from "./myPageReview"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function MyPageBox({ reviews, likes }) {
+function MyPageBox({ reviews }) {
     const [review, setReview] = useState([]);
+    const [postItems, setPostItems] = useState([]);
+
+    const hadlePages = () => {
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/users/mypage/myLike`)
+            .then((res) => {
+                const { row } = res.data.data;
+
+                setPostItems(row);
+            })
+        }
+
+        useEffect(() => {
+            hadlePages()
+        }, []);
+
+        const sortContent = postItems.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+
+        const fiveContentData = sortContent.slice(0, 5)
 
     const handleMyReviewData = () => {
         axios
@@ -65,9 +84,9 @@ function MyPageBox({ reviews, likes }) {
                     </button>
                 </Link>
                 <div className={style.likesBox}>
-                {likes ? (
+                {fiveContentData ? (
                     <>
-                        {likes.map((info) => (
+                        {fiveContentData.map((info) => (
                             <MyPageLikes 
                                 info={info}
                             />
