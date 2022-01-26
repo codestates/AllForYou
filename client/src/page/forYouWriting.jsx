@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import EditorComponent from "../components/editorComponent.jsx";
 import SearchList from "../components/searchList";
 import CartList from "../components/cartList";
-// require("dotenv").config();
 
 const ForYouWriting = () => {
     const state = useSelector(state => state.writingListReducer);
@@ -104,7 +103,6 @@ const ForYouWriting = () => {
                 });
         }
     }
-
 
     return (
         <div className={style.container}>
