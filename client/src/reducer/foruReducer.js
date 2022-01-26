@@ -23,11 +23,6 @@ const foruReducer = (state = initialState, action) => { //첫번째 인자는 �
                 post: action.payload,
             });
 
-        case SET_POSTS:
-            return Object.assign({}, state, {
-                ProgressEvent: action.payload,
-            });
-
         default:
             return state;
     }

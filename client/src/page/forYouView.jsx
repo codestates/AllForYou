@@ -5,7 +5,7 @@ import Comment from "../components/comment";
 import CommentInput from "../components/commentInput";
 import Recommend from "../components/recommend";
 import { useDispatch, useSelector } from 'react-redux';
-import { setMessageModal, loginModal, setPost, contentsModal, setPosts } from "../action";
+import { setMessageModal, loginModal, setPost } from "../action";
 import { useNavigate } from "react-router-dom";
 
 const ForYouView = ({ post, isLogin }) => {
@@ -13,16 +13,9 @@ const ForYouView = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nickname } = useSelector((state) => state.loginReducer);
-  const { posts } = useSelector((state) => state.foruReducer);
   const [comment, setComment] = useState([]);
   const [content, setContent] = useState([]);
   const [likeColor, setLikeColor] = useState(false);
-
-  const getPostUrl = () => {
-    if (posts !== null) {
-      dispatch(setPost(posts));
-    }
-  }
 
   function getPostDetail() {
     axios
@@ -159,14 +152,12 @@ const ForYouView = ({ post, isLogin }) => {
         },
       ],
     });
-    dispatch(setPosts(post));
   };
 
   useEffect(() => {
     getPostDetail();
     getContent()
     getComment();
-    getPostUrl();
     if (isLogin) {
       getLikeInfo();
     }
