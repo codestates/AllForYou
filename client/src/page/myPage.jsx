@@ -16,7 +16,6 @@ const MyPage = () => {
 
   const [errMessage, setErrMessage] = useState("");
   const [reviews, setReviews] = useState([]);
-  const [likes, setLikes] = useState([]);
 
   const isAuthenticated = () => {
     axios
@@ -31,11 +30,9 @@ const MyPage = () => {
             dispatch(setProfileImage(res.data.data.userInfo.user_picture));
           }
           const reviewlist = res.data.data.userReviews;
-          const likeslist = res.data.data.userLikes;
           dispatch(setEmailData(email));
           dispatch(setNickname(nickname));
           setReviews(reviewlist);
-          setLikes(likeslist);
         }
       })
       .catch((err) => {
@@ -55,7 +52,6 @@ const MyPage = () => {
           {withdrawModal === true ? <ModalWithdraw /> : null}
           <ProfileBox />
           <MyPageBox
-            likes={likes}
             reviews={reviews}
           />
         </div>
@@ -69,3 +65,4 @@ const MyPage = () => {
 };
 
 export default MyPage;
+

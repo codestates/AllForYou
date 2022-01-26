@@ -11,6 +11,7 @@ const ForYouCard = ({ review }) => {
     const likeColor = userlike
 
     const handleShareKakao = () => {
+        dispatch(setPost(review));
         if (!window.Kakao.isInitialized()) {
             window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
         }
