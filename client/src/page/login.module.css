@@ -21,11 +21,11 @@
   background-color: white;
 }
 
-.cancleBox {
+.cancelBox {
   display: none;
 }
 
-.cancleBtn {
+.cancelBtn {
   display: none;
 }
 
@@ -172,7 +172,7 @@ button:hover {
     border-radius: 0;
   }
 
-  .cancleBox {
+  .cancelBox {
     display: block;
     border: none;
     float: right;
@@ -185,7 +185,7 @@ button:hover {
     font-size: large;
   }
 
-  .cancleBtn {
+  .cancelBtn {
     display: block;
     padding-top: 2em;
     width: 4vw;
@@ -281,14 +281,14 @@ button:hover {
     height: 120vh;
     border-radius: 0;
   }
-  .cancleBox {
+  .cancelBox {
     border: none;
     float: right;
     margin-right: 7vw;
     background-color: white;
   }
 
-  .cancleBtn {
+  .cancelBtn {
     display: block;
     padding-top: 2em;
     width: 4vw;
