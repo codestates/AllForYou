@@ -26,7 +26,6 @@ export const HANDLE_MYPAGE = "HANDLE_MYPAGE";
 export const SET_LIST = 'SET_LIST';
 export const SET_GOOGLE_LOGIN = "SET_GOOGLE_LOGIN";
 export const SET_KAKAO_LOGIN = "SET_KAKAO_LOGIN";
-export const SET_POSTS = 'SET_POSTS';
 
 export const CONTENTS_LIKE = 'CONTENTS_LIKE';
 
@@ -251,12 +250,5 @@ export const setList = (id) => {
     return {
         type: SET_LIST,
         payload: id
-    };
-};
-
-export const setPosts = (posts) => {
-    return {
-        type: SET_POST,
-        payload: posts,
     };
 };
