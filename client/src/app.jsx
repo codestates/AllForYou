@@ -1,7 +1,7 @@
 import "./app.css";
 import Nav from "./components/nav";
 import Footer from "./components/footer";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainPage from "./page/mainPage";
@@ -11,7 +11,7 @@ import Contents from "./page/contents";
 import Login from "./page/login";
 import MyReviewsDetail from "./page/myReviewsDetail";
 import MyLikesDetail from "./page/myLikesDetail";
-import SignupModal from "./components/signupModal"
+import SignupModal from "./components/signupModal";
 import ContentsModal from "./components/contentsModal";
 import ForuModal from "./components/foruModal";
 import ResponsiveNav from "./components/responsiveNav";
@@ -28,19 +28,15 @@ function App() {
   const { isState } = useSelector((state) => state.signupModalReducer);
   const { isLogin } = useSelector((state) => state.loginReducer);
   const foru = useSelector((state) => state.foruReducer);
-  const { messageModal, post } = foru
+  const { messageModal, post } = foru;
 
   return (
     <BrowserRouter>
       <Nav />
       <ResponsiveNav />
       {/* <ContentsModal /> */}
-      {isModal === true && isState === false ? (
-        <Login />
-      ) : null}
-      {isState === true ? (
-        <SignupModal />
-      ) : null}
+      {isModal === true && isState === false ? <Login /> : null}
+      {isState === true ? <SignupModal /> : null}
       <ForuModal
         isOpen={messageModal.isModalOpen}
         content={messageModal.content}
@@ -51,7 +47,10 @@ function App() {
         <Route path="/foryou" element={<ForYou isLogin={isLogin} />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/foryouwriting" element={<ForYouWriting />} />
-        <Route path="/foryouview/:reviewId" element={<ForYouView post={post} isLogin={isLogin} />} />
+        <Route
+          path="/foryouview/:reviewId"
+          element={<ForYouView post={post} isLogin={isLogin} />}
+        />
         <Route path="/foryouedit" element={<ForYouEdit post={post} />} />
         <Route path="/reviewsdetail" element={<MyReviewsDetail />} />
         <Route path="/likesdetail" element={<MyLikesDetail />} />
