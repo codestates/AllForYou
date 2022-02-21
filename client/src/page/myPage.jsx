@@ -51,9 +51,7 @@ const MyPage = () => {
           {updateInfo === true ? <MyPgaeUpdate /> : null}
           {withdrawModal === true ? <ModalWithdraw /> : null}
           <ProfileBox />
-          <MyPageBox
-            reviews={reviews}
-          />
+          <MyPageBox reviews={reviews} />
         </div>
       ) : (
         <div className={style.message_box}>
@@ -65,4 +63,3 @@ const MyPage = () => {
 };
 
 export default MyPage;
-
